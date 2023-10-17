@@ -1,0 +1,9 @@
+module Kettle
+  module Soup
+    module Cover
+      module Version
+        VERSION: string
+      end
+    end
+  end
+end

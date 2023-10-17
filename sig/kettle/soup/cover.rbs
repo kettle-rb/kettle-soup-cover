@@ -1,0 +1,24 @@
+module Kettle
+  module Soup
+    module Cover
+      CI: string
+      COMMAND_NAME: string
+      COVERAGE_DIR: string
+      DO_COV: bool
+      FALSE: string
+      FILTER_DIRS: Array[Regexp]
+      FORMATTERS: Array[Hash[Symbol, Hash[Symbol, [string, Symbol]]]]
+      IS_CI: bool
+      MIN_COVERAGE_BRANCH: int
+      MIN_COVERAGE_HARD: bool
+      MIN_COVERAGE_LINE: int
+      MULTI_FORMATTERS: bool
+      MULTI_FORMATTERS_DEFAULT: string
+      TRUE: string
+      VERBOSE: bool
+      VERSION: String
+      # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+      def load_formatters: -> void
+    end
+  end
+end
