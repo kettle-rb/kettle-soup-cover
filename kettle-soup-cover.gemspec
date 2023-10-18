@@ -67,8 +67,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency("simplecov-rcov", "~> 0.3", ">= 0.3.3") # Hudson compatibility
 
   # Documentation
-  spec.add_development_dependency("rbs", "~> 3.1")
-  spec.add_development_dependency("redcarpet", "~> 3.6")
+  spec.add_development_dependency("kramdown", "~> 2.4")
   spec.add_development_dependency("yard", "~> 0.9", ">= 0.9.34")
   spec.add_development_dependency("yard-junk", "~> 0.0")
 
