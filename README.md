@@ -48,6 +48,10 @@ CI=true bundle exec rake test # or whatever command you run for tests.
 
 That's it!
 
+### Filters
+
+There are two built-in SimpleCov filters which can be loaded via `Kettle::Soup::Cover.load_filters`.
+
 ### Advanced Usage
 
 There are a number of ENV variables that control things within this gem.

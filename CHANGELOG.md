@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Removed
 
-## [Unreleased]
+## [0.2.0] - 2023-10-18
+### Added
+- `Kettle::Soup::Cover.load_filters`
+### Fixed
+- All ENV vars now begin with a uniform prefix for this gem:
+  - `K_SOUP_COV_*`
+
 ## [0.1.0] - 2023-10-17
 - Initial release

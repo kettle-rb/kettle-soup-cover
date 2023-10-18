@@ -64,19 +64,19 @@ module Kettle
       }
 
       CI = ENV.fetch("CI", FALSE)
-      COMMAND_NAME = ENV.fetch("K_SOUP_COMMAND_NAME", "RSpec (COVERAGE)")
+      COMMAND_NAME = ENV.fetch("K_SOUP_COV_COMMAND_NAME", "RSpec (COVERAGE)")
       COVERAGE_DIR = ENV.fetch("K_SOUP_COV_DIR", "coverage")
       IS_CI = CI.casecmp?(TRUE)
-      DO_COV = ENV.fetch("K_SOUP_DO_COV", CI).casecmp?(TRUE)
+      DO_COV = ENV.fetch("K_SOUP_COV_DO", CI).casecmp?(TRUE)
       FILTER_DIRS = ENV.fetch(
-        "K_SOUP_FILTER_DIRS",
+        "K_SOUP_COV_FILTER_DIRS",
         "bin,certs,checksums,config,docs,features,gemfiles,pkg,results,sig,spec,src,test,test-results,vendor",
       )
         .split(",")
         .map { |dir_name| %r{^/#{dir_name}/} }
       FORMATTERS = ENV.fetch(
-        "K_SOUP_FORMATTERS",
-        IS_CI ? "html,xml,rcov,lcov,json,tty" : "",
+        "K_SOUP_COV_FORMATTERS",
+        IS_CI ? "html,xml,rcov,lcov,json,tty" : "html,tty",
       )
         .split(",")
         .map { |fmt_name| FORMATTER_PLUGINS[fmt_name.to_sym] }
@@ -89,8 +89,8 @@ module Kettle
         FORMATTERS.any? ? TRUE : FALSE
       end
       MULTI_FORMATTERS = ENV.fetch("K_SOUP_COV_MULTI_FORMATTERS", MULTI_FORMATTERS_DEFAULT).casecmp?(TRUE)
-      USE_MERGING = ENV.fetch("K_SOUP_USE_MERGING", FALSE)
-      VERBOSE = ENV.fetch("K_SOUP_VERBOSE", FALSE).casecmp?(TRUE)
+      USE_MERGING = ENV.fetch("K_SOUP_COV_USE_MERGING", FALSE)
+      VERBOSE = ENV.fetch("K_SOUP_COV_VERBOSE", FALSE).casecmp?(TRUE)
 
       module_function def load_formatters
         SimpleCov.formatters = FORMATTERS
@@ -108,6 +108,11 @@ module Kettle
 
           formatters << klass
         end
+      end
+
+      module_function def load_filters
+        require "kettle/soup/cover/filters/gt_line_filter"
+        require "kettle/soup/cover/filters/lt_line_filter"
       end
     end
   end
