@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 # USAGE:
 # In your `spec/spec_helper.rb`,
 # just prior to loading the library under test:
@@ -97,7 +96,7 @@ module Kettle
         "bin,certs,checksums,config,coverage,docs,features,gemfiles,pkg,results,sig,spec,src,test,test-results,vendor",
       )
         .split(",")
-        .map { |dir_name| %r{^/#{dir_name}/} }
+        .map { |dir_name| %r{^/#{Regexp.escape(dir_name)}/} }
       FORMATTERS = ENV_GET.call(
         "FORMATTERS",
         IS_CI ? "html,xml,rcov,lcov,json,tty" : "html,tty",
@@ -118,6 +117,7 @@ module Kettle
       VERBOSE = ENV_GET.call("VERBOSE", FALSE).casecmp?(TRUE)
 
       module_function
+
       def load_formatters
         SimpleCov.formatters = FORMATTERS
           .each_with_object([]) do |fmt_data, formatters|

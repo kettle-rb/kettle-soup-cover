@@ -69,7 +69,7 @@ RSpec.describe Kettle::Soup::Cover do
     end
 
     it "sets IS_CI" do
-      expect(described_class::IS_CI).to eq(true)
+      expect(described_class::IS_CI).to be(true)
     end
 
     it "sets FORMATTERS" do
@@ -135,5 +135,4 @@ RSpec.describe Kettle::Soup::Cover do
   it "has constant DEBUG" do
     expect(described_class::DEBUG).to be(false)
   end
-
 end

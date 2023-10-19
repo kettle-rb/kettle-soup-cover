@@ -13,19 +13,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2023-10-19
 ### Added
-- Rake task `coverage` will run spec suite, and open results in a browser.
-- `Kettle::Soup::Cover::PREFIX` allows configuration of a custom ENV variable name prefix
+- ✨ `Regexp.escape` the `FILTER_DIRS` to allow for paths to be excluded from coverage
+  - paths must always start at the root of the project, but no leading or trailing slash
+- ✨ Rake task `coverage` will run spec suite, and open results in a browser.
+- ✨ `Kettle::Soup::Cover::PREFIX` allows configuration of a custom ENV variable name prefix
   - Set `export K_SOUP_COV_DEBUG="K_SOUP_COV_"` (default shown)
-- `Kettle::Soup::Cover::USE_MERGING`
+- ✨ `Kettle::Soup::Cover::USE_MERGING`
   - Set `export K_SOUP_COV_USE_MERGING=true`
-- `Kettle::Soup::Cover::MERGE_TIMEOUT`
+- ✨ `Kettle::Soup::Cover::MERGE_TIMEOUT`
   - Set `export K_SOUP_COV_MERGE_TIMEOUT=3600`
-- `Kettle::Soup::Cover::DEBUG` - similar to `VERBOSE`, only moreso!
+- ✨ `Kettle::Soup::Cover::DEBUG` - similar to `VERBOSE`, only moreso!
   - Set `export K_SOUP_COV_DEBUG=true`
   - NOTE: This gem actually has zero output statements.
     - The utility of `DEBUG` and `VERBOSE` being a part of this library is
       to normalize handling of this common logical need in other libraries.
-- `Kettle::Soup::Cover.load_filters`
+- ✨ `Kettle::Soup::Cover.load_filters`
   - `Kettle::Soup::Cover::Filters::GtLineFilter`
   - `Kettle::Soup::Cover::Filters::LtLineFilter`
 - More and better documentation
