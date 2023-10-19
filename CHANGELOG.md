@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Removed
 
+## [1.0.1] - 2023-10-19
+### Fixed
+- Include new `coverage` rake task in the built gem
+
 ## [1.0.0] - 2023-10-19
 ### Added
 - ✨ `Regexp.escape` the `FILTER_DIRS` to allow for paths to be excluded from coverage
@@ -41,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2023-10-17
 - Initial release
 
-[Unreleased]: https://github.com/pboling/pretty_feed/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/pboling/pretty_feed/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/pboling/pretty_feed/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/pboling/pretty_feed/compare/v0.1.0...v1.0.0
 [0.1.0]: https://github.com/pboling/pretty_feed/compare/97ddbbca309b87c7f6eed0137b08cad74ec81235...v0.1.0
