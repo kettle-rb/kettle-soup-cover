@@ -26,9 +26,15 @@ module Kettle
       VERBOSE: bool
       VERSION: String
 
+      def delete_const: -> void
+
+      def install_tasks: -> void
+
       def load_filters: -> void
 
       def load_formatters: -> void
+
+      def reset_const: -> void
     end
   end
 end
