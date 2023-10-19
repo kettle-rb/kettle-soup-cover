@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-# External gems
-require "version_gem"
-
-require_relative "cover/version"
 
 # USAGE:
 # In your `spec/spec_helper.rb`,
 # just prior to loading the library under test:
 #
-#   require "kettle/soup/cover" # or require "kettle-soup-cover"
+#   require "kettle-soup-cover"
+#   # ... other setup code
+#   require "simplecov" if Kettle::Soup::Cover::COV_DO
 #
 # In your `.simplecov` file:
 #
@@ -22,8 +20,33 @@ module Kettle
     module Cover
       class Error < StandardError; end
 
+      CONSTANTS = %w[
+        CI
+        COMMAND_NAME
+        COVERAGE_DIR
+        DEBUG
+        DO_COV
+        ENV_GET
+        FALSE
+        FILTER_DIRS
+        FORMATTER_PLUGINS
+        FORMATTERS
+        IS_CI
+        MERGE_TIMEOUT
+        MIN_COVERAGE_BRANCH
+        MIN_COVERAGE_LINE
+        MIN_COVERAGE_HARD
+        MULTI_FORMATTERS_DEFAULT
+        MULTI_FORMATTERS
+        PREFIX
+        TRUE
+        USE_MERGING
+        VERBOSE
+      ]
       FALSE = "false"
       TRUE = "true"
+      PREFIX = ENV.fetch("K_SOUP_COV_PREFIX", "K_SOUP_COV_")
+      ENV_GET = ->(suffix, default) { ENV.fetch("#{PREFIX}#{suffix}", default) }
       FORMATTER_PLUGINS = {
         # HTML for Humans
         html: {
@@ -64,35 +87,38 @@ module Kettle
       }
 
       CI = ENV.fetch("CI", FALSE)
-      COMMAND_NAME = ENV.fetch("K_SOUP_COV_COMMAND_NAME", "RSpec (COVERAGE)")
-      COVERAGE_DIR = ENV.fetch("K_SOUP_COV_DIR", "coverage")
       IS_CI = CI.casecmp?(TRUE)
-      DO_COV = ENV.fetch("K_SOUP_COV_DO", CI).casecmp?(TRUE)
-      FILTER_DIRS = ENV.fetch(
-        "K_SOUP_COV_FILTER_DIRS",
-        "bin,certs,checksums,config,docs,features,gemfiles,pkg,results,sig,spec,src,test,test-results,vendor",
+      COMMAND_NAME = ENV_GET.call("COMMAND_NAME", "RSpec (COVERAGE)")
+      COVERAGE_DIR = ENV_GET.call("DIR", "coverage")
+      DEBUG = ENV_GET.call("DEBUG", FALSE).casecmp?(TRUE)
+      DO_COV = ENV_GET.call("DO", CI).casecmp?(TRUE)
+      FILTER_DIRS = ENV_GET.call(
+        "FILTER_DIRS",
+        "bin,certs,checksums,config,coverage,docs,features,gemfiles,pkg,results,sig,spec,src,test,test-results,vendor",
       )
         .split(",")
         .map { |dir_name| %r{^/#{dir_name}/} }
-      FORMATTERS = ENV.fetch(
-        "K_SOUP_COV_FORMATTERS",
+      FORMATTERS = ENV_GET.call(
+        "FORMATTERS",
         IS_CI ? "html,xml,rcov,lcov,json,tty" : "html,tty",
       )
         .split(",")
         .map { |fmt_name| FORMATTER_PLUGINS[fmt_name.to_sym] }
-      MIN_COVERAGE_HARD = ENV.fetch("K_SOUP_COV_MIN_HARD", FALSE).casecmp?(TRUE)
-      MIN_COVERAGE_BRANCH = ENV.fetch("K_SOUP_COV_MIN_BRANCH", "80").to_i
-      MIN_COVERAGE_LINE = ENV.fetch("K_SOUP_COV_MIN_LINE", "80").to_i
+      MIN_COVERAGE_HARD = ENV_GET.call("MIN_HARD", CI).casecmp?(TRUE)
+      MIN_COVERAGE_BRANCH = ENV_GET.call("MIN_BRANCH", "80").to_i
+      MIN_COVERAGE_LINE = ENV_GET.call("MIN_LINE", "80").to_i
       MULTI_FORMATTERS_DEFAULT = if IS_CI
         CI
       else
         FORMATTERS.any? ? TRUE : FALSE
       end
-      MULTI_FORMATTERS = ENV.fetch("K_SOUP_COV_MULTI_FORMATTERS", MULTI_FORMATTERS_DEFAULT).casecmp?(TRUE)
-      USE_MERGING = ENV.fetch("K_SOUP_COV_USE_MERGING", FALSE)
-      VERBOSE = ENV.fetch("K_SOUP_COV_VERBOSE", FALSE).casecmp?(TRUE)
+      MULTI_FORMATTERS = ENV_GET.call("MULTI_FORMATTERS", MULTI_FORMATTERS_DEFAULT).casecmp?(TRUE)
+      USE_MERGING = ENV_GET.call("USE_MERGING", nil)&.casecmp?(TRUE)
+      MERGE_TIMEOUT = ENV_GET.call("MERGE_TIMEOUT", nil)&.to_i
+      VERBOSE = ENV_GET.call("VERBOSE", FALSE).casecmp?(TRUE)
 
-      module_function def load_formatters
+      module_function
+      def load_formatters
         SimpleCov.formatters = FORMATTERS
           .each_with_object([]) do |fmt_data, formatters|
           require fmt_data[:lib].to_s
@@ -110,26 +136,34 @@ module Kettle
         end
       end
 
-      module_function def load_filters
+      def load_filters
         require "kettle/soup/cover/filters/gt_line_filter"
         require "kettle/soup/cover/filters/lt_line_filter"
       end
+
+      def install_tasks
+        load("kettle/soup/cover/tasks.rb")
+      end
+
+      # Const manipulation is to help with testing this gem
+      def reset_const(&_)
+        delete_const do
+          yield if block_given?
+          # Loading myself... Woah.
+          load("kettle/soup/cover.rb")
+        end
+      end
+
+      # Const manipulation is to help with testing this gem
+      def delete_const(&_)
+        CONSTANTS.each do |var|
+          remove_const(var)
+        end
+        remove_const(:CONSTANTS)
+        yield if block_given?
+
+        nil
+      end
     end
   end
-end
-
-Kettle::Soup::Cover::Version.class_eval do
-  extend VersionGem::Basic
-end
-
-if Kettle::Soup::Cover::DO_COV
-  # When simplecov library loads here, the .simplecov library will be run immediately
-  # It is expected that inside .simplecov users of this gem will add:
-  #
-  #   require "kettle/soup/cover/config" # Runs SimpleCov.configure, but not SimpleCov.start
-  #   SimpleCov.start # actually run start!
-  #
-  require "simplecov"
-elsif Kettle::Soup::Cover::VERBOSE
-  puts "[Kettle::Soup::Cover] Not running coverage on #{RUBY_ENGINE} #{RUBY_VERSION}"
 end

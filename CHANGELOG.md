@@ -11,12 +11,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Removed
 
-## [0.2.0] - 2023-10-18
+## [1.0.0] - 2023-10-19
 ### Added
+- Rake task `coverage` will run spec suite, and open results in a browser.
+- `Kettle::Soup::Cover::PREFIX` allows configuration of a custom ENV variable name prefix
+  - Set `export K_SOUP_COV_DEBUG="K_SOUP_COV_"` (default shown)
+- `Kettle::Soup::Cover::USE_MERGING`
+  - Set `export K_SOUP_COV_USE_MERGING=true`
+- `Kettle::Soup::Cover::MERGE_TIMEOUT`
+  - Set `export K_SOUP_COV_MERGE_TIMEOUT=3600`
+- `Kettle::Soup::Cover::DEBUG` - similar to `VERBOSE`, only moreso!
+  - Set `export K_SOUP_COV_DEBUG=true`
+  - NOTE: This gem actually has zero output statements.
+    - The utility of `DEBUG` and `VERBOSE` being a part of this library is
+      to normalize handling of this common logical need in other libraries.
 - `Kettle::Soup::Cover.load_filters`
+  - `Kettle::Soup::Cover::Filters::GtLineFilter`
+  - `Kettle::Soup::Cover::Filters::LtLineFilter`
+- More and better documentation
+### Changed
+- This gem no longer does `require "simplecov"`
+  - Instead you can `require "simplecov" if Kettle::Soup::Cover::COV_DO` wherever you deem fit
 ### Fixed
 - All ENV vars now begin with a uniform prefix for this gem:
   - `K_SOUP_COV_*`
 
 ## [0.1.0] - 2023-10-17
 - Initial release
+
+[Unreleased]: https://github.com/pboling/pretty_feed/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/pboling/pretty_feed/compare/v0.1.0...v1.0.0
+[0.1.0]: https://github.com/pboling/pretty_feed/compare/97ddbbca309b87c7f6eed0137b08cad74ec81235...v0.1.0

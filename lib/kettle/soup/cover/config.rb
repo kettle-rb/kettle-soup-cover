@@ -4,7 +4,7 @@
 # In your `spec/spec_helper.rb`,
 # just prior to loading the library under test:
 #
-#   require "kettle/soup/cover" # or require "kettle-soup-cover"
+#   require "kettle-soup-cover"
 #
 # In your `.simplecov` file:
 #
@@ -35,8 +35,8 @@ SimpleCov.configure do
   end
 
   # Use Merging (merges RSpec + Cucumber Test Results)
-  use_merging(true)
-  merge_timeout(3600)
+  use_merging(Kettle::Soup::Cover::USE_MERGING) unless Kettle::Soup::Cover::USE_MERGING.nil?
+  merge_timeout(Kettle::Soup::Cover::MERGE_TIMEOUT) if Kettle::Soup::Cover::MERGE_TIMEOUT
 
   # Fail build when missed coverage targets
   # NOTE: Checking SpecTracker.instance.full_suite? here would be awesome, but won't work

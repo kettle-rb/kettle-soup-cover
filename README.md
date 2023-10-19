@@ -13,6 +13,42 @@ where this library is considered a package of [SOUP](https://en.wikipedia.org/wi
 
 It provides a one-line-configured, curated, opinionated, set of dependencies for Test Coverage.
 
+## Support My Open Source Development
+
+<div id="badges">
+
+[![Liberapay Patrons][⛳liberapay-img]][⛳liberapay]
+<span class="badge-buymeacoffee">
+[![Sponsor Me][🖇sponsor-img]][🖇sponsor]
+<a href="https://ko-fi.com/O5O86SNP4" target='_blank' title="Donate to my FLOSS or refugee efforts at ko-fi.com"><img src="https://img.shields.io/badge/buy%20me%20coffee-donate-yellow.svg" alt="Buy Me Coffee donation button" /></a>
+</span>
+<span class="badge-patreon">
+<a href="https://patreon.com/galtzo" title="Donate to my FLOSS or refugee efforts using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a>
+</span>
+
+---
+
+<a rel="me" alt="Follow me on Ruby.social" href="https://ruby.social/@galtzo"><img src="https://img.shields.io/mastodon/follow/109447111526622197?domain=https%3A%2F%2Fruby.social&style=social&label=Follow%20%40galtzo%20on%20Ruby.social"></a>
+[![Follow Me on X][🐦twitter-img]][🐦twitter]
+[![Follow Me on LinkedIn][🖇linkedin-img]][🖇linkedin]
+[![Subscribe to my Rubygems updates][💎rubygems-img]][💎rubygems]
+[![My Blog][🚎blog-img]][🚎blog]
+
+</div>
+
+[⛳liberapay-img]: https://img.shields.io/liberapay/patrons/pboling.svg?logo=liberapay
+[⛳liberapay]: https://liberapay.com/pboling/donate
+[🖇sponsor-img]: https://img.shields.io/badge/Sponsor_Me!-pboling.svg?style=social&logo=github
+[🖇sponsor]: https://github.com/sponsors/pboling
+[🖇linkedin]: http://www.linkedin.com/in/peterboling
+[🖇linkedin-img]: https://img.shields.io/badge/PeterBoling-blue?style=plastic&logo=linkedin
+[🐦twitter]: http://x.com/intent/user?screen_name=galtzo
+[🐦twitter-img]: https://img.shields.io/twitter/follow/galtzo.svg?style=social&label=Follow%20@galtzo
+[💎rubygems]: https://rubygems.org/profiles/pboling
+[💎rubygems-img]: https://img.shields.io/gem/u/pboling.svg
+[🚎blog]: http://www.railsbling.com/tags/oauth2/
+[🚎blog-img]: https://img.shields.io/badge/blog-railsbling-brightgreen.svg?style=flat
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
@@ -28,14 +64,19 @@ If bundler is not being used to manage dependencies, install the gem by executin
 In your `spec/spec_helper.rb`, just prior to loading the library under test:
 
 ```ruby
-require "kettle/soup/cover" # or require "kettle-soup-cover"
+# This does not require "simplecov",
+#   because that has a side-effect of running `.simplecov`
+require "kettle-soup-cover"
+
+# Later in your spec setup, do this;
+require "simplecov" if Kettle::Soup::Cover::COV_DO
 ```
 
 In your `.simplecov` file:
 
 ```ruby
 require "kettle/soup/cover/config"
-SimpleCov.start
+SimpleCov.start # you could do this somewhere else, up to you, but you do have to do it
 ```
 
 See [Advanced Usage](#advanced-usage) below for more info,
@@ -48,14 +89,61 @@ CI=true bundle exec rake test # or whatever command you run for tests.
 
 That's it!
 
+### Rakefile
+
+You'll need to have your `test` task defined.
+If you use `spec` instead, you can alias `test` to `spec` as follows:
+
+```ruby
+desc "alias test task to spec"
+task test: :spec
+```
+
+This gem provides a `coverage` task.
+It runs the `test` task (see just above about that),
+and opens the coverage results in a browser.
+
+```ruby
+require "kettle-soup-cover"
+Kettle::Soup::Cover.install_tasks
+```
+
 ### Filters
 
 There are two built-in SimpleCov filters which can be loaded via `Kettle::Soup::Cover.load_filters`.
 
+You could use them like this:
+```ruby
+SimpleCov.add_group("Too Long", Kettle::Soup::Cover::Filters::GtLineFilter.new(1000))
+```
+
 ### Advanced Usage
 
 There are a number of ENV variables that control things within this gem.
-All of them can be found in [lib/kettle/soup/cover.rb][env-constants].
+All of them can be found, along with their default values, in [lib/kettle/soup/cover.rb][env-constants].
+
+#### Handy List of ENV Variables
+
+Most are self explanatory.
+I tried to follow POLS, the principle of least surprise, so they mostly _DWTFYT_.
+Want to help improve this documentation? PRs are easy!
+
+```shell
+K_SOUP_COV_COMMAND_NAME
+K_SOUP_COV_DEBUG
+K_SOUP_COV_DIR
+K_SOUP_COV_DO
+K_SOUP_COV_FILTER_DIRS
+K_SOUP_COV_FORMATTERS
+K_SOUP_COV_MERGE_TIMEOUT
+K_SOUP_COV_MIN_HARD
+K_SOUP_COV_MIN_BRANCH
+K_SOUP_COV_MIN_LINE
+K_SOUP_COV_MULTI_FORMATTERS
+K_SOUP_COV_PREFIX
+K_SOUP_COV_USE_MERGING
+K_SOUP_COV_VERBOSE
+```
 
 Additionally some of the included gems, like [`simplecov-console`][simplecov-console],
 have their own complete suite of ENV variables you can configure.
@@ -90,7 +178,7 @@ the [Pessimistic Version Constraint][pvc] with two digits of precision.
 For example:
 
 ```ruby
-spec.add_dependency("kettle-soup-cover", "~> 0.1")
+spec.add_dependency("kettle-soup-cover", "~> 1.0")
 ```
 
 ## License

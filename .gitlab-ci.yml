@@ -12,6 +12,10 @@
 #include:
 #  - template: Security/SAST.gitlab-ci.yml
 
+variables:
+  K_SOUP_COV_MIN_BRANCH: 31
+  K_SOUP_COV_MIN_LINE: 55
+
 default:
   image: ruby:3.2.2
 

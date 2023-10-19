@@ -18,8 +18,8 @@ Gem::Specification.new do |spec|
 
   spec.summary = "A Covered Kettle of SOUP, A Bundler Plugin"
   spec.description = <<~DESC
-    A Covered Kettle of SOUP (Software of Unknown Provenance)
-    One-Liner, curated, opinionated, pre-configured, dependencies for Test Coverage
+    A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
+    Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
   DESC
   spec.homepage = "https://gitlab.com/rubocop-lts/#{spec.name}"
   spec.license = "MIT"
