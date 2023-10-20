@@ -51,8 +51,10 @@ GIT_MSG
 puts <<~RESULTS
   [GEM: #{gem_name}]
   [VERSION: #{version}]
-  [CHECKSUM SHA256 PATH: #{checksum256_path}]
-  [CHECKSUM SHA512 PATH: #{checksum512_path}]
+  [CHECKSUM SHA-256: #{checksum256}
+  [CHECKSUM SHA-512: #{checksum512}
+  [CHECKSUM SHA-256 PATH: #{checksum256_path}]
+  [CHECKSUM SHA-512 PATH: #{checksum512_path}]
   
   ... Running ...
   
