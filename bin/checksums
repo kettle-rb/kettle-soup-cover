@@ -49,12 +49,13 @@ git_cmd = <<~GIT_MSG
 GIT_MSG
 
 puts <<~RESULTS
-  [GEM: #{gem_name}]
-  [VERSION: #{version}]
-  [CHECKSUM SHA-256: #{checksum256}
-  [CHECKSUM SHA-512: #{checksum512}
-  [CHECKSUM SHA-256 PATH: #{checksum256_path}]
-  [CHECKSUM SHA-512 PATH: #{checksum512_path}]
+  [ GEM: #{gem_name} ]
+  [ VERSION: #{version} ]
+  [ GEM PKG LOCATION: #{gem_pkg} ]
+  [ CHECKSUM SHA-256: #{checksum256} ]
+  [ CHECKSUM SHA-512: #{checksum512} ]
+  [ CHECKSUM SHA-256 PATH: #{checksum256_path} ]
+  [ CHECKSUM SHA-512 PATH: #{checksum512_path} ]
   
   ... Running ...
   
