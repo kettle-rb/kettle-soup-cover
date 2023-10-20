@@ -38,14 +38,13 @@ Gem::Specification.new do |spec|
   spec.files = Dir[
     # Splats (alphabetical)
     "lib/**/*.rb",
-    "lib/rakelib/**/*.rake",
+    "lib/**/rakelib/*.rake",
     "sig/**/*.rbs",
     # Files (alphabetical)
     "CHANGELOG.md",
     "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
     "LICENSE.txt",
-    "plugins.rb",
     "README.md",
     "SECURITY.md",
   ]

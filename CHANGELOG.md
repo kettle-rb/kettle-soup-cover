@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Removed
 
+## [1.0.2] - 2023-10-19
+### Fixed
+- Include new `coverage` rake task in the built gem
+  - Goddamnit
+- Try to get checksum for SHA-256 to match what is published on Rubygems.org
+
 ## [1.0.1] - 2023-10-19
 ### Fixed
 - Include new `coverage` rake task in the built gem
@@ -45,7 +51,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2023-10-17
 - Initial release
 
-[Unreleased]: https://github.com/pboling/pretty_feed/compare/v1.0.1...HEAD
-[1.0.1]: https://github.com/pboling/pretty_feed/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/pboling/pretty_feed/compare/v0.1.0...v1.0.0
-[0.1.0]: https://github.com/pboling/pretty_feed/compare/97ddbbca309b87c7f6eed0137b08cad74ec81235...v0.1.0
+[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.1...HEAD
+[1.0.2]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.1...v1.0.2
+[1.0.1]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.0...v1.0.1
+[1.0.0]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v0.1.0...v1.0.0
+[0.1.0]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/97ddbbca309b87c7f6eed0137b08cad74ec81235...v0.1.0
