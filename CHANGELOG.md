@@ -43,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - More and better documentation
 ### Changed
 - This gem no longer does `require "simplecov"`
-  - Instead you can `require "simplecov" if Kettle::Soup::Cover::COV_DO` wherever you deem fit
+  - Instead you can `require "simplecov" if Kettle::Soup::Cover::DO_COV` wherever you deem fit
 ### Fixed
 - All ENV vars now begin with a uniform prefix for this gem:
   - `K_SOUP_COV_*`

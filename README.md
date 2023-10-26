@@ -69,7 +69,7 @@ In your `spec/spec_helper.rb`, just prior to loading the library under test:
 require "kettle-soup-cover"
 
 # Later in your spec setup, do this;
-require "simplecov" if Kettle::Soup::Cover::COV_DO
+require "simplecov" if Kettle::Soup::Cover::DO_COV
 ```
 
 In your `.simplecov` file:
@@ -136,8 +136,8 @@ K_SOUP_COV_DO
 K_SOUP_COV_FILTER_DIRS
 K_SOUP_COV_FORMATTERS
 K_SOUP_COV_MERGE_TIMEOUT
-K_SOUP_COV_MIN_HARD
 K_SOUP_COV_MIN_BRANCH
+K_SOUP_COV_MIN_HARD
 K_SOUP_COV_MIN_LINE
 K_SOUP_COV_MULTI_FORMATTERS
 K_SOUP_COV_PREFIX

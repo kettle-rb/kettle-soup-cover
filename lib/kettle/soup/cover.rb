@@ -6,7 +6,7 @@
 #
 #   require "kettle-soup-cover"
 #   # ... other setup code
-#   require "simplecov" if Kettle::Soup::Cover::COV_DO
+#   require "simplecov" if Kettle::Soup::Cover::DO_COV
 #
 # In your `.simplecov` file:
 #
