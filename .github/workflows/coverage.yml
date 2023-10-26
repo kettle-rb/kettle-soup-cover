@@ -1,9 +1,8 @@
 name: Code Coverage
 
 env:
-  CI_CODECOV: true
-  COVER_ALL: true
-  COVERAGE: true
+  K_SOUP_COV_MIN_BRANCH: 31
+  K_SOUP_COV_MIN_LINE: 55
 
 on:
   push:
