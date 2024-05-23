@@ -11,7 +11,7 @@ A Covered Kettle of SOUP (Software of Unknown Provenance)
 The name is derived in part from the medical devices field,
 where this library is considered a package of [SOUP](https://en.wikipedia.org/wiki/Software_of_unknown_pedigree).
 
-It provides a one-line-configured, curated, opinionated, set of dependencies for Test Coverage.
+Just add four lines of code to get a configured, curated, opinionated, set of dependencies for Test Coverage.
 
 ## Support My Open Source Development
 

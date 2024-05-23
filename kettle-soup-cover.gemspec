@@ -16,16 +16,16 @@ Gem::Specification.new do |spec|
   spec.cert_chain = ["certs/pboling.pem"]
   spec.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $PROGRAM_NAME.end_with?("gem")
 
-  spec.summary = "A Covered Kettle of SOUP, A Bundler Plugin"
+  spec.summary = "A Covered Kettle of SOUP, A Code Coverage Meta Gem"
   spec.description = <<~DESC
     A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
     Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
   DESC
-  spec.homepage = "https://gitlab.com/rubocop-lts/#{spec.name}"
+  spec.homepage = "https://gitlab.com/kettle-rb/#{spec.name}"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7"
 
-  spec.metadata["homepage_uri"] = "https://#{spec.name}.gitlab.io/"
+  spec.metadata["homepage_uri"] = "https://kettle-rb.gitlab.io/"
   spec.metadata["source_code_uri"] = "#{spec.homepage}/-/tree/v#{spec.version}"
   spec.metadata["changelog_uri"] = "#{spec.homepage}/-/blob/v#{spec.version}/CHANGELOG.md"
   spec.metadata["bug_tracker_uri"] = "#{spec.homepage}/-/issues"
