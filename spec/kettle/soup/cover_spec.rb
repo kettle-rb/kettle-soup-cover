@@ -102,18 +102,18 @@ RSpec.describe Kettle::Soup::Cover do
       expect(formatters).to eq(%i[html tty])
     end
 
-    context "when FORMATTERS not empty" do
+    context "when K_SOUP_COV_MULTI_FORMATTERS not empty" do
       it "sets MULTI_FORMATTERS_DEFAULT" do ||
         expect(described_class::MULTI_FORMATTERS_DEFAULT).to eq("true")
       end
     end
 
-    context "when FORMATTERS empty" do
+    context "when K_SOUP_COV_MULTI_FORMATTERS empty" do
       before do
         described_class.reset_const do
           stub_env(
             "CI" => "false",
-            "FORMATTERS" => "",
+            "K_SOUP_COV_MULTI_FORMATTERS" => "",
           )
         end
       end
@@ -132,7 +132,27 @@ RSpec.describe Kettle::Soup::Cover do
     expect(described_class::COVERAGE_DIR).to be_a(String)
   end
 
-  it "has constant DEBUG" do
-    expect(described_class::DEBUG).to be(false)
+  context "when debugging" do
+    before do
+      described_class.reset_const do
+        stub_env("K_SOUP_COV_DEBUG" => "true")
+      end
+    end
+
+    it "has constant DEBUG" do
+      expect(described_class::DEBUG).to be(true)
+    end
+  end
+
+  context "when not debugging" do
+    before do
+      described_class.reset_const do
+        stub_env("K_SOUP_COV_DEBUG" => "false")
+      end
+    end
+
+    it "has constant DEBUG" do
+      expect(described_class::DEBUG).to be(false)
+    end
   end
 end
