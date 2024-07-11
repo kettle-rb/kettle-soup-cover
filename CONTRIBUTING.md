@@ -4,8 +4,10 @@ Bug reports and pull requests are welcome on GitLab at [https://gitlab.com/kettl
 . This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to
 the [code of conduct][🤝conduct].
 
-To submit a patch, please fork the project and create a patch with tests. Once you're happy with it send a pull request
-and post a message to the [gitter chat][🏘chat].
+Everyone interacting in this project's codebases, issue trackers, chat
+rooms and mailing lists is expected to follow the [code of conduct][🤝conduct].
+
+To submit a patch, please fork the project and create a patch with tests. Once you're happy with it send a pull request.
 
 ## Release
 
@@ -21,8 +23,11 @@ To release a new version:
 7. Run `git pull origin main` to ensure you will release the latest trunk code.
 8. Set `SOURCE_DATE_EPOCH` so `rake build` and `rake release` use same timestamp, and generate same checksums
    a. Run `export SOURCE_DATE_EPOCH=$EPOCHSECONDS && echo $SOURCE_DATE_EPOCH`
+   b. If the echo above has no output, then it didn't work.
+   c. Note that you'll need the `zsh/datetime` module, if running `zsh`.
+   d. In `bash` you can use `date +%s` instead, i.e. `export SOURCE_DATE_EPOCH=$(date +%s) && echo $SOURCE_DATE_EPOCH`
 9. Run `bundle exec rake build`
-10. Run [`bin/checksums`](https://github.com/rubygems/guides/pull/325) to create SHA-256 and SHA-512 checksums
+10. Run [`bin/checksums`][🔒️rubygems-checksums-pr] to create SHA-256 and SHA-512 checksums
     a. Checksums will be committed automatically by the script, but not pushed
 11. Run `bundle exec rake release` which will create a git tag for the version,
     push git commits and tags, and push the `.gem` file to [rubygems.org][💎rubygems]
@@ -33,12 +38,19 @@ See: [RubyGems Security Guide][🔒️rubygems-security-guide]
 
 ## Contributors
 
-See: [https://gitlab.com/kettle-rb/kettle-soup-cover/-/graphs/main][🖐contributors]
+[![Contributors on GitHub][🖐contributors-img]][🖐contributors-gh]
 
-[🤝conduct]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/blob/main/CODE_OF_CONDUCT.md
+Made with [contributors-img][🖐contrib-rocks].
+
+For contributors on GitLab see: [https://gitlab.com/kettle-rb/kettle-soup-cover/-/graphs/main][🖐contributors-gl]
+
 [🧪build]: https://github.com/kettle-rb/kettle-soup-cover/actions
-[🖐contributors]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/graphs/main
-[🚎src-main]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/tree/main
-[🏘chat]: https://matrix.to/#/#kettle-rb:gitter.im
-[🔒️rubygems-security-guide]: https://guides.rubygems.org/security/#building-gems
+[🤝conduct]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/blob/main/CODE_OF_CONDUCT.md
+[🖐contrib-rocks]: https://contrib.rocks
+[🖐contributors-gh]: https://github.com/kettle-rb/kettle-soup-cover/graphs/contributors
+[🖐contributors-img]: https://contrib.rocks/image?repo=kettle-rb/kettle-soup-cover
+[🖐contributors-gl]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/graphs/main
 [💎rubygems]: https://rubygems.org
+[🔒️rubygems-security-guide]: https://guides.rubygems.org/security/#building-gems
+[🔒️rubygems-checksums-pr]: https://github.com/rubygems/guides/pull/325
+[🚎src-main]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/tree/main
