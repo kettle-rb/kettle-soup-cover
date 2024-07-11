@@ -53,7 +53,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Utilities
-  spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.3")
+  spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.4")
   spec.add_development_dependency("rake", "~> 13.0")
 
   # Code Coverage
@@ -68,13 +68,14 @@ Gem::Specification.new do |spec|
 
   # Documentation
   spec.add_development_dependency("kramdown", "~> 2.4")
-  spec.add_development_dependency("yard", "~> 0.9", ">= 0.9.34")
+  spec.add_development_dependency("yard", "~> 0.9", ">= 0.9.36")
   spec.add_development_dependency("yard-junk", "~> 0.0")
 
   # Linting
   spec.add_development_dependency("rubocop-lts", "~> 18.1", ">= 18.2.1") # Lint & Style Support for Ruby 2.7+
   spec.add_development_dependency("rubocop-packaging", "~> 0.5", ">= 0.5.2")
   spec.add_development_dependency("rubocop-rspec", "~> 2.24")
+  spec.add_development_dependency("standard", ">= 1.35.1")
 
   # Testing
   spec.add_development_dependency("rspec", "~> 3.12")
