@@ -13,6 +13,18 @@ where this library is considered a package of [SOUP](https://en.wikipedia.org/wi
 
 Just add four lines of code to get a configured, curated, opinionated, set of dependencies for Test Coverage.
 
+One of the major benefits of using this library is not having to figure
+out how to get multiple coverage output formats working.  I did that for you,
+and I got all of them working, at the same time together, or al la carte. Kum-ba-ya.
+
+A quick shot of raw coverage power, straight to your brain:
+
+```shell
+export K_SOUP_COV_MULTI_FORMATTERS="html,xml,rcov,lcov,json,tty"
+```
+
+I hope I've piqued your interest.
+
 ## Support My Open Source Development
 
 <div id="badges">
