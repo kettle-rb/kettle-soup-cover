@@ -20,7 +20,12 @@ and I got all of them working, at the same time together, or al la carte. Kum-ba
 A quick shot of raw coverage power, straight to your brain:
 
 ```shell
-export K_SOUP_COV_MULTI_FORMATTERS="html,xml,rcov,lcov,json,tty"
+export K_SOUP_COV_DO=true # Means you want code coverage
+export K_SOUP_COV_FORMATTERS="html,tty" # Set to some slice of "html,xml,rcov,lcov,json,tty"
+export K_SOUP_COV_MIN_BRANCH=53 # Means you want to enforce X% branch coverage
+export K_SOUP_COV_MIN_HARD=true # Means you want the build to fail if the coverage thresholds are not met
+export K_SOUP_COV_MIN_LINE=69 # Means you want to enforce X% line coverage
+export MAX_ROWS=5 # Setting for simplecov-console gem for tty output, limits to the worst N rows of bad coverage
 ```
 
 I hope I've piqued your interest.
