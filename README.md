@@ -204,7 +204,7 @@ The gem is available as open source under the terms of
 the [MIT License][license] [![License: MIT][license-img]][license-ref].
 See [LICENSE][license] for the official [Copyright Notice][copyright-notice-explainer].
 
-* Copyright (c) 2023 - 2024 [Peter H. Boling][peterboling] of [Rails Bling][railsbling]
+* Copyright (c) 2023 - 2025 [Peter H. Boling][peterboling] of [Rails Bling][railsbling]
 
 [copyright-notice-explainer]: https://opensource.stackexchange.com/questions/5778/why-do-licenses-such-as-the-mit-license-specify-a-single-year
 [license]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/blob/main/LICENSE.txt
