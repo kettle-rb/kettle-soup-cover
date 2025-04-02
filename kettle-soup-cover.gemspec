@@ -47,12 +47,15 @@ Gem::Specification.new do |spec|
   spec.metadata["funding_uri"] = "https://liberapay.com/pboling"
   spec.metadata["rubygems_mfa_required"] = "true"
 
-  # Specify which files should be added to the spec.add_dependency(when it is released.
+  # Specify which files should be added to the gem when it is released.
   spec.files = Dir[
     # Splats (alphabetical)
     "lib/**/*.rb",
     "lib/**/rakelib/*.rake",
     "sig/**/*.rbs",
+  ]
+  # Automatically included with gem package, no need to list again in files.
+  spec.extra_rdoc_files = Dir[
     # Files (alphabetical)
     "CHANGELOG.md",
     "CODE_OF_CONDUCT.md",
@@ -61,9 +64,18 @@ Gem::Specification.new do |spec|
     "README.md",
     "SECURITY.md",
   ]
+  spec.rdoc_options += [
+    "--title",
+    "#{spec.name} - #{spec.summary}",
+    "--main",
+    "README.md",
+    "--line-numbers",
+    "--inline-source",
+    "--quiet",
+  ]
+  spec.require_paths = ["lib"]
   spec.bindir = "exe"
   spec.executables = []
-  spec.require_paths = ["lib"]
 
   # Utilities
   spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.4")
