@@ -1,5 +1,8 @@
 {
   "bin/bundle:577146252": [
     [64, 5, 20, "ThreadSafety/ClassInstanceVariable: Avoid class instance variables.", 2485198147]
+  ],
+  "spec/kettle/soup/cover_spec.rb:2058673315": [
+    [145, 7, 695, "RSpec/ExampleLength: Example has too many lines. [18/5]", 2308906753]
   ]
 }

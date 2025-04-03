@@ -102,7 +102,7 @@ module Kettle
         IS_CI ? "html,xml,rcov,lcov,json,tty" : "html,tty",
       )
         .split(",")
-        .map { |fmt_name| FORMATTER_PLUGINS[fmt_name.to_sym] }
+        .map { |fmt_name| FORMATTER_PLUGINS[fmt_name.strip.to_sym] }
       MIN_COVERAGE_HARD = ENV_GET.call("MIN_HARD", CI).casecmp?(TRUE)
       MIN_COVERAGE_BRANCH = ENV_GET.call("MIN_BRANCH", "80").to_i
       MIN_COVERAGE_LINE = ENV_GET.call("MIN_LINE", "80").to_i

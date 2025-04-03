@@ -3,7 +3,7 @@
 # Get the GEMFILE_VERSION without *require* "my_gem/version", for code coverage accuracy
 # See: https://github.com/simplecov-ruby/simplecov/issues/557#issuecomment-2630782358
 # Kernel.load because load is overloaded in RubyGems during gemspec evaluation
-Kernel.load "lib/kettle/soup/cover/version.rb"
+Kernel.load("lib/kettle/soup/cover/version.rb")
 gem_version = Kettle::Soup::Cover::Version::VERSION
 Kettle::Soup::Cover::Version.send(:remove_const, :VERSION)
 

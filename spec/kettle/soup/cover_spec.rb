@@ -122,6 +122,47 @@ RSpec.describe Kettle::Soup::Cover do
         expect(described_class::MULTI_FORMATTERS_DEFAULT).to eq("true")
       end
     end
+
+    context "when K_SOUP_COV_MULTI_FORMATTERS malformed with extra spaces" do
+      before do
+        described_class.reset_const do
+          stub_env(
+            "CI" => "false",
+            "K_SOUP_COV_MULTI_FORMATTERS" => "true",
+            "K_SOUP_COV_FORMATTERS" => "html, xml, rcov, lcov, json, tty",
+          )
+        end
+      end
+
+      it "sets MULTI_FORMATTERS_DEFAULT" do ||
+        expect(described_class::MULTI_FORMATTERS_DEFAULT).to eq("true")
+      end
+
+      it "sets MULTI_FORMATTERS" do ||
+        expect(described_class::MULTI_FORMATTERS).to be(true)
+      end
+
+      it "sets FORMATTERS" do ||
+        expect(described_class::FORMATTERS).to eq(
+          [
+            {klass: "HTMLFormatter", lib: "simplecov-html", type: :html},
+            {
+              klass: "CoberturaFormatter",
+              lib: "simplecov-cobertura",
+              type: :xml,
+            },
+            {klass: "RcovFormatter", lib: "simplecov-rcov", type: :rcov},
+            {klass: "LcovFormatter", lib: "simplecov-lcov", type: :lcov},
+            {
+              klass: "JSONFormatter",
+              lib: "simplecov_json_formatter",
+              type: :json,
+            },
+            {klass: "Console", lib: "simplecov-console", type: :tty},
+          ],
+        )
+      end
+    end
   end
 
   it "has constant COMMAND_NAME" do

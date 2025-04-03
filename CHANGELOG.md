@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Removed
 
+## [1.0.5] - 2025-04-03
+### Added
+- Documentation
+- Support for malformed `K_SOUP_COV_FORMATTERS` (extra spaces)
+### Changed
+- Update to Contributor Covenant 2.1
+- Allow unsigned gem builds (for linux distros)
+### Fixed
+- Prefer `Kernel.load` > `load` in gemspec
+  - https://github.com/simplecov-ruby/simplecov/issues/557#issuecomment-2630782358
+
 ## [1.0.4] - 2024-06-11
 ### Added
 - Documentation
