@@ -98,11 +98,9 @@ Gem::Specification.new do |spec|
 
   # Linting
   # RuboCop is constrained due to major changes newer RuboCop, and the team's disinterest in SemVer
-  spec.add_development_dependency("rubocop", "~> 1.71.2")
   spec.add_development_dependency("rubocop-lts", "~> 18.1", ">= 18.2.1") # Lint & Style Support for Ruby 2.7+
   spec.add_development_dependency("rubocop-packaging", "~> 0.5", ">= 0.5.2")
   spec.add_development_dependency("rubocop-rspec", "~> 2.24")
-  spec.add_development_dependency("standard", ">= 1.35.1")
 
   # Testing
   spec.add_development_dependency("rspec", "~> 3.12")
