@@ -1,5 +1,8 @@
 name: MRI 3.0 (EOL)
 
+permissions:
+  contents: read
+
 env:
   K_SOUP_COV_DO: false
 

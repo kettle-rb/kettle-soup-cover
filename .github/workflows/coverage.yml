@@ -1,5 +1,8 @@
 name: Code Coverage
 
+permissions:
+  contents: read
+
 env:
   K_SOUP_COV_DEBUG: true
   K_SOUP_COV_DO: true
