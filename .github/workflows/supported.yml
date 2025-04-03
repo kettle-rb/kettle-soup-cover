@@ -1,4 +1,4 @@
-name: Current Ruby Support
+name: MRI Non-EOL
 
 env:
   K_SOUP_COV_DO: false
@@ -15,10 +15,13 @@ on:
   # Allow manually triggering the workflow.
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 # Cancels all previous workflow runs for the same branch that have not yet completed.
 concurrency:
   # The concurrency group contains the workflow name and the branch name.
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: "${{ github.workflow }}-${{ github.ref }}"
   cancel-in-progress: true
 
 jobs:
@@ -38,7 +41,9 @@ jobs:
         gemfile:
           - vanilla
         ruby:
-          - "ruby" # Whatever is the current release of Ruby
+          - "ruby-3.1"
+          - "ruby-3.2"
+          - "ruby-3.3"
 
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental || endsWith(matrix.ruby, 'head') }}

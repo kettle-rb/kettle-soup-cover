@@ -31,7 +31,7 @@ jobs:
         gemfile:
           - style
         ruby:
-          - "3.2"
+          - "ruby"
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental || endsWith(matrix.ruby, 'head') }}
     env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps

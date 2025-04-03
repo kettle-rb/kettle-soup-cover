@@ -7,9 +7,6 @@ on:
   push:
     branches:
       - 'main'
-      - '*-maintenance'
-      - '*-dev'
-      - '*-stable'
     tags:
       - '!*' # Do not execute on tags
   pull_request:
@@ -42,9 +39,9 @@ jobs:
           - vanilla
         ruby:
           - "ruby-head"
-          # NOTE: jruby-head is still @ Ruby 3.1 compat
+          # NOTE: jruby-head is a couple minor releases behind MRI head
           - "jruby-head"
-          # NOTE: truffleruby-head is still @ Ruby 3.1 compat
+          # NOTE: truffleruby-head is a couple minor releases behind MRI head
           - "truffleruby-head"
 
     runs-on: ubuntu-latest
