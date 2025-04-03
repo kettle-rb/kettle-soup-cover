@@ -9,3 +9,5 @@ gem "byebug"
 
 # Not compatible with JRuby, so can't be in the gemspec.
 gem "rbs", "~> 3.1"
+
+eval_gemfile "gemfiles/modular/style.gemfile"

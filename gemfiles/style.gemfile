@@ -10,5 +10,4 @@ source "https://rubygems.org"
 
 gemspec path: "../"
 
-gem "rubocop", "~> 1.71.2"
-gem "standard", ">= 1.35.1"
+eval_gemfile "modular/style.gemfile"

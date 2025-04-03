@@ -176,9 +176,11 @@ DEPENDENCIES
   rspec-block_is_expected (~> 1.0, >= 1.0.5)
   rspec-stubbed_env (~> 1.0, >= 1.0.1)
   rspec_junit_formatter (~> 0.6)
+  rubocop (~> 1.71.2)
   rubocop-lts (~> 18.1, >= 18.2.1)
   rubocop-packaging (~> 0.5, >= 0.5.2)
   rubocop-rspec (~> 2.24)
+  standard (>= 1.35.1)
   yard (~> 0.9, >= 0.9.36)
   yard-junk (~> 0.0)
 
