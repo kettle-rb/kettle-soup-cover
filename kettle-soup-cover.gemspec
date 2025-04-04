@@ -79,7 +79,10 @@ Gem::Specification.new do |spec|
 
   # Utilities
   spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.4")
+
+  # Release Tasks
   spec.add_development_dependency("rake", "~> 13.0")
+  spec.add_development_dependency("stone_checksums", "~> 1.0")
 
   # Code Coverage
   # CodeCov + GitHub setup is not via gems: https://github.com/marketplace/actions/codecov
