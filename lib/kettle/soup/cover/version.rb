@@ -4,7 +4,7 @@ module Kettle
   module Soup
     module Cover
       module Version
-        VERSION = "1.0.4"
+        VERSION = "1.0.5"
       end
     end
   end

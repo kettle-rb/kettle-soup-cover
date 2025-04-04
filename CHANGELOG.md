@@ -15,10 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Documentation
 - Support for malformed `K_SOUP_COV_FORMATTERS` (extra spaces)
+- Code coverage tools QLTY, and CodeCov.io
+- Added Ruby 3.3, 3.4 to CI
 ### Changed
 - Update to Contributor Covenant 2.1
 - Allow unsigned gem builds (for linux distros)
+- Checksums are now created by `stone_checksums` gem
 ### Fixed
+- Incorrect documentation of ENV variables that control gem behavior
 - Prefer `Kernel.load` > `load` in gemspec
   - https://github.com/simplecov-ruby/simplecov/issues/557#issuecomment-2630782358
 
