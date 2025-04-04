@@ -108,4 +108,3 @@ See: [RubyGems Security Guide][🔒️rubygems-security-guide]
 [🔒️rubygems-guides-pr]: https://github.com/rubygems/guides/pull/325
 [📗keep-changelog]: https://keepachangelog.com/en/1.0.0/
 [📗keep-changelog-img]: https://img.shields.io/badge/keep--a--changelog-1.0.0-FFDD67.svg?style=flat
-[🏃‍♂️runner-tool-cache]: https://github.com/ruby/ruby-builder/releases/tag/toolcache
