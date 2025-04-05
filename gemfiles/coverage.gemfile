@@ -9,3 +9,6 @@ source "https://rubygems.org"
 # Exceptions, if any, will be found in gemfiles/*
 
 gemspec path: "../"
+
+# Code Coverage
+eval_gemfile "modular/coverage.gemfile"

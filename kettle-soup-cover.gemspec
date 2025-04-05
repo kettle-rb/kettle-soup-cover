@@ -78,7 +78,7 @@ Gem::Specification.new do |spec|
   spec.executables = []
 
   # Utilities
-  spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.4")
+  spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.6")
 
   # Release Tasks
   spec.add_development_dependency("rake", "~> 13.0")
@@ -96,17 +96,17 @@ Gem::Specification.new do |spec|
 
   # Documentation
   spec.add_development_dependency("kramdown", "~> 2.4")
-  spec.add_development_dependency("yard", "~> 0.9", ">= 0.9.36")
-  spec.add_development_dependency("yard-junk", "~> 0.0")
+  spec.add_development_dependency("yard", "~> 0.9", ">= 0.9.37")
+  spec.add_development_dependency("yard-junk", "~> 0.0", ">= 0.0.10")
 
   # Linting
   # RuboCop is constrained due to major changes newer RuboCop, and the team's disinterest in SemVer
   spec.add_development_dependency("rubocop-lts", "~> 18.1", ">= 18.2.1") # Lint & Style Support for Ruby 2.7+
-  spec.add_development_dependency("rubocop-packaging", "~> 0.5", ">= 0.5.2")
-  spec.add_development_dependency("rubocop-rspec", "~> 2.24")
+  spec.add_development_dependency("rubocop-packaging", "~> 0.6", ">= 0.6.0")
+  spec.add_development_dependency("rubocop-rspec", "~> 3.5")
 
   # Testing
-  spec.add_development_dependency("rspec", "~> 3.12")
+  spec.add_development_dependency("rspec", "~> 3.13")
   spec.add_development_dependency("rspec-block_is_expected", "~> 1.0", ">= 1.0.5")
   spec.add_development_dependency("rspec_junit_formatter", "~> 0.6")
   spec.add_development_dependency("rspec-stubbed_env", "~> 1.0", ">= 1.0.1")
