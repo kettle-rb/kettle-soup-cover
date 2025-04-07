@@ -80,7 +80,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2023-10-17
 - Initial release
 
-[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.4...HEAD
+[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.5...HEAD
+[1.0.5]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.4...v1.0.5
 [1.0.4]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.3...v1.0.4
 [1.0.3]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.2...v1.0.3
 [1.0.2]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.1...v1.0.2
