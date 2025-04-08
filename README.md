@@ -86,7 +86,7 @@ In your `spec/spec_helper.rb`, just prior to loading the library under test:
 
 ```ruby
 # This does not require "simplecov",
-#   because that has a side-effect of running `.simplecov`
+#   because that has a side effect of running `.simplecov`
 require "kettle-soup-cover"
 
 # Later in your spec setup, do this;
