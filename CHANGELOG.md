@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Removed
 
+## [1.0.6] - 2025-04-30
+### Added
+- Support for linux in coverage rake task
+  - previously was macOS only
+- ✨ `Kettle::Soup::Cover::OPEN_BIN`
+  - Set `export K_SOUP_COV_OPEN_BIN=open` to use macOS' `open` command in `coverage` task
+  - Set `export K_SOUP_COV_OPEN_BIN=xdg-open` to use Linux' `xdg-open` command in `coverage` task
+  - Set `export K_SOUP_COV_OPEN_BIN=` to just print the path to the HTML coverage report in `coverage` task
+
 ## [1.0.5] - 2025-04-03
 ### Added
 - Documentation

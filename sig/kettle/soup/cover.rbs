@@ -22,6 +22,7 @@ module Kettle
       MULTI_FORMATTERS_DEFAULT: String
       PREFIX: String
       TRUE: String
+      OPEN_BIN: String
       USE_MERGING: bool?
       VERBOSE: bool
       VERSION: String

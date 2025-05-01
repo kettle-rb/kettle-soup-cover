@@ -14,6 +14,8 @@
 #   SimpleCov.start
 #
 
+require "rbconfig"
+
 module Kettle
   module Soup
     module Cover
@@ -39,6 +41,7 @@ module Kettle
         MULTI_FORMATTERS
         PREFIX
         TRUE
+        OPEN_BIN
         USE_MERGING
         VERBOSE
       ]
@@ -112,6 +115,10 @@ module Kettle
         FORMATTERS.any? ? TRUE : FALSE
       end
       MULTI_FORMATTERS = ENV_GET.call("MULTI_FORMATTERS", MULTI_FORMATTERS_DEFAULT).casecmp?(TRUE)
+      # A wild approximation, but will suffice for nearly all users
+      is_mac = RbConfig::CONFIG["host_os"].include?("darwin")
+      # Set to "" to prevent opening a browser with the coverage rake task
+      OPEN_BIN = ENV_GET.call("OPEN_BIN", is_mac ? "open" : "xdg-open")
       USE_MERGING = ENV_GET.call("USE_MERGING", nil)&.casecmp?(TRUE)
       MERGE_TIMEOUT = ENV_GET.call("MERGE_TIMEOUT", nil)&.to_i
       VERBOSE = ENV_GET.call("VERBOSE", FALSE).casecmp?(TRUE)

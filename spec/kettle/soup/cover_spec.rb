@@ -27,6 +27,7 @@ RSpec.describe Kettle::Soup::Cover do
         MULTI_FORMATTERS
         PREFIX
         TRUE
+        OPEN_BIN
         USE_MERGING
         VERBOSE
       ]
@@ -61,6 +62,7 @@ RSpec.describe Kettle::Soup::Cover do
     before do
       described_class.reset_const do
         stub_env("CI" => "true")
+        stub_env("K_SOUP_COV_FORMATTERS" => nil)
       end
     end
 
@@ -86,6 +88,7 @@ RSpec.describe Kettle::Soup::Cover do
     before do
       described_class.reset_const do
         stub_env("CI" => "false")
+        stub_env("K_SOUP_COV_FORMATTERS" => nil)
       end
     end
 
@@ -194,6 +197,58 @@ RSpec.describe Kettle::Soup::Cover do
 
     it "has constant DEBUG" do
       expect(described_class::DEBUG).to be(false)
+    end
+  end
+
+  context "when K_SOUP_COV_OPEN_BIN=''" do
+    before do
+      described_class.reset_const do
+        stub_env("K_SOUP_COV_OPEN_BIN" => "")
+      end
+    end
+
+    it "sets OPEN_BIN" do
+      expect(described_class::OPEN_BIN).to eq("")
+    end
+  end
+
+  context "when K_SOUP_COV_OPEN_BIN='xdg-open'" do
+    before do
+      described_class.reset_const do
+        stub_env("K_SOUP_COV_OPEN_BIN" => "xdg-open")
+      end
+    end
+
+    it "sets OPEN_BIN" do
+      expect(described_class::OPEN_BIN).to eq("xdg-open")
+    end
+  end
+
+  context "when K_SOUP_COV_OPEN_BIN is not set or nil" do
+    context "when macOS" do
+      before do
+        described_class.reset_const do
+          allow(RbConfig::CONFIG).to receive(:[]).with("host_os").and_return("darwin")
+          stub_env("K_SOUP_COV_OPEN_BIN" => nil)
+        end
+      end
+
+      it "sets OPEN_BIN according to RbConfig::Config['host_os']" do
+        expect(described_class::OPEN_BIN).to eq("open")
+      end
+    end
+
+    context "when not macOS" do
+      before do
+        described_class.reset_const do
+          allow(RbConfig::CONFIG).to receive(:[]).with("host_os").and_return("banana")
+          stub_env("K_SOUP_COV_OPEN_BIN" => nil)
+        end
+      end
+
+      it "sets OPEN_BIN according to RbConfig::Config['host_os']" do
+        expect(described_class::OPEN_BIN).to eq("xdg-open")
+      end
     end
   end
 end
