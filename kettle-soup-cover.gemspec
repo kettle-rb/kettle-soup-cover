@@ -78,7 +78,7 @@ Gem::Specification.new do |spec|
   spec.executables = []
 
   # Utilities
-  spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.6")
+  spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.7")
 
   # Release Tasks
   spec.add_development_dependency("rake", "~> 13.0")

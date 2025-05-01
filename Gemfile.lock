@@ -21,7 +21,7 @@ PATH
       simplecov-lcov (~> 0.8)
       simplecov-rcov (~> 0.3, >= 0.3.3)
       simplecov_json_formatter (~> 0.1, >= 0.1.4)
-      version_gem (~> 1.1, >= 1.1.6)
+      version_gem (~> 1.1, >= 1.1.7)
 
 GEM
   remote: https://rubygems.org/
