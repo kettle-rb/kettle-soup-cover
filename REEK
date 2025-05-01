@@ -1,12 +1,23 @@
+lib/kettle/change.rb -- 5 warnings:
+  [21, 30]:DuplicateMethodCall: Kettle::Change::ConstantChange#to_mod calls 'block.call' 2 times [https://github.com/troessner/reek/blob/v6.5.0/docs/Duplicate-Method-Call.md]
+  [2]:IrresponsibleModule: Kettle::Change has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
+  [14]:IrresponsibleModule: Kettle::Change::ConstantChange has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
+  [27]:NestedIterators: Kettle::Change::ConstantChange#to_mod contains iterators nested 2 deep [https://github.com/troessner/reek/blob/v6.5.0/docs/Nested-Iterators.md]
+  [16]:TooManyStatements: Kettle::Change::ConstantChange#to_mod has approx 10 statements [https://github.com/troessner/reek/blob/v6.5.0/docs/Too-Many-Statements.md]
+lib/kettle/soup/cover/constants.rb -- 2 warnings:
+  [4]:IrresponsibleModule: Kettle::Soup::Cover::Constants has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
+  [4]:TooManyConstants: Kettle::Soup::Cover::Constants has 22 constants [https://github.com/troessner/reek/blob/v6.5.0/docs/Too-Many-Constants.md]
 lib/kettle/soup/cover/filters/gt_line_filter.rb -- 1 warning:
   [7]:IrresponsibleModule: Kettle::Soup::Cover::Filters::GtLineFilter has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
 lib/kettle/soup/cover/filters/lt_line_filter.rb -- 1 warning:
   [7]:IrresponsibleModule: Kettle::Soup::Cover::Filters::LtLineFilter has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
-lib/kettle/soup/cover.rb -- 6 warnings:
-  [19]:IrresponsibleModule: Kettle::Soup::Cover has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
-  [20]:IrresponsibleModule: Kettle::Soup::Cover::Error has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
-  [129]:NestedIterators: Kettle::Soup::Cover#load_formatters contains iterators nested 2 deep [https://github.com/troessner/reek/blob/v6.5.0/docs/Nested-Iterators.md]
-  [19]:TooManyConstants: Kettle::Soup::Cover has 22 constants [https://github.com/troessner/reek/blob/v6.5.0/docs/Too-Many-Constants.md]
-  [121]:TooManyStatements: Kettle::Soup::Cover#load_formatters has approx 7 statements [https://github.com/troessner/reek/blob/v6.5.0/docs/Too-Many-Statements.md]
-  [129]:UncommunicativeVariableName: Kettle::Soup::Cover#load_formatters has the variable name 'c' [https://github.com/troessner/reek/blob/v6.5.0/docs/Uncommunicative-Variable-Name.md]
-8 total warnings
+lib/kettle/soup/cover/loaders.rb -- 5 warnings:
+  [10, 12, 14]:FeatureEnvy: Kettle::Soup::Cover::Loaders#load_formatters refers to 'fmt_data' more than self (maybe move it to another class?) [https://github.com/troessner/reek/blob/v6.5.0/docs/Feature-Envy.md]
+  [4]:IrresponsibleModule: Kettle::Soup::Cover::Loaders has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
+  [15]:NestedIterators: Kettle::Soup::Cover::Loaders#load_formatters contains iterators nested 2 deep [https://github.com/troessner/reek/blob/v6.5.0/docs/Nested-Iterators.md]
+  [7]:TooManyStatements: Kettle::Soup::Cover::Loaders#load_formatters has approx 7 statements [https://github.com/troessner/reek/blob/v6.5.0/docs/Too-Many-Statements.md]
+  [15]:UncommunicativeVariableName: Kettle::Soup::Cover::Loaders#load_formatters has the variable name 'c' [https://github.com/troessner/reek/blob/v6.5.0/docs/Uncommunicative-Variable-Name.md]
+lib/kettle/soup/cover.rb -- 2 warnings:
+  [31]:IrresponsibleModule: Kettle::Soup::Cover has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
+  [32]:IrresponsibleModule: Kettle::Soup::Cover::Error has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
+16 total warnings
