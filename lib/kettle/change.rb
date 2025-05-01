@@ -18,7 +18,7 @@ module Kettle
             if constants && path
               define_method(:reset_const) do |*_args, &block|
                 delete_const do
-                  block.call if block
+                  block&.call
                   load(path)
                 end
               end
@@ -27,7 +27,7 @@ module Kettle
                 constants.each do |var|
                   remove_const(var) if defined?(var)
                 end
-                block.call if block
+                block&.call
                 nil
               end
             end

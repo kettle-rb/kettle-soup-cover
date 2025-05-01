@@ -33,10 +33,9 @@ load File.join(path, "..", "lib", "kettle", "soup", "cover", "constants.rb")
 load File.join(path, "..", "lib", "kettle", "soup", "cover", "loaders.rb")
 
 # SimpleCov
-require "simplecov"  if Kettle::Soup::Cover::Constants::DO_COV
+require "simplecov" if Kettle::Soup::Cover::Constants::DO_COV
 
 Kettle::Soup::Cover::Constants.delete_const
 
 # This gem
 require "kettle-soup-cover"
-

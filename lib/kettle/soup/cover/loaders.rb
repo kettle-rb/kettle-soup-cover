@@ -6,7 +6,7 @@ module Kettle
 
         def load_formatters
           SimpleCov.formatters = Kettle::Soup::Cover::Constants::FORMATTERS
-                                   .each_with_object([]) do |fmt_data, formatters|
+            .each_with_object([]) do |fmt_data, formatters|
             require fmt_data[:lib].to_s
 
             klass = SimpleCov::Formatter.const_get(fmt_data[:klass])

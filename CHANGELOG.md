@@ -11,14 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Removed
 
-## [1.0.6] - 2025-04-30
+## [1.0.6] - 2025-05-01
+- Line Coverage: 78.42% (109 / 139)
+- Branch Coverage: 50.0% (13 / 26)
 ### Added
-- Support for linux in coverage rake task
-  - previously was macOS only
+- Support for linux, and other OSes, in `coverage` rake task
+  - previously was macOS only (would raise error on other OSes)
 - ✨ `Kettle::Soup::Cover::OPEN_BIN`
   - Set `export K_SOUP_COV_OPEN_BIN=open` to use macOS' `open` command in `coverage` task
   - Set `export K_SOUP_COV_OPEN_BIN=xdg-open` to use Linux' `xdg-open` command in `coverage` task
   - Set `export K_SOUP_COV_OPEN_BIN=` to just print the path to the HTML coverage report in `coverage` task
+- Test coverage increased from 55 => 78 for lines
+- Test coverage increased from 25 => 50 for branches
 ### Changed
 - Refactored internals in ways that should not affect public APIs
   - allows much greater test coverage
@@ -97,7 +101,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2023-10-17
 - Initial release
 
-[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.5...HEAD
+[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.6...HEAD
+[1.0.6]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.5...v1.0.6
 [1.0.5]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.4...v1.0.5
 [1.0.4]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.3...v1.0.4
 [1.0.3]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.2...v1.0.3

@@ -1,5 +1,4 @@
-lib/kettle/change.rb -- 5 warnings:
-  [21, 30]:DuplicateMethodCall: Kettle::Change::ConstantChange#to_mod calls 'block.call' 2 times [https://github.com/troessner/reek/blob/v6.5.0/docs/Duplicate-Method-Call.md]
+lib/kettle/change.rb -- 4 warnings:
   [2]:IrresponsibleModule: Kettle::Change has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
   [14]:IrresponsibleModule: Kettle::Change::ConstantChange has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
   [27]:NestedIterators: Kettle::Change::ConstantChange#to_mod contains iterators nested 2 deep [https://github.com/troessner/reek/blob/v6.5.0/docs/Nested-Iterators.md]
@@ -20,4 +19,4 @@ lib/kettle/soup/cover/loaders.rb -- 5 warnings:
 lib/kettle/soup/cover.rb -- 2 warnings:
   [31]:IrresponsibleModule: Kettle::Soup::Cover has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
   [32]:IrresponsibleModule: Kettle::Soup::Cover::Error has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
-16 total warnings
+15 total warnings

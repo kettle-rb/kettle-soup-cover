@@ -2,6 +2,8 @@
 
 require "kettle/soup/cover/tasks"
 
+# rubocop:disable RSpec/DescribeClass
+# rubocop:disable RSpec/MultipleMemoizedHelpers
 # Lightly modified from: https://thoughtbot.com/blog/test-rake-tasks-like-a-boss
 RSpec.describe "rake coverage" do
   let(:rake) { Rake::Task }
@@ -28,7 +30,7 @@ RSpec.describe "rake coverage" do
     let(:rake_task) { rake[task_name] }
 
     it "does not raise error" do
-      block_is_expected.to_not raise_error
+      block_is_expected.not_to raise_error
     end
 
     context "when invoked" do
@@ -37,10 +39,10 @@ RSpec.describe "rake coverage" do
       let(:invoked) { rake_task.invoke(*task_args) }
 
       it "does not raise error" do
-        block_is_expected.to_not raise_error
+        block_is_expected.not_to raise_error
       end
 
-      # We can't really test this because the task isn't really running since we are already inside the self-safe task!
+      # We can't really test this because the task isn't really running since we are already inside the self-same task!
       # context "with output" do
       #   subject(:std_output) { output }
       #
@@ -53,3 +55,5 @@ RSpec.describe "rake coverage" do
     end
   end
 end
+# rubocop:enable RSpec/MultipleMemoizedHelpers
+# rubocop:enable RSpec/DescribeClass

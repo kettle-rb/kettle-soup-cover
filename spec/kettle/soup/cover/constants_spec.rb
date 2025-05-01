@@ -11,17 +11,17 @@ RSpec.describe Kettle::Soup::Cover::Constants do
 
   let(:ci) { "true" }
 
-  it 'succeeds' do
-    block_is_expected.to_not raise_error
+  it "succeeds" do
+    block_is_expected.not_to raise_error
   end
 
-  context 'when CI=true' do
+  context "when CI=true" do
     it "sets CI=true" do
       expect(described_class::CI).to eq("true")
     end
   end
 
-  context 'when CI=true' do
+  context "when CI=false" do
     let(:ci) { "false" }
 
     it "sets CI=false" do

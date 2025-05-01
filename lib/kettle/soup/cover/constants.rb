@@ -54,23 +54,23 @@ module Kettle
         FILTER_DIRS = ENV_GET.call(
           "FILTER_DIRS",
           "bin,certs,checksums,config,coverage,docs,features,gemfiles,pkg,results,sig,spec,src,test,test-results,vendor",
-          )
-                             .split(",")
-                             .map { |dir_name| %r{^/#{Regexp.escape(dir_name)}/} }
+        )
+          .split(",")
+          .map { |dir_name| %r{^/#{Regexp.escape(dir_name)}/} }
         FORMATTERS = ENV_GET.call(
           "FORMATTERS",
           IS_CI ? "html,xml,rcov,lcov,json,tty" : "html,tty",
-          )
-                            .split(",")
-                            .map { |fmt_name| FORMATTER_PLUGINS[fmt_name.strip.to_sym] }
+        )
+          .split(",")
+          .map { |fmt_name| FORMATTER_PLUGINS[fmt_name.strip.to_sym] }
         MIN_COVERAGE_HARD = ENV_GET.call("MIN_HARD", CI).casecmp?(TRUE)
         MIN_COVERAGE_BRANCH = ENV_GET.call("MIN_BRANCH", "80").to_i
         MIN_COVERAGE_LINE = ENV_GET.call("MIN_LINE", "80").to_i
         MULTI_FORMATTERS_DEFAULT = if IS_CI
-                                     CI
-                                   else
-                                     FORMATTERS.any? ? TRUE : FALSE
-                                   end
+          CI
+        else
+          FORMATTERS.any? ? TRUE : FALSE
+        end
         MULTI_FORMATTERS = ENV_GET.call("MULTI_FORMATTERS", MULTI_FORMATTERS_DEFAULT).casecmp?(TRUE)
         # A wild approximation, but will suffice for nearly all users
         is_mac = RbConfig::CONFIG["host_os"].include?("darwin")
@@ -107,7 +107,6 @@ module Kettle
           ],
           path: "kettle/soup/cover/constants.rb",
         )
-
       end
     end
   end
