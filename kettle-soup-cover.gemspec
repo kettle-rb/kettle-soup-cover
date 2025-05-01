@@ -34,16 +34,16 @@ Gem::Specification.new do |spec|
     A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
     Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
   DESC
-  spec.homepage = "https://gitlab.com/kettle-rb/#{spec.name}"
+  spec.homepage = "https://github.com/kettle-rb/#{spec.name}"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7"
 
   spec.metadata["homepage_uri"] = "https://kettle-rb.gitlab.io/"
-  spec.metadata["source_code_uri"] = "#{spec.homepage}/-/tree/v#{spec.version}"
-  spec.metadata["changelog_uri"] = "#{spec.homepage}/-/blob/v#{spec.version}/CHANGELOG.md"
-  spec.metadata["bug_tracker_uri"] = "#{spec.homepage}/-/issues"
+  spec.metadata["source_code_uri"] = "#{spec.homepage}/tree/v#{spec.version}"
+  spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/v#{spec.version}/CHANGELOG.md"
+  spec.metadata["bug_tracker_uri"] = "#{spec.homepage}/issues"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/#{spec.name}/#{spec.version}"
-  spec.metadata["wiki_uri"] = "#{spec.homepage}/-/wiki"
+  spec.metadata["wiki_uri"] = "#{spec.homepage}/wiki"
   spec.metadata["funding_uri"] = "https://liberapay.com/pboling"
   spec.metadata["rubygems_mfa_required"] = "true"
 
