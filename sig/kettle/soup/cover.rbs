@@ -4,7 +4,6 @@ module Kettle
     module Cover
       CI: String
       COMMAND_NAME: String
-      CONSTANTS: Array[String]
       COVERAGE_DIR: String
       DEBUG: bool
       DO_COV: bool

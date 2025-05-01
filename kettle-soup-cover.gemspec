@@ -110,4 +110,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("rspec-block_is_expected", "~> 1.0", ">= 1.0.5")
   spec.add_development_dependency("rspec_junit_formatter", "~> 0.6")
   spec.add_development_dependency("rspec-stubbed_env", "~> 1.0", ">= 1.0.1")
+  spec.add_development_dependency("silent_stream", "~> 1.0", ">= 1.0.8")
 end

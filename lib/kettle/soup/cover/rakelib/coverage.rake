@@ -5,21 +5,21 @@ task :coverage do
     ENV["K_SOUP_COV_PREFIX"] = "K_SOUP_COV_"
     ENV["K_SOUP_COV_DO"] = "true"
     ENV["K_SOUP_COV_MULTI_FORMATTERS"] = "true"
-    ENV["K_SOUP_COV_FORMATTERS"] = "html"
+    ENV["K_SOUP_COV_FORMATTERS"] ||= "html"
     ENV["K_SOUP_COV_DIR"] ||= "coverage"
   end
   Rake::Task["test"].invoke
   html_report = "#{Kettle::Soup::Cover::COVERAGE_DIR}/index.html"
   if Kettle::Soup::Cover::OPEN_BIN.empty?
-    puts "Coverage report is at #{html_report}"
+    puts "Kettle::Soup::Cover::OPEN_BIN not configured. Coverage report is at #{html_report}"
   else
     begin
       %x(#{Kettle::Soup::Cover::OPEN_BIN} #{html_report})
     rescue Errno::ENOENT => error
       message = error.message || ""
       # `open` command is macOS only.  xdg-open is a decent alternative on many Linux systems.
-      if message.include?("No such file or directory - open") || message.include?("No such file or directory - xdg-open")
-        puts "Coverage report is at #{html_report}"
+      if message.include?("No such file or directory - #{Kettle::Soup::Cover::OPEN_BIN}")
+        puts "Configured Kettle::Soup::Cover::OPEN_BIN (#{Kettle::Soup::Cover::OPEN_BIN}) not available. Coverage report is at #{html_report}"
       elsif message.include?("No such file or directory")
         puts "No coverage report found at #{html_report}"
         puts message

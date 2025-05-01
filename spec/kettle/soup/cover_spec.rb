@@ -1,57 +1,30 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 RSpec.describe Kettle::Soup::Cover do
   include_context "with stubbed env"
-
-  describe described_class::CONSTANTS do
-    let(:values) {
-      %w[
-        CI
-        COMMAND_NAME
-        COVERAGE_DIR
-        DEBUG
-        DO_COV
-        ENV_GET
-        FALSE
-        FILTER_DIRS
-        FORMATTER_PLUGINS
-        FORMATTERS
-        IS_CI
-        MERGE_TIMEOUT
-        MIN_COVERAGE_BRANCH
-        MIN_COVERAGE_LINE
-        MIN_COVERAGE_HARD
-        MULTI_FORMATTERS_DEFAULT
-        MULTI_FORMATTERS
-        PREFIX
-        TRUE
-        OPEN_BIN
-        USE_MERGING
-        VERBOSE
-      ]
-    }
-
-    it "has values" do
-      expect(described_class).to eq(values)
-    end
-  end
 
   describe "::reset_const" do
     subject(:reset_const) do
       described_class.reset_const do
-        puts "CONSTANTS IS NOT DEFINED" unless defined?(Kettle::Soup::Cover::CONSTANTS)
+        puts "CONSTANTS ARE RESET"
       end
     end
 
     it "has output" do
-      expect { reset_const }.to output("CONSTANTS IS NOT DEFINED\n").to_stdout
+      expect { reset_const }.to output("CONSTANTS ARE RESET\n").to_stdout
     end
   end
 
   describe "::load_filters" do
     subject(:load_filters) { described_class.load_filters }
+
+    it "does not raise error" do
+      block_is_expected.to not_raise_error
+    end
+  end
+
+  describe "::load_formatters" do
+    subject(:load_formatters) { described_class.load_formatters }
 
     it "does not raise error" do
       block_is_expected.to not_raise_error

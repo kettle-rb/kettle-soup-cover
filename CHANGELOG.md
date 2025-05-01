@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Set `export K_SOUP_COV_OPEN_BIN=open` to use macOS' `open` command in `coverage` task
   - Set `export K_SOUP_COV_OPEN_BIN=xdg-open` to use Linux' `xdg-open` command in `coverage` task
   - Set `export K_SOUP_COV_OPEN_BIN=` to just print the path to the HTML coverage report in `coverage` task
+### Changed
+- Refactored internals in ways that should not affect public APIs
+  - allows much greater test coverage
+  - report a bug if anything breaks!
 ### Fixed
 - require hooks such that both work equally well:
   - `require "kettle/soup/cover"`

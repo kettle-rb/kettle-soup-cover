@@ -19,19 +19,24 @@ require "rspec/stubbed_env"
 
 # External gems
 require "version_gem/rspec"
+require "rake"
 
 # RSpec Configs
 require "config/rspec/rspec_core"
+require "config/rspec/silent_stream"
 
 # Force load the cover module, so we can use it while testing it, and get accurate coverage.
 # It will be reloaded again after simplecov begins tracking.
 path = File.expand_path(__dir__)
-load File.join(path, "..", "lib", "kettle", "soup", "cover.rb")
+load File.join(path, "..", "lib", "kettle", "change.rb")
+load File.join(path, "..", "lib", "kettle", "soup", "cover", "constants.rb")
+load File.join(path, "..", "lib", "kettle", "soup", "cover", "loaders.rb")
 
 # SimpleCov
-require "simplecov"
+require "simplecov"  if Kettle::Soup::Cover::Constants::DO_COV
 
-Kettle::Soup::Cover.delete_const
+Kettle::Soup::Cover::Constants.delete_const
 
 # This gem
 require "kettle-soup-cover"
+
