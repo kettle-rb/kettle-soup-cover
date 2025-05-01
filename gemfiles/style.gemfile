@@ -10,6 +10,5 @@ source "https://rubygems.org"
 
 gemspec path: "../"
 
-
 # Linting
 eval_gemfile "modular/style.gemfile"
