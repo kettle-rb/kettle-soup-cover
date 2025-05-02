@@ -67,7 +67,7 @@ module Kettle
         MIN_COVERAGE_BRANCH = ENV_GET.call("MIN_BRANCH", "80").to_i
         MIN_COVERAGE_LINE = ENV_GET.call("MIN_LINE", "80").to_i
         MULTI_FORMATTERS_DEFAULT = if IS_CI
-          CI
+          TRUE
         else
           FORMATTERS.any? ? TRUE : FALSE
         end

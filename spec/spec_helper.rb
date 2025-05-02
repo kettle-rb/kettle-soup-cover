@@ -33,7 +33,11 @@ load File.join(path, "..", "lib", "kettle", "soup", "cover", "constants.rb")
 load File.join(path, "..", "lib", "kettle", "soup", "cover", "loaders.rb")
 
 # SimpleCov
-require "simplecov" if Kettle::Soup::Cover::Constants::DO_COV
+# Normally we would only load simple cov if checking test coverage,
+#   but our runtime code depends on simplecov, so loading it is non-optional.
+# Our run-time code does not itself require simplecov,
+#   because that comes with side-effects that must be delayed until coverage tracking should begin.
+require "simplecov"
 
 Kettle::Soup::Cover::Constants.delete_const
 
