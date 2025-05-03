@@ -30,8 +30,8 @@ RSpec.describe Kettle::Soup::Cover::Constants do
       expect(described_class::CI).to eq("false")
     end
 
-    it "sets MULTI_FORMATTERS " do
-      expect(described_class::MULTI_FORMATTERS).to eq("false")
+    it "sets MULTI_FORMATTERS" do
+      expect(described_class::MULTI_FORMATTERS).to be(false)
     end
   end
 end

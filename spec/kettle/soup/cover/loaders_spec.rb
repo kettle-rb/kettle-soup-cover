@@ -22,6 +22,7 @@ RSpec.describe Kettle::Soup::Cover::Loaders do
 
     context "when CI=true" do
       let(:ci) { "true" }
+
       it "succeeds" do
         block_is_expected.not_to raise_error
       end
