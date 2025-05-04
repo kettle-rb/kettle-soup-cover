@@ -6,16 +6,25 @@ require "kettle/soup/cover/tasks"
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 # Lightly modified from: https://thoughtbot.com/blog/test-rake-tasks-like-a-boss
 RSpec.describe "rake coverage" do
-  let(:rake) { Rake::Task }
+  let(:rake)      { Rake::Application.new }
   let(:task_name) { self.class.top_level_description.sub(/\Arake /, "") }
   let(:task_dir) { "lib/kettle/soup/cover/rakelib/" }
   let(:task_path) { File.join(task_dir, task_name.split(":").first) }
+  let(:gem_root) { File.expand_path("../../../../../..", __FILE__) }
   let(:task_args) { [] }
+  let(:rake_task) { rake[task_name] }
+
+  def loaded_files_excluding_current_rake_file
+    $".reject {|file| file == "#{task_path}.rake" }
+  end
 
   before do
-    Rake::Task.clear
-    # So we can test internal rake tasks
-    Kettle::Soup::Cover.install_tasks
+    Rake.application = rake
+    rake_task.reenable # if this task was the one invoked to run the test suite it will have disappeared
+  end
+
+  it "has a gem root" do
+    expect(gem_root).to end_with("kettle-soup-cover")
   end
 
   it "has name as coverage" do
@@ -28,8 +37,6 @@ RSpec.describe "rake coverage" do
 
   context "when defined" do
     subject(:definition) { rake_task }
-
-    let(:rake_task) { rake[task_name] }
 
     it "does not raise error" do
       block_is_expected.not_to raise_error
