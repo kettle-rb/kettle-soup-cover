@@ -34,13 +34,13 @@
 
 Four lines of code to get a configured, curated, opinionated, set of dependencies for Test Coverage.
 
-Configured for what?  To work out of the box on every CI.  Batteries included.
+Configured for what?  To work out of the box on every CI*.  Batteries included.  For apps and libraries.
 
 One of the major benefits of using this library is not having to figure
 out how to get multiple coverage output formats working.  I did that for you,
 and I got all of them working, at the same time together, or al la carte. Kum-ba-ya.
 
-A quick shot of raw coverage power, straight to your brain:
+A quick shot of 12-factor coverage power, straight to your brain:
 
 ```shell
 export K_SOUP_COV_DO=true # Means you want code coverage
@@ -62,6 +62,30 @@ The name is derived in part from the medical devices field,
 where this library is considered a package of [SOUP](https://en.wikipedia.org/wiki/Software_of_unknown_pedigree).
 
 </details>
+
+This tool leverages other tools to make hard things easier, but sometimes those other tools break...
+I'll try to track that here.
+
+| Format | Library                    | Status                | Web | GHA | Circle<br/>CI | Git<br/>Lab | Travis<br/>CI | Jenkins<br/>X | Jenkins | Hudson | Semaphore | Bit<br/>Bucket | Team<br/>City | Code<br/>Climate | 🤓<br/>Nerds |
+|--------|----------------------------|-----------------------|-----|-----|---------------|-------------|---------------|---------------|---------|--------|-----------|----------------|---------------|------------------|--------------|
+| `html` | `simplecov-html`           | ✅                     | ✅   | ✅   |               |             |               |               |         |        |           |                |               |                  | ✅            |
+| `xml`  | `simplecov-cobertura`      | ❌ [upvote #30!][sc30] |     |     |               | ✅           |               |               | ✅       |        |           |                |               |                  | ✅            |
+| `rcov` | `simplecov-rcov`           | ✅                     |     |     |               |             |               |               |         | ✅      |           |                |               |                  | ✅            |
+| `lcov` | `simplecov-lcov`           | ✅                     |     |     | ✅             |             | ✅             | ✅             |         |        | ✅         |                | ✅             | ✅                | ✅            |
+| `json` | `simplecov_json_formatter` | ✅                     |     |     | ✅             |             | ✅             | ✅             |         |        |           | ✅              |               | ✅                | ✅            |
+| `tty`  | `simplecov-console`        | ✅                     |     |     |               |             |               |               |         |        |           |                |               |                  | ✅            |
+
+If you find this working/not working different than above please open an issue / PR!
+
+## ☝️ Not actually *every CI*
+
+CI's with vendor-specific specialized formats which are not shared by other vendors are not supported by this gem.
+
+You'll just have to configure them manually if you use them:
+
+* BuildKite: https://github.com/buildkite/simplecov-buildkite
+
+[sc30]: https://github.com/dashingrocket/simplecov-cobertura/issues/30
 
 ## 💡 Info you can shake a stick at
 
