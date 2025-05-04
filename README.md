@@ -84,13 +84,15 @@ are not supported by this gem.
 
 You'll just have to configure them manually if you use them:
 
-* BuildKite: https://github.com/buildkite/simplecov-buildkite
-* GitHub Actions: https://github.com/buildkite/simplecov-buildkite
-  * I configure my GHA workflows to upload coverage reports to SaaS services like:
+* BuildKite's custom [simplecov extension][https://github.com/buildkite/simplecov-buildkite]
+* GitHub Actions doesn't parse test output
+  * I configure my GHA `coverage` workflow ([see example][example-cov-wf]) to upload coverage reports to SaaS services like:
     * [codecov.io][🔑codecov]
     * [QLTY.sh][🔑cc-cov]
     * [coveralls.io][🔑coveralls]
 
+[GHA]: https://github.com/kettle-rb/kettle-soup-cover/actions
+[example-cov-wf]: https://github.com/kettle-rb/kettle-soup-cover/blob/main/.github/workflows/coverage.yml
 [sc30]: https://github.com/dashingrocket/simplecov-cobertura/issues/30
 
 ## 💡 Info you can shake a stick at
