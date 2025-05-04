@@ -89,7 +89,8 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ### 🔒 Secure Installation
 
-`kettle-soup-cover` is cryptographically signed. To be sure the gem you install hasn’t been tampered with:
+`kettle-soup-cover` is cryptographically signed. Be sure the gem you install hasn’t been tampered with
+by following the instructions below.
 
 Add my public key (if you haven’t already, expires 2045-05-04) as a trusted certificate:
 
@@ -103,9 +104,9 @@ You only need to do that once.  Then proceed to install with:
 gem install kettle-soup-cover -P MediumSecurity
 ```
 
-The MediumSecurity trust profile will verify signed gems, but allow the installation of unsigned dependencies.
+The `MediumSecurity` trust profile will verify signed gems, but allow the installation of unsigned dependencies.
 
-This is necessary because not all of `kettle-soup-cover`’s dependencies are signed, so we cannot use HighSecurity.
+This is necessary because not all of `kettle-soup-cover`’s dependencies are signed, so we cannot use `HighSecurity`.
 
 If you want to up your security game full-time:
 
