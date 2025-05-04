@@ -63,6 +63,8 @@ where this library is considered a package of [SOUP](https://en.wikipedia.org/wi
 
 </details>
 
+## Format / Library x CI Matrix
+
 This tool leverages other tools to make hard things easier, but sometimes those other tools break...
 I'll try to track that here.
 
