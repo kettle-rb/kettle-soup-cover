@@ -55,16 +55,33 @@ RSpec.describe "rake coverage" do
         block_is_expected.not_to raise_error
       end
 
-      # We can't really test this because the task isn't really running since we are already inside the self-same task!
-      # context "with output" do
-      #   subject(:std_output) { output }
-      #
-      #   let(:output) { capture(:stdout) { invoked } }
-      #
-      #   it "has empty expected output" do
-      #     expect(output).to eq("")
-      #   end
-      # end
+      context "when OPEN_BIN empty" do
+        before do
+          stub_const("Kettle::Soup::Cover::OPEN_BIN", "")
+        end
+
+        it "does not raise error" do
+          block_is_expected.not_to raise_error
+        end
+
+        it "outputs where to find coverage report" do
+          block_is_expected.to output("Kettle::Soup::Cover::OPEN_BIN not configured. Coverage report is at coverage/index.html\n").to_stdout
+        end
+      end
+
+      context "when OPEN_BIN set to unavailable executable" do
+        before do
+          stub_const("Kettle::Soup::Cover::OPEN_BIN", "blah")
+        end
+
+        it "does not raise error" do
+          block_is_expected.not_to raise_error
+        end
+
+        it "outputs where to find coverage report" do
+          block_is_expected.to output("Configured Kettle::Soup::Cover::OPEN_BIN (blah) not available. Coverage report is at coverage/index.html\n").to_stdout
+        end
+      end
     end
   end
 end
