@@ -91,7 +91,6 @@ You'll just have to configure them manually if you use them:
     * [QLTY.sh][🔑cc-cov]
     * [coveralls.io][🔑coveralls]
 
-[GHA]: https://github.com/kettle-rb/kettle-soup-cover/actions
 [example-cov-wf]: https://github.com/kettle-rb/kettle-soup-cover/blob/main/.github/workflows/coverage.yml
 [sc30]: https://github.com/dashingrocket/simplecov-cobertura/issues/30
 
