@@ -87,6 +87,34 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
     $ gem install kettle-soup-cover
 
+### 🔒 Secure Installation
+
+`kettle-soup-cover` is cryptographically signed. To be sure the gem you install hasn’t been tampered with:
+
+Add my public key (if you haven’t already, expires 2045-05-04) as a trusted certificate:
+
+```shell
+gem cert --add <(curl -Ls https://raw.github.com/kettle-rb/kettle-soup-cover/main/certs/pboling.pem)
+```
+
+You only need to do that once.  Then proceed to install with:
+
+```shell
+gem install kettle-soup-cover -P MediumSecurity
+```
+
+The MediumSecurity trust profile will verify signed gems, but allow the installation of unsigned dependencies.
+
+This is necessary because not all of `kettle-soup-cover`’s dependencies are signed, so we cannot use HighSecurity.
+
+If you want to up your security game full-time:
+
+```shell
+bundle config set --global trust-policy MediumSecurity
+```
+
+NOTE: You'll have to track down certs for all signed gems and add them the same way you added mine.
+
 ## 🔧 Basic Usage
 
 In your `spec/spec_helper.rb`, just prior to loading the library under test, add 2 lines of code:

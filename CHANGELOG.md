@@ -32,6 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - require hooks such that both work equally well:
   - `require "kettle/soup/cover"`
   - `require "kettle-soup-cover"`
+- Allow unsigned gem builds (for linux distros)
+  - In the ENV set `SKIP_GEM_SIGNING` to any value
 
 ## [1.0.5] - 2025-04-03
 ### Added
