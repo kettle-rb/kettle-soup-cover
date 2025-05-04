@@ -16,9 +16,10 @@ variables:
   K_SOUP_COV_DEBUG: true
   K_SOUP_COV_DO: true
   K_SOUP_COV_HARD: true
-  K_SOUP_COV_MIN_BRANCH: 25
-  K_SOUP_COV_MIN_LINE: 55
+  K_SOUP_COV_MIN_BRANCH: 50
+  K_SOUP_COV_MIN_LINE: 93
   K_SOUP_COV_VERBOSE: true
+  K_SOUP_COV_COMMAND_NAME: "RSpec Coverage"
 
 default:
   image: ruby:3.2.2
@@ -33,4 +34,4 @@ default:
 
 run_tests:
   script:
-    - bundle exec rake
+    - bundle exec rake test
