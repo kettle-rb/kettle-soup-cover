@@ -339,8 +339,8 @@ or one of the others at the head of this README.
 [💖💲crunchbase-img]: https://img.shields.io/badge/peter--boling-purple?style=flat&logo=crunchbase
 [💖🐘ruby-mast]: https://ruby.social/@galtzo
 [💖🐘ruby-mast-img]: https://img.shields.io/mastodon/follow/109447111526622197?domain=https%3A%2F%2Fruby.social&style=flat&logo=mastodon&label=Ruby%20%40galtzo
-[💖🦋bluesky]: https://galtzo.bsky.social
-[💖🦋bluesky-img]: https://img.shields.io/badge/@galtzo.bsky.social-0285FF?style=flat&logo=bluesky&logoColor=white
+[💖🦋bluesky]: https://bsky.app/profile/galtzo.com
+[💖🦋bluesky-img]: https://img.shields.io/badge/@galtzo.com-0285FF?style=flat&logo=bluesky&logoColor=white
 [💖🌳linktree]: https://linktr.ee/galtzo
 [💖🌳linktree-img]: https://img.shields.io/badge/galtzo-purple?style=flat&logo=linktree
 [💖💁🏼‍♂️devto]: https://dev.to/galtzo
