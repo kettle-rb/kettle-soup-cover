@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
     end
   end
 
-  spec.summary = "A Covered Kettle of SOUP, A Code Coverage Meta Gem"
+  spec.summary = "Code Coverage Meta Gem for SimpleCov on every/any CI"
   spec.description = <<~DESC
     A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
     Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies

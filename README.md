@@ -32,12 +32,9 @@
 [![Donate to my FLOSS or refugee efforts at ko-fi.com][🖇kofi-img]][🖇kofi]
 [![Donate to my FLOSS or refugee efforts using Patreon][🖇patreon-img]][🖇patreon]
 
-A Covered Kettle of SOUP (Software of Unknown Provenance)
+Four lines of code to get a configured, curated, opinionated, set of dependencies for Test Coverage.
 
-The name is derived in part from the medical devices field,
-where this library is considered a package of [SOUP](https://en.wikipedia.org/wiki/Software_of_unknown_pedigree).
-
-Just add four lines of code to get a configured, curated, opinionated, set of dependencies for Test Coverage.
+Configured for what?  To work out of the box on every CI.  Batteries included.
 
 One of the major benefits of using this library is not having to figure
 out how to get multiple coverage output formats working.  I did that for you,
@@ -55,6 +52,16 @@ export MAX_ROWS=5 # Setting for simplecov-console gem for tty output, limits to 
 ```
 
 I hope I've piqued your interest.
+
+<details>
+  <summary>What does the name mean?</summary>
+
+A Covered Kettle of SOUP (Software of Unknown Provenance)
+
+The name is derived in part from the medical devices field,
+where this library is considered a package of [SOUP](https://en.wikipedia.org/wiki/Software_of_unknown_pedigree).
+
+</details>
 
 ## 💡 Info you can shake a stick at
 
@@ -82,7 +89,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## 🔧 Basic Usage
 
-In your `spec/spec_helper.rb`, just prior to loading the library under test:
+In your `spec/spec_helper.rb`, just prior to loading the library under test, add 2 lines of code:
 
 ```ruby
 # This does not require "simplecov",
@@ -93,11 +100,12 @@ require "kettle-soup-cover"
 require "simplecov" if Kettle::Soup::Cover::DO_COV
 ```
 
-In your `.simplecov` file:
+In your `.simplecov` file, add 2 lines of code:
 
 ```ruby
 require "kettle/soup/cover/config"
-SimpleCov.start # you could do this somewhere else, up to you, but you do have to do it
+# you could do this somewhere else, up to you, but you do have to do it somewhere
+SimpleCov.start
 ```
 
 See [Advanced Usage](#advanced-usage) below for more info,
