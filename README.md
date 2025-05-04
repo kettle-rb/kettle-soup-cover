@@ -66,24 +66,30 @@ where this library is considered a package of [SOUP](https://en.wikipedia.org/wi
 This tool leverages other tools to make hard things easier, but sometimes those other tools break...
 I'll try to track that here.
 
-| Format | Library                    | Status                | Web | GHA | Circle<br/>CI | Git<br/>Lab | Travis<br/>CI | Jenkins<br/>X | Jenkins | Hudson | Semaphore | Bit<br/>Bucket | Team<br/>City | Code<br/>Climate | 🤓<br/>Nerds |
-|--------|----------------------------|-----------------------|-----|-----|---------------|-------------|---------------|---------------|---------|--------|-----------|----------------|---------------|------------------|--------------|
-| `html` | `simplecov-html`           | ✅                     | ✅   | ✅   |               |             |               |               |         |        |           |                |               |                  | ✅            |
-| `xml`  | `simplecov-cobertura`      | ❌ [upvote #30!][sc30] |     |     |               | ✅           |               |               | ✅       |        |           |                |               |                  | ✅            |
-| `rcov` | `simplecov-rcov`           | ✅                     |     |     |               |             |               |               |         | ✅      |           |                |               |                  | ✅            |
-| `lcov` | `simplecov-lcov`           | ✅                     |     |     | ✅             |             | ✅             | ✅             |         |        | ✅         |                | ✅             | ✅                | ✅            |
-| `json` | `simplecov_json_formatter` | ✅                     |     |     | ✅             |             | ✅             | ✅             |         |        |           | ✅              |               | ✅                | ✅            |
-| `tty`  | `simplecov-console`        | ✅                     |     |     |               |             |               |               |         |        |           |                |               |                  | ✅            |
+| Format | Library                    | Status                | Web | Circle<br/>CI | Git<br/>Lab | Travis<br/>CI | Jenkins<br/>X | Jenkins | Hudson | Semaphore | Bit<br/>Bucket | Team<br/>City | QLTY | 🤓<br/>Nerds |
+|--------|----------------------------|-----------------------|-----|---------------|-------------|---------------|---------------|---------|--------|-----------|----------------|---------------|------|--------------|
+| `html` | `simplecov-html`           | ✅                     | ✅   |               |             |               |               |         |        |           |                |               |      | ✅            |
+| `xml`  | `simplecov-cobertura`      | ❌ [upvote #30!][sc30] |     |               | ✅           |               |               | ✅       |        |           |                |               |      | ✅            |
+| `rcov` | `simplecov-rcov`           | ✅                     |     |               |             |               |               |         | ✅      |           |                |               |      | ✅            |
+| `lcov` | `simplecov-lcov`           | ✅                     |     | ✅             |             | ✅             | ✅             |         |        | ✅         |                | ✅             | ✅    | ✅            |
+| `json` | `simplecov_json_formatter` | ✅                     |     | ✅             |             | ✅             | ✅             |         |        |           | ✅              |               | ✅    | ✅            |
+| `tty`  | `simplecov-console`        | ✅                     |     |               |             |               |               |         |        |           |                |               |      | ✅            |
 
 If you find this working/not working different than above please open an issue / PR!
 
 ## ☝️ Not actually *every CI*
 
-CI's with vendor-specific specialized formats which are not shared by other vendors are not supported by this gem.
+CI's without parsing support, or with vendor-specific formats which are not shared by other vendors,
+are not supported by this gem.
 
 You'll just have to configure them manually if you use them:
 
 * BuildKite: https://github.com/buildkite/simplecov-buildkite
+* GitHub Actions: https://github.com/buildkite/simplecov-buildkite
+  * I configure my GHA workflows to upload coverage reports to SaaS services like:
+    * [codecov.io][🔑codecov]
+    * [QLTY.sh][🔑cc-cov]
+    * [coveralls.io][🔑coveralls]
 
 [sc30]: https://github.com/dashingrocket/simplecov-cobertura/issues/30
 
