@@ -73,6 +73,8 @@ your public key for signing gems will need to be picked up by the line in the
 All releases to RubyGems.org will be signed.
 See: [RubyGems Security Guide][🔒️rubygems-security-guide]
 
+NOTE: To build without signing the gem you must set `SKIP_GEM_SIGNING` to some value in your environment.
+
 ### To release a new version:
 
 1. Run `bin/setup && bin/rake` as a tests, coverage, & linting sanity check
@@ -88,10 +90,11 @@ See: [RubyGems Security Guide][🔒️rubygems-security-guide]
     - Run `export SOURCE_DATE_EPOCH=$EPOCHSECONDS && echo $SOURCE_DATE_EPOCH`
     - If the echo above has no output, then it didn't work.
     - Note that you'll need the `zsh/datetime` module, if running `zsh`.
-    - In `bash` you can use `date +%s` instead, i.e. `export SOURCE_DATE_EPOCH=$(date +%s) && echo $SOURCE_DATE_EPOCH`
+    - In older versions of `bash` you can use `date +%s` instead, i.e. `export SOURCE_DATE_EPOCH=$(date +%s) && echo $SOURCE_DATE_EPOCH`
 10. Run `bundle exec rake build`
-11. Run `bin/gem_checksums` (more context [1][🔒️rubygems-checksums-pr] and [2][🔒️rubygems-guides-pr])
-    to create SHA-256 and SHA-512 checksums
+11. Run `bin/gem_checksums` (more context [1][🔒️rubygems-checksums-pr], [2][🔒️rubygems-guides-pr])
+    to create SHA-256 and SHA-512 checksums. This functionality is provided by the `stone_checksums`
+    [gem][💎stone_checksums].
     - Checksums will be committed automatically by the script, but not pushed
 12. Run `bundle exec rake release` which will create a git tag for the version,
     push git commits and tags, and push the `.gem` file to [rubygems.org][💎rubygems]
@@ -107,5 +110,6 @@ See: [RubyGems Security Guide][🔒️rubygems-security-guide]
 [🔒️rubygems-security-guide]: https://guides.rubygems.org/security/#building-gems
 [🔒️rubygems-checksums-pr]: https://github.com/rubygems/rubygems/pull/6022
 [🔒️rubygems-guides-pr]: https://github.com/rubygems/guides/pull/325
+[💎stone_checksums]: https://github.com/pboling/stone_checksums
 [📗keep-changelog]: https://keepachangelog.com/en/1.0.0/
 [📗keep-changelog-img]: https://img.shields.io/badge/keep--a--changelog-1.0.0-FFDD67.svg?style=flat
