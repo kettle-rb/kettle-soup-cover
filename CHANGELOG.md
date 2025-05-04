@@ -22,8 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Set `export K_SOUP_COV_OPEN_BIN=open` to use macOS' `open` command in `coverage` task
   - Set `export K_SOUP_COV_OPEN_BIN=xdg-open` to use Linux' `xdg-open` command in `coverage` task
   - Set `export K_SOUP_COV_OPEN_BIN=` to just print the path to the HTML coverage report in `coverage` task
-- Test coverage increased from 55 => 81 for lines
-- Test coverage increased from 25 => 53 for branches
+- Test coverage increased from 55 => 93 for lines
+- Test coverage increased from 25 => 50 for branches
 ### Changed
 - Refactored internals in ways that should not affect public APIs
   - allows much greater test coverage
