@@ -16,16 +16,16 @@ Gem::Specification.new do |spec|
   # Linux distros may package ruby gems differently,
   #   and securely certify them independently via alternate package management systems.
   # Ref: https://gitlab.com/oauth-xx/version_gem/-/issues/3
-  # Hence, only enable signing if the cert_file is present.
+  # Hence, only enable signing if `SKIP_GEM_SIGNING` is not set in ENV.
   # See CONTRIBUTING.md
-  default_user_cert = "certs/#{ENV.fetch("GEM_CERT_USER", ENV["USER"])}.pem"
-  default_user_cert_path = File.join(__dir__, default_user_cert)
-  cert_file_path = ENV.fetch("GEM_CERT_PATH", default_user_cert_path)
+  user_cert = "certs/#{ENV.fetch("GEM_CERT_USER", ENV["USER"])}.pem"
+  cert_file_path = File.join(__dir__, user_cert)
   cert_chain = cert_file_path.split(",")
-  if cert_file_path && cert_chain.map { |fp| File.exist?(fp) }
+  cert_chain.select! { |fp| File.exist?(fp) }
+  if cert_file_path && cert_chain.any?
     spec.cert_chain = cert_chain
-    if $PROGRAM_NAME.end_with?("gem", "rake") && ARGV[0] == "build"
-      spec.signing_key = File.expand_path("~/.ssh/gem-private_key.pem")
+    if $PROGRAM_NAME.end_with?("gem") && ARGV[0] == "build" && !ENV.include?("SKIP_GEM_SIGNING")
+      spec.signing_key = File.join(Gem.user_home, ".ssh", "gem-private_key.pem")
     end
   end
 
@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.description = <<~DESC
     A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
     Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
+    for every CI platform, batteries included.
   DESC
   spec.homepage = "https://github.com/kettle-rb/#{spec.name}"
   spec.license = "MIT"
