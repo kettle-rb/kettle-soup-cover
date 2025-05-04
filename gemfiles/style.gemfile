@@ -12,3 +12,6 @@ gemspec path: "../"
 
 # Linting
 eval_gemfile "modular/style.gemfile"
+
+# Ex-Standard Libs
+eval_gemfile "modular/ex_std_libs.gemfile"

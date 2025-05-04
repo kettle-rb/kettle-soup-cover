@@ -35,3 +35,6 @@ eval_gemfile "gemfiles/modular/style.gemfile"
 
 # Documentation
 eval_gemfile "gemfiles/modular/documentation.gemfile"
+
+# Ex-Standard Libs
+eval_gemfile "gemfiles/modular/ex_std_libs.gemfile"

@@ -11,9 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Removed
 
-## [1.0.6] - 2025-05-01
-- COVERAGE:  81.29% -- 113/139 lines in 10 files
-- BRANCH COVERAGE:  53.85% -- 14/26 branches in 10 files
+## [1.0.6] - 2025-05-04
+- COVERAGE:  93.43% -- 128/137 lines in 10 files
+- BRANCH COVERAGE:  50.00% -- 16/32 branches in 10 files
 - 11.11% documented
 ### Added
 - Support for linux, and other OSes, in `coverage` rake task

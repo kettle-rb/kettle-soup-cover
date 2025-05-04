@@ -1,0 +1,5 @@
+# Ex-Standard Libs
+
+# logger was removed from Ruby in v3.5
+# Many libraries that depend on it have not released new versions compatible with Ruby 3.5 yet
+gem "logger", ">= 1.7"

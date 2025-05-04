@@ -9,3 +9,6 @@ source "https://rubygems.org"
 # Exceptions, if any, will be found in gemfiles/*
 
 gemspec path: "../"
+
+# Ex-Standard Libs
+eval_gemfile "modular/ex_std_libs.gemfile"

@@ -12,3 +12,6 @@ gemspec path: "../"
 
 # Code Coverage
 eval_gemfile "modular/coverage.gemfile"
+
+# Ex-Standard Libs
+eval_gemfile "modular/ex_std_libs.gemfile"
