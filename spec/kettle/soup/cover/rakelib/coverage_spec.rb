@@ -14,6 +14,8 @@ RSpec.describe "rake coverage" do
 
   before do
     Rake::Task.clear
+    # So we can test internal rake tasks
+    Kettle::Soup::Cover.install_tasks
   end
 
   it "has name as coverage" do
