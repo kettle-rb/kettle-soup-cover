@@ -6,7 +6,7 @@ require "kettle/soup/cover/tasks"
 # rubocop:disable RSpec/MultipleMemoizedHelpers
 # Lightly modified from: https://thoughtbot.com/blog/test-rake-tasks-like-a-boss
 RSpec.describe "rake coverage" do
-  let(:rake)      { Rake::Application.new }
+  let(:rake) { Rake::Application.new }
   let(:task_name) { self.class.top_level_description.sub(/\Arake /, "") }
   let(:task_dir) { "lib/kettle/soup/cover/rakelib/" }
   let(:task_path) { File.join(task_dir, task_name.split(":").first) }
@@ -15,7 +15,7 @@ RSpec.describe "rake coverage" do
   let(:rake_task) { rake[task_name] }
 
   def loaded_files_excluding_current_rake_file
-    $".reject {|file| file == "#{task_path}.rake" }
+    $".reject { |file| file == "#{task_path}.rake" }
   end
 
   before do
