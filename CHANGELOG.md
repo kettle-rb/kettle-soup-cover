@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactored internals in ways that should not affect public APIs
   - allows much greater test coverage
   - report a bug if anything breaks!
-- Going forward all releases will be signed by my key that expires 2045-05-04
+- Going forward all releases will be signed by my key that expires 2045-04-29
 ### Fixed
 - require hooks such that both work equally well:
   - `require "kettle/soup/cover"`

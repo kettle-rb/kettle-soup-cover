@@ -126,7 +126,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 `kettle-soup-cover` is cryptographically signed. Be sure the gem you install hasn’t been tampered with
 by following the instructions below.
 
-Add my public key (if you haven’t already, expires 2045-05-04) as a trusted certificate:
+Add my public key (if you haven’t already, expires 2045-04-29) as a trusted certificate:
 
 ```shell
 gem cert --add <(curl -Ls https://raw.github.com/kettle-rb/kettle-soup-cover/main/certs/pboling.pem)
