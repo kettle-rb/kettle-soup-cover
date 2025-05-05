@@ -89,8 +89,8 @@ You'll just have to configure them manually if you use them:
 * BuildKite's custom [simplecov extension][buildkite-ext]
 * GitHub Actions doesn't parse test output
   * I configure my GHA `coverage` workflow ([see example][example-cov-wf]) to upload coverage reports to SaaS services like:
-    * [codecov.io][🔑codecov]
-    * [QLTY.sh][🔑cc-cov]
+    * [codecov.io][🔑codecov] (needs token for upload)
+    * [QLTY.sh][🔑cc-cov] (needs token for upload)
     * [coveralls.io][🔑coveralls]
 
 [buildkite-ext]: https://github.com/buildkite/simplecov-buildkite
