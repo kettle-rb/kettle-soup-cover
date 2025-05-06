@@ -158,19 +158,32 @@ NOTE: Be prepared to track down certs for signed gems and add them the same way 
 
 In your `spec/spec_helper.rb`, just prior to loading the library under test, add 2 lines of code:
 
-```ruby
-# This does not require "simplecov",
-#   because that has a side effect of running `.simplecov`
-require "kettle-soup-cover"
+### With Ruby 2.7+
 
-# Later in your spec setup, do this;
-require "simplecov" if Kettle::Soup::Cover::DO_COV
+```ruby
+require "kettle-soup-cover"
+require "simplecov" if Kettle::Soup::Cover::DO_COV # `.simplecov` is run here!
 ```
+### Projects that run tests against older Ruby versions, e.g. with Appraisals
+
+```ruby
+# NOTE: Gemfiles for older rubies won't have kettle-soup-cover.
+#       The rescue LoadError handles that scenario.
+begin
+  require "kettle-soup-cover"
+  require "simplecov" if Kettle::Soup::Cover::DO_COV # `.simplecov` is run here!
+rescue LoadError => error
+  # check the error message, if you are so inclined, and re-raise if not what is expected
+  raise error unless error.message.include?(/kettle/)
+end
+```
+
+### All projects
 
 In your `.simplecov` file, add 2 lines of code:
 
 ```ruby
-require "kettle/soup/cover/config"
+require "kettle/soup/cover/config" # 12-factor, ENV-based configuration, with good defaults!
 # you could do this somewhere else, up to you, but you do have to do it somewhere
 SimpleCov.start
 ```
