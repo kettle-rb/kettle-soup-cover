@@ -68,14 +68,14 @@ where this library is considered a package of [SOUP](https://en.wikipedia.org/wi
 This tool leverages other tools to make hard things easier, but sometimes those other tools break...
 I'll try to track that here.
 
-| Format | Library                    | Status                | Web | Circle<br/>CI | Git<br/>Lab | Travis<br/>CI | Jenkins<br/>X | Jenkins | Hudson | Semaphore | Bit<br/>Bucket | Team<br/>City | QLTY | 🤓<br/>Nerds |
-|--------|----------------------------|-----------------------|-----|---------------|-------------|---------------|---------------|---------|--------|-----------|----------------|---------------|------|--------------|
-| `html` | `simplecov-html`           | ✅                     | ✅   |               |             |               |               |         |        |           |                |               |      | ✅            |
-| `xml`  | `simplecov-cobertura`      | ❌ [upvote #30!][sc30] |     |               | ✅           |               |               | ✅       |        |           |                |               |      | ✅            |
-| `rcov` | `simplecov-rcov`           | ✅                     |     |               |             |               |               |         | ✅      |           |                |               |      | ✅            |
-| `lcov` | `simplecov-lcov`           | ✅                     |     | ✅             |             | ✅             | ✅             |         |        | ✅         |                | ✅             | ✅    | ✅            |
-| `json` | `simplecov_json_formatter` | ✅                     |     | ✅             |             | ✅             | ✅             |         |        |           | ✅              |               | ✅    | ✅            |
-| `tty`  | `simplecov-console`        | ✅                     |     |               |             |               |               |         |        |           |                |               |      | ✅            |
+| Format | Library                    | Status                | Web | Circle<br/>CI | Git<br/>Lab | Travis<br/>CI | Jenkins<br/>X | Jenkins | Hudson | Semaphore | Bit<br/>Bucket | Team<br/>City | 🤓<br/>Nerds |
+|--------|----------------------------|-----------------------|-----|---------------|-------------|---------------|---------------|---------|--------|-----------|----------------|---------------|--------------|
+| `html` | `simplecov-html`           | ✅                     | ✅   |               |             |               |               |         |        |           |                |               | ✅            |
+| `xml`  | `simplecov-cobertura`      | ❌ [upvote #30!][sc30] |     |               | ✅           |               |               | ✅       |        |           |                |               | ✅            |
+| `rcov` | `simplecov-rcov`           | ✅                     |     |               |             |               |               |         | ✅      |           |                |               | ✅            |
+| `lcov` | `simplecov-lcov`           | ✅                     |     | ✅             |             | ✅             | ✅             |         |        | ✅         |                | ✅             | ✅            |
+| `json` | `simplecov_json_formatter` | ✅                     |     | ✅             |             | ✅             | ✅             |         |        |           | ✅              |               | ✅            |
+| `tty`  | `simplecov-console`        | ✅                     |     |               |             |               |               |         |        |           |                |               | ✅            |
 
 If you find this working/not working different than above please open an issue / PR!
 
@@ -96,6 +96,8 @@ You'll just have to configure them manually if you use them:
 [buildkite-ext]: https://github.com/buildkite/simplecov-buildkite
 [example-cov-wf]: https://github.com/kettle-rb/kettle-soup-cover/blob/main/.github/workflows/coverage.yml
 [sc30]: https://github.com/dashingrocket/simplecov-cobertura/issues/30
+
+This library is based on ideas I originally introduced in the gem _[rspec-stubbed_env](https://github.com/pboling/rspec-stubbed_env)_.
 
 ## 💡 Info you can shake a stick at
 
