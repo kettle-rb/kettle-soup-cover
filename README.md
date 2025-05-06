@@ -174,7 +174,7 @@ begin
   require "simplecov" if Kettle::Soup::Cover::DO_COV # `.simplecov` is run here!
 rescue LoadError => error
   # check the error message, if you are so inclined, and re-raise if not what is expected
-  raise error unless error.message.include?(/kettle/)
+  raise error unless error.message.include?("kettle")
 end
 ```
 
@@ -510,4 +510,4 @@ or one of the others at the head of this README.
 [🚎yard-current]: http://rubydoc.info/gems/kettle-soup-cover
 [🚎yard-head]: https://rubydoc.info/github/kettle-rb/kettle-soup-cover/main
 [💎stone_checksums]: https://github.com/pboling/stone_checksums
-[💎SHA_checksums]: https://gitlab.com/oauth-xx/version_gem/-/tree/main/checksums
+[💎SHA_checksums]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/tree/main/checksums
