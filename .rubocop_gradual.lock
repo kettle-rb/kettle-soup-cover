@@ -1,5 +1,8 @@
 {
   "bin/bundle:577146252": [
     [64, 5, 20, "ThreadSafety/ClassInstanceVariable: Avoid class instance variables.", 2485198147]
+  ],
+  "kettle-soup-cover.gemspec:2046927021": [
+    [4, 6, 12, "Gemspec/RubyVersionGlobalsUsage: Do not use `RUBY_VERSION` in gemspec file.", 31296028]
   ]
 }
