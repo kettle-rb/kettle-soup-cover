@@ -374,7 +374,7 @@ or one of the others at the head of this README.
 [![Buy me a latte][🖇buyme-img]][🖇buyme]
 
 [✇bundle-group-pattern]: https://gist.github.com/pboling/4564780
-[⛳️gem-namespace]: https://github.com/kettle-rb/kettle-soup-cover/blob/main/lib/masq.rb
+[⛳️gem-namespace]: https://github.com/kettle-rb/kettle-soup-cover
 [⛳️namespace-img]: https://img.shields.io/badge/namespace-Kettle%3A%3ASoup%3A%3ACover-brightgreen.svg?style=flat&logo=ruby&logoColor=white
 [⛳️gem-name]: https://rubygems.org/gems/kettle-soup-cover
 [⛳️name-img]: https://img.shields.io/badge/name-kettle--soup--cover-brightgreen.svg?style=flat&logo=rubygems&logoColor=red
