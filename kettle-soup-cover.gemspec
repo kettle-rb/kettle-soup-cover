@@ -1,15 +1,10 @@
 # frozen_string_literal: true
 
-# Get the GEMFILE_VERSION without *require* "my_gem/version", for code coverage accuracy
-# See: https://github.com/simplecov-ruby/simplecov/issues/557#issuecomment-2630782358
-# Kernel.load because load is overloaded in RubyGems during gemspec evaluation
-Kernel.load("lib/kettle/soup/cover/version.rb")
-gem_version = Kettle::Soup::Cover::Version::VERSION
-Kettle::Soup::Cover::Version.send(:remove_const, :VERSION)
-
 Gem::Specification.new do |spec|
   spec.name = "kettle-soup-cover"
-  spec.version = gem_version
+  # Loading version into an anonymous module allows version.rb to get code coverage from SimpleCov!
+  # See: https://github.com/simplecov-ruby/simplecov/issues/557#issuecomment-2630782358
+  spec.version = Module.new.tap { |mod| Kernel.load("lib/kettle/soup/cover/version.rb", mod) }::Kettle::Soup::Cover::Version::VERSION
   spec.authors = ["Peter Boling"]
   spec.email = ["peter.boling@gmail.com"]
 
