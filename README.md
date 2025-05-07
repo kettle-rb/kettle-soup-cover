@@ -125,10 +125,9 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ### 🔒 Secure Installation
 
-`kettle-soup-cover` is cryptographically signed. , and with verifiable [SHA-256 and SHA-512][💎SHA_checksums] checksums by
+`kettle-soup-cover` is cryptographically signed, and has verifiable [SHA-256 and SHA-512][💎SHA_checksums] checksums by
 [stone_checksums][💎stone_checksums]. Be sure the gem you install hasn’t been tampered with
 by following the instructions below.
-
 
 Add my public key (if you haven’t already, expires 2045-04-29) as a trusted certificate:
 
