@@ -32,9 +32,20 @@
 [![Donate to my FLOSS or refugee efforts at ko-fi.com][🖇kofi-img]][🖇kofi]
 [![Donate to my FLOSS or refugee efforts using Patreon][🖇patreon-img]][🖇patreon]
 
-Four lines of code to get a configured, curated, opinionated, set of dependencies for Test Coverage.
+Four lines of code to get a configured, curated, opinionated, set of dependencies for Test Coverage, and that's *including* the two lines for `require "simplecov"`, and `SimpleCov.start`.
 
-Configured for what?  To work out of the box on every CI*.  Batteries included.  For apps and libraries.
+Configured for what?  To work out of the box on every CI*.  Batteries included.
+For apps and libraries.  Any test framework.  Many code coverage related GitHub Actions (e.g. [1][GHA-ccs-repo], [2][GHA-sprc-repo]).
+
+| Test Framework | Helper                  | .simplecov                 |
+|----------------|-------------------------|----------------------------|
+| MiniTest       | [example][mini-helper]  | [example][mini-simplecov]  |
+| RSpec          | [example][rpsec-helper] | [example][rspec-simplecov] |
+
+[mini-helper]: https://github.com/pboling/silent_stream/blob/master/tests/test_silent_stream.rb
+[mini-simplecov]: https://github.com/pboling/silent_stream/blob/master/.simplecov
+[rpsec-helper]: https://github.com/oauth-xx/oauth2/blob/main/spec/spec_helper.rb
+[rspec-simplecov]: https://github.com/oauth-xx/oauth2/blob/main/.simplecov
 
 One of the major benefits of using this library is not having to figure
 out how to get multiple coverage output formats working.  I did that for you,
@@ -68,23 +79,23 @@ where this library is considered a package of [SOUP](https://en.wikipedia.org/wi
 This tool leverages other tools to make hard things easier, but sometimes those other tools break...
 I'll try to track that here.
 
-| Format | Library                    | Status                | Web | Circle<br/>CI | Git<br/>Lab | Travis<br/>CI | Jenkins<br/>X | Jenkins | Hudson | Semaphore | Bit<br/>Bucket | Team<br/>City | 🤓<br/>Nerds |
-|--------|----------------------------|-----------------------|-----|---------------|-------------|---------------|---------------|---------|--------|-----------|----------------|---------------|--------------|
-| `html` | `simplecov-html`           | ✅                     | ✅   |               |             |               |               |         |        |           |                |               | ✅            |
-| `xml`  | `simplecov-cobertura`      | ❌ [upvote #30!][sc30] |     |               | ✅           |               |               | ✅       |        |           |                |               | ✅            |
-| `rcov` | `simplecov-rcov`           | ✅                     |     |               |             |               |               |         | ✅      |           |                |               | ✅            |
-| `lcov` | `simplecov-lcov`           | ✅                     |     | ✅             |             | ✅             | ✅             |         |        | ✅         |                | ✅             | ✅            |
-| `json` | `simplecov_json_formatter` | ✅                     |     | ✅             |             | ✅             | ✅             |         |        |           | ✅              |               | ✅            |
-| `tty`  | `simplecov-console`        | ✅                     |     |               |             |               |               |         |        |           |                |               | ✅            |
+| Format | Library                    | Status                                        | Web | Circle<br/>CI | Git<br/>Lab | Travis<br/>CI | Jenkins<br/>X | Jenkins | Hudson | Semaphore | Bit<br/>Bucket | Team<br/>City | 🤓<br/>Nerds |
+|--------|----------------------------|-----------------------------------------------|-----|---------------|-------------|---------------|---------------|---------|--------|-----------|----------------|---------------|--------------|
+| `html` | `simplecov-html`           | ✅                                             | ✅   |               |             |               |               |         |        |           |                |               | ✅            |
+| `xml`  | `simplecov-cobertura`      | ⚠️ [works (with warnings); upvote #30!][sc30] |     |               | ✅           |               |               | ✅       |        |           |                |               | ✅            |
+| `rcov` | `simplecov-rcov`           | ✅                                             |     |               |             |               |               |         | ✅      |           |                |               | ✅            |
+| `lcov` | `simplecov-lcov`           | ✅                                             |     | ✅             |             | ✅             | ✅             |         |        | ✅         |                | ✅             | ✅            |
+| `json` | `simplecov_json_formatter` | ✅                                             |     | ✅             |             | ✅             | ✅             |         |        |           | ✅              |               | ✅            |
+| `tty`  | `simplecov-console`        | ✅                                             |     |               |             |               |               |         |        |           |                |               | ✅            |
 
 If you find this working/not working different than above please open an issue / PR!
 
 ## ☝️ Not actually *every CI*
 
-CI's without parsing support, or with vendor-specific formats which are not shared by other vendors,
-are not supported by this gem.
+This gem does not support CI's without test output parsing support, since that's obviously impossible.
+Vendor-specific formats which are not shared by other vendors are also not supported (e.g. BuildKite).
 
-You'll just have to configure them manually if you use them:
+You'll have to configure them manually if you use them:
 
 * BuildKite's custom [simplecov extension][buildkite-ext]
 * GitHub Actions doesn't parse test output
@@ -155,14 +166,20 @@ NOTE: Be prepared to track down certs for signed gems and add them the same way 
 
 ## 🔧 Basic Usage
 
-In your `spec/spec_helper.rb`, just prior to loading the library under test, add 2 lines of code:
+### RSpec or MiniTest
+
+In your `spec/spec_helper.rb` or `tests/test_helper.rb`, just before loading the library under test,
+add two lines of code:
 
 ### With Ruby 2.7+
 
 ```ruby
 require "kettle-soup-cover"
 require "simplecov" if Kettle::Soup::Cover::DO_COV # `.simplecov` is run here!
+# IMPORTANT: If you are using MiniTest instead of RSpec, also do this (and not in .simplecov):
+# SimpleCov.external_at_exit = true
 ```
+
 ### Projects that run tests against older Ruby versions, e.g. with Appraisals
 
 ```ruby
@@ -170,7 +187,13 @@ require "simplecov" if Kettle::Soup::Cover::DO_COV # `.simplecov` is run here!
 #       The rescue LoadError handles that scenario.
 begin
   require "kettle-soup-cover"
-  require "simplecov" if Kettle::Soup::Cover::DO_COV # `.simplecov` is run here!
+
+  if Kettle::Soup::Cover::DO_COV
+    require "simplecov" # `.simplecov` is run here!
+
+    # IMPORTANT: If you are using MiniTest instead of RSpec, also do this (and not in .simplecov):
+    # SimpleCov.external_at_exit = true
+  end
 rescue LoadError => error
   # check the error message, if you are so inclined, and re-raise if not what is expected
   raise error unless error.message.include?("kettle")
@@ -259,6 +282,53 @@ have their own complete suite of ENV variables you can configure.
 
 [env-constants]: /lib/kettle/soup/cover.rb
 [simplecov-console]: https://github.com/chetan/simplecov-console#options
+
+#### Compatible with GitHub Actions for Code Coverage feedback in pull requests
+
+If you don't want to configure a SaaS service to update your pull requests with
+code coverage there are alternatives.
+
+After the step that runs your test suite use one or more of the following.
+
+##### irongut/CodeCoverageSummary
+
+Repo: [irongut/CodeCoverageSummary][GHA-ccs-repo]
+
+[GHA-ccs-repo]: https://github.com/irongut/CodeCoverageSummary
+
+```yaml
+
+      - name: Code Coverage Summary Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          filename: ./coverage/coverage.xml
+          badge: true
+          fail_below_min: true
+          format: markdown
+          hide_branch_rate: false
+          hide_complexity: true
+          indicators: true
+          output: both
+          thresholds: '100 100' # '<MIN LINE COVERAGE> <MIN BRANCH COVERAGE>'
+        continue-on-error: ${{ matrix.experimental != 'false' }}
+```
+
+##### *marocchino/sticky-pull-request-comment*
+
+Repo: [marocchino/sticky-pull-request-comment][GHA-sprc-repo]
+
+[GHA-sprc-repo]: https://github.com/marocchino/sticky-pull-request-comment
+
+```yaml
+      - name: Add Coverage PR Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          recreate: true
+          path: code-coverage-results.md
+        continue-on-error: ${{ matrix.experimental != 'false' }}
+```
 
 ### 🚀 Release Instructions
 

@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Document usage with minitest
+- Document usage with https://github.com/irongut/CodeCoverageSummary
+- Document usage with https://github.com/marocchino/sticky-pull-request-comment
 ### Changed
 ### Fixed
 ### Removed
