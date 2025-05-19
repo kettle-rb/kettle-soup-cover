@@ -4,13 +4,18 @@ require "bundler/gem_tasks"
 
 defaults = []
 
+# See: https://docs.gitlab.com/ci/variables/predefined_variables/
+is_gitlab = ENV.fetch("GITLAB_CI", "false").casecmp("true") == 0
+
 ### DEVELOPMENT TASKS
 # Setup Kettle Soup Cover
 begin
   require "kettle-soup-cover"
 
   Kettle::Soup::Cover.install_tasks
-  defaults << "coverage"
+  # NOTE: Coverage on CI is configured independent of this task.
+  #       This task is for local development, as it opens results in browser
+  defaults << "coverage" unless Kettle::Soup::Cover::IS_CI
 rescue LoadError
   desc("(stub) coverage is unavailable")
   task("coverage") do
@@ -39,7 +44,9 @@ begin
   require "rspec/core/rake_task"
 
   RSpec::Core::RakeTask.new(:spec)
-  # defaults << "spec"  # Not adding to defaults, because the coverage task, which is in defaults, will run specs.
+  # Not adding to defaults, because the coverage task,
+  #   which is in defaults outside CI, will run specs.
+  defaults << "spec" if Kettle::Soup::Cover::IS_CI
 rescue LoadError
   desc("spec task stub")
   task(:spec) do
@@ -55,7 +62,8 @@ begin
   require "rubocop/lts"
 
   Rubocop::Lts.install_tasks
-  defaults << "rubocop_gradual"
+  # Make autocorrect the default rubocop task
+  defaults << "rubocop_gradual:autocorrect"
 rescue LoadError
   desc("(stub) rubocop_gradual is unavailable")
   task(:rubocop_gradual) do
@@ -90,7 +98,7 @@ begin
     t.verbose = false
     t.source_files = "{lib,spec}/**/*.rb"
   end
-  defaults << "reek"
+  defaults << "reek" unless is_gitlab
 rescue LoadError
   desc("(stub) reek is unavailable")
   task(:reek) do
