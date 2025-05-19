@@ -36,7 +36,7 @@
 Four lines of code to get a configured, curated, opinionated, set of dependencies for Test Coverage, and that's *including* the two lines for `require "simplecov"`, and `SimpleCov.start`.
 
 Configured for what?  To work out of the box on every CI*.  Batteries included.
-For apps and libraries.  Any test framework.  Many code coverage related GitHub Actions (e.g. [1][GHA-ccs-repo], [2][GHA-sprc-repo]).
+For apps and libraries.  Any test framework.  Many code coverage related GitHub Actions (example configs [1](#marocchinosticky-pull-request-comment), [2](#irongutcodecoveragesummary)).
 
 | Test Framework | Helper                      | Config                        |
 |----------------|-----------------------------|-------------------------------|
@@ -354,8 +354,7 @@ See [SECURITY.md][🔐security].
 ## 🤝 Contributing
 
 If you need some ideas of where to help, you could work on adding more code coverage,
-or if it is already 💯 (see [below](#code-coverage)) check TODOs (see [below](#todos)),
-or check [issues][🤝gh-issues], or [PRs][🤝gh-pulls],
+or if it is already 💯 (see [below](#code-coverage)) check [issues][🤝gh-issues], or [PRs][🤝gh-pulls],
 or use the gem and think about how it could be better.
 
 We [![Keep A Changelog][📗keep-changelog-img]][📗keep-changelog] so if you make changes, remember to update it.
