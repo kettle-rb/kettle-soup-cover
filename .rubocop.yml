@@ -1,4 +1,4 @@
-# We want Exclude directives from different
+# We want the Exclude directives from different
 # config files to get merged, not overwritten
 inherit_mode:
   merge:
@@ -10,6 +10,13 @@ require:
 
 inherit_gem:
   rubocop-lts: config/rubygem_rspec.yml
+
+AllCops:
+  DisplayCopNames: true # Display the name of the failing cops
+  Exclude:
+    - 'gemfiles/vendor/**/*'
+    - 'vendor/**/*'
+    - '**/.irbrc'
 
 # Metrics cops are disabled in Standard by default)
 Metrics:
