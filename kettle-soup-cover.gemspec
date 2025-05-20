@@ -49,7 +49,7 @@ Gem::Specification.new do |spec|
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7"
 
-  spec.metadata["homepage_uri"] = "https://kettle-rb.gitlab.io/"
+  spec.metadata["homepage_uri"] = "https://#{spec.name}.galtzo.com/"
   spec.metadata["source_code_uri"] = "#{gh_homepage}/releases/tag//v#{spec.version}"
   spec.metadata["changelog_uri"] = "#{gl_homepage}/-/blob/v#{spec.version}/CHANGELOG.md"
   spec.metadata["bug_tracker_uri"] = "#{gl_homepage}/-/issues"
