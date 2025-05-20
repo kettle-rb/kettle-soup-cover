@@ -43,13 +43,14 @@ Gem::Specification.new do |spec|
     Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
     for every CI platform, batteries included.
   DESC
-  spec.homepage = "https://github.com/kettle-rb/#{spec.name}"
+  gh_homepage = "https://github.com/kettle-rb/#{spec.name}"
   gl_homepage = "https://gitlab.com/kettle-rb/#{spec.name}"
+  spec.homepage = gl_homepage
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.7"
 
   spec.metadata["homepage_uri"] = "https://kettle-rb.gitlab.io/"
-  spec.metadata["source_code_uri"] = "#{gl_homepage}/-/tree/v#{spec.version}"
+  spec.metadata["source_code_uri"] = "#{gh_homepage}/-/tree/v#{spec.version}"
   spec.metadata["changelog_uri"] = "#{gl_homepage}/-/blob/v#{spec.version}/CHANGELOG.md"
   spec.metadata["bug_tracker_uri"] = "#{gl_homepage}/-/issues"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/#{spec.name}/#{spec.version}"
