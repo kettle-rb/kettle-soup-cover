@@ -7,12 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Document usage with minitest
-- Document usage with https://github.com/irongut/CodeCoverageSummary
-- Document usage with https://github.com/marocchino/sticky-pull-request-comment
 ### Changed
 ### Fixed
 ### Removed
+
+## [1.0.7] - 2025-05-20
+### Added
+- Document usage with minitest
+- Document usage with https://github.com/irongut/CodeCoverageSummary
+- Document usage with https://github.com/marocchino/sticky-pull-request-comment
+- More documentation improvements
+- Link to Discord
+### Changed
+ - Gem build: Don't check for cert if SKIP_GEM_SIGNING is set
+   - Allows linux packaging systems to build gem without signing via rubygems
+ - Update homepage in gemspec
+ - Improved loading of version.rb in gemspec
 
 ## [1.0.6] - 2025-05-04
 - COVERAGE: 93.43% -- 128/137 lines in 10 files
@@ -108,7 +118,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2023-10-17
 - Initial release
 
-[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.6...HEAD
+[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.7...HEAD
+[1.0.7]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.6...v1.0.7
 [1.0.6]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.5...v1.0.6
 [1.0.5]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.4...v1.0.5
 [1.0.4]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.3...v1.0.4
