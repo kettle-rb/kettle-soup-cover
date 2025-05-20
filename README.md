@@ -575,7 +575,7 @@ or one of the others at the head of this README.
 [📄ilo-declaration]: https://www.ilo.org/declaration/lang--en/index.htm
 [📄ilo-declaration-img]: https://img.shields.io/badge/ILO_Fundamental_Principles-✓-259D6C.svg?style=flat
 [🚎yard-current]: http://rubydoc.info/gems/kettle-soup-cover
-[🚎yard-head]: https://rubydoc.info/github/kettle-rb/kettle-soup-cover/main
+[🚎yard-head]: https://kettle-soup-cover.galtzo.com
 [💎stone_checksums]: https://github.com/pboling/stone_checksums
 [💎SHA_checksums]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/tree/main/checksums
 [💎rlts]: https://github.com/rubocop-lts/rubocop-lts
