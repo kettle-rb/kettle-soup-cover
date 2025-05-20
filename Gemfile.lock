@@ -13,7 +13,7 @@ GIT
 PATH
   remote: .
   specs:
-    kettle-soup-cover (1.0.8)
+    kettle-soup-cover (1.0.9)
       simplecov (~> 0.22)
       simplecov-cobertura (~> 2.1)
       simplecov-console (~> 0.9, >= 0.9.1)
@@ -280,7 +280,7 @@ DEPENDENCIES
   stone_checksums (~> 1.0)
   yard (~> 0.9, >= 0.9.37)
   yard-junk (~> 0.0, >= 0.0.10)!
-  yard-relative_markdown_links
+  yard-relative_markdown_links (~> 0.5.0)
 
 BUNDLED WITH
    2.6.9

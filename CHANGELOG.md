@@ -11,13 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Removed
 
+## [1.0.9] - 2025-05-20
+- COVERAGE: 93.43% -- 128/137 lines in 10 files
+- BRANCH COVERAGE: 50.00% -- 16/32 branches in 10 files
+- 11.11% documented
+### Added
+- YARD config, GFM compatible with relative file links
+- Documentation site on GitHub Pages
+  - [kettle-soup-cover.galtzo.com](https://kettle-soup-cover.galtzo.com)
+### Changed
+- Updated `spec.homepage_uri` in gemspec to GitHub Pages YARD documentation site
+
 ## [1.0.8] - 2025-05-20
 - COVERAGE: 93.43% -- 128/137 lines in 10 files
 - BRANCH COVERAGE: 50.00% -- 16/32 branches in 10 files
 - 11.11% documented
 ### Added
 - Link to discussions on GitHub
-- Documentation site on GitHub Pages
 ### Changed
 - Fixed `spec.homepage` and `spec.source_code_uri` in gemspec
 
