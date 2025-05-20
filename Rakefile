@@ -73,12 +73,18 @@ end
 
 # Setup Yard
 begin
+  # require "yard/rake/yardoc_task"
   require "yard"
 
   YARD::Rake::YardocTask.new(:yard) do |t|
+    # t.before = -> { require "yard" }
     t.files = [
-      # Splats (alphabetical)
+      # Source Splats (alphabetical)
       "lib/**/*.rb",
+      "-", # source and extra docs are separated by "-"
+      # Extra Files (alphabetical)
+      "*.md",
+      "*.txt",
     ]
   end
   defaults << "yard"

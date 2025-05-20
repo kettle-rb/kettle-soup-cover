@@ -6,32 +6,11 @@
 
 # 🥘 Kettle::Soup::Cover
 
-[![Version][👽versioni]][👽version]
-[![License: MIT][📄license-img]][📄license-ref]
-[![Downloads Rank][👽dl-ranki]][👽dl-rank]
-[![Open Source Helpers][👽oss-helpi]][👽oss-help]
-[![Depfu][🔑depfui♻️]][🔑depfu]
-[![CodeCov Test Coverage][🔑codecovi♻️]][🔑codecov]
-[![Coveralls Test Coverage][🔑coveralls-img]][🔑coveralls]
-[![QLTY Test Coverage][🔑qlty-covi♻️]][🔑qlty-cov]
-[![QLTY Maintainability][🔑qlty-mnti♻️]][🔑qlty-mnt]
-[![CI Heads][🚎3-hd-wfi]][🚎3-hd-wf]
-[![CI Current][🚎11-c-wfi]][🚎11-c-wf]
-[![CI Supported][🚎6-s-wfi]][🚎6-s-wf]
-[![CI Legacy][🚎4-lg-wfi]][🚎4-lg-wf]
-[![CI Unsupported][🚎7-us-wfi]][🚎7-us-wf]
-[![CI Test Coverage][🚎2-cov-wfi]][🚎2-cov-wf]
-[![CI Style][🚎5-st-wfi]][🚎5-st-wf]
-[![CodeQL][🖐codeQL-img]][🖐codeQL]
+[![Version][👽versioni]][👽version] [![License: MIT][📄license-img]][📄license-ref] [![Downloads Rank][👽dl-ranki]][👽dl-rank] [![Open Source Helpers][👽oss-helpi]][👽oss-help] [![Depfu][🔑depfui♻️]][🔑depfu] [![CodeCov Test Coverage][🔑codecovi♻️]][🔑codecov] [![Coveralls Test Coverage][🔑coveralls-img]][🔑coveralls] [![QLTY Test Coverage][🔑qlty-covi♻️]][🔑qlty-cov] [![QLTY Maintainability][🔑qlty-mnti♻️]][🔑qlty-mnt] [![CI Heads][🚎3-hd-wfi]][🚎3-hd-wf] [![CI Current][🚎11-c-wfi]][🚎11-c-wf] [![CI Supported][🚎6-s-wfi]][🚎6-s-wf] [![CI Legacy][🚎4-lg-wfi]][🚎4-lg-wf] [![CI Unsupported][🚎7-us-wfi]][🚎7-us-wf] [![CI Test Coverage][🚎2-cov-wfi]][🚎2-cov-wf] [![CI Style][🚎5-st-wfi]][🚎5-st-wf] [![CodeQL][🖐codeQL-img]][🖐codeQL]
 
 ---
 
-[![Liberapay Goal Progress][⛳liberapay-img]][⛳liberapay]
-[![Sponsor Me on Github][🖇sponsor-img]][🖇sponsor]
-[![Buy me a coffee][🖇buyme-small-img]][🖇buyme]
-[![Donate on Polar][🖇polar-img]][🖇polar]
-[![Donate to my FLOSS or refugee efforts at ko-fi.com][🖇kofi-img]][🖇kofi]
-[![Donate to my FLOSS or refugee efforts using Patreon][🖇patreon-img]][🖇patreon]
+[![Liberapay Goal Progress][⛳liberapay-img]][⛳liberapay] [![Sponsor Me on Github][🖇sponsor-img]][🖇sponsor] [![Buy me a coffee][🖇buyme-small-img]][🖇buyme] [![Donate on Polar][🖇polar-img]][🖇polar] [![Donate to my FLOSS or refugee efforts at ko-fi.com][🖇kofi-img]][🖇kofi] [![Donate to my FLOSS or refugee efforts using Patreon][🖇patreon-img]][🖇patreon]
 
 Four lines of code to get a configured, curated, opinionated, set of dependencies for Test Coverage, and that's *including* the two lines for `require "simplecov"`, and `SimpleCov.start`.
 
@@ -111,7 +90,7 @@ You'll have to configure them manually if you use them:
 * GitHub Actions doesn't parse test output, but...
   * I configure my `coverage` workflow ([see example][example-cov-wf]) to upload coverage reports to SaaS services like:
     * [codecov.io][🔑codecov] (needs token for upload)
-    * [QLTY.sh][🔑cc-cov] (needs token for upload)
+    * [QLTY.sh](https://qlty.sh) (needs token for upload)
     * [coveralls.io][🔑coveralls]
   * This gem helps me configure my `coverage` workflow to use Github Actions designed to report coverage like:
     * Repo: [irongut/CodeCoverageSummary][GHA-ccs-repo]
@@ -430,7 +409,7 @@ See [CHANGELOG.md][📌changelog] for list of releases.
 ## 📄 License
 
 The gem is available as open source under the terms of
-the [MIT License][📄license] [![License: MIT][📄license-img]][📄license-ref].
+the [MIT License](LICENSE.txt) [![License: MIT][📄license-img]][📄license-ref].
 See [LICENSE.txt][📄license] for the official [Copyright Notice][📄copyright-notice-explainer].
 
 ### © Copyright

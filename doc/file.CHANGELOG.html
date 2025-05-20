@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: CHANGELOG
+  
+    &mdash; Documentation by YARD 0.9.37
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "CHANGELOG";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: CHANGELOG</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1 id="changelog">Changelog</h1>
+
+<p>All notable changes to this project will be documented in this file.</p>
+
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,<br>
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+
+<h2 id="unreleased"><a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.8...HEAD">Unreleased</a></h2>
+<h3 id="added">Added</h3>
+<h3 id="changed">Changed</h3>
+<h3 id="fixed">Fixed</h3>
+<h3 id="removed">Removed</h3>
+
+<h2 id="108---2025-05-20">
+<a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.7...v1.0.8">1.0.8</a> - 2025-05-20</h2>
+<ul>
+  <li>COVERAGE: 93.43% – 128/137 lines in 10 files</li>
+  <li>BRANCH COVERAGE: 50.00% – 16/32 branches in 10 files</li>
+  <li>11.11% documented
+    <h3 id="added-1">Added</h3>
+  </li>
+  <li>Link to discussions on GitHub
+    <h3 id="changed-1">Changed</h3>
+  </li>
+  <li>Fixed <code>spec.homepage</code> and <code>spec.source_code_uri</code> in gemspec</li>
+</ul>
+
+<h2 id="107---2025-05-20">
+<a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.6...v1.0.7">1.0.7</a> - 2025-05-20</h2>
+<ul>
+  <li>COVERAGE: 93.43% – 128/137 lines in 10 files</li>
+  <li>BRANCH COVERAGE: 50.00% – 16/32 branches in 10 files</li>
+  <li>11.11% documented
+    <h3 id="added-2">Added</h3>
+  </li>
+  <li>Document usage with minitest</li>
+  <li>Document usage with https://github.com/irongut/CodeCoverageSummary</li>
+  <li>Document usage with https://github.com/marocchino/sticky-pull-request-comment</li>
+  <li>More documentation improvements</li>
+  <li>Link to Discord
+    <h3 id="changed-2">Changed</h3>
+  </li>
+  <li>Gem build: Don’t check for cert if SKIP_GEM_SIGNING is set
+    <ul>
+      <li>Allows linux packaging systems to build gem without signing via rubygems</li>
+    </ul>
+  </li>
+  <li>Update homepage in gemspec</li>
+  <li>Improved loading of version.rb in gemspec</li>
+</ul>
+
+<h2 id="106---2025-05-04">
+<a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.5...v1.0.6">1.0.6</a> - 2025-05-04</h2>
+<ul>
+  <li>COVERAGE: 93.43% – 128/137 lines in 10 files</li>
+  <li>BRANCH COVERAGE: 50.00% – 16/32 branches in 10 files</li>
+  <li>11.11% documented
+    <h3 id="added-3">Added</h3>
+  </li>
+  <li>Support for linux, and other OSes, in <code>coverage</code> rake task
+    <ul>
+      <li>previously was macOS only (would raise error on other OSes)</li>
+    </ul>
+  </li>
+  <li>✨ <code>Kettle::Soup::Cover::OPEN_BIN</code>
+    <ul>
+      <li>Set <code>export K_SOUP_COV_OPEN_BIN=open</code> to use macOS’ <code>open</code> command in <code>coverage</code> task</li>
+      <li>Set <code>export K_SOUP_COV_OPEN_BIN=xdg-open</code> to use Linux’ <code>xdg-open</code> command in <code>coverage</code> task</li>
+      <li>Set <code>export K_SOUP_COV_OPEN_BIN=</code> to just print the path to the HTML coverage report in <code>coverage</code> task</li>
+    </ul>
+  </li>
+  <li>Test coverage increased from 55 =&gt; 93 for lines</li>
+  <li>Test coverage increased from 25 =&gt; 50 for branches
+    <h3 id="changed-3">Changed</h3>
+  </li>
+  <li>Refactored internals in ways that should not affect public APIs
+    <ul>
+      <li>allows much greater test coverage</li>
+      <li>report a bug if anything breaks!</li>
+    </ul>
+  </li>
+  <li>Going forward all releases will be signed by my key that expires 2045-04-29
+    <h3 id="fixed-1">Fixed</h3>
+  </li>
+  <li>require hooks such that both work equally well:
+    <ul>
+      <li><code>require "kettle/soup/cover"</code></li>
+      <li><code>require "kettle-soup-cover"</code></li>
+    </ul>
+  </li>
+  <li>Allow unsigned gem builds (for linux distros)
+    <ul>
+      <li>In the ENV set <code>SKIP_GEM_SIGNING</code> to any value</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="105---2025-04-03">
+<a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.4...v1.0.5">1.0.5</a> - 2025-04-03</h2>
+<h3 id="added-4">Added</h3>
+<ul>
+  <li>Documentation</li>
+  <li>Support for malformed <code>K_SOUP_COV_FORMATTERS</code> (extra spaces)</li>
+  <li>Code coverage tools QLTY, and CodeCov.io</li>
+  <li>Added Ruby 3.3, 3.4 to CI
+    <h3 id="changed-4">Changed</h3>
+  </li>
+  <li>Update to Contributor Covenant 2.1</li>
+  <li>Allow unsigned gem builds (for linux distros)</li>
+  <li>Checksums are now created by <code>stone_checksums</code> gem
+    <h3 id="fixed-2">Fixed</h3>
+  </li>
+  <li>Incorrect documentation of ENV variables that control gem behavior</li>
+  <li>Prefer <code>Kernel.load</code> &gt; <code>load</code> in gemspec
+    <ul>
+      <li>https://github.com/simplecov-ruby/simplecov/issues/557#issuecomment-2630782358</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="104---2024-06-11">
+<a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.3...v1.0.4">1.0.4</a> - 2024-06-11</h2>
+<h3 id="added-5">Added</h3>
+<ul>
+  <li>Documentation
+    <h3 id="changed-5">Changed</h3>
+  </li>
+  <li>
+<code>version_gem</code> requirement to 1.0.4</li>
+</ul>
+
+<h2 id="103---2024-05-23">
+<a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.2...v1.0.3">1.0.3</a> - 2024-05-23</h2>
+<h3 id="added-6">Added</h3>
+<ul>
+  <li>Documentation</li>
+  <li>Mirror repo on GitHub: https://github.com/kettle-rb/kettle-soup-cover</li>
+  <li>More tests
+    <h3 id="fixed-3">Fixed</h3>
+  </li>
+  <li>Incorrect URLs for homepage, etc</li>
+</ul>
+
+<h2 id="102---2023-10-19">
+<a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.1...v1.0.2">1.0.2</a> - 2023-10-19</h2>
+<h3 id="fixed-4">Fixed</h3>
+<ul>
+  <li>Include new <code>coverage</code> rake task in the built gem
+    <ul>
+      <li>Goddamnit</li>
+    </ul>
+  </li>
+  <li>Try to get checksum for SHA-256 to match what is published on Rubygems.org</li>
+</ul>
+
+<h2 id="101---2023-10-19">
+<a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.0...v1.0.1">1.0.1</a> - 2023-10-19</h2>
+<h3 id="fixed-5">Fixed</h3>
+<ul>
+  <li>Include new <code>coverage</code> rake task in the built gem</li>
+</ul>
+
+<h2 id="100---2023-10-19">
+<a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v0.1.0...v1.0.0">1.0.0</a> - 2023-10-19</h2>
+<h3 id="added-7">Added</h3>
+<ul>
+  <li>✨ <code>Regexp.escape</code> the <code>FILTER_DIRS</code> to allow for paths to be excluded from coverage
+    <ul>
+      <li>paths must always start at the root of the project, but no leading or trailing slash</li>
+    </ul>
+  </li>
+  <li>✨ Rake task <code>coverage</code> will run spec suite, and open results in a browser.</li>
+  <li>✨ <code>Kettle::Soup::Cover::PREFIX</code> allows configuration of a custom ENV variable name prefix
+    <ul>
+      <li>Set <code>export K_SOUP_COV_DEBUG="K_SOUP_COV_"</code> (default shown)</li>
+    </ul>
+  </li>
+  <li>✨ <code>Kettle::Soup::Cover::USE_MERGING</code>
+    <ul>
+      <li>Set <code>export K_SOUP_COV_USE_MERGING=true</code>
+</li>
+    </ul>
+  </li>
+  <li>✨ <code>Kettle::Soup::Cover::MERGE_TIMEOUT</code>
+    <ul>
+      <li>Set <code>export K_SOUP_COV_MERGE_TIMEOUT=3600</code>
+</li>
+    </ul>
+  </li>
+  <li>✨ <code>Kettle::Soup::Cover::DEBUG</code> - similar to <code>VERBOSE</code>, only moreso!
+    <ul>
+      <li>Set <code>export K_SOUP_COV_DEBUG=true</code>
+</li>
+      <li>NOTE: This gem actually has zero output statements.
+        <ul>
+          <li>The utility of <code>DEBUG</code> and <code>VERBOSE</code> being a part of this library is<br>
+to normalize handling of this common logical need in other libraries.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>✨ <code>Kettle::Soup::Cover.load_filters</code>
+    <ul>
+      <li><code>Kettle::Soup::Cover::Filters::GtLineFilter</code></li>
+      <li><code>Kettle::Soup::Cover::Filters::LtLineFilter</code></li>
+    </ul>
+  </li>
+  <li>More and better documentation
+    <h3 id="changed-6">Changed</h3>
+  </li>
+  <li>This gem no longer does <code>require "simplecov"</code>
+    <ul>
+      <li>Instead you can <code>require "simplecov" if Kettle::Soup::Cover::DO_COV</code> wherever you deem fit
+        <h3 id="fixed-6">Fixed</h3>
+      </li>
+    </ul>
+  </li>
+  <li>All ENV vars now begin with a uniform prefix for this gem:
+    <ul>
+      <li><code>K_SOUP_COV_*</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="010---2023-10-17">
+<a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/97ddbbca309b87c7f6eed0137b08cad74ec81235...v0.1.0">0.1.0</a> - 2023-10-17</h2>
+<ul>
+  <li>Initial release</li>
+</ul>
+
+</div></div>
+
+      <div id="footer">
+  Generated on Wed May 21 01:24:47 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.4.2).
+</div>
+
+    </div>
+  </body>
+</html>

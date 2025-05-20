@@ -50,7 +50,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 2.7"
 
   spec.metadata["homepage_uri"] = "https://kettle-rb.gitlab.io/"
-  spec.metadata["source_code_uri"] = "#{gh_homepage}/-/tree/v#{spec.version}"
+  spec.metadata["source_code_uri"] = "#{gh_homepage}/releases/tag//v#{spec.version}"
   spec.metadata["changelog_uri"] = "#{gl_homepage}/-/blob/v#{spec.version}/CHANGELOG.md"
   spec.metadata["bug_tracker_uri"] = "#{gl_homepage}/-/issues"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/#{spec.name}/#{spec.version}"
@@ -80,7 +80,12 @@ Gem::Specification.new do |spec|
     "--title",
     "#{spec.name} - #{spec.summary}",
     "--main",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "LICENSE.txt",
     "README.md",
+    "SECURITY.md",
     "--line-numbers",
     "--inline-source",
     "--quiet",
@@ -107,7 +112,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency("simplecov-rcov", "~> 0.3", ">= 0.3.3") # Hudson compatibility
 
   # Documentation
-  spec.add_development_dependency("kramdown", "~> 2.4")
   spec.add_development_dependency("yard", "~> 0.9", ">= 0.9.37")
   spec.add_development_dependency("yard-junk", "~> 0.0", ">= 0.0.10")
 
@@ -119,8 +123,8 @@ Gem::Specification.new do |spec|
 
   # Testing
   spec.add_development_dependency("rspec", "~> 3.13")
-  spec.add_development_dependency("rspec-block_is_expected", "~> 1.0", ">= 1.0.5")
+  spec.add_development_dependency("rspec-block_is_expected", "~> 1.0", ">= 1.0.6")
   spec.add_development_dependency("rspec_junit_formatter", "~> 0.6")
-  spec.add_development_dependency("rspec-stubbed_env", "~> 1.0", ">= 1.0.1")
+  spec.add_development_dependency("rspec-stubbed_env", "~> 1.0", ">= 1.0.2")
   spec.add_development_dependency("silent_stream", "~> 1.0", ">= 1.0.8")
 end

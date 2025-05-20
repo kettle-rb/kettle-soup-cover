@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.37
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><p align="center">
+  <a href="https://kettle-rb.gitlab.io/" target="_blank" rel="noopener">
+    <img height="120px" src="https://kettle-rb.gitlab.io/assets/img/logos/logo-name-optimized.png" alt="kettle-rb logo, Copyright (c) 2023 Peter Boling, CC BY-SA 4.0, see https://kettle-rb.gitlab.io/logos">
+  </a>
+</p>
+
+<h1 id="-kettlesoupcover">🥘 Kettle::Soup::Cover</h1>
+
+<p><a href="https://rubygems.org/gems/kettle-soup-cover"><img src="https://img.shields.io/gem/v/kettle-soup-cover.svg" alt="Version"></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-259D6C.svg" alt="License: MIT"></a> <a href="https://rubygems.org/gems/kettle-soup-cover"><img src="https://img.shields.io/gem/rd/kettle-soup-cover.svg" alt="Downloads Rank"></a> <a href="https://www.codetriage.com/kettle-rb/kettle-soup-cover"><img src="https://www.codetriage.com/kettle-rb/kettle-soup-cover/badges/users.svg" alt="Open Source Helpers"></a> <a href="https://depfu.com/github/kettle-rb/kettle-soup-cover?project_id=60302"><img src="https://badges.depfu.com/badges/71e1a65eafef1b12a044bf04bbea4f90/count.svg" alt="Depfu"></a> <a href="https://codecov.io/gh/kettle-rb/kettle-soup-cover"><img src="https://codecov.io/gh/kettle-rb/kettle-soup-cover/branch/main/graph/badge.svg?token=0X5VEW9USD" alt="CodeCov Test Coverage"></a> <a href="https://coveralls.io/github/kettle-rb/kettle-soup-cover?branch=main"><img src="https://coveralls.io/repos/github/kettle-rb/kettle-soup-cover/badge.svg?branch=main" alt="Coveralls Test Coverage"></a> <a href="https://qlty.sh/gh/kettle-rb/projects/kettle-soup-cover"><img src="https://qlty.sh/badges/75db1a51-b8ab-423a-b396-8b518067d8c3/test_coverage.svg" alt="QLTY Test Coverage"></a> <a href="https://qlty.sh/gh/kettle-rb/projects/kettle-soup-cover"><img src="https://qlty.sh/badges/75db1a51-b8ab-423a-b396-8b518067d8c3/maintainability.svg" alt="QLTY Maintainability"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/heads.yml"><img src="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/heads.yml/badge.svg" alt="CI Heads"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/current.yml"><img src="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/current.yml/badge.svg" alt="CI Current"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/supported.yml"><img src="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/supported.yml/badge.svg" alt="CI Supported"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/legacy.yml"><img src="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/legacy.yml/badge.svg" alt="CI Legacy"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/unsupported.yml"><img src="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/unsupported.yml/badge.svg" alt="CI Unsupported"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/coverage.yml"><img src="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/coverage.yml/badge.svg" alt="CI Test Coverage"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/style.yml"><img src="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/style.yml/badge.svg" alt="CI Style"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/security/code-scanning"><img src="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/codeql-analysis.yml/badge.svg" alt="CodeQL"></a></p>
+
+<hr>
+
+<p><a href="https://liberapay.com/pboling/donate"><img src="https://img.shields.io/liberapay/goal/pboling.svg?logo=liberapay" alt="Liberapay Goal Progress"></a> <a href="https://github.com/sponsors/pboling"><img src="https://img.shields.io/badge/Sponsor_Me!-pboling.svg?style=social&amp;logo=github" alt="Sponsor Me on Github"></a> <a href="https://www.buymeacoffee.com/pboling"><img src="https://img.shields.io/badge/buy_me_a_coffee-%E2%9C%93-yellow.svg?style=flat" alt="Buy me a coffee"></a> <a href="https://polar.sh/pboling"><img src="https://img.shields.io/badge/polar-donate-yellow.svg" alt="Donate on Polar"></a> <a href="https://ko-fi.com/O5O86SNP4"><img src="https://img.shields.io/badge/a_more_different_coffee-%E2%9C%93-yellow.svg" alt="Donate to my FLOSS or refugee efforts at ko-fi.com"></a> <a href="https://patreon.com/galtzo"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Donate to my FLOSS or refugee efforts using Patreon"></a></p>
+
+<p>Four lines of code to get a configured, curated, opinionated, set of dependencies for Test Coverage, and that’s <em>including</em> the two lines for <code>require "simplecov"</code>, and <code>SimpleCov.start</code>.</p>
+
+<p>Configured for what?  To work out of the box on every CI*.  Batteries included.<br>
+For apps and libraries.  Any test framework.  Many code coverage related GitHub Actions (example configs <a href="#marocchinosticky-pull-request-comment">1</a>, <a href="#irongutcodecoveragesummary">2</a>).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Framework</th>
+      <th>Helper</th>
+      <th>Config</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MiniTest</td>
+      <td><a href="https://github.com/pboling/silent_stream/blob/master/tests/test_silent_stream.rb">test helper</a></td>
+      <td><a href="https://github.com/pboling/silent_stream/blob/master/.simplecov">.simplecov</a></td>
+    </tr>
+    <tr>
+      <td>RSpec</td>
+      <td><a href="https://github.com/oauth-xx/oauth2/blob/main/spec/spec_helper.rb">spec helper</a></td>
+      <td><a href="https://github.com/oauth-xx/oauth2/blob/main/.simplecov">.simplecov</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Federated <a href="https://railsbling.com/posts/dvcs/put_the_d_in_dvcs/">DVCS</a> Repository</th>
+      <th>Status</th>
+      <th>Issues</th>
+      <th>PRs</th>
+      <th>Wiki</th>
+      <th>CI</th>
+      <th>Discussions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>🧪 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/">kettle-rb/kettle-soup-cover on GitLab</a>
+</td>
+      <td>The Truth</td>
+      <td><a href="https://gitlab.com/oauth-xx/oauth2/-/issues">💚</a></td>
+      <td><a href="https://gitlab.com/oauth-xx/oauth2/-/merge_requests">💚</a></td>
+      <td><a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/wikis/home">💚</a></td>
+      <td>🏀 Tiny Matrix</td>
+      <td>➖</td>
+    </tr>
+    <tr>
+      <td>🧊 <a href="https://codeberg.org/kettle-rb/kettle-soup-cover">kettle-rb/kettle-soup-cover on CodeBerg</a>
+</td>
+      <td>An Ethical Mirror (<a href="https://donate.codeberg.org/">Donate</a>)</td>
+      <td>➖</td>
+      <td><a href="https://codeberg.org/oauth-xx/oauth2/pulls">💚</a></td>
+      <td>➖</td>
+      <td>⭕️ No Matrix</td>
+      <td>➖</td>
+    </tr>
+    <tr>
+      <td>🐙 <a href="https://github.com/kettle-rb/kettle-soup-cover">kettle-rb/kettle-soup-cover on GitHub</a>
+</td>
+      <td>A Dirty Mirror</td>
+      <td><a href="https://github.com/kettle-rb/kettle-soup-cover/issues">💚</a></td>
+      <td><a href="https://github.com/kettle-rb/kettle-soup-cover/pulls">💚</a></td>
+      <td>➖</td>
+      <td>💯 Full Matrix</td>
+      <td><a href="https://github.com/kettle-rb/kettle-soup-cover/discussions">💚</a></td>
+    </tr>
+    <tr>
+      <td>🎮️ <a href="https://discord.gg/3qme4XHNKN">Discord Server</a>
+</td>
+      <td><a href="https://discord.gg/3qme4XHNKN"><img src="https://img.shields.io/discord/1373797679469170758?style=for-the-badge" alt="Live Chat on Discord"></a></td>
+      <td><a href="https://discord.gg/3qme4XHNKN">Let’s</a></td>
+      <td><a href="https://discord.gg/3qme4XHNKN">talk</a></td>
+      <td><a href="https://discord.gg/3qme4XHNKN">about</a></td>
+      <td><a href="https://discord.gg/3qme4XHNKN">this</a></td>
+      <td><a href="https://discord.gg/3qme4XHNKN">library!</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>One of the major benefits of using this library is not having to figure<br>
+out how to get multiple coverage output formats working.  I did that for you,<br>
+and I got all of them working, at the same time together, or al la carte. Kum-ba-ya.</p>
+
+<p>A quick shot of 12-factor coverage power, straight to your brain:</p>
+
+<pre class="code language-shell"><code class="language-shell">export K_SOUP_COV_DO=true # Means you want code coverage
+export K_SOUP_COV_FORMATTERS=&quot;html,tty&quot; # Set to some slice of &quot;html,xml,rcov,lcov,json,tty&quot;
+export K_SOUP_COV_MIN_BRANCH=53 # Means you want to enforce X% branch coverage
+export K_SOUP_COV_MIN_HARD=true # Means you want the build to fail if the coverage thresholds are not met
+export K_SOUP_COV_MIN_LINE=69 # Means you want to enforce X% line coverage
+export MAX_ROWS=5 # Setting for simplecov-console gem for tty output, limits to the worst N rows of bad coverage
+</code></pre>
+
+<p>I hope I’ve piqued your interest enough to give it a ⭐️ if the forge you are on supports it.</p>
+
+<details>
+  <summary>What does the name mean?</summary>
+
+A Covered Kettle of SOUP (Software of Unknown Provenance)
+
+The name is derived in part from the medical devices field,
+where this library is considered a package of [SOUP](https://en.wikipedia.org/wiki/Software_of_unknown_pedigree).
+
+</details>
+
+<h2 id="format--library-x-ci-matrix">Format / Library x CI Matrix</h2>
+
+<p>This tool leverages other tools to make hard things easier, but sometimes those other tools break…<br>
+I’ll try to track that here.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Format</th>
+      <th>Library</th>
+      <th>Status</th>
+      <th>Web</th>
+      <th>Circle<br>CI</th>
+      <th>Git<br>Lab</th>
+      <th>Travis<br>CI</th>
+      <th>Jenkins<br>X</th>
+      <th>Jenkins</th>
+      <th>Hudson</th>
+      <th>Semaphore</th>
+      <th>Bit<br>Bucket</th>
+      <th>Team<br>City</th>
+      <th>🤓<br>Nerds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>html</code></td>
+      <td><code>simplecov-html</code></td>
+      <td>✅</td>
+      <td>✅</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><code>xml</code></td>
+      <td><code>simplecov-cobertura</code></td>
+      <td>⚠️ <a href="https://github.com/dashingrocket/simplecov-cobertura/issues/30">works (with warnings); upvote #30!</a>
+</td>
+      <td> </td>
+      <td> </td>
+      <td>✅</td>
+      <td> </td>
+      <td> </td>
+      <td>✅</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><code>rcov</code></td>
+      <td><code>simplecov-rcov</code></td>
+      <td>✅</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>✅</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><code>lcov</code></td>
+      <td><code>simplecov-lcov</code></td>
+      <td>✅</td>
+      <td> </td>
+      <td>✅</td>
+      <td> </td>
+      <td>✅</td>
+      <td>✅</td>
+      <td> </td>
+      <td> </td>
+      <td>✅</td>
+      <td> </td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><code>json</code></td>
+      <td><code>simplecov_json_formatter</code></td>
+      <td>✅</td>
+      <td> </td>
+      <td>✅</td>
+      <td> </td>
+      <td>✅</td>
+      <td>✅</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>✅</td>
+      <td> </td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td><code>tty</code></td>
+      <td><code>simplecov-console</code></td>
+      <td>✅</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>✅</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If you find this working/not working different than above please open an issue / PR!</p>
+
+<h2 id="️-not-actually-every-ci">☝️ Not actually <em>every CI</em>
+</h2>
+
+<p>This gem does not add coverage parsing to CI’s that don’t have it, since that’s impossible.<br>
+Vendor-specific formats which are not shared by other vendors are also not supported (e.g. BuildKite).</p>
+
+<p>You’ll have to configure them manually if you use them:</p>
+
+<ul>
+  <li>BuildKite’s custom <a href="https://github.com/buildkite/simplecov-buildkite">simplecov extension</a>
+</li>
+  <li>GitHub Actions doesn’t parse test output, but…
+    <ul>
+      <li>I configure my <code>coverage</code> workflow (<a href="https://github.com/kettle-rb/kettle-soup-cover/blob/main/.github/workflows/coverage.yml">see example</a>) to upload coverage reports to SaaS services like:
+        <ul>
+          <li>
+<a href="https://codecov.io/gh/kettle-rb/kettle-soup-cover">codecov.io</a> (needs token for upload)</li>
+          <li>
+<a href="https://qlty.sh">QLTY.sh</a> (needs token for upload)</li>
+          <li><a href="https://coveralls.io/github/kettle-rb/kettle-soup-cover?branch=main">coveralls.io</a></li>
+        </ul>
+      </li>
+      <li>This gem helps me configure my <code>coverage</code> workflow to use Github Actions designed to report coverage like:
+        <ul>
+          <li>Repo: <a href="https://github.com/irongut/CodeCoverageSummary">irongut/CodeCoverageSummary</a>
+</li>
+          <li>Repo: <a href="https://github.com/marocchino/sticky-pull-request-comment">marocchino/sticky-pull-request-comment</a>
+</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>This library is based on ideas I originally introduced in the gem <em><a href="https://github.com/pboling/rspec-stubbed_env">rspec-stubbed_env</a></em>.</p>
+
+<h2 id="-info-you-can-shake-a-stick-at">💡 Info you can shake a stick at</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tokens to Remember</th>
+      <th>
+<a href="https://rubygems.org/gems/kettle-soup-cover"><img src="https://img.shields.io/badge/name-kettle--soup--cover-brightgreen.svg?style=flat&amp;logo=rubygems&amp;logoColor=red" alt="Gem name"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover"><img src="https://img.shields.io/badge/namespace-Kettle%3A%3ASoup%3A%3ACover-brightgreen.svg?style=flat&amp;logo=ruby&amp;logoColor=white" alt="Gem namespace"></a>
+</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Works with MRI Ruby 3</td>
+      <td>
+<a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/legacy.yml"><img src="https://img.shields.io/badge/Ruby-3.0-CC342D?style=for-the-badge&amp;logo=ruby&amp;logoColor=white" alt="Ruby 3.0 Compat"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/supported.yml"><img src="https://img.shields.io/badge/Ruby-3.1-CC342D?style=for-the-badge&amp;logo=ruby&amp;logoColor=white" alt="Ruby 3.1 Compat"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/supported.yml"><img src="https://img.shields.io/badge/Ruby-3.2-CC342D?style=for-the-badge&amp;logo=ruby&amp;logoColor=white" alt="Ruby 3.2 Compat"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/supported.yml"><img src="https://img.shields.io/badge/Ruby-3.3-CC342D?style=for-the-badge&amp;logo=ruby&amp;logoColor=white" alt="Ruby 3.3 Compat"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/current.yml"><img src="https://img.shields.io/badge/Ruby-current-CC342D?style=for-the-badge&amp;logo=ruby&amp;logoColor=green" alt="Ruby 3.4 Compat"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/heads.yml"><img src="https://img.shields.io/badge/Ruby-HEAD-CC342D?style=for-the-badge&amp;logo=ruby&amp;logoColor=blue" alt="Ruby HEAD Compat"></a>
+</td>
+    </tr>
+    <tr>
+      <td>Works with MRI Ruby 2</td>
+      <td><a href="https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/unsupported.yml"><img src="https://img.shields.io/badge/Ruby-2.7-DF00CA?style=for-the-badge&amp;logo=ruby&amp;logoColor=white" alt="Ruby 2.7 Compat"></a></td>
+    </tr>
+    <tr>
+      <td>Source</td>
+      <td>
+<a href="https://gitlab.com/kettle-rb/kettle-soup-cover/"><img src="https://img.shields.io/badge/GitLab-FBA326?style=for-the-badge&amp;logo=Gitlab&amp;logoColor=orange" alt="Source on GitLab.com"></a> <a href="https://codeberg.org/kettle-rb/kettle-soup-cover"><img src="https://img.shields.io/badge/CodeBerg-4893CC?style=for-the-badge&amp;logo=CodeBerg&amp;logoColor=blue" alt="Source on CodeBerg.org"></a> <a href="https://github.com/kettle-rb/kettle-soup-cover"><img src="https://img.shields.io/badge/GitHub-238636?style=for-the-badge&amp;logo=Github&amp;logoColor=green" alt="Source on Github.com"></a> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="https://img.shields.io/badge/KLOC-0.137-FFDD67.svg?style=for-the-badge&amp;logo=YouTube&amp;logoColor=blue" alt="The best SHA: dQw4w9WgXcQ!"></a>
+</td>
+    </tr>
+    <tr>
+      <td>Documentation</td>
+      <td>
+<a href="http://rubydoc.info/gems/kettle-soup-cover"><img src="https://img.shields.io/badge/RubyDoc-Current_Release-943CD2?style=for-the-badge&amp;logo=readthedocs&amp;logoColor=white" alt="Current release on RubyDoc.info"></a> <a href="https://rubydoc.info/github/kettle-rb/kettle-soup-cover/main"><img src="https://img.shields.io/badge/RubyDoc-HEAD-943CD2?style=for-the-badge&amp;logo=readthedocs&amp;logoColor=white" alt="HEAD on RubyDoc.info"></a> <a href="http://www.railsbling.com/tags/kettle-soup-cover"><img src="https://img.shields.io/badge/blog-railsbling-0093D0.svg?style=for-the-badge&amp;logo=rubyonrails&amp;logoColor=orange" alt="BDFL Blog"></a> <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/wikis/home"><img src="https://img.shields.io/badge/wiki-examples-943CD2.svg?style=for-the-badge&amp;logo=Wiki&amp;logoColor=white" alt="Wiki"></a>
+</td>
+    </tr>
+    <tr>
+      <td>Compliance</td>
+      <td>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-259D6C.svg" alt="License: MIT"></a> <a href="https://www.ilo.org/declaration/lang--en/index.htm"><img src="https://img.shields.io/badge/ILO_Fundamental_Principles-%E2%9C%93-259D6C.svg?style=flat" alt="📄ilo-declaration-img"></a> <a href="file.SECURITY.html" title="&lt;img src=&quot;https://img.shields.io/badge/security-policy-259D6C.svg?style=flat&quot; alt=&quot;Security Policy&quot;&gt;"><img src="https://img.shields.io/badge/security-policy-259D6C.svg?style=flat" alt="Security Policy"></a> <a href="file.CODE_OF_CONDUCT.html" title="&lt;img src=&quot;https://img.shields.io/badge/Contributor_Covenant-2.1-259D6C.svg&quot; alt=&quot;Contributor Covenant 2.1&quot;&gt;"><img src="https://img.shields.io/badge/Contributor_Covenant-2.1-259D6C.svg" alt="Contributor Covenant 2.1"></a> <a href="https://semver.org/spec/v2.0.0.html"><img src="https://img.shields.io/badge/semver-2.0.0-259D6C.svg?style=flat" alt="SemVer 2.0.0"></a>
+</td>
+    </tr>
+    <tr>
+      <td>Style</td>
+      <td>
+<a href="https://github.com/rubocop-lts/rubocop-lts"><img src="https://img.shields.io/badge/code_style_%26_linting-rubocop--lts-34495e.svg?plastic&amp;logo=ruby&amp;logoColor=white" alt="Enforced Code Style Linter"></a> <a href="https://keepachangelog.com/en/1.0.0/"><img src="https://img.shields.io/badge/keep--a--changelog-1.0.0-34495e.svg?style=flat" alt="Keep-A-Changelog 1.0.0"></a> <a href="https://gitmoji.dev"><img src="https://img.shields.io/badge/gitmoji_commits-%20%F0%9F%98%9C%20%F0%9F%98%8D-34495e.svg?style=flat-square" alt="Gitmoji Commits"></a>
+</td>
+    </tr>
+    <tr>
+      <td>Support</td>
+      <td>
+<a href="https://discord.gg/3qme4XHNKN"><img src="https://img.shields.io/discord/1373797679469170758?style=for-the-badge" alt="Live Chat on Discord"></a> <a href="https://www.upwork.com/freelancers/~014942e9b056abdf86?mp_source=share"><img src="https://img.shields.io/badge/UpWork-13544E?style=for-the-badge&amp;logo=Upwork&amp;logoColor=white" alt="Get help from me on Upwork"></a> <a href="https://www.codementor.io/peterboling?utm_source=github&amp;utm_medium=button&amp;utm_term=peterboling&amp;utm_campaign=github"><img src="https://img.shields.io/badge/CodeMentor-Get_Help-1abc9c?style=for-the-badge&amp;logo=CodeMentor&amp;logoColor=white" alt="Get help from me on Codementor"></a>
+</td>
+    </tr>
+    <tr>
+      <td>Enterprise Support</td>
+      <td>
+<a href="https://tidelift.com/subscription"><img src="https://img.shields.io/badge/Tidelift_and_Sonar-Enterprise_Support-FD3456?style=for-the-badge&amp;logo=sonar&amp;logoColor=white" alt="Get help from me on Tidelift"></a><br>💡Subscribe for support guarantees covering <em>all</em> FLOSS dependencies!<br>💡Tidelift is part of <a href="https://blog.tidelift.com/tidelift-joins-sonar">Sonar</a>!<br>💡Tidelift pays maintainers to maintain the software you depend on!<br>📊<code>@</code>Pointy Haired Boss: An <a href="https://tidelift.com/subscription">enterprise support</a> subscription is “<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">never gonna let you down</a>”, and <em>supports</em> open source maintainers!</td>
+    </tr>
+    <tr>
+      <td>Comrade BDFL 🎖️</td>
+      <td>
+<a href="http://www.linkedin.com/in/peterboling"><img src="https://img.shields.io/badge/PeterBoling-LinkedIn-0B66C2?style=flat&amp;logo=newjapanprowrestling" alt="Follow Me on LinkedIn"></a> <a href="https://ruby.social/@galtzo"><img src="https://img.shields.io/mastodon/follow/109447111526622197?domain=https%3A%2F%2Fruby.social&amp;style=flat&amp;logo=mastodon&amp;label=Ruby%20%40galtzo" alt="Follow Me on Ruby.Social"></a> <a href="https://bsky.app/profile/galtzo.com"><img src="https://img.shields.io/badge/@galtzo.com-0285FF?style=flat&amp;logo=bluesky&amp;logoColor=white" alt="Follow Me on Bluesky"></a> <a href="http://www.railsbling.com/contact"><img src="https://img.shields.io/badge/Contact-BDFL-0093D0.svg?style=flat&amp;logo=rubyonrails&amp;logoColor=red" alt="Contact BDFL"></a> <a href="https://dev.to/galtzo"><img src="https://img.shields.io/badge/dev.to-0A0A0A?style=flat&amp;logo=devdotto&amp;logoColor=white" alt="My technical writing"></a>
+</td>
+    </tr>
+    <tr>
+      <td>
+<code>...</code> 💖</td>
+      <td>
+<a href="https://angel.co/u/peter-boling"><img src="https://img.shields.io/badge/peter--boling-orange?style=flat&amp;logo=wellfound" alt="Find Me on WellFound:"></a> <a href="https://www.crunchbase.com/person/peter-boling"><img src="https://img.shields.io/badge/peter--boling-purple?style=flat&amp;logo=crunchbase" alt="Find Me on CrunchBase"></a> <a href="https://linktr.ee/galtzo"><img src="https://img.shields.io/badge/galtzo-purple?style=flat&amp;logo=linktree" alt="My LinkTree"></a> <a href="https://about.me/peter.boling"><img src="https://img.shields.io/badge/about.me-0A0A0A?style=flat&amp;logo=aboutme&amp;logoColor=white" alt="More About Me"></a> <a href="https://codeberg.org/pboling">🧊</a> <a href="https://github.org/pboling">🐙</a>  <a href="https://sr.ht/~galtzo/">🛖</a> <a href="https://gitlab.com/pboling">🧪</a>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="-installation">✨ Installation</h2>
+
+<p>Install the gem and add to the application’s Gemfile by executing:</p>
+
+<pre class="code ruby"><code class="ruby">$ bundle add kettle-soup-cover
+</code></pre>
+
+<p>If bundler is not being used to manage dependencies, install the gem by executing:</p>
+
+<pre class="code ruby"><code class="ruby">$ gem install kettle-soup-cover
+</code></pre>
+
+<h3 id="-secure-installation">🔒 Secure Installation</h3>
+
+<p><code>kettle-soup-cover</code> is cryptographically signed, and has verifiable <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/tree/main/checksums">SHA-256 and SHA-512</a> checksums by<br>
+<a href="https://github.com/pboling/stone_checksums">stone_checksums</a>. Be sure the gem you install hasn’t been tampered with<br>
+by following the instructions below.</p>
+
+<p>Add my public key (if you haven’t already, expires 2045-04-29) as a trusted certificate:</p>
+
+<pre class="code language-shell"><code class="language-shell">gem cert --add &lt;(curl -Ls https://raw.github.com/kettle-rb/kettle-soup-cover/main/certs/pboling.pem)
+</code></pre>
+
+<p>You only need to do that once.  Then proceed to install with:</p>
+
+<pre class="code language-shell"><code class="language-shell">gem install kettle-soup-cover -P MediumSecurity
+</code></pre>
+
+<p>The <code>MediumSecurity</code> trust profile will verify signed gems, but allow the installation of unsigned dependencies.</p>
+
+<p>This is necessary because not all of <code>kettle-soup-cover</code>’s dependencies are signed, so we cannot use <code>HighSecurity</code>.</p>
+
+<p>If you want to up your security game full-time:</p>
+
+<pre class="code language-shell"><code class="language-shell">bundle config set --global trust-policy MediumSecurity
+</code></pre>
+
+<p>NOTE: Be prepared to track down certs for signed gems and add them the same way you added mine.</p>
+
+<h2 id="-basic-usage">🔧 Basic Usage</h2>
+
+<h3 id="rspec-or-minitest">RSpec or MiniTest</h3>
+
+<p>In your <code>spec/spec_helper.rb</code> or <code>tests/test_helper.rb</code>, just before loading the library under test,<br>
+add two lines of code:</p>
+
+<h3 id="with-ruby-27">With Ruby 2.7+</h3>
+
+<pre class="code language-ruby"><code class="language-ruby">require &quot;kettle-soup-cover&quot;
+require &quot;simplecov&quot; if Kettle::Soup::Cover::DO_COV # `.simplecov` is run here!
+# IMPORTANT: If you are using MiniTest instead of RSpec, also do this (and not in .simplecov):
+# SimpleCov.external_at_exit = true
+</code></pre>
+
+<h3 id="projects-that-run-tests-against-older-ruby-versions-eg-with-appraisals">Projects that run tests against older Ruby versions, e.g. with Appraisals</h3>
+
+<pre class="code language-ruby"><code class="language-ruby"># NOTE: Gemfiles for older rubies won&#39;t have kettle-soup-cover.
+#       The rescue LoadError handles that scenario.
+begin
+  require &quot;kettle-soup-cover&quot;
+
+  if Kettle::Soup::Cover::DO_COV
+    require &quot;simplecov&quot; # `.simplecov` is run here!
+
+    # IMPORTANT: If you are using MiniTest instead of RSpec, also do this (and not in .simplecov):
+    # SimpleCov.external_at_exit = true
+  end
+rescue LoadError =&gt; error
+  # check the error message, if you are so inclined, and re-raise if not what is expected
+  raise error unless error.message.include?(&quot;kettle&quot;)
+end
+</code></pre>
+
+<h3 id="all-projects">All projects</h3>
+
+<p>In your <code>.simplecov</code> file, add 2 lines of code:</p>
+
+<pre class="code language-ruby"><code class="language-ruby">require &quot;kettle/soup/cover/config&quot; # 12-factor, ENV-based configuration, with good defaults!
+# you could do this somewhere else, up to you, but you do have to do it somewhere
+SimpleCov.start
+</code></pre>
+
+<p>See <a href="#advanced-usage">Advanced Usage</a> below for more info,<br>
+but the simplest thing is to run all the coverage things,<br>
+which is configured by default on CI.  To replicate that locally you could:</p>
+
+<pre class="code language-shell"><code class="language-shell">CI=true bundle exec rake test # or whatever command you run for tests.
+</code></pre>
+
+<p>That’s it!</p>
+
+<h3 id="rakefile">Rakefile</h3>
+
+<p>You’ll need to have your <code>test</code> task defined.<br>
+If you use <code>spec</code> instead, you can make it a pre-requisite of the <code>test</code> task with:</p>
+
+<pre class="code language-ruby"><code class="language-ruby">desc &quot;run spec task with test task&quot;
+task test: :spec
+</code></pre>
+
+<p>This gem provides a <code>coverage</code> task.<br>
+It runs the <code>test</code> task (see just above about that),<br>
+and opens the coverage results in a browser.</p>
+
+<pre class="code language-ruby"><code class="language-ruby">require &quot;kettle-soup-cover&quot;
+Kettle::Soup::Cover.install_tasks
+</code></pre>
+
+<h3 id="filters">Filters</h3>
+
+<p>There are two built-in SimpleCov filters which can be loaded via <code>Kettle::Soup::Cover.load_filters</code>.</p>
+
+<p>You could use them like this:</p>
+<pre class="code language-ruby"><code class="language-ruby">SimpleCov.add_group(&quot;Too Long&quot;, Kettle::Soup::Cover::Filters::GtLineFilter.new(1000))
+</code></pre>
+
+<h3 id="advanced-usage">Advanced Usage</h3>
+
+<p>There are a number of ENV variables that control things within this gem.<br>
+All of them can be found, along with their default values, in <a href="/lib/kettle/soup/cover.rb">lib/kettle/soup/cover.rb</a>.</p>
+
+<h4 id="handy-list-of-env-variables">Handy List of ENV Variables</h4>
+
+<p>Most are self explanatory.<br>
+I tried to follow POLS, the principle of least surprise, so they mostly <em>DWTFYT</em>.<br>
+Want to help improve this documentation? PRs are easy!</p>
+
+<pre class="code language-shell"><code class="language-shell">K_SOUP_COV_COMMAND_NAME
+K_SOUP_COV_DEBUG
+K_SOUP_COV_DIR
+K_SOUP_COV_DO
+K_SOUP_COV_FILTER_DIRS
+K_SOUP_COV_FORMATTERS
+K_SOUP_COV_MERGE_TIMEOUT
+K_SOUP_COV_MIN_BRANCH
+K_SOUP_COV_MIN_HARD
+K_SOUP_COV_MIN_LINE
+K_SOUP_COV_MULTI_FORMATTERS
+K_SOUP_COV_PREFIX
+K_SOUP_COV_OPEN_BIN
+K_SOUP_COV_USE_MERGING
+K_SOUP_COV_VERBOSE
+</code></pre>
+
+<p>Additionally, some of the included gems, like <a href="https://github.com/chetan/simplecov-console#options"><code>simplecov-console</code></a>,<br>
+have their own complete suite of ENV variables you can configure.</p>
+
+<h4 id="compatible-with-github-actions-for-code-coverage-feedback-in-pull-requests">Compatible with GitHub Actions for Code Coverage feedback in pull requests</h4>
+
+<p>If you don’t want to configure a SaaS service to update your pull requests with<br>
+code coverage there are alternatives.</p>
+
+<p>After the step that runs your test suite use one or more of the following.</p>
+
+<h5 id="irongutcodecoveragesummary">irongut/CodeCoverageSummary</h5>
+
+<p>Repo: <a href="https://github.com/irongut/CodeCoverageSummary">irongut/CodeCoverageSummary</a></p>
+
+<pre class="code language-yaml"><code class="language-yaml">
+      - name: Code Coverage Summary Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        if: ${{ github.event_name == &#39;pull_request&#39; }}
+        with:
+          filename: ./coverage/coverage.xml
+          badge: true
+          fail_below_min: true
+          format: markdown
+          hide_branch_rate: false
+          hide_complexity: true
+          indicators: true
+          output: both
+          thresholds: &#39;100 100&#39; # &#39;&lt;MIN LINE COVERAGE&gt; &lt;MIN BRANCH COVERAGE&gt;&#39;
+        continue-on-error: ${{ matrix.experimental != &#39;false&#39; }}
+</code></pre>
+
+<h5 id="marocchinosticky-pull-request-comment"><em>marocchino/sticky-pull-request-comment</em></h5>
+
+<p>Repo: <a href="https://github.com/marocchino/sticky-pull-request-comment">marocchino/sticky-pull-request-comment</a></p>
+
+<pre class="code language-yaml"><code class="language-yaml">      - name: Add Coverage PR Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: ${{ github.event_name == &#39;pull_request&#39; }}
+        with:
+          recreate: true
+          path: code-coverage-results.md
+        continue-on-error: ${{ matrix.experimental != &#39;false&#39; }}
+</code></pre>
+
+<h3 id="-release-instructions">🚀 Release Instructions</h3>
+
+<p>See <a href="file.CONTRIBUTING.html" title="CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
+
+<h2 id="-security">🔐 Security</h2>
+
+<p>See <a href="file.SECURITY.html" title="SECURITY.md">SECURITY.md</a>.</p>
+
+<h2 id="-contributing">🤝 Contributing</h2>
+
+<p>If you need some ideas of where to help, you could work on adding more code coverage,<br>
+or if it is already 💯 (see <a href="#code-coverage">below</a>) check <a href="https://github.com/kettle-rb/kettle-soup-cover/issues">issues</a>, or <a href="https://github.com/kettle-rb/kettle-soup-cover/pulls">PRs</a>,<br>
+or use the gem and think about how it could be better.</p>
+
+<p>We <a href="https://keepachangelog.com/en/1.0.0/"><img src="https://img.shields.io/badge/keep--a--changelog-1.0.0-34495e.svg?style=flat" alt="Keep A Changelog"></a> so if you make changes, remember to update it.</p>
+
+<p>See <a href="file.CONTRIBUTING.html" title="CONTRIBUTING.md">CONTRIBUTING.md</a> for more detailed instructions.</p>
+
+<h3 id="code-coverage">Code Coverage</h3>
+
+<p><a href="https://codecov.io/gh/kettle-rb/kettle-soup-cover"><img src="https://codecov.io/gh/kettle-rb/kettle-soup-cover/graphs/tree.svg?token=0X5VEW9USD" alt="Coverage Graph"></a></p>
+
+<h3 id="-code-of-conduct">🪇 Code of Conduct</h3>
+
+<p>Everyone interacting in this project’s codebases, issue trackers,<br>
+chat rooms and mailing lists is expected to follow the <a href="file.CODE_OF_CONDUCT.html" title="&lt;img src=&quot;https://img.shields.io/badge/Contributor_Covenant-2.1-259D6C.svg&quot; alt=&quot;Contributor Covenant 2.1&quot;&gt;"><img src="https://img.shields.io/badge/Contributor_Covenant-2.1-259D6C.svg" alt="Contributor Covenant 2.1"></a>.</p>
+
+<h2 id="-contributors">🌈 Contributors</h2>
+
+<p><a href="https://github.com/kettle-rb/kettle-soup-cover/graphs/contributors"><img src="https://contrib.rocks/image?repo=kettle-rb/kettle-soup-cover" alt="Contributors"></a></p>
+
+<p>Made with <a href="https://contrib.rocks">contributors-img</a>.</p>
+
+<p>Also see GitLab Contributors: <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/graphs/main">https://gitlab.com/kettle-rb/kettle-soup-cover/-/graphs/main</a></p>
+
+<h2 id="️-star-history">⭐️ Star History</h2>
+
+<p><a href="https://star-history.com/#kettle-rb/kettle-soup-cover&amp;Date"></a></p>
+<picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=kettle-rb/kettle-soup-cover&amp;type=Date&amp;theme=dark"></source>
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=kettle-rb/kettle-soup-cover&amp;type=Date"></source>
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=kettle-rb/kettle-soup-cover&amp;type=Date">
+ </picture>
+<p>&lt;/a&gt;</p>
+
+<h2 id="-versioning">📌 Versioning</h2>
+
+<p>This Library adheres to <a href="https://semver.org/spec/v2.0.0.html"><img src="https://img.shields.io/badge/semver-2.0.0-259D6C.svg?style=flat" alt="Semantic Versioning 2.0.0"></a>.<br>
+Violations of this scheme should be reported as bugs.<br>
+Specifically, if a minor or patch version is released that breaks backward compatibility,<br>
+a new version should be immediately released that restores compatibility.<br>
+Breaking changes to the public API will only be introduced with new major versions.</p>
+
+<h3 id="-is-platform-support-part-of-the-public-api">📌 Is “Platform Support” part of the public API?</h3>
+
+<p>Yes.  But I’m obligated to include notes…</p>
+
+<p>SemVer should, but doesn’t explicitly, say that dropping support for specific Platforms<br>
+is a <em>breaking change</em> to an API.<br>
+It is obvious to many, but not all, and since the spec is silent, the bike shedding is endless.</p>
+
+<blockquote>
+  <p>dropping support for a platform is both obviously and objectively a breaking change</p>
+</blockquote>
+
+<ul>
+  <li>Jordan Harband (@ljharb, maintainer of SemVer) <a href="https://github.com/semver/semver/issues/716#issuecomment-869336139">in SemVer issue 716</a>
+</li>
+</ul>
+
+<p>To get a better understanding of how SemVer is intended to work over a project’s lifetime,<br>
+read this article from the creator of SemVer:</p>
+
+<ul>
+  <li><a href="https://tom.preston-werner.com/2022/05/23/major-version-numbers-are-not-sacred.html">“Major Version Numbers are Not Sacred”</a></li>
+</ul>
+
+<p>As a result of this policy, and the interpretive lens used by the maintainer,<br>
+you can (and should) specify a dependency on these libraries using<br>
+the <a href="http://guides.rubygems.org/patterns/#pessimistic-version-constraint">Pessimistic Version Constraint</a> with two digits of precision.</p>
+
+<p>For example:</p>
+
+<pre class="code language-ruby"><code class="language-ruby">spec.add_dependency(&quot;kettle-soup-cover&quot;, &quot;~&gt; 1.0&quot;)
+</code></pre>
+
+<p>See <a href="file.CHANGELOG.html" title="CHANGELOG.md">CHANGELOG.md</a> for list of releases.</p>
+
+<h2 id="-license">📄 License</h2>
+
+<p>The gem is available as open source under the terms of<br>
+the <a href="file.LICENSE.html" title="MIT License">MIT License</a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-259D6C.svg" alt="License: MIT"></a>.<br>
+See <a href="file.LICENSE.html" title="LICENSE.txt">LICENSE.txt</a> for the official <a href="https://opensource.stackexchange.com/questions/5778/why-do-licenses-such-as-the-mit-license-specify-a-single-year">Copyright Notice</a>.</p>
+
+<h3 id="-copyright">© Copyright</h3>
+
+<p>
+  Copyright (c) 2023 - 2025 Peter H. Boling,
+  <a href="https://railsbling.com">
+    RailsBling.com
+    <picture>
+      <img alt="Rails Bling" height="20" src="https://railsbling.com/images/logos/RailsBling-TrainLogo.svg">
+    </picture>
+  </a>
+</p>
+
+<h2 id="-one-more-thing">🤑 One more thing</h2>
+
+<p>You made it to the bottom of the page,<br>
+so perhaps you’ll indulge me for another 20 seconds.<br>
+I maintain many dozens of gems, including this one,<br>
+because I want Ruby to be a great place for people to solve problems, big and small.<br>
+Please consider supporting my efforts via the giant yellow link below,<br>
+or one of the others at the head of this README.</p>
+
+<p><a href="https://www.buymeacoffee.com/pboling"><img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20latte&amp;emoji=&amp;slug=pboling&amp;button_colour=FFDD00&amp;font_colour=000000&amp;font_family=Cookie&amp;outline_colour=000000&amp;coffee_colour=ffffff" alt="Buy me a latte"></a></p>
+
+</div></div>
+
+      <div id="footer">
+  Generated on Wed May 21 01:24:47 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.4.2).
+</div>
+
+    </div>
+  </body>
+</html>

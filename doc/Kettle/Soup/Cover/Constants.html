@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Kettle::Soup::Cover::Constants
+  
+    &mdash; Documentation by YARD 0.9.37
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Kettle::Soup::Cover::Constants";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Kettle.html" title="Kettle (module)">Kettle</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Soup.html" title="Kettle::Soup (module)">Soup</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Cover.html" title="Kettle::Soup::Cover (module)">Cover</a></span></span>
+     &raquo; 
+    <span class="title">Constants</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Kettle::Soup::Cover::Constants
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+  <dl>
+    <dt>Included in:</dt>
+    <dd><span class='object_link'><a href="../Cover.html" title="Kettle::Soup::Cover (module)">Kettle::Soup::Cover</a></span></dd>
+  </dl>
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/kettle/soup/cover/constants.rb</dd>
+  </dl>
+  
+</div>
+
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="FALSE-constant" class="">FALSE =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>false</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="TRUE-constant" class="">TRUE =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>true</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="PREFIX-constant" class="">PREFIX =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>ENV</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>K_SOUP_COV_PREFIX</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>K_SOUP_COV_</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="ENV_GET-constant" class="">ENV_GET =
+          
+        </dt>
+        <dd><pre class="code"><span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_suffix'>suffix</span><span class='comma'>,</span> <span class='id identifier rubyid_default'>default</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='const'>ENV</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#PREFIX-constant" title="Kettle::Soup::Cover::Constants::PREFIX (constant)">PREFIX</a></span></span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_suffix'>suffix</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_default'>default</span><span class='rparen'>)</span> <span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="FORMATTER_PLUGINS-constant" class="">FORMATTER_PLUGINS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='comment'># HTML for Humans
+</span>  <span class='label'>html:</span> <span class='lbrace'>{</span>
+    <span class='label'>type:</span> <span class='symbol'>:html</span><span class='comma'>,</span>
+    <span class='label'>klass:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>HTMLFormatter</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>lib:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>simplecov-html</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='comment'># XML for Jenkins
+</span>  <span class='label'>xml:</span> <span class='lbrace'>{</span>
+    <span class='label'>type:</span> <span class='symbol'>:xml</span><span class='comma'>,</span>
+    <span class='label'>klass:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CoberturaFormatter</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>lib:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>simplecov-cobertura</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='comment'># RCOV for Hudson
+</span>  <span class='label'>rcov:</span> <span class='lbrace'>{</span>
+    <span class='label'>type:</span> <span class='symbol'>:rcov</span><span class='comma'>,</span>
+    <span class='label'>klass:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>RcovFormatter</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>lib:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>simplecov-rcov</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='comment'># LCOV for GCOV
+</span>  <span class='label'>lcov:</span> <span class='lbrace'>{</span>
+    <span class='label'>type:</span> <span class='symbol'>:lcov</span><span class='comma'>,</span>
+    <span class='label'>klass:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>LcovFormatter</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>lib:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>simplecov-lcov</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='comment'># JSON for CodeClimate
+</span>  <span class='label'>json:</span> <span class='lbrace'>{</span>
+    <span class='label'>type:</span> <span class='symbol'>:json</span><span class='comma'>,</span>
+    <span class='label'>klass:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>JSONFormatter</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>lib:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>simplecov_json_formatter</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='comment'># TTY / Console output
+</span>  <span class='label'>tty:</span> <span class='lbrace'>{</span>
+    <span class='label'>type:</span> <span class='symbol'>:tty</span><span class='comma'>,</span>
+    <span class='label'>klass:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Console</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>lib:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>simplecov-console</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="CI-constant" class="">CI =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>ENV</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CI</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#FALSE-constant" title="Kettle::Soup::Cover::Constants::FALSE (constant)">FALSE</a></span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="IS_CI-constant" class="">IS_CI =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#CI-constant" title="Kettle::Soup::Cover::Constants::CI (constant)">CI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#TRUE-constant" title="Kettle::Soup::Cover::Constants::TRUE (constant)">TRUE</a></span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="COMMAND_NAME-constant" class="">COMMAND_NAME =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>COMMAND_NAME</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>RSpec (COVERAGE)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="COVERAGE_DIR-constant" class="">COVERAGE_DIR =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DIR</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>coverage</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="DEBUG-constant" class="">DEBUG =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DEBUG</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#FALSE-constant" title="Kettle::Soup::Cover::Constants::FALSE (constant)">FALSE</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#TRUE-constant" title="Kettle::Soup::Cover::Constants::TRUE (constant)">TRUE</a></span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="DO_COV-constant" class="">DO_COV =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DO</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#CI-constant" title="Kettle::Soup::Cover::Constants::CI (constant)">CI</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#TRUE-constant" title="Kettle::Soup::Cover::Constants::TRUE (constant)">TRUE</a></span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="FILTER_DIRS-constant" class="">FILTER_DIRS =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span>
+<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FILTER_DIRS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bin,certs,checksums,config,coverage,docs,features,gemfiles,pkg,results,sig,spec,src,test,test-results,vendor</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+        <span class='rparen'>)</span>
+<span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_dir_name'>dir_name</span><span class='op'>|</span> <span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>^/</span><span class='embexpr_beg'>#{</span><span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_dir_name'>dir_name</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='regexp_end'>}</span></span> <span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="FORMATTERS-constant" class="">FORMATTERS =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span>
+<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FORMATTERS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+<span class='const'><span class='object_link'><a href="#IS_CI-constant" title="Kettle::Soup::Cover::Constants::IS_CI (constant)">IS_CI</a></span></span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>html,xml,rcov,lcov,json,tty</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>html,tty</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+        <span class='rparen'>)</span>
+<span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_fmt_name'>fmt_name</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="#FORMATTER_PLUGINS-constant" title="Kettle::Soup::Cover::Constants::FORMATTER_PLUGINS (constant)">FORMATTER_PLUGINS</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_fmt_name'>fmt_name</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="MIN_COVERAGE_HARD-constant" class="">MIN_COVERAGE_HARD =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MIN_HARD</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#CI-constant" title="Kettle::Soup::Cover::Constants::CI (constant)">CI</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#TRUE-constant" title="Kettle::Soup::Cover::Constants::TRUE (constant)">TRUE</a></span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="MIN_COVERAGE_BRANCH-constant" class="">MIN_COVERAGE_BRANCH =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MIN_BRANCH</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>80</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span></pre></dd>
+      
+        <dt id="MIN_COVERAGE_LINE-constant" class="">MIN_COVERAGE_LINE =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MIN_LINE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>80</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span></pre></dd>
+      
+        <dt id="MULTI_FORMATTERS_DEFAULT-constant" class="">MULTI_FORMATTERS_DEFAULT =
+          
+        </dt>
+        <dd><pre class="code"><span class='kw'>if</span> <span class='const'><span class='object_link'><a href="#IS_CI-constant" title="Kettle::Soup::Cover::Constants::IS_CI (constant)">IS_CI</a></span></span>
+  <span class='const'><span class='object_link'><a href="#TRUE-constant" title="Kettle::Soup::Cover::Constants::TRUE (constant)">TRUE</a></span></span>
+<span class='kw'>else</span>
+  <span class='const'><span class='object_link'><a href="#FORMATTERS-constant" title="Kettle::Soup::Cover::Constants::FORMATTERS (constant)">FORMATTERS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='op'>?</span> <span class='const'><span class='object_link'><a href="#TRUE-constant" title="Kettle::Soup::Cover::Constants::TRUE (constant)">TRUE</a></span></span> <span class='op'>:</span> <span class='const'><span class='object_link'><a href="#FALSE-constant" title="Kettle::Soup::Cover::Constants::FALSE (constant)">FALSE</a></span></span>
+<span class='kw'>end</span></pre></dd>
+      
+        <dt id="MULTI_FORMATTERS-constant" class="">MULTI_FORMATTERS =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MULTI_FORMATTERS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#MULTI_FORMATTERS_DEFAULT-constant" title="Kettle::Soup::Cover::Constants::MULTI_FORMATTERS_DEFAULT (constant)">MULTI_FORMATTERS_DEFAULT</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#TRUE-constant" title="Kettle::Soup::Cover::Constants::TRUE (constant)">TRUE</a></span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="OPEN_BIN-constant" class="">OPEN_BIN =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Set to “” to prevent opening a browser with the coverage rake task</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OPEN_BIN</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_is_mac'>is_mac</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>open</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>xdg-open</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="USE_MERGING-constant" class="">USE_MERGING =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>USE_MERGING</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span><span class='op'>&amp;.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#TRUE-constant" title="Kettle::Soup::Cover::Constants::TRUE (constant)">TRUE</a></span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="MERGE_TIMEOUT-constant" class="">MERGE_TIMEOUT =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MERGE_TIMEOUT</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span><span class='op'>&amp;.</span><span class='id identifier rubyid_to_i'>to_i</span></pre></dd>
+      
+        <dt id="VERBOSE-constant" class="">VERBOSE =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VERBOSE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#FALSE-constant" title="Kettle::Soup::Cover::Constants::FALSE (constant)">FALSE</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_casecmp?'>casecmp?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#TRUE-constant" title="Kettle::Soup::Cover::Constants::TRUE (constant)">TRUE</a></span></span><span class='rparen'>)</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+
+
+</div>
+
+      <div id="footer">
+  Generated on Wed May 21 01:24:47 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.4.2).
+</div>
+
+    </div>
+  </body>
+</html>

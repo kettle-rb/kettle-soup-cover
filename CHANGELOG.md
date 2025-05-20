@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 11.11% documented
 ### Added
 - Link to discussions on GitHub
+- Documentation site on GitHub Pages
 ### Changed
 - Fixed `spec.homepage` and `spec.source_code_uri` in gemspec
 
