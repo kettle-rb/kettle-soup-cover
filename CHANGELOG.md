@@ -11,7 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Removed
 
+## [1.0.8] - 2025-05-20
+- COVERAGE: 93.43% -- 128/137 lines in 10 files
+- BRANCH COVERAGE: 50.00% -- 16/32 branches in 10 files
+- 11.11% documented
+### Added
+- Link to discussions on GitHub
+### Changed
+- Fixed `spec.homepage` and `spec.source_code_uri` in gemspec
+
 ## [1.0.7] - 2025-05-20
+- COVERAGE: 93.43% -- 128/137 lines in 10 files
+- BRANCH COVERAGE: 50.00% -- 16/32 branches in 10 files
+- 11.11% documented
 ### Added
 - Document usage with minitest
 - Document usage with https://github.com/irongut/CodeCoverageSummary
@@ -118,7 +130,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2023-10-17
 - Initial release
 
-[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.7...HEAD
+[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.8...HEAD
+[1.0.8]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.7...v1.0.8
 [1.0.7]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.6...v1.0.7
 [1.0.6]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.5...v1.0.6
 [1.0.5]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.4...v1.0.5
