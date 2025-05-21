@@ -541,10 +541,10 @@ or one of the others at the head of this README.
 [💎ruby-headi]: https://img.shields.io/badge/Ruby-HEAD-CC342D?style=for-the-badge&logo=ruby&logoColor=blue
 [🤝gh-issues]: https://github.com/kettle-rb/kettle-soup-cover/issues
 [🤝gh-pulls]: https://github.com/kettle-rb/kettle-soup-cover/pulls
-[🤝gl-issues]: https://gitlab.com/oauth-xx/oauth2/-/issues
-[🤝gl-pulls]: https://gitlab.com/oauth-xx/oauth2/-/merge_requests
-[🤝cb-issues]: https://codeberg.org/oauth-xx/oauth2/issues
-[🤝cb-pulls]: https://codeberg.org/oauth-xx/oauth2/pulls
+[🤝gl-issues]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/issues
+[🤝gl-pulls]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/merge_requests
+[🤝cb-issues]: https://codeberg.org/kettle-rb/kettle-soup-cover/issues
+[🤝cb-pulls]: https://codeberg.org/kettle-rb/kettle-soup-cover/pulls
 [🤝cb-donate]: https://donate.codeberg.org/
 [🤝contributing]: CONTRIBUTING.md
 [🔑codecov-g♻️]: https://codecov.io/gh/kettle-rb/kettle-soup-cover/graphs/tree.svg?token=0X5VEW9USD

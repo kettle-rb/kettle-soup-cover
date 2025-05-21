@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add GitHub Pages site to badge info table
 ### Changed
 ### Fixed
+- Fix bad links to issues and pull / merge requests
 ### Removed
 
 ## [1.0.9] - 2025-05-20
