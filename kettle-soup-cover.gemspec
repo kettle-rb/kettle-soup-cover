@@ -95,7 +95,7 @@ Gem::Specification.new do |spec|
   spec.executables = []
 
   # Utilities
-  spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.7")
+  spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.8")
 
   # Release Tasks
   spec.add_development_dependency("rake", "~> 13.0")
@@ -105,18 +105,18 @@ Gem::Specification.new do |spec|
   # CodeCov + GitHub setup is not via gems: https://github.com/marketplace/actions/codecov
   spec.add_dependency("simplecov", "~> 0.22") # Includes dependency on simplecov-html
   spec.add_dependency("simplecov-cobertura", "~> 3.0") # Ruby >= 2.5, provides GitLab, Jenkins compatibility (XML)
-  spec.add_dependency("simplecov-console", "~> 0.9", ">= 0.9.1") # TTY / Console output
-  spec.add_dependency("simplecov-html", "~> 0.12") # GHA, Human compatibility! (HTML)
+  spec.add_dependency("simplecov-console", "~> 0.9", ">= 0.9.3") # TTY / Console output
+  spec.add_dependency("simplecov-html", "~> 0.13", ">= 0.13.1") # GHA, Human compatibility! (HTML)
   spec.add_dependency("simplecov_json_formatter", "~> 0.1", ">= 0.1.4") # GHA, Jenkins X, CircleCI, Travis CI, BitBucket, CodeClimate compatibility (JSON)
   spec.add_dependency("simplecov-lcov", "~> 0.8") # GHA, Jenkins X, CircleCI, Travis CI, TeamCity, GCOV compatibility
-  spec.add_dependency("simplecov-rcov", "~> 0.3", ">= 0.3.3") # Hudson compatibility
+  spec.add_dependency("simplecov-rcov", "~> 0.3", ">= 0.3.7") # Hudson compatibility
 
   # Documentation
   spec.add_development_dependency("yard", "~> 0.9", ">= 0.9.37")
   spec.add_development_dependency("yard-junk", "~> 0.0", ">= 0.0.10")
 
   # Linting
-  # RuboCop is constrained due to major changes newer RuboCop, and the team's disinterest in SemVer
+  # RuboCop is constrained due to major changes in newer RuboCop, and the team's disinterest in SemVer
   spec.add_development_dependency("rubocop-lts", "~> 18.1", ">= 18.2.1") # Lint & Style Support for Ruby 2.7+
   spec.add_development_dependency("rubocop-packaging", "~> 0.6", ">= 0.6.0")
   spec.add_development_dependency("rubocop-rspec", "~> 3.5")
@@ -126,5 +126,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("rspec-block_is_expected", "~> 1.0", ">= 1.0.6")
   spec.add_development_dependency("rspec_junit_formatter", "~> 0.6")
   spec.add_development_dependency("rspec-stubbed_env", "~> 1.0", ">= 1.0.2")
-  spec.add_development_dependency("silent_stream", "~> 1.0", ">= 1.0.8")
+  spec.add_development_dependency("silent_stream", "~> 1.0", ">= 1.0.11")
 end
