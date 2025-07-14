@@ -104,7 +104,7 @@ Gem::Specification.new do |spec|
   # Code Coverage
   # CodeCov + GitHub setup is not via gems: https://github.com/marketplace/actions/codecov
   spec.add_dependency("simplecov", "~> 0.22") # Includes dependency on simplecov-html
-  spec.add_dependency("simplecov-cobertura", "~> 2.1") # GitLab, Jenkins compatibility (XML)
+  spec.add_dependency("simplecov-cobertura", "~> 3.0") # Ruby >= 2.5, provides GitLab, Jenkins compatibility (XML)
   spec.add_dependency("simplecov-console", "~> 0.9", ">= 0.9.1") # TTY / Console output
   spec.add_dependency("simplecov-html", "~> 0.12") # GHA, Human compatibility! (HTML)
   spec.add_dependency("simplecov_json_formatter", "~> 0.1", ">= 0.1.4") # GHA, Jenkins X, CircleCI, Travis CI, BitBucket, CodeClimate compatibility (JSON)
