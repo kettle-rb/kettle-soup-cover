@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "bundler/gem_tasks"
+require "require_bench" if ENV.fetch("REQUIRE_BENCH", "false").casecmp?("true")
 
 defaults = []
 
@@ -40,6 +41,7 @@ rescue LoadError
   end
 end
 
+# Setup Tests
 begin
   require "rspec/core/rake_task"
 
@@ -73,19 +75,19 @@ end
 
 # Setup Yard
 begin
-  # require "yard/rake/yardoc_task"
   require "yard"
 
   YARD::Rake::YardocTask.new(:yard) do |t|
-    # t.before = -> { require "yard" }
     t.files = [
       # Source Splats (alphabetical)
       "lib/**/*.rb",
       "-", # source and extra docs are separated by "-"
       # Extra Files (alphabetical)
+      "*.cff",
       "*.md",
       "*.txt",
     ]
+    t.stats_options = ["--list-undoc"] if ENV.fetch("VERBOSE", "false").casecmp?("true")
   end
   defaults << "yard"
 rescue LoadError
