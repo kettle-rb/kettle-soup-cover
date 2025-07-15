@@ -1,17 +1,37 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+This file documents all notable changes to this project.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 ### Added
-- Add GitHub Pages site to badge info table
 ### Changed
-### Fixed
-- Fix bad links to issues and pull / merge requests
+### Deprecated
 ### Removed
+### Fixed
+### Security
+
+## [1.0.10] - 2025-07-15
+- COVERAGE: 93.43% -- 128/137 lines in 10 files
+- BRANCH COVERAGE: 50.00% -- 16/32 branches in 10 files
+- 11.11% documented
+### Added
+- Add GitHub Pages site to badge info table
+- YARD config, GFM compatible with relative file links
+- Documentation site on GitHub Pages
+  - [kettle-soup-cover.galtzo.com](https://kettle-soup-cover.galtzo.com)
+- Auto-assign issues in the GitHub issue tracker
+### Changed
+- Updated `spec.homepage_uri` in gemspec to GitHub Pages YARD documentation site
+- Updated contact email in gemspec to `floss@galtzo.com`
+- Upgraded runtime dependency minimums:
+  - simplecov-cobertura v3.0.0
+  - simplecov-html v0.13.1
+  - simplecov-rcov v0.3.7
+  - simplecov-console v0.9.3
+  - version_gem v1.1.8
 
 ## [1.0.9] - 2025-05-20
 - COVERAGE: 93.43% -- 128/137 lines in 10 files
@@ -143,7 +163,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2023-10-17
 - Initial release
 
-[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.8...HEAD
+[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.10...HEAD
+[1.0.10]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.9...v1.0.10
+[1.0.9]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.8...v1.0.9
 [1.0.8]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.7...v1.0.8
 [1.0.7]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.6...v1.0.7
 [1.0.6]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.5...v1.0.6
