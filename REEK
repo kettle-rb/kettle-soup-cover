@@ -19,4 +19,6 @@ lib/kettle/soup/cover/loaders.rb -- 5 warnings:
 lib/kettle/soup/cover.rb -- 2 warnings:
   [31]:IrresponsibleModule: Kettle::Soup::Cover has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
   [32]:IrresponsibleModule: Kettle::Soup::Cover::Error has no descriptive comment [https://github.com/troessner/reek/blob/v6.5.0/docs/Irresponsible-Module.md]
-15 total warnings
+.yard_gfm_support.rb -- 1 warning:
+  [9, 9]:FeatureEnvy: KramdownGfmDocument#initialize refers to 'options' more than self (maybe move it to another class?) [https://github.com/troessner/reek/blob/v6.5.0/docs/Feature-Envy.md]
+16 total warnings
