@@ -95,7 +95,7 @@ You'll have to configure them manually if you use them:
 * BuildKite's custom [simplecov extension][buildkite-ext]
 * GitHub Actions doesn't parse test output, but...
   * I configure my `coverage` workflow ([see example][example-cov-wf]) to upload coverage reports to SaaS services like:
-    * [codecov.io][🔑codecov] (needs token for upload)
+    * [codecov.io][🔑codecov] (has tokenless OIDC option!)
     * [QLTY.sh](https://qlty.sh) (needs token for upload)
     * [coveralls.io][🔑coveralls]
   * This gem helps me configure my `coverage` workflow to use Github Actions designed to report coverage like:
@@ -420,34 +420,17 @@ See [LICENSE.txt][📄license] for the official [Copyright Notice][📄copyright
 
 ### © Copyright
 
-<p>
-  Copyright (c) 2023 - 2025 Peter H. Boling,
-  <a href="https://railsbling.com">
-    RailsBling.com
-    <picture>
-      <img alt="Rails Bling" height="20" src="https://railsbling.com/images/logos/RailsBling-TrainLogo.svg" />
-    </picture>
-  </a>
-</p>
-
 <ul>
     <li>
         Copyright (c) 2023-2025 Peter H. Boling, of
         <a href="https://discord.gg/3qme4XHNKN">
             Galtzo.com
             <picture>
-              <img src="https://github.com/omniauth/omniauth-identity/raw/main/docs/images/logo/galtzo-floss-logos-wordless.svg?raw=true" alt="Galtzo.com Logo by Aboling0, CC BY-SA 4.0" width="24">
+              <img src="https://github.com/galtzo-floss/shields-badge/raw/main/docs/images/logo/galtzo-floss-logos-wordless.svg?raw=true" alt="Galtzo.com Logo by Aboling0, CC BY-SA 4.0" width="24">
             </picture>
-        </a>, and omniauth-identity contributors
-    </li>
-    <li>
-        Copyright (c) 2020 Peter H. Boling, Andrew Roberts, and Jellybooks Ltd.
-    </li>
-    <li>
-        Copyright (c) 2010-2015 Michael Bleigh, and Intridea, Inc.
+        </a>, and kettle-soup-cover contributors
     </li>
 </ul>
-
 
 ## 🤑 One more thing
 

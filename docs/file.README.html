@@ -59,13 +59,13 @@
 
       <div id="content"><div id='filecontents'><p align="center">
   <a href="https://discord.gg/3qme4XHNKN" target="_blank" rel="noopener">
-    <img width="124px" src="https://github.com/kettle-rb/kettle-soup-cover/raw/main/docs/images/logo/galtzo-floss-logos-original.svg?raw=true" alt="Galtzo.com Logo by Aboling0, CC BY-SA 4.0">
+    <img width="124px" src="https://github.com/galtzo-floss/shields-badge/raw/main/docs/images/logo/galtzo-floss-logos-original.svg?raw=true" alt="Galtzo.com Logo by Aboling0, CC BY-SA 4.0">
   </a>
   <a href="https://kettle-rb.gitlab.io/" target="_blank" rel="noopener">
     <img height="120px" src="https://kettle-rb.gitlab.io/assets/img/logos/logo-name-optimized.png" alt="kettle-rb logo, Copyright (c) 2023 Peter Boling, CC BY-SA 4.0, see https://kettle-rb.gitlab.io/logos">
   </a>
   <a href="https://www.ruby-lang.org/" target="_blank" rel="noopener">
-    <img width="124px" src="https://github.com/kettle-rb/kettle-soup-cover/raw/main/docs/images/logo/ruby-logo-198px.svg?raw=true" alt="Yukihiro Matsumoto, Ruby Visual Identity Team, CC BY-SA 2.5">
+    <img width="124px" src="https://github.com/galtzo-floss/shields-badge/raw/main/docs/images/logo/ruby-logo-198px.svg?raw=true" alt="Yukihiro Matsumoto, Ruby Visual Identity Team, CC BY-SA 2.5">
   </a>
 </p>
 
@@ -166,7 +166,7 @@ and I got all of them working, at the same time together, or al la carte. Kum-ba
 
 <p>A quick shot of 12-factor coverage power, straight to your brain:</p>
 
-<pre class="code language-shell"><code class="language-shell">export K_SOUP_COV_DO=true # Means you want code coverage
+<pre class="code language-console"><code class="language-console">export K_SOUP_COV_DO=true # Means you want code coverage
 export K_SOUP_COV_FORMATTERS=&quot;html,tty&quot; # Set to some slice of &quot;html,xml,rcov,lcov,json,tty&quot;
 export K_SOUP_COV_MIN_BRANCH=53 # Means you want to enforce X% branch coverage
 export K_SOUP_COV_MIN_HARD=true # Means you want the build to fail if the coverage thresholds are not met
@@ -329,7 +329,7 @@ Vendor-specific formats which are not shared by other vendors are also not suppo
       <li>I configure my <code>coverage</code> workflow (<a href="https://github.com/kettle-rb/kettle-soup-cover/blob/main/.github/workflows/coverage.yml">see example</a>) to upload coverage reports to SaaS services like:
         <ul>
           <li>
-<a href="https://codecov.io/gh/kettle-rb/kettle-soup-cover">codecov.io</a> (needs token for upload)</li>
+<a href="https://codecov.io/gh/kettle-rb/kettle-soup-cover">codecov.io</a> (has tokenless OIDC option!)</li>
           <li>
 <a href="https://qlty.sh">QLTY.sh</a> (needs token for upload)</li>
           <li><a href="https://coveralls.io/github/kettle-rb/kettle-soup-cover?branch=main">coveralls.io</a></li>
@@ -442,12 +442,12 @@ by following the instructions below.</p>
 
 <p>Add my public key (if you haven’t already, expires 2045-04-29) as a trusted certificate:</p>
 
-<pre class="code language-shell"><code class="language-shell">gem cert --add &lt;(curl -Ls https://raw.github.com/kettle-rb/kettle-soup-cover/main/certs/pboling.pem)
+<pre class="code language-console"><code class="language-console">gem cert --add &lt;(curl -Ls https://raw.github.com/kettle-rb/kettle-soup-cover/main/certs/pboling.pem)
 </code></pre>
 
 <p>You only need to do that once.  Then proceed to install with:</p>
 
-<pre class="code language-shell"><code class="language-shell">gem install kettle-soup-cover -P MediumSecurity
+<pre class="code language-console"><code class="language-console">gem install kettle-soup-cover -P MediumSecurity
 </code></pre>
 
 <p>The <code>MediumSecurity</code> trust profile will verify signed gems, but allow the installation of unsigned dependencies.</p>
@@ -456,7 +456,7 @@ by following the instructions below.</p>
 
 <p>If you want to up your security game full-time:</p>
 
-<pre class="code language-shell"><code class="language-shell">bundle config set --global trust-policy MediumSecurity
+<pre class="code language-console"><code class="language-console">bundle config set --global trust-policy MediumSecurity
 </code></pre>
 
 <p>NOTE: Be prepared to track down certs for signed gems and add them the same way you added mine.</p>
@@ -508,7 +508,7 @@ SimpleCov.start
 but the simplest thing is to run all the coverage things,<br>
 which is configured by default on CI.  To replicate that locally you could:</p>
 
-<pre class="code language-shell"><code class="language-shell">CI=true bundle exec rake test # or whatever command you run for tests.
+<pre class="code language-console"><code class="language-console">CI=true bundle exec rake test # or whatever command you run for tests.
 </code></pre>
 
 <p>That’s it!</p>
@@ -549,7 +549,7 @@ All of them can be found, along with their default values, in <a href="/lib/kett
 I tried to follow POLS, the principle of least surprise, so they mostly <em>DWTFYT</em>.<br>
 Want to help improve this documentation? PRs are easy!</p>
 
-<pre class="code language-shell"><code class="language-shell">K_SOUP_COV_COMMAND_NAME
+<pre class="code language-console"><code class="language-console">K_SOUP_COV_COMMAND_NAME
 K_SOUP_COV_DEBUG
 K_SOUP_COV_DIR
 K_SOUP_COV_DO
@@ -706,31 +706,38 @@ See <a href="file.LICENSE.html" title="LICENSE.txt">LICENSE.txt</a> for the offi
 
 <h3 id="-copyright">© Copyright</h3>
 
-<p>
-  Copyright (c) 2023 - 2025 Peter H. Boling,
-  <a href="https://railsbling.com">
-    RailsBling.com
-    <picture>
-      <img alt="Rails Bling" height="20" src="https://railsbling.com/images/logos/RailsBling-TrainLogo.svg">
-    </picture>
-  </a>
-</p>
+<ul>
+    <li>
+        Copyright (c) 2023-2025 Peter H. Boling, of
+        <a href="https://discord.gg/3qme4XHNKN">
+            Galtzo.com
+            <picture>
+              <img src="https://github.com/galtzo-floss/shields-badge/raw/main/docs/images/logo/galtzo-floss-logos-wordless.svg?raw=true" alt="Galtzo.com Logo by Aboling0, CC BY-SA 4.0" width="24">
+            </picture>
+        </a>, and kettle-soup-cover contributors
+    </li>
+</ul>
 
 <h2 id="-one-more-thing">🤑 One more thing</h2>
 
-<p>You made it to the bottom of the page,<br>
-so perhaps you’ll indulge me for another 20 seconds.<br>
-I maintain many dozens of gems, including this one,<br>
-because I want Ruby to be a great place for people to solve problems, big and small.<br>
-Please consider supporting my efforts via the giant yellow link below,<br>
-or one of the others at the head of this README.</p>
+<p>Having arrived at the bottom of the page, please endure a final supplication.<br>
+The primary maintainer of this gem, Peter Boling, wants<br>
+Ruby to be a great place for people to solve problems, big and small.<br>
+Please consider supporting his efforts via the giant yellow link below,<br>
+or one of smaller ones, depending on button size preference.</p>
 
 <p><a href="https://www.buymeacoffee.com/pboling"><img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20latte&amp;emoji=&amp;slug=pboling&amp;button_colour=FFDD00&amp;font_colour=000000&amp;font_family=Cookie&amp;outline_colour=000000&amp;coffee_colour=ffffff" alt="Buy me a latte"></a></p>
+
+<p><a href="https://liberapay.com/pboling/donate"><img src="https://img.shields.io/liberapay/goal/pboling.svg?logo=liberapay" alt="Liberapay Goal Progress"></a> <a href="https://github.com/sponsors/pboling"><img src="https://img.shields.io/badge/Sponsor_Me!-pboling.svg?style=social&amp;logo=github" alt="Sponsor Me on Github"></a> <a href="https://polar.sh/pboling"><img src="https://img.shields.io/badge/polar-donate-yellow.svg" alt="Donate on Polar"></a> <a href="https://ko-fi.com/O5O86SNP4"><img src="https://img.shields.io/badge/a_more_different_coffee-%E2%9C%93-yellow.svg" alt="Donate to my FLOSS or refugee efforts at ko-fi.com"></a> <a href="https://patreon.com/galtzo"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Donate to my FLOSS or refugee efforts using Patreon"></a></p>
+
+<p>P.S. If you need help️, or want to say thanks, 👇 Join the Discord.</p>
+
+<p><a href="https://discord.gg/3qme4XHNKN"><img src="https://img.shields.io/discord/1373797679469170758?style=for-the-badge" alt="Live Chat on Discord"></a></p>
 
 </div></div>
 
       <div id="footer">
-  Generated on Tue Jul 15 21:16:47 2025 by
+  Generated on Tue Jul 15 21:45:58 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.4).
 </div>
