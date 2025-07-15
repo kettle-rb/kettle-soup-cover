@@ -27,7 +27,7 @@ Take a look at the `reek` list which is the file called `REEK` and find somethin
 
 To refresh the `reek` list:
 
-```bash
+```console
 bundle exec reek > REEK
 ```
 
@@ -35,7 +35,7 @@ bundle exec reek > REEK
 
 To run all tests
 
-```bash
+```console
 bundle exec rake test
 ```
 
@@ -43,13 +43,13 @@ bundle exec rake test
 
 Run all the default tasks, which includes running the gradually autocorrecting linter, `rubocop-gradual`.
 
-```bash
+```console
 bundle exec rake
 ```
 
 Or just run the linter.
 
-```bash
+```console
 bundle exec rake rubocop_gradual:autocorrect
 ```
 

@@ -48,7 +48,7 @@ and I got all of them working, at the same time together, or al la carte. Kum-ba
 
 A quick shot of 12-factor coverage power, straight to your brain:
 
-```shell
+```console
 export K_SOUP_COV_DO=true # Means you want code coverage
 export K_SOUP_COV_FORMATTERS="html,tty" # Set to some slice of "html,xml,rcov,lcov,json,tty"
 export K_SOUP_COV_MIN_BRANCH=53 # Means you want to enforce X% branch coverage
@@ -142,13 +142,13 @@ by following the instructions below.
 
 Add my public key (if you haven’t already, expires 2045-04-29) as a trusted certificate:
 
-```shell
+```console
 gem cert --add <(curl -Ls https://raw.github.com/kettle-rb/kettle-soup-cover/main/certs/pboling.pem)
 ```
 
 You only need to do that once.  Then proceed to install with:
 
-```shell
+```console
 gem install kettle-soup-cover -P MediumSecurity
 ```
 
@@ -158,7 +158,7 @@ This is necessary because not all of `kettle-soup-cover`’s dependencies are si
 
 If you want to up your security game full-time:
 
-```shell
+```console
 bundle config set --global trust-policy MediumSecurity
 ```
 
@@ -214,7 +214,7 @@ See [Advanced Usage](#advanced-usage) below for more info,
 but the simplest thing is to run all the coverage things,
 which is configured by default on CI.  To replicate that locally you could:
 
-```shell
+```console
 CI=true bundle exec rake test # or whatever command you run for tests.
 ```
 
@@ -259,7 +259,7 @@ Most are self explanatory.
 I tried to follow POLS, the principle of least surprise, so they mostly _DWTFYT_.
 Want to help improve this documentation? PRs are easy!
 
-```shell
+```console
 K_SOUP_COV_COMMAND_NAME
 K_SOUP_COV_DEBUG
 K_SOUP_COV_DIR
