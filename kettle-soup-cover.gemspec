@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.name = "kettle-soup-cover"
   spec.version = gem_version
   spec.authors = ["Peter Boling"]
-  spec.email = ["peter.boling@gmail.com"]
+  spec.email = ["floss@galtzo.com"]
 
   # Linux distros often package gems and securely certify them independent
   #   of the official RubyGem certification process. Allowed via ENV["SKIP_GEM_SIGNING"]
@@ -60,7 +60,7 @@ Gem::Specification.new do |spec|
   spec.metadata["discord_uri"] = "https://discord.gg/3qme4XHNKN"
   spec.metadata["rubygems_mfa_required"] = "true"
 
-  # Specify which files should be added to the gem when it is released.
+  # Specify which files are part of each release.
   spec.files = Dir[
     # Splats (alphabetical)
     "lib/**/*.rb",
@@ -117,7 +117,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("yard-junk", "~> 0.0", ">= 0.0.10")
 
   # Linting
-  # RuboCop is constrained due to major changes in newer RuboCop, and the team's disinterest in SemVer
   spec.add_development_dependency("rubocop-lts", "~> 18.1", ">= 18.2.1") # Lint & Style Support for Ruby 2.7+
   spec.add_development_dependency("rubocop-packaging", "~> 0.6", ">= 0.6.0")
   spec.add_development_dependency("rubocop-rspec", "~> 3.5")
