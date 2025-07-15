@@ -13,13 +13,15 @@ We [![Keep A Changelog][📗keep-changelog-img]][📗keep-changelog] so if you m
 
 Simply follow these instructions:
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Make some fixes.
-4. Commit your changes (`git commit -am 'Added some feature'`)
-5. Push to the branch (`git push origin my-new-feature`)
-6. Make sure to add tests for it. This is important, so it doesn't break in a future release.
-7. Create new Pull Request.
+1. Join the Discord: [![Live Chat on Discord][✉️discord-invite-img]][✉️discord-invite]
+2. Fork the repository
+3. Create your feature branch (`git checkout -b my-new-feature`)
+4. Make some fixes.
+5. Commit your changes (`git commit -am 'Added some feature'`)
+6. Push to the branch (`git push origin my-new-feature`)
+7. Make sure to add tests for it. This is important, so it doesn't break in a future release.
+8. Create new Pull Request.
+9. Announce it in channel for this org in the [Discord][✉️discord-invite]!
 
 ## The Reek List
 
@@ -113,3 +115,5 @@ NOTE: To build without signing the gem you must set `SKIP_GEM_SIGNING` to some v
 [💎stone_checksums]: https://github.com/pboling/stone_checksums
 [📗keep-changelog]: https://keepachangelog.com/en/1.0.0/
 [📗keep-changelog-img]: https://img.shields.io/badge/keep--a--changelog-1.0.0-FFDD67.svg?style=flat
+[✉️discord-invite]: https://discord.gg/3qme4XHNKN
+[✉️discord-invite-img]: https://img.shields.io/discord/1373797679469170758?style=for-the-badge
