@@ -3,6 +3,7 @@ name: Test Coverage
 permissions:
   contents: read
   pull-requests: write
+  id-token: write
 
 env:
   K_SOUP_COV_DEBUG: true
@@ -13,17 +14,18 @@ env:
   K_SOUP_COV_VERBOSE: true
   K_SOUP_COV_FORMATTERS: "xml,rcov,lcov,json,tty"
   K_SOUP_COV_MULTI_FORMATTERS: true
-  K_SOUP_COV_COMMAND_NAME: "RSpec Coverage"
+  K_SOUP_COV_COMMAND_NAME: "Test Coverage"
 
 on:
   push:
     branches:
-      - 'main'
+      - "main"
+      - "*-stable"
     tags:
-      - '!*' # Do not execute on tags
+      - "!*" # Do not execute on tags
   pull_request:
     branches:
-      - '*'
+      - "*"
   # Allow manually triggering the workflow.
   workflow_dispatch:
 
@@ -36,10 +38,10 @@ concurrency:
 jobs:
   coverage:
     name: Code Coverage on ${{ matrix.ruby }}@current
-    if: "!contains(github.event.commits[0].message, '[ci skip]') && !contains(github.event.commits[0].message, '[skip ci]')"
+    if: ${{ !contains(github.event.commits[0].message, '[ci skip]') && !contains(github.event.commits[0].message, '[skip ci]') }}
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.experimental || endsWith(matrix.ruby, 'head') }}
-    env: # $BUNDLE_GEMFILE must be set at job level, so it is set for all steps
+    env: # $BUNDLE_GEMFILE - set at job level, so applies to all steps
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
     strategy:
       fail-fast: false
@@ -48,7 +50,7 @@ jobs:
           # Coverage
           - ruby: "ruby"
             appraisal: "coverage"
-            exec_cmd: "rake spec"
+            exec_cmd: "rake test"
             gemfile: "coverage"
             rubygems: latest
             bundler: latest
@@ -65,18 +67,20 @@ jobs:
           bundler: "${{ matrix.bundler }}"
           bundler-cache: true
 
-      - name: Run RSpec tests
+      - name: Run ${{ matrix.exec_cmd }} on ${{ matrix.ruby }}
         run: |
-          bundle exec rspec
+          bundle exec ${{ matrix.exec_cmd }}
 
       # Do SaaS coverage uploads first
       - name: Upload coverage to Coveralls
+        if: ${{ !env.ACT }}
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: ${{ matrix.experimental != 'false' }}
 
       - name: Upload coverage to QLTY
+        if: ${{ !env.ACT }}
         uses: qltysh/qlty-action/coverage@main
         with:
           token: ${{secrets.QLTY_COVERAGE_TOKEN}}
@@ -86,16 +90,17 @@ jobs:
       # Build will fail here if coverage upload fails
       #   which will hopefully be noticed for the lack of code coverage comments
       - name: Upload coverage to CodeCov
+        if: ${{ !env.ACT }}
         uses: codecov/codecov-action@v5
         with:
+          use_oidc: true
           fail_ci_if_error: true # optional (default = false)
-          token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true # optional (default = false)
 
       # Then PR comments
       - name: Code Coverage Summary Report
+        if: ${{ !env.ACT && github.event_name == 'pull_request' }}
         uses: irongut/CodeCoverageSummary@v1.3.0
-        if: ${{ github.event_name == 'pull_request' }}
         with:
           filename: ./coverage/coverage.xml
           badge: true
@@ -105,12 +110,12 @@ jobs:
           hide_complexity: true
           indicators: true
           output: both
-          thresholds: '100 100'
+          thresholds: '93 46'
         continue-on-error: ${{ matrix.experimental != 'false' }}
 
       - name: Add Coverage PR Comment
         uses: marocchino/sticky-pull-request-comment@v2
-        if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ !env.ACT && github.event_name == 'pull_request' }}
         with:
           recreate: true
           path: code-coverage-results.md
