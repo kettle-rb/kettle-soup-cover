@@ -1,12 +1,12 @@
 <p align="center">
   <a href="https://discord.gg/3qme4XHNKN" target="_blank" rel="noopener">
-    <img width="124px" src="https://github.com/kettle-rb/kettle-soup-cover/raw/main/docs/images/logo/galtzo-floss-logos-original.svg?raw=true" alt="Galtzo.com Logo by Aboling0, CC BY-SA 4.0">
+    <img width="124px" src="https://github.com/galtzo-floss/shields-badge/raw/main/docs/images/logo/galtzo-floss-logos-original.svg?raw=true" alt="Galtzo.com Logo by Aboling0, CC BY-SA 4.0">
   </a>
   <a href="https://kettle-rb.gitlab.io/" target="_blank" rel="noopener">
     <img height="120px" src="https://kettle-rb.gitlab.io/assets/img/logos/logo-name-optimized.png" alt="kettle-rb logo, Copyright (c) 2023 Peter Boling, CC BY-SA 4.0, see https://kettle-rb.gitlab.io/logos">
   </a>
   <a href="https://www.ruby-lang.org/" target="_blank" rel="noopener">
-    <img width="124px" src="https://github.com/kettle-rb/kettle-soup-cover/raw/main/docs/images/logo/ruby-logo-198px.svg?raw=true" alt="Yukihiro Matsumoto, Ruby Visual Identity Team, CC BY-SA 2.5">
+    <img width="124px" src="https://github.com/galtzo-floss/shields-badge/raw/main/docs/images/logo/ruby-logo-198px.svg?raw=true" alt="Yukihiro Matsumoto, Ruby Visual Identity Team, CC BY-SA 2.5">
   </a>
 </p>
 
@@ -48,7 +48,7 @@ and I got all of them working, at the same time together, or al la carte. Kum-ba
 
 A quick shot of 12-factor coverage power, straight to your brain:
 
-```shell
+```console
 export K_SOUP_COV_DO=true # Means you want code coverage
 export K_SOUP_COV_FORMATTERS="html,tty" # Set to some slice of "html,xml,rcov,lcov,json,tty"
 export K_SOUP_COV_MIN_BRANCH=53 # Means you want to enforce X% branch coverage
@@ -95,7 +95,7 @@ You'll have to configure them manually if you use them:
 * BuildKite's custom [simplecov extension][buildkite-ext]
 * GitHub Actions doesn't parse test output, but...
   * I configure my `coverage` workflow ([see example][example-cov-wf]) to upload coverage reports to SaaS services like:
-    * [codecov.io][🔑codecov] (needs token for upload)
+    * [codecov.io][🔑codecov] (has tokenless OIDC option!)
     * [QLTY.sh](https://qlty.sh) (needs token for upload)
     * [coveralls.io][🔑coveralls]
   * This gem helps me configure my `coverage` workflow to use Github Actions designed to report coverage like:
@@ -142,13 +142,13 @@ by following the instructions below.
 
 Add my public key (if you haven’t already, expires 2045-04-29) as a trusted certificate:
 
-```shell
+```console
 gem cert --add <(curl -Ls https://raw.github.com/kettle-rb/kettle-soup-cover/main/certs/pboling.pem)
 ```
 
 You only need to do that once.  Then proceed to install with:
 
-```shell
+```console
 gem install kettle-soup-cover -P MediumSecurity
 ```
 
@@ -158,7 +158,7 @@ This is necessary because not all of `kettle-soup-cover`’s dependencies are si
 
 If you want to up your security game full-time:
 
-```shell
+```console
 bundle config set --global trust-policy MediumSecurity
 ```
 
@@ -214,7 +214,7 @@ See [Advanced Usage](#advanced-usage) below for more info,
 but the simplest thing is to run all the coverage things,
 which is configured by default on CI.  To replicate that locally you could:
 
-```shell
+```console
 CI=true bundle exec rake test # or whatever command you run for tests.
 ```
 
@@ -259,7 +259,7 @@ Most are self explanatory.
 I tried to follow POLS, the principle of least surprise, so they mostly _DWTFYT_.
 Want to help improve this documentation? PRs are easy!
 
-```shell
+```console
 K_SOUP_COV_COMMAND_NAME
 K_SOUP_COV_DEBUG
 K_SOUP_COV_DIR
@@ -420,26 +420,49 @@ See [LICENSE.txt][📄license] for the official [Copyright Notice][📄copyright
 
 ### © Copyright
 
-<p>
-  Copyright (c) 2023 - 2025 Peter H. Boling,
-  <a href="https://railsbling.com">
-    RailsBling.com
-    <picture>
-      <img alt="Rails Bling" height="20" src="https://railsbling.com/images/logos/RailsBling-TrainLogo.svg" />
-    </picture>
-  </a>
-</p>
+<ul>
+    <li>
+        Copyright (c) 2023-2025 Peter H. Boling, of
+        <a href="https://discord.gg/3qme4XHNKN">
+            Galtzo.com
+            <picture>
+              <img src="https://github.com/galtzo-floss/shields-badge/raw/main/docs/images/logo/galtzo-floss-logos-wordless.svg?raw=true" alt="Galtzo.com Logo by Aboling0, CC BY-SA 4.0" width="24">
+            </picture>
+        </a>, and kettle-soup-cover contributors
+    </li>
+</ul>
 
 ## 🤑 One more thing
 
-You made it to the bottom of the page,
-so perhaps you'll indulge me for another 20 seconds.
-I maintain many dozens of gems, including this one,
-because I want Ruby to be a great place for people to solve problems, big and small.
-Please consider supporting my efforts via the giant yellow link below,
-or one of the others at the head of this README.
+Having arrived at the bottom of the page, please endure a final supplication.
+The primary maintainer of this gem, Peter Boling, wants
+Ruby to be a great place for people to solve problems, big and small.
+Please consider supporting his efforts via the giant yellow link below,
+or one of smaller ones, depending on button size preference.
 
 [![Buy me a latte][🖇buyme-img]][🖇buyme]
+
+[![Liberapay Goal Progress][⛳liberapay-img]][⛳liberapay] [![Sponsor Me on Github][🖇sponsor-img]][🖇sponsor] [![Donate on Polar][🖇polar-img]][🖇polar] [![Donate to my FLOSS or refugee efforts at ko-fi.com][🖇kofi-img]][🖇kofi] [![Donate to my FLOSS or refugee efforts using Patreon][🖇patreon-img]][🖇patreon]
+
+P.S. If you need help️, or want to say thanks, 👇 Join the Discord.
+
+[![Live Chat on Discord][✉️discord-invite-img]][✉️discord-invite]
+
+[⛳liberapay-img]: https://img.shields.io/liberapay/goal/pboling.svg?logo=liberapay
+[⛳liberapay]: https://liberapay.com/pboling/donate
+[🖇sponsor-img]: https://img.shields.io/badge/Sponsor_Me!-pboling.svg?style=social&logo=github
+[🖇sponsor]: https://github.com/sponsors/pboling
+[🖇polar-img]: https://img.shields.io/badge/polar-donate-yellow.svg
+[🖇polar]: https://polar.sh/pboling
+[🖇kofi-img]: https://img.shields.io/badge/a_more_different_coffee-✓-yellow.svg
+[🖇kofi]: https://ko-fi.com/O5O86SNP4
+[🖇patreon-img]: https://img.shields.io/badge/patreon-donate-yellow.svg
+[🖇patreon]: https://patreon.com/galtzo
+[🖇buyme-small-img]: https://img.shields.io/badge/buy_me_a_coffee-✓-yellow.svg?style=flat
+[🖇buyme-img]: https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20latte&emoji=&slug=pboling&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff
+[🖇buyme]: https://www.buymeacoffee.com/pboling
+[✉️discord-invite]: https://discord.gg/3qme4XHNKN
+[✉️discord-invite-img]: https://img.shields.io/discord/1373797679469170758?style=for-the-badge
 
 [✇bundle-group-pattern]: https://gist.github.com/pboling/4564780
 [⛳️gem-namespace]: https://github.com/kettle-rb/kettle-soup-cover
@@ -525,19 +548,6 @@ or one of the others at the head of this README.
 [🚎8-ho-wfi]: https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/hoary.yml/badge.svg
 [🚎11-c-wf]: https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/current.yml
 [🚎11-c-wfi]: https://github.com/kettle-rb/kettle-soup-cover/actions/workflows/current.yml/badge.svg
-[⛳liberapay-img]: https://img.shields.io/liberapay/goal/pboling.svg?logo=liberapay
-[⛳liberapay]: https://liberapay.com/pboling/donate
-[🖇sponsor-img]: https://img.shields.io/badge/Sponsor_Me!-pboling.svg?style=social&logo=github
-[🖇sponsor]: https://github.com/sponsors/pboling
-[🖇polar-img]: https://img.shields.io/badge/polar-donate-yellow.svg
-[🖇polar]: https://polar.sh/pboling
-[🖇kofi-img]: https://img.shields.io/badge/a_more_different_coffee-✓-yellow.svg
-[🖇kofi]: https://ko-fi.com/O5O86SNP4
-[🖇patreon-img]: https://img.shields.io/badge/patreon-donate-yellow.svg
-[🖇patreon]: https://patreon.com/galtzo
-[🖇buyme-img]: https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20latte&emoji=&slug=pboling&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff
-[🖇buyme]: https://www.buymeacoffee.com/pboling
-[🖇buyme-small-img]: https://img.shields.io/badge/buy_me_a_coffee-✓-yellow.svg?style=flat
 [💎ruby-2.7i]: https://img.shields.io/badge/Ruby-2.7-DF00CA?style=for-the-badge&logo=ruby&logoColor=white
 [💎ruby-3.0i]: https://img.shields.io/badge/Ruby-3.0-CC342D?style=for-the-badge&logo=ruby&logoColor=white
 [💎ruby-3.1i]: https://img.shields.io/badge/Ruby-3.1-CC342D?style=for-the-badge&logo=ruby&logoColor=white
@@ -587,5 +597,3 @@ or one of the others at the head of this README.
 [💎rlts]: https://github.com/rubocop-lts/rubocop-lts
 [💎rlts-img]: https://img.shields.io/badge/code_style_%26_linting-rubocop--lts-34495e.svg?plastic&logo=ruby&logoColor=white
 [💎d-in-dvcs]: https://railsbling.com/posts/dvcs/put_the_d_in_dvcs/
-[✉️discord-invite]: https://discord.gg/3qme4XHNKN
-[✉️discord-invite-img]: https://img.shields.io/discord/1373797679469170758?style=for-the-badge
