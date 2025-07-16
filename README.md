@@ -33,6 +33,26 @@ For apps and libraries.  Any test framework.  Many code coverage related GitHub 
 [rpsec-helper]: https://github.com/oauth-xx/oauth2/blob/main/spec/spec_helper.rb
 [rspec-simplecov]: https://github.com/oauth-xx/oauth2/blob/main/.simplecov
 
+## 📔 DO YOU LIKE PATTERNS?!? 📔
+
+This library's local dev / testing / CI dependency structure serves as an example of a "modular gemfile" pattern
+enabling a discrete gemfile for each CI workflow.
+
+This modular pattern has the following benefits:
+
+- All dependencies are DRY, never repeated.
+- All modular gemfiles are shared between the main `Gemfile`, and the workflow `gemfiles/*.gemfile`s that need them.
+- All gemfiles source from the `gemspec`.
+
+For another example of this pattern see the [kettle-soup-cover](https://github.com/kettle-rb/kettle-soup-cover) gem.
+
+If you like this idea, there is an even better alternative.
+
+I've codified it for reuse in my [appraisal2](https://github.com/appraisal-rb/appraisal2/) gem,
+which is a hard fork of the venerable `appraisal` gem due to that gem's lack of support for modular gemfiles.
+
+📔 ME TOO! 📔
+
 | Federated [DVCS][💎d-in-dvcs] Repository               | Status                                                            | Issues                    | PRs                      | Wiki                      | CI                       | Discussions                  |
 |--------------------------------------------------------|-------------------------------------------------------------------|---------------------------|--------------------------|---------------------------|--------------------------|------------------------------|
 | 🧪 [kettle-rb/kettle-soup-cover on GitLab][📜src-gl]   | The Truth                                                         | [💚][🤝gl-issues]         | [💚][🤝gl-pulls]         | [💚][📜wiki]              | 🏀 Tiny Matrix           | ➖                            |
