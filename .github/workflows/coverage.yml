@@ -54,6 +54,7 @@ jobs:
             gemfile: "coverage"
             rubygems: latest
             bundler: latest
+            experimental: false
 
     steps:
       - name: Checkout
