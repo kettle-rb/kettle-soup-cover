@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rspec" tests="43" skipped="0" failures="0" errors="0" time="0.541192" timestamp="2025-08-10T19:24:32-06:00" hostname="aurora">
+<properties>
+<property name="seed" value="27212"/>
+</properties>
+<testcase classname="spec.kettle.soup.cover.constants_spec" name="Kettle::Soup::Cover::Constants succeeds" file="./spec/kettle/soup/cover/constants_spec.rb" time="0.018702"></testcase>
+<testcase classname="spec.kettle.soup.cover.constants_spec" name="Kettle::Soup::Cover::Constants when CI=true sets CI=true" file="./spec/kettle/soup/cover/constants_spec.rb" time="0.007457"></testcase>
+<testcase classname="spec.kettle.soup.cover.constants_spec" name="Kettle::Soup::Cover::Constants when CI=false sets CI=false" file="./spec/kettle/soup/cover/constants_spec.rb" time="0.002558"></testcase>
+<testcase classname="spec.kettle.soup.cover.constants_spec" name="Kettle::Soup::Cover::Constants when CI=false sets MULTI_FORMATTERS" file="./spec/kettle/soup/cover/constants_spec.rb" time="0.002833"></testcase>
+<testcase classname="spec.kettle.soup.cover.loaders_spec" name="Kettle::Soup::Cover::Loaders#load_formatters succeeds" file="./spec/kettle/soup/cover/loaders_spec.rb" time="0.008804"></testcase>
+<testcase classname="spec.kettle.soup.cover.loaders_spec" name="Kettle::Soup::Cover::Loaders#load_formatters when CI=true succeeds" file="./spec/kettle/soup/cover/loaders_spec.rb" time="0.002326"></testcase>
+<testcase classname="spec.kettle.soup.cover.loaders_spec" name="Kettle::Soup::Cover::Loaders#load_formatters when FORMATTERS=lcov succeeds" file="./spec/kettle/soup/cover/loaders_spec.rb" time="0.003498"></testcase>
+<testcase classname="spec.kettle.soup.cover.loaders_spec" name="Kettle::Soup::Cover::Loaders#load_formatters when FORMATTERS is empty succeeds" file="./spec/kettle/soup/cover/loaders_spec.rb" time="0.002120"></testcase>
+<testcase classname="spec.kettle.soup.cover.loaders_spec" name="Kettle::Soup::Cover::Loaders#load_filters succeeds" file="./spec/kettle/soup/cover/loaders_spec.rb" time="0.002819"></testcase>
+<testcase classname="spec.kettle.soup.cover.loaders_spec" name="Kettle::Soup::Cover::Loaders#install_tasks succeeds" file="./spec/kettle/soup/cover/loaders_spec.rb" time="0.002496"></testcase>
+<testcase classname="spec.kettle.soup.cover.rakelib.coverage_spec" name="rake coverage has a gem root" file="./spec/kettle/soup/cover/rakelib/coverage_spec.rb" time="0.004048"></testcase>
+<testcase classname="spec.kettle.soup.cover.rakelib.coverage_spec" name="rake coverage has name as coverage" file="./spec/kettle/soup/cover/rakelib/coverage_spec.rb" time="0.001200"></testcase>
+<testcase classname="spec.kettle.soup.cover.rakelib.coverage_spec" name="rake coverage has task path" file="./spec/kettle/soup/cover/rakelib/coverage_spec.rb" time="0.001170"></testcase>
+<testcase classname="spec.kettle.soup.cover.rakelib.coverage_spec" name="rake coverage when defined does not raise error" file="./spec/kettle/soup/cover/rakelib/coverage_spec.rb" time="0.001088"></testcase>
+<testcase classname="spec.kettle.soup.cover.rakelib.coverage_spec" name="rake coverage when defined when invoked does not raise error" file="./spec/kettle/soup/cover/rakelib/coverage_spec.rb" time="0.382299"></testcase>
+<testcase classname="spec.kettle.soup.cover.rakelib.coverage_spec" name="rake coverage when defined when invoked when OPEN_BIN empty does not raise error" file="./spec/kettle/soup/cover/rakelib/coverage_spec.rb" time="0.003273"></testcase>
+<testcase classname="spec.kettle.soup.cover.rakelib.coverage_spec" name="rake coverage when defined when invoked when OPEN_BIN empty outputs where to find coverage report" file="./spec/kettle/soup/cover/rakelib/coverage_spec.rb" time="0.004850"></testcase>
+<testcase classname="spec.kettle.soup.cover.rakelib.coverage_spec" name="rake coverage when defined when invoked when OPEN_BIN set to unavailable executable does not raise error" file="./spec/kettle/soup/cover/rakelib/coverage_spec.rb" time="0.003138"></testcase>
+<testcase classname="spec.kettle.soup.cover.rakelib.coverage_spec" name="rake coverage when defined when invoked when OPEN_BIN set to unavailable executable outputs where to find coverage report" file="./spec/kettle/soup/cover/rakelib/coverage_spec.rb" time="0.003078"></testcase>
+<testcase classname="spec.kettle.soup.cover.version_spec" name="1.0.10 behaves like a Version module is introspectable" file="./spec/kettle/soup/cover/version_spec.rb" time="0.004693"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover has constant COMMAND_NAME" file="./spec/kettle/soup/cover_spec.rb" time="0.000101"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover has constant COVERAGE_DIR" file="./spec/kettle/soup/cover_spec.rb" time="0.000075"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover::reset_const has output" file="./spec/kettle/soup/cover_spec.rb" time="0.001105"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover::load_filters does not raise error" file="./spec/kettle/soup/cover_spec.rb" time="0.000192"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover::load_formatters does not raise error" file="./spec/kettle/soup/cover_spec.rb" time="0.000141"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=true sets CI" file="./spec/kettle/soup/cover_spec.rb" time="0.002939"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=true sets IS_CI" file="./spec/kettle/soup/cover_spec.rb" time="0.002595"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=true sets FORMATTERS" file="./spec/kettle/soup/cover_spec.rb" time="0.002628"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=true sets MULTI_FORMATTERS_DEFAULT" file="./spec/kettle/soup/cover_spec.rb" time="0.002640"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=false sets CI" file="./spec/kettle/soup/cover_spec.rb" time="0.002574"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=false sets IS_CI" file="./spec/kettle/soup/cover_spec.rb" time="0.014274"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=false sets FORMATTERS" file="./spec/kettle/soup/cover_spec.rb" time="0.003868"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=false when K_SOUP_COV_MULTI_FORMATTERS not empty sets MULTI_FORMATTERS_DEFAULT" file="./spec/kettle/soup/cover_spec.rb" time="0.003366"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=false when K_SOUP_COV_MULTI_FORMATTERS empty sets MULTI_FORMATTERS_DEFAULT" file="./spec/kettle/soup/cover_spec.rb" time="0.005146"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=false when K_SOUP_COV_MULTI_FORMATTERS malformed with extra spaces sets MULTI_FORMATTERS_DEFAULT" file="./spec/kettle/soup/cover_spec.rb" time="0.005252"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=false when K_SOUP_COV_MULTI_FORMATTERS malformed with extra spaces sets MULTI_FORMATTERS" file="./spec/kettle/soup/cover_spec.rb" time="0.004338"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when CI=false when K_SOUP_COV_MULTI_FORMATTERS malformed with extra spaces sets FORMATTERS" file="./spec/kettle/soup/cover_spec.rb" time="0.004211"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when debugging has constant DEBUG" file="./spec/kettle/soup/cover_spec.rb" time="0.001719"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when not debugging has constant DEBUG" file="./spec/kettle/soup/cover_spec.rb" time="0.001709"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when K_SOUP_COV_OPEN_BIN=&apos;&apos; sets OPEN_BIN" file="./spec/kettle/soup/cover_spec.rb" time="0.001771"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when K_SOUP_COV_OPEN_BIN=&apos;xdg-open&apos; sets OPEN_BIN" file="./spec/kettle/soup/cover_spec.rb" time="0.001706"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when K_SOUP_COV_OPEN_BIN is not set or nil when macOS sets OPEN_BIN according to RbConfig::Config[&apos;host_os&apos;]" file="./spec/kettle/soup/cover_spec.rb" time="0.001808"></testcase>
+<testcase classname="spec.kettle.soup.cover_spec" name="Kettle::Soup::Cover when K_SOUP_COV_OPEN_BIN is not set or nil when not macOS sets OPEN_BIN according to RbConfig::Config[&apos;host_os&apos;]" file="./spec/kettle/soup/cover_spec.rb" time="0.001799"></testcase>
+</testsuite>
