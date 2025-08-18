@@ -57,12 +57,23 @@ module Kettle
         )
           .split(",")
           .map { |dir_name| %r{^/#{Regexp.escape(dir_name)}/} }
-        FORMATTERS = ENV_GET.call(
-          "FORMATTERS",
-          IS_CI ? "html,xml,rcov,lcov,json,tty" : "html,tty",
-        )
-          .split(",")
-          .map { |fmt_name| FORMATTER_PLUGINS[fmt_name.strip.to_sym] }
+        FORMATTERS = begin
+          list = ENV_GET.call(
+            "FORMATTERS",
+            IS_CI ? "html,xml,rcov,lcov,json,tty" : "html,tty",
+          )
+            .split(",")
+            .map { |fmt_name| FORMATTER_PLUGINS[fmt_name.strip.to_sym] }
+            .compact
+
+          # If MAX_ROWS is explicitly set to "0", skip tty output from simplecov-console
+          max_rows = ENV.fetch("MAX_ROWS", nil)
+          if max_rows && max_rows.strip == "0"
+            list = list.reject { |f| f && f[:type] == :tty }
+          end
+
+          list
+        end
         MIN_COVERAGE_HARD = ENV_GET.call("MIN_HARD", CI).casecmp?(TRUE)
         MIN_COVERAGE_BRANCH = ENV_GET.call("MIN_BRANCH", "80").to_i
         MIN_COVERAGE_LINE = ENV_GET.call("MIN_LINE", "80").to_i
