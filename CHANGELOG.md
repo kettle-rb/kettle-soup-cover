@@ -7,6 +7,7 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 ### Added
+- When `ENV["MAX_ROWS"] == "0"`, explicitly, skip simplecov-console TTY output.
 ### Changed
 ### Deprecated
 ### Removed

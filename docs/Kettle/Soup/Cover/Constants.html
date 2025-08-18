@@ -202,12 +202,23 @@
         <dt id="FORMATTERS-constant" class="">FORMATTERS =
           
         </dt>
-        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span>
-<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FORMATTERS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-<span class='const'><span class='object_link'><a href="#IS_CI-constant" title="Kettle::Soup::Cover::Constants::IS_CI (constant)">IS_CI</a></span></span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>html,xml,rcov,lcov,json,tty</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>html,tty</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-        <span class='rparen'>)</span>
-<span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-<span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_fmt_name'>fmt_name</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="#FORMATTER_PLUGINS-constant" title="Kettle::Soup::Cover::Constants::FORMATTER_PLUGINS (constant)">FORMATTER_PLUGINS</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_fmt_name'>fmt_name</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='rbrace'>}</span></pre></dd>
+        <dd><pre class="code"><span class='kw'>begin</span>
+  <span class='id identifier rubyid_list'>list</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#ENV_GET-constant" title="Kettle::Soup::Cover::Constants::ENV_GET (constant)">ENV_GET</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FORMATTERS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='const'><span class='object_link'><a href="#IS_CI-constant" title="Kettle::Soup::Cover::Constants::IS_CI (constant)">IS_CI</a></span></span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>html,xml,rcov,lcov,json,tty</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>html,tty</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='rparen'>)</span>
+    <span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_fmt_name'>fmt_name</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="#FORMATTER_PLUGINS-constant" title="Kettle::Soup::Cover::Constants::FORMATTER_PLUGINS (constant)">FORMATTER_PLUGINS</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_fmt_name'>fmt_name</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+    <span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span>
+
+  <span class='comment'># If MAX_ROWS is explicitly set to &quot;0&quot;, skip tty output from simplecov-console
+</span>  <span class='id identifier rubyid_max_rows'>max_rows</span> <span class='op'>=</span> <span class='const'>ENV</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MAX_ROWS</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_max_rows'>max_rows</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_max_rows'>max_rows</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_list'>list</span> <span class='op'>=</span> <span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='id identifier rubyid_f'>f</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_f'>f</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:tty</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_list'>list</span>
+<span class='kw'>end</span></pre></dd>
       
         <dt id="MIN_COVERAGE_HARD-constant" class="">MIN_COVERAGE_HARD =
           
@@ -282,7 +293,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Aug 10 19:24:44 2025 by
+  Generated on Sun Aug 17 19:25:44 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.4.5).
 </div>
