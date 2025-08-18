@@ -135,10 +135,10 @@ end
 # rubocop:disable Rake/DuplicateTask
 if Rake::Task.task_defined?("spec") && !Rake::Task.task_defined?("test")
   desc "run spec task with test task"
-  task :test => :spec
+  task test: :spec
 elsif !Rake::Task.task_defined?("spec") && Rake::Task.task_defined?("test")
   desc "run test task with spec task"
-  task :spec => :test
+  task spec: :test
 else
   # Add spec as pre-requisite to 'test'
   Rake::Task[:test].enhance(["spec"])
@@ -284,6 +284,6 @@ namespace :bench do
 end
 
 desc "Run all benchmarks (alias for bench:run)"
-task :bench => "bench:run"
+task bench: "bench:run"
 
-task :default => defaults
+task default: defaults
