@@ -46,8 +46,6 @@ This modular pattern has the following benefits:
 - All modular gemfiles are shared between the main `Gemfile`, and the workflow `gemfiles/*.gemfile`s that need them.
 - All gemfiles source from the `gemspec`.
 
-For another example of this pattern see the [kettle-soup-cover](https://github.com/kettle-rb/kettle-soup-cover) gem.
-
 If you like this idea, there is an even better alternative.
 
 I've codified it for reuse in my [appraisal2](https://github.com/appraisal-rb/appraisal2/) gem,
