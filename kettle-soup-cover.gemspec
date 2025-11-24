@@ -99,10 +99,6 @@ Gem::Specification.new do |spec|
   # Utilities
   spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.8")
 
-  # Release Tasks
-  spec.add_development_dependency("rake", "~> 13.0")           # Ruby >= 2.3.0
-  spec.add_development_dependency("stone_checksums", "~> 1.0") # Ruby >= 2.2.0
-
   # Code Coverage
   # CodeCov + GitHub setup is not via gems: https://github.com/marketplace/actions/codecov
   spec.add_dependency("simplecov", "~> 0.22") # Includes dependency on simplecov-html
@@ -112,6 +108,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency("simplecov_json_formatter", "~> 0.1", ">= 0.1.4") # GHA, Jenkins X, CircleCI, Travis CI, BitBucket, CodeClimate compatibility (JSON)
   spec.add_dependency("simplecov-lcov", "~> 0.8") # GHA, Jenkins X, CircleCI, Travis CI, TeamCity, GCOV compatibility
   spec.add_dependency("simplecov-rcov", "~> 0.3", ">= 0.3.7") # Hudson compatibility
+
+  spec.add_dependency("kettle-dev", "~> 1.1")
+
+  # Release Tasks
+  spec.add_development_dependency("rake", "~> 13.0")           # Ruby >= 2.3.0
+  spec.add_development_dependency("stone_checksums", "~> 1.0") # Ruby >= 2.2.0
 
   # Documentation
   spec.add_development_dependency("yard", "~> 0.9", ">= 0.9.37")
