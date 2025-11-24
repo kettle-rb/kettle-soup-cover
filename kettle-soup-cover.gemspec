@@ -37,11 +37,12 @@ Gem::Specification.new do |spec|
     end
   end
 
-  spec.summary = "Code Coverage Meta Gem for SimpleCov on every/any CI"
+  spec.summary = "🍲 kettle-rb OOTB SimpleCov config supporting every CI platform & coverage tool"
   spec.description = <<~DESC
-    A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
+    🍲 A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
     Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
     for every CI platform, batteries included.
+    Fund overlooked open source projects - bottom of stack, dev/test dependencies: floss-funding.dev
   DESC
   gh_mirror = "https://github.com/kettle-rb/#{spec.name}"
   gl_homepage = "https://gitlab.com/kettle-rb/#{spec.name}"
