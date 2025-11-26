@@ -80,7 +80,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.16.0)
-    kettle-dev (1.1.60)
+    kettle-dev (1.2.2)
     kramdown (2.5.1)
       rexml (>= 3.3.9)
     kramdown-parser-gfm (1.1.0)
@@ -111,7 +111,7 @@ GEM
     rake (13.3.1)
     rbs (3.9.5)
       logger
-    rdoc (6.15.1)
+    rdoc (6.16.0)
       erb
       psych (>= 4.0.0)
       tsort
