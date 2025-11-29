@@ -1,23 +1,4 @@
 # frozen_string_literal: true
-# frozen_string_literal: true
-# frozen_string_literal: true
-# frozen_string_literal: true
-
-# Documentation
-# To retain during kettle-dev templating:
-#     kettle-dev:freeze
-#     # ... your code
-#     kettle-dev:unfreeze
-
-
-# Documentation
-# To retain during kettle-dev templating:
-#     kettle-dev:freeze
-#     # ... your code
-#     kettle-dev:unfreeze
-
-
-# Documentation
 
 # To retain during kettle-dev templating:
 #     kettle-dev:freeze
