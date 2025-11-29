@@ -1,14 +1,4 @@
 # frozen_string_literal: true
-# frozen_string_literal: true
-# To retain during kettle-dev templating:
-#     kettle-dev:freeze
-#     # ... your code
-#     kettle-dev:unfreeze
-
-
-# We run rubocop on the latest version of Ruby,
-#   but in support of the oldest supported version of Ruby
-
 
 # To retain during kettle-dev templating:
 #     kettle-dev:freeze

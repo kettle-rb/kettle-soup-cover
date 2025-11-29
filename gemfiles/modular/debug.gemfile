@@ -2,12 +2,6 @@
 #     kettle-dev:freeze
 #     # ... your code
 #     kettle-dev:unfreeze
-
-# Ex-Standard Library gems
-# To retain during kettle-dev templating:
-#     kettle-dev:freeze
-#     # ... your code
-#     kettle-dev:unfreeze
 # Ex-Standard Library gems
 
 gem "irb", "~> 1.15", ">= 1.15.2" # removed from stdlib in 3.5
