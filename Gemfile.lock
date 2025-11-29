@@ -83,7 +83,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.16.0)
-    kettle-dev (1.2.3)
+    kettle-dev (1.2.4)
     kramdown (2.5.1)
       rexml (>= 3.3.9)
     kramdown-parser-gfm (1.1.0)
@@ -322,4 +322,4 @@ DEPENDENCIES
   yard-yaml (~> 0.1)
 
 BUNDLED WITH
-   2.7.1
+   2.7.2
