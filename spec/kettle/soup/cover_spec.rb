@@ -36,6 +36,7 @@ RSpec.describe Kettle::Soup::Cover do
       described_class.reset_const do
         stub_env("CI" => "true")
         stub_env("K_SOUP_COV_FORMATTERS" => nil)
+        stub_env("MAX_ROWS" => nil)
       end
     end
 
@@ -62,6 +63,7 @@ RSpec.describe Kettle::Soup::Cover do
       described_class.reset_const do
         stub_env("CI" => "false")
         stub_env("K_SOUP_COV_FORMATTERS" => nil)
+        stub_env("MAX_ROWS" => nil)
       end
     end
 
@@ -123,6 +125,7 @@ RSpec.describe Kettle::Soup::Cover do
             "CI" => "false",
             "K_SOUP_COV_MULTI_FORMATTERS" => "true",
             "K_SOUP_COV_FORMATTERS" => "html, xml, rcov, lcov, json, tty",
+            "MAX_ROWS" => nil,
           )
         end
       end

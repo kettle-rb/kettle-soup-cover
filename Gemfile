@@ -12,9 +12,6 @@ git_source(:gitlab) { |repo_name| "https://gitlab.com/#{repo_name}" }
 # Include dependencies from <gem name>.gemspec
 gemspec
 
-# Templating
-eval_gemfile "gemfiles/modular/templating.gemfile"
-
 # Debugging
 eval_gemfile "gemfiles/modular/debug.gemfile"
 
