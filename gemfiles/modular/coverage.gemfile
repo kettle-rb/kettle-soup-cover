@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-# See gemspec
 
+# See gemspec
 
 # To retain during kettle-dev templating:
 #     kettle-dev:freeze

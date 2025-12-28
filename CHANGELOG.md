@@ -29,6 +29,26 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
+- **Coverage merging is now enabled by default** - `USE_MERGING` defaults to `true`
+  - Essential for projects that split tests into multiple rake tasks
+  - Set `K_SOUP_COV_USE_MERGING=false` to disable
+  - Aggregate coverage from multiple test runs (e.g., FFI specs, integration specs, unit specs) when uniquely named:
+  - ```rake
+    # Matrix checks will run in between FFI and MRI
+    desc("Run Backend Matrix Specs")
+    RSpec::Core::RakeTask.new(:backend_matrix_specs) do |t|
+    t.pattern = "./spec_matrix/**/*_spec.rb"
+    end
+    desc("Set SimpleCov command name for backend matrix specs")
+    task(:set_matrix_command_name) do
+    ENV["K_SOUP_COV_COMMAND_NAME"] = "Backend Matrix Specs"
+    end
+    Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
+    ```
+- **Merge timeout** - `MERGE_TIMEOUT` defaults to 3600 seconds (1 hour)
+  - Sufficient for most test suites to complete all split tasks
+  - Set `K_SOUP_COV_MERGE_TIMEOUT` to override
+
 ### Deprecated
 
 ### Removed

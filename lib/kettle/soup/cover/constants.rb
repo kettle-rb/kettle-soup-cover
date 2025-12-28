@@ -87,8 +87,13 @@ module Kettle
         is_mac = RbConfig::CONFIG["host_os"].include?("darwin")
         # Set to "" to prevent opening a browser with the coverage rake task
         OPEN_BIN = ENV_GET.call("OPEN_BIN", is_mac ? "open" : "xdg-open")
-        USE_MERGING = ENV_GET.call("USE_MERGING", nil)&.casecmp?(TRUE)
-        MERGE_TIMEOUT = ENV_GET.call("MERGE_TIMEOUT", nil)&.to_i
+        # Enable merging by default to aggregate coverage across multiple test runs
+        # (e.g., separate RSpec tasks for FFI tests, integration tests, unit tests)
+        # Set K_SOUP_COV_USE_MERGING=false to disable
+        USE_MERGING = ENV_GET.call("USE_MERGING", TRUE).casecmp?(TRUE)
+        # Default merge timeout of 1 hour (3600 seconds) - enough for most test suites
+        # Set K_SOUP_COV_MERGE_TIMEOUT to override
+        MERGE_TIMEOUT = ENV_GET.call("MERGE_TIMEOUT", "3600").to_i
         VERBOSE = ENV_GET.call("VERBOSE", FALSE).casecmp?(TRUE)
 
         include Kettle::Change.new(

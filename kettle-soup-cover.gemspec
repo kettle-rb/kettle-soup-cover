@@ -103,7 +103,7 @@ Gem::Specification.new do |spec|
   # Utilities
   spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.9")              # ruby >= 2.2.0
 
-    # Code Coverage
+  # Code Coverage
   # CodeCov + GitHub setup is not via gems: https://github.com/marketplace/actions/codecov
   spec.add_dependency("simplecov", "~> 0.22") # Includes dependency on simplecov-html
   spec.add_dependency("simplecov-cobertura", "~> 3.0") # Ruby >= 2.5, provides GitLab, Jenkins compatibility (XML)

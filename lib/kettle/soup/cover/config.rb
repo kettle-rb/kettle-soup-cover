@@ -34,9 +34,11 @@ SimpleCov.configure do
     formatter SimpleCov::Formatter::HTMLFormatter
   end
 
-  # Use Merging (merges RSpec + Cucumber Test Results)
+  # Use Merging (merges coverage from multiple test runs, e.g., RSpec + Cucumber Test Results)
+  # This is essential for projects that split tests into multiple rake tasks
+  # (e.g., FFI specs, integration specs, unit specs run separately)
   use_merging(Kettle::Soup::Cover::Constants::USE_MERGING) unless Kettle::Soup::Cover::Constants::USE_MERGING.nil?
-  merge_timeout(Kettle::Soup::Cover::Constants::MERGE_TIMEOUT) if Kettle::Soup::Cover::Constants::MERGE_TIMEOUT
+  merge_timeout(Kettle::Soup::Cover::Constants::MERGE_TIMEOUT) if Kettle::Soup::Cover::Constants::MERGE_TIMEOUT.nonzero?
 
   # Fail build when missed coverage targets
   # NOTE: Checking SpecTracker.instance.full_suite? here would be awesome, but won't work
