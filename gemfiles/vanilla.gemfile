@@ -2,7 +2,7 @@
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-source "https://rubygems.org"
+source "https://gem.coop"
 
 # Gemfile is only for local development.
 # On CI we only need the gemspecs' dependencies (including development dependencies).

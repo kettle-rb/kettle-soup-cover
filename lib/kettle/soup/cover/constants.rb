@@ -57,12 +57,23 @@ module Kettle
         )
           .split(",")
           .map { |dir_name| %r{^/#{Regexp.escape(dir_name)}/} }
-        FORMATTERS = ENV_GET.call(
-          "FORMATTERS",
-          IS_CI ? "html,xml,rcov,lcov,json,tty" : "html,tty",
-        )
-          .split(",")
-          .map { |fmt_name| FORMATTER_PLUGINS[fmt_name.strip.to_sym] }
+        FORMATTERS = begin
+          list = ENV_GET.call(
+            "FORMATTERS",
+            IS_CI ? "html,xml,rcov,lcov,json,tty" : "html,tty",
+          )
+            .split(",")
+            .map { |fmt_name| FORMATTER_PLUGINS[fmt_name.strip.to_sym] }
+            .compact
+
+          # If MAX_ROWS is explicitly set to "0", skip tty output from simplecov-console
+          max_rows = ENV.fetch("MAX_ROWS", nil)
+          if max_rows && max_rows.strip == "0"
+            list = list.reject { |f| f && f[:type] == :tty }
+          end
+
+          list
+        end
         MIN_COVERAGE_HARD = ENV_GET.call("MIN_HARD", CI).casecmp?(TRUE)
         MIN_COVERAGE_BRANCH = ENV_GET.call("MIN_BRANCH", "80").to_i
         MIN_COVERAGE_LINE = ENV_GET.call("MIN_LINE", "80").to_i
@@ -76,8 +87,13 @@ module Kettle
         is_mac = RbConfig::CONFIG["host_os"].include?("darwin")
         # Set to "" to prevent opening a browser with the coverage rake task
         OPEN_BIN = ENV_GET.call("OPEN_BIN", is_mac ? "open" : "xdg-open")
-        USE_MERGING = ENV_GET.call("USE_MERGING", nil)&.casecmp?(TRUE)
-        MERGE_TIMEOUT = ENV_GET.call("MERGE_TIMEOUT", nil)&.to_i
+        # Enable merging by default to aggregate coverage across multiple test runs
+        # (e.g., separate RSpec tasks for FFI tests, integration tests, unit tests)
+        # Set K_SOUP_COV_USE_MERGING=false to disable
+        USE_MERGING = ENV_GET.call("USE_MERGING", TRUE).casecmp?(TRUE)
+        # Default merge timeout of 1 hour (3600 seconds) - enough for most test suites
+        # Set K_SOUP_COV_MERGE_TIMEOUT to override
+        MERGE_TIMEOUT = ENV_GET.call("MERGE_TIMEOUT", "3600").to_i
         VERBOSE = ENV_GET.call("VERBOSE", FALSE).casecmp?(TRUE)
 
         include Kettle::Change.new(

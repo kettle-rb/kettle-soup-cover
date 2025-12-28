@@ -36,6 +36,7 @@ RSpec.describe Kettle::Soup::Cover do
       described_class.reset_const do
         stub_env("CI" => "true")
         stub_env("K_SOUP_COV_FORMATTERS" => nil)
+        stub_env("MAX_ROWS" => nil)
       end
     end
 
@@ -62,6 +63,7 @@ RSpec.describe Kettle::Soup::Cover do
       described_class.reset_const do
         stub_env("CI" => "false")
         stub_env("K_SOUP_COV_FORMATTERS" => nil)
+        stub_env("MAX_ROWS" => nil)
       end
     end
 
@@ -76,6 +78,23 @@ RSpec.describe Kettle::Soup::Cover do
     it "sets FORMATTERS" do
       formatters = described_class::FORMATTERS.map { |x| x[:type] }
       expect(formatters).to eq(%i[html tty])
+    end
+
+    context "when MAX_ROWS is '0'" do
+      before do
+        described_class.reset_const do
+          stub_env(
+            "CI" => "false",
+            "K_SOUP_COV_FORMATTERS" => nil,
+            "MAX_ROWS" => "0",
+          )
+        end
+      end
+
+      it "omits the tty formatter when MAX_ROWS=0" do
+        formatters = described_class::FORMATTERS.map { |x| x[:type] }
+        expect(formatters).to eq(%i[html])
+      end
     end
 
     context "when K_SOUP_COV_MULTI_FORMATTERS not empty" do
@@ -106,6 +125,7 @@ RSpec.describe Kettle::Soup::Cover do
             "CI" => "false",
             "K_SOUP_COV_MULTI_FORMATTERS" => "true",
             "K_SOUP_COV_FORMATTERS" => "html, xml, rcov, lcov, json, tty",
+            "MAX_ROWS" => nil,
           )
         end
       end
