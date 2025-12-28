@@ -20,8 +20,6 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
-- Added regression tests for `MIN_COVERAGE_HARD` behavior
-
 ### Changed
 
 ### Deprecated
@@ -30,12 +28,25 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+### Security
+
+## [1.1.1] - 2025-12-28
+
+- TAG: [v1.1.1][1.1.1t]
+- COVERAGE: 93.62% -- 132/141 lines in 10 files
+- BRANCH COVERAGE: 50.00% -- 15/30 branches in 10 files
+- 15.56% documented
+
+### Added
+
+- Added regression tests for `MIN_COVERAGE_HARD` behavior
+
+### Fixed
+
 - **BUGFIX**: `K_SOUP_COV_MIN_HARD=false` now correctly disables minimum coverage enforcement in CI
   - Previously, the condition `IS_CI || MIN_COVERAGE_HARD` meant minimum coverage was always enforced in CI
   - Now `MIN_COVERAGE_HARD` takes precedence: if explicitly set to `false`, minimum coverage is not enforced
   - The default behavior is unchanged: in CI without explicit setting, minimum coverage is still enforced
-
-### Security
 
 ## [1.1.0] - 2025-12-28
 
@@ -278,7 +289,9 @@ Please file a bug if you notice a violation of semantic versioning.
 ## [0.1.0] - 2023-10-17
 - Initial release
 
-[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.0...v1.1.1
+[1.1.1t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v1.1.1
 [1.1.0]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.0.10...v1.1.0
 [1.1.0t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v1.1.0
 [1.0.10]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.9...v1.0.10
