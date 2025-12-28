@@ -20,6 +20,27 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
+- Added change
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [1.1.0] - 2025-12-28
+
+- TAG: [v1.1.0][1.1.0t]
+- COVERAGE: 93.62% -- 132/141 lines in 10 files
+- BRANCH COVERAGE: 53.33% -- 16/30 branches in 10 files
+- 15.56% documented
+
+### Added
+
 - When `ENV["MAX_ROWS"] == "0"`, explicitly, skip simplecov-console TTY output.
 - Script `exe/kettle-soup-cover` generates coverage report
   - defaults to reading `$K_SOUP_COV_DIR/coverage.json`
@@ -34,7 +55,9 @@ Please file a bug if you notice a violation of semantic versioning.
   - Set `K_SOUP_COV_USE_MERGING=false` to disable
   - Aggregate coverage from multiple test runs (e.g., FFI specs, integration specs, unit specs) when uniquely named:
   - ```rake
+
     # Matrix checks will run in between FFI and MRI
+
     desc("Run Backend Matrix Specs")
     RSpec::Core::RakeTask.new(:backend_matrix_specs) do |t|
     t.pattern = "./spec_matrix/**/*_spec.rb"
@@ -48,14 +71,6 @@ Please file a bug if you notice a violation of semantic versioning.
 - **Merge timeout** - `MERGE_TIMEOUT` defaults to 3600 seconds (1 hour)
   - Sufficient for most test suites to complete all split tasks
   - Set `K_SOUP_COV_MERGE_TIMEOUT` to override
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 
 ## [1.0.10] - 2025-07-15
 
@@ -258,7 +273,9 @@ Please file a bug if you notice a violation of semantic versioning.
 ## [0.1.0] - 2023-10-17
 - Initial release
 
-[Unreleased]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.10...HEAD
+[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.0.10...v1.1.0
+[1.1.0t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v1.1.0
 [1.0.10]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.9...v1.0.10
 [1.0.9]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.8...v1.0.9
 [1.0.8]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.7...v1.0.8
@@ -270,4 +287,4 @@ Please file a bug if you notice a violation of semantic versioning.
 [1.0.2]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.1...v1.0.2
 [1.0.1]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.0...v1.0.1
 [1.0.0]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v0.1.0...v1.0.0
-[0.1.0]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/97ddbbca309b87c7f6eed0137b08cad74ec81235...v0.1.0
+[0.1.0]: https://github.com/kettle-rb/kettle-soup-cover/compare/97ddbbca309b87c7f6eed0137b08cad74ec81235...v0.1.0
