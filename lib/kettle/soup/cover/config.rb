@@ -45,7 +45,12 @@ SimpleCov.configure do
   #       SpecTracker must wait for instantiation until it has
   #       RSpec's config.world.all_examples,
   #       and that doesn't happen until the before(:suite) hook
-  if Kettle::Soup::Cover::Constants::IS_CI || Kettle::Soup::Cover::Constants::MIN_COVERAGE_HARD
+  #
+  # MIN_COVERAGE_HARD takes precedence:
+  # - If explicitly set to false (K_SOUP_COV_MIN_HARD=false), never enforce minimum coverage
+  # - If explicitly set to true (K_SOUP_COV_MIN_HARD=true), always enforce minimum coverage
+  # - If not set, defaults to IS_CI (enforce in CI, don't enforce locally)
+  if Kettle::Soup::Cover::Constants::MIN_COVERAGE_HARD
     minimum_coverage(
       branch: Kettle::Soup::Cover::Constants::MIN_COVERAGE_BRANCH,
       line: Kettle::Soup::Cover::Constants::MIN_COVERAGE_LINE,

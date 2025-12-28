@@ -20,7 +20,7 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
-- Added change
+- Added regression tests for `MIN_COVERAGE_HARD` behavior
 
 ### Changed
 
@@ -29,6 +29,11 @@ Please file a bug if you notice a violation of semantic versioning.
 ### Removed
 
 ### Fixed
+
+- **BUGFIX**: `K_SOUP_COV_MIN_HARD=false` now correctly disables minimum coverage enforcement in CI
+  - Previously, the condition `IS_CI || MIN_COVERAGE_HARD` meant minimum coverage was always enforced in CI
+  - Now `MIN_COVERAGE_HARD` takes precedence: if explicitly set to `false`, minimum coverage is not enforced
+  - The default behavior is unchanged: in CI without explicit setting, minimum coverage is still enforced
 
 ### Security
 

@@ -73,7 +73,8 @@ Please file a bug if you notice a violation of semantic versioning.</p>
 <h3 id="added">Added</h3>
 
 <ul>
-  <li>Added change</li>
+  <li>Added regression tests for <code>MIN_COVERAGE_HARD</code> behavior in <code>config_spec.rb</code>
+</li>
 </ul>
 
 <h3 id="changed">Changed</h3>
@@ -83,6 +84,17 @@ Please file a bug if you notice a violation of semantic versioning.</p>
 <h3 id="removed">Removed</h3>
 
 <h3 id="fixed">Fixed</h3>
+
+<ul>
+  <li>
+<strong>BUGFIX</strong>: <code>K_SOUP_COV_MIN_HARD=false</code> now correctly disables minimum coverage enforcement in CI
+    <ul>
+      <li>Previously, the condition <code>IS_CI || MIN_COVERAGE_HARD</code> meant minimum coverage was always enforced in CI</li>
+      <li>Now <code>MIN_COVERAGE_HARD</code> takes precedence: if explicitly set to <code>false</code>, minimum coverage is not enforced</li>
+      <li>The default behavior is unchanged: in CI without explicit setting, minimum coverage is still enforced</li>
+    </ul>
+  </li>
+</ul>
 
 <h3 id="security">Security</h3>
 
@@ -486,7 +498,7 @@ to normalize handling of this common logical need in other libraries.</li>
 </div></div>
 
       <div id="footer">
-  Generated on Sun Dec 28 14:16:02 2025 by
+  Generated on Sun Dec 28 14:50:17 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.38 (ruby-4.0.0).
 </div>
