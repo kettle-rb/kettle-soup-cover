@@ -6,7 +6,7 @@
 <title>
   File: CHANGELOG
   
-    &mdash; Documentation by YARD 0.9.37
+    &mdash; Documentation by YARD 0.9.38
   
 </title>
 
@@ -59,31 +59,85 @@
 
       <div id="content"><div id='filecontents'><h1 id="changelog">Changelog</h1>
 
-<p>This file documents all notable changes to this project.</p>
+<p><a href="https://semver.org/spec/v2.0.0.html"><img src="https://img.shields.io/badge/semver-2.0.0-FFDD67.svg?style=flat" alt="SemVer 2.0.0"></a> <a href="https://keepachangelog.com/en/1.0.0/"><img src="https://img.shields.io/badge/keep--a--changelog-1.0.0-FFDD67.svg?style=flat" alt="Keep-A-Changelog 1.0.0"></a></p>
 
-<p>Format: <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,<br>
-Versioning: <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<p>All notable changes to this project will be documented in this file.</p>
+
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,<br>
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>,<br>
+and <a href="https://tom.preston-werner.com/2022/05/23/major-version-numbers-are-not-sacred.html">yes</a>, platform and engine support are part of the <a href="https://github.com/semver/semver/issues/716#issuecomment-869336139">public API</a>.<br>
+Please file a bug if you notice a violation of semantic versioning.</p>
 
 <h2 id="unreleased"><a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.10...HEAD">Unreleased</a></h2>
+
 <h3 id="added">Added</h3>
+
 <ul>
-  <li>When <code>ENV["MAX_ROWS"] == "0"</code>, explicitly, skip simplecov-console TTY output.
-    <h3 id="changed">Changed</h3>
-    <h3 id="deprecated">Deprecated</h3>
-    <h3 id="removed">Removed</h3>
-    <h3 id="fixed">Fixed</h3>
-    <h3 id="security">Security</h3>
+  <li>When <code>ENV["MAX_ROWS"] == "0"</code>, explicitly, skip simplecov-console TTY output.</li>
+  <li>Script <code>exe/kettle-soup-cover</code> generates coverage report
+    <ul>
+      <li>defaults to reading <code>$K_SOUP_COV_DIR/coverage.json</code>
+</li>
+      <li>prints a summarized report</li>
+      <li>accepts <code>-p/--path</code> or a positional path to coverage.json</li>
+      <li>requires the <code>json</code> formatter be configured in <code>$K_SOUP_COV_FORMATTERS</code> (or an explicit JSON path as above).</li>
+    </ul>
   </li>
 </ul>
 
+<h3 id="changed">Changed</h3>
+
+<ul>
+  <li>
+<strong>Coverage merging is now enabled by default</strong> - <code>USE_MERGING</code> defaults to <code>true</code>
+    <ul>
+      <li>Essential for projects that split tests into multiple rake tasks</li>
+      <li>Set <code>K_SOUP_COV_USE_MERGING=false</code> to disable</li>
+      <li>Aggregate coverage from multiple test runs (e.g., FFI specs, integration specs, unit specs) when uniquely named:</li>
+      <li>
+        <pre class="code language-rake"><code class="language-rake"># Matrix checks will run in between FFI and MRI
+desc(&quot;Run Backend Matrix Specs&quot;)
+RSpec::Core::RakeTask.new(:backend_matrix_specs) do |t|
+t.pattern = &quot;./spec_matrix/**/*_spec.rb&quot;
+end
+desc(&quot;Set SimpleCov command name for backend matrix specs&quot;)
+task(:set_matrix_command_name) do
+ENV[&quot;K_SOUP_COV_COMMAND_NAME&quot;] = &quot;Backend Matrix Specs&quot;
+end
+Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>
+<strong>Merge timeout</strong> - <code>MERGE_TIMEOUT</code> defaults to 3600 seconds (1 hour)
+    <ul>
+      <li>Sufficient for most test suites to complete all split tasks</li>
+      <li>Set <code>K_SOUP_COV_MERGE_TIMEOUT</code> to override</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="deprecated">Deprecated</h3>
+
+<h3 id="removed">Removed</h3>
+
+<h3 id="fixed">Fixed</h3>
+
+<h3 id="security">Security</h3>
+
 <h2 id="1010---2025-07-15">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.9...v1.0.10">1.0.10</a> - 2025-07-15</h2>
+
 <ul>
   <li>COVERAGE: 93.43% – 128/137 lines in 10 files</li>
   <li>BRANCH COVERAGE: 50.00% – 16/32 branches in 10 files</li>
-  <li>11.11% documented
-    <h3 id="added-1">Added</h3>
-  </li>
+  <li>11.11% documented</li>
+</ul>
+
+<h3 id="added-1">Added</h3>
+
+<ul>
   <li>Add GitHub Pages site to badge info table</li>
   <li>YARD config, GFM compatible with relative file links</li>
   <li>Documentation site on GitHub Pages
@@ -91,9 +145,12 @@ Versioning: <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a
       <li><a href="https://kettle-soup-cover.galtzo.com">kettle-soup-cover.galtzo.com</a></li>
     </ul>
   </li>
-  <li>Auto-assign issues in the GitHub issue tracker
-    <h3 id="changed-1">Changed</h3>
-  </li>
+  <li>Auto-assign issues in the GitHub issue tracker</li>
+</ul>
+
+<h3 id="changed-1">Changed</h3>
+
+<ul>
   <li>Updated <code>spec.homepage_uri</code> in gemspec to GitHub Pages YARD documentation site</li>
   <li>Updated contact email in gemspec to <code>floss@galtzo.com</code>
 </li>
@@ -110,53 +167,73 @@ Versioning: <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a
 
 <h2 id="109---2025-05-20">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.8...v1.0.9">1.0.9</a> - 2025-05-20</h2>
+
 <ul>
   <li>COVERAGE: 93.43% – 128/137 lines in 10 files</li>
   <li>BRANCH COVERAGE: 50.00% – 16/32 branches in 10 files</li>
-  <li>11.11% documented
-    <h3 id="added-2">Added</h3>
-  </li>
+  <li>11.11% documented</li>
+</ul>
+
+<h3 id="added-2">Added</h3>
+
+<ul>
   <li>YARD config, GFM compatible with relative file links</li>
   <li>Documentation site on GitHub Pages
     <ul>
-      <li>
-<a href="https://kettle-soup-cover.galtzo.com">kettle-soup-cover.galtzo.com</a>
-        <h3 id="changed-2">Changed</h3>
-      </li>
+      <li><a href="https://kettle-soup-cover.galtzo.com">kettle-soup-cover.galtzo.com</a></li>
     </ul>
   </li>
+</ul>
+
+<h3 id="changed-2">Changed</h3>
+
+<ul>
   <li>Updated <code>spec.homepage_uri</code> in gemspec to GitHub Pages YARD documentation site</li>
 </ul>
 
 <h2 id="108---2025-05-20">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.7...v1.0.8">1.0.8</a> - 2025-05-20</h2>
+
 <ul>
   <li>COVERAGE: 93.43% – 128/137 lines in 10 files</li>
   <li>BRANCH COVERAGE: 50.00% – 16/32 branches in 10 files</li>
-  <li>11.11% documented
-    <h3 id="added-3">Added</h3>
-  </li>
-  <li>Link to discussions on GitHub
-    <h3 id="changed-3">Changed</h3>
-  </li>
+  <li>11.11% documented</li>
+</ul>
+
+<h3 id="added-3">Added</h3>
+
+<ul>
+  <li>Link to discussions on GitHub</li>
+</ul>
+
+<h3 id="changed-3">Changed</h3>
+
+<ul>
   <li>Fixed <code>spec.homepage</code> and <code>spec.source_code_uri</code> in gemspec</li>
 </ul>
 
 <h2 id="107---2025-05-20">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.6...v1.0.7">1.0.7</a> - 2025-05-20</h2>
+
 <ul>
   <li>COVERAGE: 93.43% – 128/137 lines in 10 files</li>
   <li>BRANCH COVERAGE: 50.00% – 16/32 branches in 10 files</li>
-  <li>11.11% documented
-    <h3 id="added-4">Added</h3>
-  </li>
+  <li>11.11% documented</li>
+</ul>
+
+<h3 id="added-4">Added</h3>
+
+<ul>
   <li>Document usage with minitest</li>
   <li>Document usage with https://github.com/irongut/CodeCoverageSummary</li>
   <li>Document usage with https://github.com/marocchino/sticky-pull-request-comment</li>
   <li>More documentation improvements</li>
-  <li>Link to Discord
-    <h3 id="changed-4">Changed</h3>
-  </li>
+  <li>Link to Discord</li>
+</ul>
+
+<h3 id="changed-4">Changed</h3>
+
+<ul>
   <li>Gem build: Don’t check for cert if SKIP_GEM_SIGNING is set
     <ul>
       <li>Allows linux packaging systems to build gem without signing via rubygems</li>
@@ -168,12 +245,16 @@ Versioning: <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a
 
 <h2 id="106---2025-05-04">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.5...v1.0.6">1.0.6</a> - 2025-05-04</h2>
+
 <ul>
   <li>COVERAGE: 93.43% – 128/137 lines in 10 files</li>
   <li>BRANCH COVERAGE: 50.00% – 16/32 branches in 10 files</li>
-  <li>11.11% documented
-    <h3 id="added-5">Added</h3>
-  </li>
+  <li>11.11% documented</li>
+</ul>
+
+<h3 id="added-5">Added</h3>
+
+<ul>
   <li>Support for linux, and other OSes, in <code>coverage</code> rake task
     <ul>
       <li>previously was macOS only (would raise error on other OSes)</li>
@@ -187,18 +268,24 @@ Versioning: <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a
     </ul>
   </li>
   <li>Test coverage increased from 55 =&gt; 93 for lines</li>
-  <li>Test coverage increased from 25 =&gt; 50 for branches
-    <h3 id="changed-5">Changed</h3>
-  </li>
+  <li>Test coverage increased from 25 =&gt; 50 for branches</li>
+</ul>
+
+<h3 id="changed-5">Changed</h3>
+
+<ul>
   <li>Refactored internals in ways that should not affect public APIs
     <ul>
       <li>allows much greater test coverage</li>
       <li>report a bug if anything breaks!</li>
     </ul>
   </li>
-  <li>Going forward all releases will be signed by my key that expires 2045-04-29
-    <h3 id="fixed-1">Fixed</h3>
-  </li>
+  <li>Going forward all releases will be signed by my key that expires 2045-04-29</li>
+</ul>
+
+<h3 id="fixed-1">Fixed</h3>
+
+<ul>
   <li>require hooks such that both work equally well:
     <ul>
       <li><code>require "kettle/soup/cover"</code></li>
@@ -214,19 +301,27 @@ Versioning: <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a
 
 <h2 id="105---2025-04-03">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.4...v1.0.5">1.0.5</a> - 2025-04-03</h2>
+
 <h3 id="added-6">Added</h3>
+
 <ul>
   <li>Documentation</li>
   <li>Support for malformed <code>K_SOUP_COV_FORMATTERS</code> (extra spaces)</li>
   <li>Code coverage tools QLTY, and CodeCov.io</li>
-  <li>Added Ruby 3.3, 3.4 to CI
-    <h3 id="changed-6">Changed</h3>
-  </li>
+  <li>Added Ruby 3.3, 3.4 to CI</li>
+</ul>
+
+<h3 id="changed-6">Changed</h3>
+
+<ul>
   <li>Update to Contributor Covenant 2.1</li>
   <li>Allow unsigned gem builds (for linux distros)</li>
-  <li>Checksums are now created by <code>stone_checksums</code> gem
-    <h3 id="fixed-2">Fixed</h3>
-  </li>
+  <li>Checksums are now created by <code>stone_checksums</code> gem</li>
+</ul>
+
+<h3 id="fixed-2">Fixed</h3>
+
+<ul>
   <li>Incorrect documentation of ENV variables that control gem behavior</li>
   <li>Prefer <code>Kernel.load</code> &gt; <code>load</code> in gemspec
     <ul>
@@ -237,30 +332,42 @@ Versioning: <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a
 
 <h2 id="104---2024-06-11">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.3...v1.0.4">1.0.4</a> - 2024-06-11</h2>
+
 <h3 id="added-7">Added</h3>
+
 <ul>
-  <li>Documentation
-    <h3 id="changed-7">Changed</h3>
-  </li>
+  <li>Documentation</li>
+</ul>
+
+<h3 id="changed-7">Changed</h3>
+
+<ul>
   <li>
 <code>version_gem</code> requirement to 1.0.4</li>
 </ul>
 
 <h2 id="103---2024-05-23">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.2...v1.0.3">1.0.3</a> - 2024-05-23</h2>
+
 <h3 id="added-8">Added</h3>
+
 <ul>
   <li>Documentation</li>
   <li>Mirror repo on GitHub: https://github.com/kettle-rb/kettle-soup-cover</li>
-  <li>More tests
-    <h3 id="fixed-3">Fixed</h3>
-  </li>
+  <li>More tests</li>
+</ul>
+
+<h3 id="fixed-3">Fixed</h3>
+
+<ul>
   <li>Incorrect URLs for homepage, etc</li>
 </ul>
 
 <h2 id="102---2023-10-19">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.1...v1.0.2">1.0.2</a> - 2023-10-19</h2>
+
 <h3 id="fixed-4">Fixed</h3>
+
 <ul>
   <li>Include new <code>coverage</code> rake task in the built gem
     <ul>
@@ -272,14 +379,18 @@ Versioning: <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a
 
 <h2 id="101---2023-10-19">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.0...v1.0.1">1.0.1</a> - 2023-10-19</h2>
+
 <h3 id="fixed-5">Fixed</h3>
+
 <ul>
   <li>Include new <code>coverage</code> rake task in the built gem</li>
 </ul>
 
 <h2 id="100---2023-10-19">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v0.1.0...v1.0.0">1.0.0</a> - 2023-10-19</h2>
+
 <h3 id="added-9">Added</h3>
+
 <ul>
   <li>✨ <code>Regexp.escape</code> the <code>FILTER_DIRS</code> to allow for paths to be excluded from coverage
     <ul>
@@ -322,16 +433,22 @@ to normalize handling of this common logical need in other libraries.</li>
       <li><code>Kettle::Soup::Cover::Filters::LtLineFilter</code></li>
     </ul>
   </li>
-  <li>More and better documentation
-    <h3 id="changed-8">Changed</h3>
-  </li>
+  <li>More and better documentation</li>
+</ul>
+
+<h3 id="changed-8">Changed</h3>
+
+<ul>
   <li>This gem no longer does <code>require "simplecov"</code>
     <ul>
-      <li>Instead you can <code>require "simplecov" if Kettle::Soup::Cover::DO_COV</code> wherever you deem fit
-        <h3 id="fixed-6">Fixed</h3>
-      </li>
+      <li>Instead you can <code>require "simplecov" if Kettle::Soup::Cover::DO_COV</code> wherever you deem fit</li>
     </ul>
   </li>
+</ul>
+
+<h3 id="fixed-6">Fixed</h3>
+
+<ul>
   <li>All ENV vars now begin with a uniform prefix for this gem:
     <ul>
       <li><code>K_SOUP_COV_*</code></li>
@@ -348,9 +465,9 @@ to normalize handling of this common logical need in other libraries.</li>
 </div></div>
 
       <div id="footer">
-  Generated on Sun Aug 17 19:25:44 2025 by
+  Generated on Sun Dec 28 13:45:47 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-3.4.5).
+  0.9.38 (ruby-4.0.0).
 </div>
 
     </div>
