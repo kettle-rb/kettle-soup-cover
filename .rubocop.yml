@@ -14,8 +14,15 @@ inherit_gem:
 AllCops:
   DisplayCopNames: true # Display the name of the failing cops
   Exclude:
-    - 'gemfiles/vendor/**/*'
-    - 'vendor/**/*'
+    - certs/**/*
+    - checksums/**/*
+    - docs/**/*
+    - fixtures/**/*
+    - pkg/**/*
+    - results/**/*
+    - spec/fixtures/**/*
+    - tmp/**/*
+    - vendor/**/*
     - '**/.irbrc'
 
 # Metrics cops are disabled in Standard by default)
