@@ -11,6 +11,9 @@ require:
 inherit_gem:
   rubocop-lts: config/rubygem_rspec.yml
 
+inherit_from:
+  - .rubocop_rspec.yml
+
 AllCops:
   DisplayCopNames: true # Display the name of the failing cops
   Exclude:
