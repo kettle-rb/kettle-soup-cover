@@ -1,18 +1,17 @@
-# We want the Exclude directives from different
-# config files to get merged, not overwritten
-inherit_mode:
-  merge:
-    - Exclude
-
-require:
-  - rubocop-lts
-  - rubocop-packaging
-
 inherit_gem:
   rubocop-lts: config/rubygem_rspec.yml
 
 inherit_from:
   - .rubocop_rspec.yml
+
+plugins: rubocop-on-rbs
+
+# This tells RuboCop to add the exclusions in this file
+# to the default exclusions (and those from other inherited files),
+# rather than overwriting them.
+inherit_mode:
+  merge:
+    - Exclude
 
 AllCops:
   DisplayCopNames: true # Display the name of the failing cops
@@ -20,6 +19,7 @@ AllCops:
     - certs/**/*
     - checksums/**/*
     - docs/**/*
+    - examples/**/*
     - fixtures/**/*
     - gemfiles/*.gemfile
     - pkg/**/*
@@ -32,6 +32,12 @@ AllCops:
 # Metrics cops are disabled in Standard by default)
 Metrics:
   Enabled: true
+
+RBS:
+  Enabled: true
+
+Layout/IndentationConsistency:
+  Exclude: ['*.md']
 
 Layout/LineLength:
   Max: 120
