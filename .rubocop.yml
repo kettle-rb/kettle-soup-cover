@@ -28,6 +28,7 @@ AllCops:
     - tmp/**/*
     - vendor/**/*
     - '**/.irbrc'
+    - AGENTS.md
 
 # Metrics cops are disabled in Standard by default)
 Metrics:
