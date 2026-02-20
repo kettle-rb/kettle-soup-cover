@@ -145,7 +145,7 @@ Compatible with MRI Ruby 2.7+, and concordant releases of JRuby, and TruffleRuby
 
 [gh-discussions]: https://github.com/kettle-rb/kettle-soup-cover/discussions
 
-### Enterprise Support [![Tidelift](https://tidelift.com/badges/package/rubygems/kettle-soup-cover)](https://tidelift.com/subscription/pkg/rubygems-kettle-soup-cover?utm_source=rubygems-kettle-soup-cover&utm_medium=referral&utm_campaign=readme)
+### Enterprise Support [![Tidelift](https://tidelift.com/badges/package/rubygems/kettle-soup-cover)][🏙️entsup-tidelift]
 
 Available as part of the Tidelift Subscription.
 
@@ -414,6 +414,7 @@ kettle-soup-cover -f "kettle/soup/**/*.rb" # Globbing is supported; -f will trea
 ```
 
 Notes:
+
 - The script requires the `json` formatter to be active in `K_SOUP_COV_FORMATTERS` if you don't supply an explicit JSON path via `-p` or a positional arg; otherwise it will abort with an actionable message.
 - `-f/--file` is a *file filter* (partial path match) and cannot be used to specify the coverage JSON path.
 - `K_SOUP_COV_DIR` controls the default path used by the script (defaults to `coverage`).
@@ -423,6 +424,7 @@ Notes:
 There are two built-in SimpleCov filters which can be loaded via `Kettle::Soup::Cover.load_filters`.
 
 You could use them like this:
+
 ```ruby
 SimpleCov.add_group("Too Long", Kettle::Soup::Cover::Filters::GtLineFilter.new(1000))
 ```
@@ -441,31 +443,37 @@ Want to help improve this documentation? PRs are easy!
 Below is a reference for the environment variables used by this gem. Each section documents the variable name, its default value, what it controls, and an example of usage. Variable names are prefixed with the value of `K_SOUP_COV_PREFIX` (by default `K_SOUP_COV_`).
 
 #### K_SOUP_COV_COMMAND_NAME
+
 - Default: `RSpec (COVERAGE)`
 - What it controls: Display name for the coverage run, used in UIs or log output.
 - Example: `export K_SOUP_COV_COMMAND_NAME="Unit Tests (Coverage)"`
 
 #### K_SOUP_COV_DEBUG
+
 - Default: `false` (string value read truthily)
 - What it controls: Enable debug output for the configuration, prints the prefixes and selected values.
 - Example: `export K_SOUP_COV_DEBUG=true`
 
 #### K_SOUP_COV_DIR
+
 - Default: `coverage`
 - What it controls: Directory where SimpleCov writes coverage reports. The `exe/kettle-soup-cover` script and rake tasks will look here for artefacts like `coverage.json` or `index.html`.
 - Example: `export K_SOUP_COV_DIR=my-coverage`
 
 #### K_SOUP_COV_DO
+
 - Default: Uses `CI` if unset (`CI=false` default). Setting to `true` or `false` enables/disables coverage collection.
 - What it controls: Controls whether the gem enables SimpleCov at runtime (`DO_COV` behavior).
 - Example: `export K_SOUP_COV_DO=true`
 
 #### K_SOUP_COV_FILTER_DIRS
+
 - Default: `bin,certs,checksums,config,coverage,docs,features,gemfiles,pkg,results,sig,spec,src,test,test-results,vendor`
 - What it controls: A comma-separated list of directory names to filter out from coverage reports.
 - Example: `export K_SOUP_COV_FILTER_DIRS=vendor,bin,docs`
 
 #### K_SOUP_COV_FORMATTERS
+
 - Default: `html,xml,rcov,lcov,json,tty` on CI; `html,tty` locally.
 - What it controls: Comma-separated list of formatters that determine the kind of coverage reports generated. Supported values include `html`, `xml`, `rcov`, `lcov`, `json`, `tty`.
 - Example: `export K_SOUP_COV_FORMATTERS="html,json"`
@@ -473,46 +481,55 @@ Below is a reference for the environment variables used by this gem. Each sectio
 Note: the `exe/kettle-soup-cover` script requires that the `json` formatter be enabled so it can read a canonical `coverage/coverage.json` file. If you plan to use that script, ensure `json` is included in your `K_SOUP_COV_FORMATTERS` value as shown in the example above.
 
 #### K_SOUP_COV_MERGE_TIMEOUT
+
 - Default: `nil`
 - What it controls: When using merging (`K_SOUP_COV_USE_MERGING=true`), this sets a numeric timeout in seconds for the merge operation.
 - Example: `export K_SOUP_COV_MERGE_TIMEOUT=3600`
 
 #### K_SOUP_COV_MIN_BRANCH
+
 - Default: `80`
 - What it controls: Minimum allowed branch coverage percentage. Used to assert that coverage thresholds are met.
 - Example: `export K_SOUP_COV_MIN_BRANCH=85`
 
 #### K_SOUP_COV_MIN_HARD
+
 - Default: Uses `CI` if unset (`CI=false` default). When true the build will fail if thresholds are not met.
 - What it controls: Whether failing coverage thresholds should fail the run (hard failure) or only warn.
 - Example: `export K_SOUP_COV_MIN_HARD=true`
 
 #### K_SOUP_COV_MIN_LINE
+
 - Default: `80`
 - What it controls: Minimum allowed line coverage percentage.
 - Example: `export K_SOUP_COV_MIN_LINE=92`
 
 #### K_SOUP_COV_MULTI_FORMATTERS
+
 - Default: If running on CI (true) the default is `true`, otherwise the default is true if any formatters are present.
 - What it controls: Whether to configure SimpleCov to run multiple formatters concurrently or not.
 - Example: `export K_SOUP_COV_MULTI_FORMATTERS=false`
 
 #### K_SOUP_COV_PREFIX
+
 - Default: `K_SOUP_COV_`
 - What it controls: Prefix used for the environment variables described in this section; useful if you want a custom-namespaced set for tests.
 - Example: `export K_SOUP_COV_PREFIX="MY_COV_"`
 
 #### K_SOUP_COV_OPEN_BIN
+
 - Default: Uses `open` on macOS and `xdg-open` on Linux.
 - What it controls: Command used by the Rake `coverage` task to open the HTML report. Set to an empty value to disable auto-opening and just print report locations.
 - Example: `export K_SOUP_COV_OPEN_BIN=xdg-open` or `export K_SOUP_COV_OPEN_BIN=` (to only print the path)
 
 #### K_SOUP_COV_USE_MERGING
+
 - Default: `nil` (disabled)
 - What it controls: When true, enables result merging semantics for multiple test runs (works with merge timeout and other behaviors).
 - Example: `export K_SOUP_COV_USE_MERGING=true`
 
 #### K_SOUP_COV_VERBOSE
+
 - Default: `false`
 - What it controls: Enables additional verbose logging where supported within tasks and scripts.
 - Example: `export K_SOUP_COV_VERBOSE=true`
@@ -597,7 +614,7 @@ and [Tidelift][🏙️entsup-tidelift].
 
 ### Open Collective for Individuals
 
-Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/kettle-rb#backer)]
+Support us with a monthly donation and help us continue our activities. [[Become a backer][🖇osc-backers]]
 
 NOTE: [kettle-readme-backers][kettle-readme-backers] updates this list every day, automatically.
 
@@ -607,7 +624,7 @@ No backers yet. Be the first!
 
 ### Open Collective for Organizations
 
-Become a sponsor and get your logo on our README on GitHub with a link to your site. [[Become a sponsor](https://opencollective.com/kettle-rb#sponsor)]
+Become a sponsor and get your logo on our README on GitHub with a link to your site. [[Become a sponsor][🖇osc-sponsors]]
 
 NOTE: [kettle-readme-backers][kettle-readme-backers] updates this list every day, automatically.
 
@@ -794,7 +811,6 @@ Thanks for RTFM. ☺️
 [✉️discord-invite-img-ftb]: https://img.shields.io/discord/1373797679469170758?style=for-the-badge&logo=discord
 [✉️ruby-friends-img]: https://img.shields.io/badge/daily.dev-%F0%9F%92%8E_Ruby_Friends-0A0A0A?style=for-the-badge&logo=dailydotdev&logoColor=white
 [✉️ruby-friends]: https://app.daily.dev/squads/rubyfriends
-
 [✇bundle-group-pattern]: https://gist.github.com/pboling/4564780
 [⛳️gem-namespace]: https://github.com/kettle-rb/kettle-soup-cover
 [⛳️namespace-img]: https://img.shields.io/badge/namespace-Kettle::Soup::Cover-3C2D2D.svg?style=square&logo=ruby&logoColor=white
