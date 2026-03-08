@@ -12,32 +12,31 @@
 
 ## ⚠️ AI Agent Terminal Limitations
 
-### Terminal Output Is Not Visible
+### Terminal Output Is Available, but Each Command Is Isolated
 
-**CRITICAL**: AI agents using `run_in_terminal` almost never see the command output. The terminal tool sends commands to a persistent Copilot terminal, but output is frequently lost or invisible to the agent.
+**CRITICAL**: AI agents can reliably read terminal output when commands run in the background and the output is polled afterward. However, each terminal command should be treated as a fresh shell with no shared state.
 
-**Workaround**: Always redirect output to a file in the project's local `tmp/` directory, then read it back:
+### Use `mise` for Project Environment
 
+**CRITICAL**: The canonical project environment now lives in `mise.toml`, with local overrides in `.env.local` loaded via `dotenvy`.
+
+✅ **CORRECT** — Run self-contained commands with `mise exec`:
 ```bash
-bundle exec rspec spec/some_spec.rb > tmp/test_output.txt 2>&1
+mise exec -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -- bundle exec rspec
 ```
-Then use `read_file` to see `tmp/test_output.txt`.
 
-**NEVER** use `/tmp` or other system directories — always use the project's own `tmp/` directory.
+✅ **CORRECT** — If you need shell syntax first, load the environment in the same command:
+```bash
+eval "$(mise env -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -s bash)" && bundle exec rspec
+```
 
-### direnv Requires Separate `cd` Command
-
-**CRITICAL**: The project uses `direnv` to load environment variables from `.envrc`. When you `cd` into the project directory, `direnv` initializes **after** the shell prompt returns. If you chain `cd` with other commands via `&&`, the subsequent commands run **before** `direnv` has loaded the environment.
-
-✅ **CORRECT** — Run `cd` alone, then run commands separately:
+❌ **WRONG** — Do not rely on a previous command changing directories:
 ```bash
 cd /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover
-```
-```bash
 bundle exec rspec
 ```
 
-❌ **WRONG** — Never chain `cd` with `&&`:
+❌ **WRONG** — A chained `cd` does not give directory-change hooks time to update the environment:
 ```bash
 cd /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover && bundle exec rspec
 ```
@@ -67,9 +66,9 @@ Only use terminal for:
 bundle exec rspec 2>&1 | tail -50
 ```
 
-✅ **CORRECT** — Redirect to file:
+✅ **CORRECT** — Run the plain command and read the full output afterward:
 ```bash
-bundle exec rspec > tmp/test_output.txt 2>&1
+mise exec -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -- bundle exec rspec
 ```
 
 ## 🏗️ Architecture
@@ -149,22 +148,17 @@ exe/
 ### Running Tests
 
 ```bash
-cd /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover
-```
-```bash
-bundle exec rspec > tmp/test_output.txt 2>&1
+mise exec -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -- bundle exec rspec
 ```
 
 ### Coverage Reports
 
 ```bash
-cd /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover
-```
-```bash
-bin/rake coverage > tmp/coverage_output.txt 2>&1
+mise exec -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -- bin/rake coverage
+mise exec -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -- bin/kettle-soup-cover -d
 ```
 
-**Key ENV variables** (set in `.envrc`):
+**Key ENV variables** (set in `mise.toml`, with local overrides in `.env.local`):
 - `K_SOUP_COV_DO=true` – Enable coverage
 - `K_SOUP_COV_MIN_LINE=92` – Line coverage threshold
 - `K_SOUP_COV_MIN_BRANCH=50` – Branch coverage threshold
@@ -203,9 +197,9 @@ Example: `K_SOUP_COV_FORMATTERS="html,xml,rcov,lcov,json,tty"`
 ### Coverage Thresholds
 
 ```bash
-export K_SOUP_COV_MIN_LINE=90      # Minimum 90% line coverage
-export K_SOUP_COV_MIN_BRANCH=80    # Minimum 80% branch coverage
-export K_SOUP_COV_MIN_HARD=true    # Fail the build if not met
+K_SOUP_COV_MIN_LINE=90
+K_SOUP_COV_MIN_BRANCH=80
+K_SOUP_COV_MIN_HARD=true
 ```
 
 ## 🔍 Critical Files
@@ -223,9 +217,9 @@ export K_SOUP_COV_MIN_HARD=true    # Fail the build if not met
 ## 🚫 Common Pitfalls
 
 1. **NEVER add backward compatibility** — No shims, aliases, or deprecation layers.
-2. **NEVER chain `cd` with `&&`** — `direnv` won't initialize until after all chained commands finish.
-3. **NEVER pipe test output through `head`/`tail`** — Redirect to `tmp/` files instead.
-4. **Terminal output is invisible** — Always redirect to `tmp/` and read back with `read_file`.
+2. **NEVER expect `cd` to persist** — Every terminal command is isolated; use a self-contained `mise exec -C ... -- ...` invocation.
+3. **NEVER pipe test output through `head`/`tail`** — Run tests without truncation so you can inspect the full output.
+4. **Terminal commands do not share shell state** — Previous `cd`, `export`, aliases, and functions are not available to the next command.
 5. **`grep_search` cannot search nested git projects** — Use `read_file` and `list_dir` to explore this codebase.
 6. **Use `tmp/` for temporary files** — Never use `/tmp` or other system directories.
 7. **Never review HTML coverage reports** — Use JSON, XML, LCOV, or the `kettle-soup-cover -d` TTY output.
