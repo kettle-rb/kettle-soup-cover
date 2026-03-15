@@ -20,25 +20,40 @@
 
 **CRITICAL**: The canonical project environment now lives in `mise.toml`, with local overrides in `.env.local` loaded via `dotenvy`.
 
+⚠️ **Watch for trust prompts**: After editing `mise.toml` or `.env.local`, `mise` may require trust to be refreshed before commands can load the project environment. That interactive trust screen can masquerade as missing terminal output, so commands may appear hung or silent until you handle it.
+
+**Recovery rule**: If a `mise exec` command in this repo goes silent, appears hung, or terminal polling stops returning useful output, assume `mise trust` is needed first and recover with:
+
+```bash
+mise trust -C /home/pboling/src/kettle-rb/kettle-soup-cover
+mise exec -C /home/pboling/src/kettle-rb/kettle-soup-cover -- bundle exec rspec
+```
+
+Do this before spending time on unrelated debugging; in this workspace, silent `mise` commands are usually a trust problem.
+
+```bash
+mise trust -C /home/pboling/src/kettle-rb/kettle-soup-cover
+```
+
 ✅ **CORRECT** — Run self-contained commands with `mise exec`:
 ```bash
-mise exec -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -- bundle exec rspec
+mise exec -C /home/pboling/src/kettle-rb/kettle-soup-cover -- bundle exec rspec
 ```
 
 ✅ **CORRECT** — If you need shell syntax first, load the environment in the same command:
 ```bash
-eval "$(mise env -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -s bash)" && bundle exec rspec
+eval "$(mise env -C /home/pboling/src/kettle-rb/kettle-soup-cover -s bash)" && bundle exec rspec
 ```
 
 ❌ **WRONG** — Do not rely on a previous command changing directories:
 ```bash
-cd /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover
+cd /home/pboling/src/kettle-rb/kettle-soup-cover
 bundle exec rspec
 ```
 
 ❌ **WRONG** — A chained `cd` does not give directory-change hooks time to update the environment:
 ```bash
-cd /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover && bundle exec rspec
+cd /home/pboling/src/kettle-rb/kettle-soup-cover && bundle exec rspec
 ```
 
 ### Prefer Internal Tools Over Terminal
@@ -68,7 +83,7 @@ bundle exec rspec 2>&1 | tail -50
 
 ✅ **CORRECT** — Run the plain command and read the full output afterward:
 ```bash
-mise exec -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -- bundle exec rspec
+mise exec -C /home/pboling/src/kettle-rb/kettle-soup-cover -- bundle exec rspec
 ```
 
 ## 🏗️ Architecture
@@ -115,9 +130,9 @@ mise exec -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -- b
 | `simplecov-rcov` (~> 0.3) | RCov formatter (Hudson) |
 | `version_gem` (~> 1.1) | Version management |
 
-### Vendor Directory
+### Workspace layout
 
-**IMPORTANT**: This project lives in `vendor/kettle-soup-cover/` within the `ast-merge` workspace. It is a **nested git project** with its own `.git/` directory. The `grep_search` tool **CANNOT search inside nested git projects** — use `read_file` and `list_dir` instead.
+This repo is a sibling project inside the `/home/pboling/src/kettle-rb` workspace, not a vendored dependency under another repo.
 
 ## 📁 Project Structure
 
@@ -148,14 +163,14 @@ exe/
 ### Running Tests
 
 ```bash
-mise exec -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -- bundle exec rspec
+mise exec -C /home/pboling/src/kettle-rb/kettle-soup-cover -- bundle exec rspec
 ```
 
 ### Coverage Reports
 
 ```bash
-mise exec -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -- bin/rake coverage
-mise exec -C /home/pboling/src/kettle-rb/ast-merge/vendor/kettle-soup-cover -- bin/kettle-soup-cover -d
+mise exec -C /home/pboling/src/kettle-rb/kettle-soup-cover -- bin/rake coverage
+mise exec -C /home/pboling/src/kettle-rb/kettle-soup-cover -- bin/kettle-soup-cover -d
 ```
 
 **Key ENV variables** (set in `mise.toml`, with local overrides in `.env.local`):
@@ -220,7 +235,6 @@ K_SOUP_COV_MIN_HARD=true
 2. **NEVER expect `cd` to persist** — Every terminal command is isolated; use a self-contained `mise exec -C ... -- ...` invocation.
 3. **NEVER pipe test output through `head`/`tail`** — Run tests without truncation so you can inspect the full output.
 4. **Terminal commands do not share shell state** — Previous `cd`, `export`, aliases, and functions are not available to the next command.
-5. **`grep_search` cannot search nested git projects** — Use `read_file` and `list_dir` to explore this codebase.
-6. **Use `tmp/` for temporary files** — Never use `/tmp` or other system directories.
-7. **Never review HTML coverage reports** — Use JSON, XML, LCOV, or the `kettle-soup-cover -d` TTY output.
-8. **Coverage constants are frozen at load time** — They read from ENV when `require "kettle-soup-cover"` is called. Changing ENV after that has no effect on the constants.
+5. **Use `tmp/` for temporary files** — Never use `/tmp` or other system directories.
+6. **Never review HTML coverage reports** — Use JSON, XML, LCOV, or the `kettle-soup-cover -d` TTY output.
+7. **Coverage constants are frozen at load time** — They read from ENV when `require "kettle-soup-cover"` is called. Changing ENV after that has no effect on the constants.
