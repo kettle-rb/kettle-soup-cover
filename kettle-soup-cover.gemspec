@@ -1,6 +1,12 @@
 # coding: utf-8
 # frozen_string_literal: true
 
+# kettle-jem:freeze
+# To retain chunks of comments & code during kettle-soup-cover templating:
+# Wrap custom sections with freeze markers (e.g., as above and below this comment chunk).
+# kettle-soup-cover will then preserve content between those markers across template runs.
+# kettle-jem:unfreeze
+
 gem_version =
   if RUBY_VERSION >= "3.1" # rubocop:disable Gemspec/RubyVersionGlobalsUsage
     # Loading Version into an anonymous module allows version.rb to get code coverage from SimpleCov!
@@ -8,11 +14,13 @@ gem_version =
     # See: https://github.com/panorama-ed/memo_wise/pull/397
     Module.new.tap { |mod| Kernel.load("#{__dir__}/lib/kettle/soup/cover/version.rb", mod) }::Kettle::Soup::Cover::Version::VERSION
   else
-    # TODO: Remove this hack once support for Ruby 3.0 and below is removed
-    Kernel.load("lib/kettle/soup/cover/version.rb")
-    g_ver = Kettle::Soup::Cover::Version::VERSION
-    Kettle::Soup::Cover::Version.send(:remove_const, :VERSION)
-    g_ver
+    # NOTE: Use __FILE__ or __dir__ until removal of Ruby 1.x support
+    # __dir__ introduced in Ruby 1.9.1
+    # lib = File.expand_path("../lib", __FILE__)
+    lib = File.expand_path("lib", __dir__)
+    $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+    require "kettle/soup/cover/version"
+    Kettle::Soup::Cover::Version::VERSION
   end
 
 Gem::Specification.new do |spec|
@@ -22,12 +30,11 @@ Gem::Specification.new do |spec|
   spec.email = ["floss@galtzo.com"]
 
   spec.summary = "🍲 kettle-rb OOTB SimpleCov config supporting every CI platform & coverage tool"
-  spec.description = <<~DESC
-    🍲 A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
-    Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
-    for every CI platform, batteries included.
-    Fund overlooked open source projects - bottom of stack, dev/test dependencies: floss-funding.dev
-  DESC
+  spec.description = "🍲 A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
+Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
+for every CI platform, batteries included.
+Fund overlooked open source projects - bottom of stack, dev/test dependencies: floss-funding.dev
+"
   spec.homepage = "https://github.com/kettle-rb/kettle-soup-cover"
   spec.licenses = ["MIT"]
   spec.required_ruby_version = ">= 2.7.0"
@@ -50,7 +57,7 @@ Gem::Specification.new do |spec|
     end
   end
 
-  spec.metadata["homepage_uri"] = "https://#{spec.name.tr("_", "-")}.galtzo.com/"
+  spec.metadata["homepage_uri"] = "https://kettle-soup-cover.galtzo.com/"
   spec.metadata["source_code_uri"] = "#{spec.homepage}/tree/v#{spec.version}"
   spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/v#{spec.version}/CHANGELOG.md"
   spec.metadata["bug_tracker_uri"] = "#{spec.homepage}/issues"
@@ -117,20 +124,20 @@ Gem::Specification.new do |spec|
   #       visibility and discoverability.
   #       However, development dependencies in gemspec will install on
   #       all versions of Ruby that will run in CI.
-  #       This gem, and its gemspec runtime dependencies, will install on Ruby down to 2.7.
-  #       This gem, and its gemspec development dependencies, will install on Ruby down to 2.7.
+  #       This gem, and its gemspec runtime dependencies, will install on Ruby down to 2.7.0.
+  #       This gem, and its gemspec development dependencies, will install on Ruby down to 2.7.0.
   #       Thus, dev dependencies in gemspec must have
   #
-  #       required_ruby_version ">= 2.7" (or lower)
+  #       required_ruby_version ">= 2.7.0" (or lower)
   #
   #       Development dependencies that require strictly newer Ruby versions should be in a "gemfile",
   #       and preferably a modular one (see gemfiles/modular/*.gemfile).
 
   # Dev, Test, & Release Tasks
-  spec.add_development_dependency("kettle-dev", "~> 2.0")                           # ruby >= 2.3.0
+  spec.add_development_dependency("kettle-dev", "~> 2.0")                  # ruby >= 2.3.0
 
   # Security
-  spec.add_development_dependency("bundler-audit", "~> 0.9.2")                      # ruby >= 2.0.0
+  spec.add_development_dependency("bundler-audit", "~> 0.9.3")                      # ruby >= 2.0.0
 
   # Tasks
   spec.add_development_dependency("rake", "~> 13.0")                                # ruby >= 2.2.0
@@ -139,12 +146,12 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("require_bench", "~> 1.0", ">= 1.0.4")            # ruby >= 2.2.0
 
   # Testing
-  spec.add_development_dependency("appraisal2", "~> 3.0")                           # ruby >= 1.8.7, for testing against multiple versions of dependencies
-  spec.add_development_dependency("kettle-test", "~> 1.0", ">= 1.0.6")              # ruby >= 2.3
+  spec.add_development_dependency("appraisal2", "~> 3.0", ">= 3.0.6")               # ruby >= 1.8.7, for testing against multiple versions of dependencies
+  spec.add_development_dependency("kettle-test", "~> 1.0", ">= 1.0.10")              # ruby >= 2.3
 
   # Releasing
   spec.add_development_dependency("ruby-progressbar", "~> 1.13")                    # ruby >= 0
-  spec.add_development_dependency("stone_checksums", "~> 1.0", ">= 1.0.2")          # ruby >= 2.2.0
+  spec.add_development_dependency("stone_checksums", "~> 1.0", ">= 1.0.3")          # ruby >= 2.2.0
 
   # Git integration (optional)
   # The 'git' gem is optional; kettle-soup-cover falls back to shelling out to `git` if it is not present.

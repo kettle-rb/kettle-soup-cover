@@ -290,6 +290,7 @@ Please file a bug if you notice a violation of semantic versioning.
   - `K_SOUP_COV_*`
 
 ## [0.1.0] - 2023-10-17
+
 - Initial release
 
 [Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.1...HEAD

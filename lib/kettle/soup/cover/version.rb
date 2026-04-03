@@ -6,6 +6,7 @@ module Kettle
       module Version
         VERSION = "1.1.1"
       end
+      VERSION = Version::VERSION # Traditional Constant Location
     end
   end
 end

@@ -1,20 +1,20 @@
 cff-version: 1.2.0
-title: Kettle::Soup::Cover
+title: "kettle-soup-cover"
 message: >-
   If you use this work and you want to cite it,
   then you can use the metadata from this file.
 type: software
 authors:
-  - given-names: Peter Hurn
-    family-names: Boling
-    email: floss@galtzo.com
-    affiliation: galtzo.com
+  - given-names: "Peter H."
+    family-names: "Boling"
+    email: "floss@glatzo.com"
+    affiliation: "galtzo.com"
     orcid: 'https://orcid.org/0009-0008-8519-441X'
 identifiers:
   - type: url
-    value: 'https://github.com/kettle-rb/kettle-soup-cover/'
-    description: Kettle::Soup::Cover
-repository-code: 'https://github.com/kettle-rb/kettle-soup-cover/'
+    value: 'https://github.com/kettle-rb/kettle-soup-cover'
+    description: "kettle-soup-cover"
+repository-code: 'https://github.com/kettle-rb/kettle-soup-cover'
 abstract: >-
-  Kettle::Soup::Cover
+  kettle-soup-cover
 license: See license file
