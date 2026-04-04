@@ -89,7 +89,7 @@ engines:
 # Supported values: org, project, org_and_project
 # Default (when key is absent): org_and_project
 readme:
-  top_logo_mode: org_and_project
+  top_logo_mode: org
 
 # SPDX license identifiers for this project.
 # List one or more licenses that apply to the gem. Users may use the software
@@ -110,7 +110,10 @@ readme:
 #   - Any non-MIT license adds a "contact for commercial license" prompt.
 #   - When MIT (or AGPL), a PolyForm variant, AND LicenseRef-Big-Time-Public-License
 #     are all present, a use-case guide table is added to README and LICENSE.md.
-licenses: [MIT]
+licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  - LicenseRef-Big-Time-Public-License
 
 # Machine / automation accounts to exclude from generated copyright output.
 #
@@ -186,7 +189,9 @@ patterns:
 
 # Per-file configuration (nested directory structure)
 # Only files that need overrides belong here. Everything else defaults to merge.
-files: {}
+files:
+  AGENTS.md:
+    strategy: accept_template
 
 # To override specific files, add entries like:
 #
