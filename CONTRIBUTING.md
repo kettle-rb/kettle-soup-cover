@@ -38,6 +38,14 @@ Follow these instructions:
 6. Make sure to add tests for it. This is important, so it doesn't break in a future release.
 7. Create new Pull Request.
 
+1. Fork the repository
+2. Create a feature branch (`git checkout -b my-new-feature`)
+3. Make some fixes.
+4. Commit changes (`git commit -am 'Added some feature'`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Make sure to add tests for it. This is important, so it doesn't break in a future release.
+7. Create new Pull Request.
+
 ## Executables vs Rake tasks
 
 Executables shipped by dependencies, such as kettle-dev, and stone_checksums, are available
