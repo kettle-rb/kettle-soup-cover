@@ -36,7 +36,7 @@ for every CI platform, batteries included.
 Fund overlooked open source projects - bottom of stack, dev/test dependencies: floss-funding.dev
 "
   spec.homepage = "https://github.com/kettle-rb/kettle-soup-cover"
-  spec.licenses = ["AGPL-3.0-only", "PolyForm-Small-Business-1.0.0", "LicenseRef-Big-Time-Public-License"]
+  spec.licenses = ["AGPL-3.0-only"]
   spec.required_ruby_version = ">= 2.7.0"
 
   # Linux distros often package gems and securely certify them independent
