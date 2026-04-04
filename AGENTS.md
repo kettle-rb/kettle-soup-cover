@@ -394,3 +394,5 @@ end
 7. **Coverage constants are frozen at load time** — They read from ENV when `require "kettle-soup-cover"` is called. Changing ENV after that has no effect on the constants.
 
 1. **NEVER pipe test output through `head`/`tail`** — Run tests without truncation so you can inspect the full output.
+
+1. **NEVER pipe test output through `head`/`tail`** — Run tests without truncation so you can inspect the full output.
