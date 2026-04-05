@@ -23,6 +23,7 @@ require "version_gem"
 # This gem
 require_relative "../change"
 require_relative "cover/version"
+
 require_relative "cover/constants"
 require_relative "cover/loaders"
 

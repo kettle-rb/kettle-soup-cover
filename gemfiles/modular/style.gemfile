@@ -13,6 +13,7 @@ gem "reek", "~> 6.5"
 
 platform :mri do
   gem "rubocop-on-rbs", "~> 1.8"                    # ruby >= 3.1.0
+
   # gem "rubocop", "~> 1.73", ">= 1.73.2" # constrained by standard
   gem "rubocop-packaging", "~> 0.6", ">= 0.6.0"
   gem "standard", ">= 1.50"

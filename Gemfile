@@ -18,6 +18,7 @@ git_source(:gitlab) { |repo_name| "https://gitlab.com/#{repo_name}" }
 # Include dependencies from kettle-soup-cover.gemspec
 gemspec
 
+
 # Debugging
 eval_gemfile "gemfiles/modular/debug.gemfile"
 
@@ -42,3 +43,4 @@ gem "irb", "~> 1.17" # ruby >= 2.7
 
 # Templating (env-switched: KETTLE_RB_DEV=true for local paths)
 eval_gemfile "gemfiles/modular/templating.gemfile"
+
