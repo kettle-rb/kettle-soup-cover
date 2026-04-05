@@ -20,6 +20,16 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
+- `CLEAN_RESULTSET` / `K_SOUP_COV_CLEAN_RESULTSET`: deletes `coverage/.resultset.json`
+  before SimpleCov starts to prevent stale entries from prior runs (e.g. after a refactor
+  that shifts line/branch IDs) from producing phantom uncovered branches. Defaults to
+  `false` on CI (each job already starts clean) and `true` locally (where developers
+  re-run tests frequently). Override via `K_SOUP_COV_CLEAN_RESULTSET=true/false` or by
+  setting the constant directly in Ruby. `Kettle::Soup::Cover.clean_resultset!` is also
+  exposed as a public method for callers who want to trigger cleanup explicitly.
+  **Note:** set `K_SOUP_COV_CLEAN_RESULTSET=false` inside `.simplecov_spawn.rb` so
+  spawned subprocesses do not wipe the resultset being accumulated by the main process.
+
 ### Changed
 
 - Updated documentation on hostile takeover of RubyGems

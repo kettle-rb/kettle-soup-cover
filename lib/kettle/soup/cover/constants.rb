@@ -87,6 +87,22 @@ module Kettle
         is_mac = RbConfig::CONFIG["host_os"].include?("darwin")
         # Set to "" to prevent opening a browser with the coverage rake task
         OPEN_BIN = ENV_GET.call("OPEN_BIN", is_mac ? "open" : "xdg-open")
+        # Delete coverage/.resultset.json before SimpleCov starts to prevent stale
+        # entries from prior runs (which have shifted branch/line IDs after refactors)
+        # from polluting the current run's coverage report.
+        #
+        # Default: true outside CI, false inside CI.
+        #   - Outside CI developers re-run tests frequently; stale entries accumulate.
+        #   - Inside CI each job starts from a clean workspace, so cleanup is redundant.
+        #
+        # Override with K_SOUP_COV_CLEAN_RESULTSET=true/false, or set the accessor
+        # directly in Ruby before SimpleCov.start.
+        #
+        # IMPORTANT: set K_SOUP_COV_CLEAN_RESULTSET=false in .simplecov_spawn.rb (or
+        # equivalent) so that spawned subprocesses do not wipe the resultset that the
+        # main process and sibling spawns are accumulating.
+        CLEAN_RESULTSET_DEFAULT = IS_CI ? FALSE : TRUE
+        CLEAN_RESULTSET = ENV_GET.call("CLEAN_RESULTSET", CLEAN_RESULTSET_DEFAULT).casecmp?(TRUE)
         # Enable merging by default to aggregate coverage across multiple test runs
         # (e.g., separate RSpec tasks for FFI tests, integration tests, unit tests)
         # Set K_SOUP_COV_USE_MERGING=false to disable
@@ -99,6 +115,8 @@ module Kettle
         include Kettle::Change.new(
           constants: %w[
             CI
+            CLEAN_RESULTSET
+            CLEAN_RESULTSET_DEFAULT
             COMMAND_NAME
             COVERAGE_DIR
             DEBUG

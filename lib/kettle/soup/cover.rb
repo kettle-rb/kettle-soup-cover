@@ -44,6 +44,14 @@ module Kettle
       def delete_const(&block)
         Constants.delete_const(&block)
       end
+
+      # Deletes coverage/.resultset.json (if it exists) so that stale entries
+      # from prior runs cannot pollute the current run's coverage report.
+      # Called automatically from config.rb when CLEAN_RESULTSET is true.
+      def clean_resultset!
+        resultset_path = SimpleCov::ResultMerger.resultset_path
+        File.delete(resultset_path) if File.exist?(resultset_path)
+      end
     end
   end
 end

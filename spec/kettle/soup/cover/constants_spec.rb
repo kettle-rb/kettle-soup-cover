@@ -108,4 +108,54 @@ RSpec.describe Kettle::Soup::Cover::Constants do
       end
     end
   end
+
+  describe "CLEAN_RESULTSET" do
+    before do
+      described_class.reset_const do
+        stub_env("CI" => ci)
+        stub_env("K_SOUP_COV_MULTI_FORMATTERS" => "false")
+        if clean_resultset.nil?
+          hide_env("K_SOUP_COV_CLEAN_RESULTSET")
+        else
+          stub_env("K_SOUP_COV_CLEAN_RESULTSET" => clean_resultset)
+        end
+      end
+    end
+
+    let(:clean_resultset) { nil }
+
+    context "when CI=true and K_SOUP_COV_CLEAN_RESULTSET is not set" do
+      let(:ci) { "true" }
+
+      it "defaults to false (CI workspaces are already clean)" do
+        expect(described_class::CLEAN_RESULTSET).to be(false)
+      end
+    end
+
+    context "when CI=false and K_SOUP_COV_CLEAN_RESULTSET is not set" do
+      let(:ci) { "false" }
+
+      it "defaults to true (local devs re-run tests frequently)" do
+        expect(described_class::CLEAN_RESULTSET).to be(true)
+      end
+    end
+
+    context "when CI=true and K_SOUP_COV_CLEAN_RESULTSET=true" do
+      let(:ci) { "true" }
+      let(:clean_resultset) { "true" }
+
+      it "is true (explicit override)" do
+        expect(described_class::CLEAN_RESULTSET).to be(true)
+      end
+    end
+
+    context "when CI=false and K_SOUP_COV_CLEAN_RESULTSET=false" do
+      let(:ci) { "false" }
+      let(:clean_resultset) { "false" }
+
+      it "is false (explicit override)" do
+        expect(described_class::CLEAN_RESULTSET).to be(false)
+      end
+    end
+  end
 end

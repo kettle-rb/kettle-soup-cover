@@ -481,6 +481,14 @@ Below is a reference for the environment variables used by this gem. Each sectio
 
 Note: the `exe/kettle-soup-cover` script requires that the `json` formatter be enabled so it can read a canonical `coverage/coverage.json` file. If you plan to use that script, ensure `json` is included in your `K_SOUP_COV_FORMATTERS` value as shown in the example above.
 
+#### K_SOUP_COV_CLEAN_RESULTSET
+
+- Default: `false` on CI; `true` locally.
+- What it controls: When true, deletes `coverage/.resultset.json` before SimpleCov starts. This prevents stale entries from prior runs (e.g., after a refactor that shifts line/branch numbers) from polluting the current run's coverage report. In CI each job starts from a clean workspace so this is unnecessary; locally developers re-run tests frequently and stale entries accumulate.
+- Example: `export K_SOUP_COV_CLEAN_RESULTSET=false`
+
+**Important for spawned-process coverage:** if you use `.simplecov_spawn.rb` (or similar) to collect coverage from child processes, set `K_SOUP_COV_CLEAN_RESULTSET=false` inside that file so spawned processes do not wipe the resultset that other workers are accumulating. Only the main process should clean.
+
 #### K_SOUP_COV_MERGE_TIMEOUT
 
 - Default: `nil`

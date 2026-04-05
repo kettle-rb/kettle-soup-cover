@@ -6,12 +6,39 @@ RSpec.describe Kettle::Soup::Cover do
   describe "::reset_const" do
     subject(:reset_const) do
       described_class.reset_const do
-        puts "CONSTANTS ARE RESET"
+        puts "CONSTANTS ARE RESET" # rubocop:disable RSpec/Output
       end
     end
 
     it "has output" do
       expect { reset_const }.to output("CONSTANTS ARE RESET\n").to_stdout
+    end
+  end
+
+  describe "::clean_resultset!" do
+    subject(:clean_resultset!) { described_class.clean_resultset! }
+
+    let(:tmp_dir) { Dir.mktmpdir }
+    let(:resultset_path) { File.join(tmp_dir, ".resultset.json") }
+
+    before do
+      allow(SimpleCov::ResultMerger).to receive(:resultset_path).and_return(resultset_path)
+    end
+
+    after { FileUtils.remove_entry(tmp_dir) }
+
+    context "when the resultset file exists" do
+      before { File.write(resultset_path, "{}") }
+
+      it "deletes the file" do
+        expect { clean_resultset! }.to change { File.exist?(resultset_path) }.from(true).to(false)
+      end
+    end
+
+    context "when the resultset file does not exist" do
+      it "does not raise an error" do
+        block_is_expected.to not_raise_error
+      end
     end
   end
 
