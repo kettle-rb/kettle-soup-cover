@@ -12,15 +12,13 @@ Remember to [![Keep A Changelog][📗keep-changelog-img]][📗keep-changelog] if
 
 Follow these instructions:
 
-1. Join the Discord: [![Live Chat on Discord][✉️discord-invite-img]][✉️discord-invite]
-2. Fork the repository
-3. Create your feature branch (`git checkout -b my-new-feature`)
-4. Make some fixes.
-5. Commit your changes (`git commit -am 'Added some feature'`)
-6. Push to the branch (`git push origin my-new-feature`)
-7. Make sure to add tests for it. This is important, so it doesn't break in a future release.
-8. Create new Pull Request.
-9. Announce it in the channel for this org in the [Discord][✉️discord-invite]!
+1. Fork the repository
+2. Create a feature branch (`git checkout -b my-new-feature`)
+3. Make some fixes.
+4. Commit changes (`git commit -am 'Added some feature'`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Make sure to add tests for it. This is important, so it doesn't break in a future release.
+7. Create new Pull Request.
 
 ## Executables vs Rake tasks
 
