@@ -1,0 +1,9 @@
+# SHA-pinned Ruby setup step with matrix-driven configuration.
+# Applied as a step snippet (inserted/updated in job steps).
+- name: Setup Ruby & RubyGems
+  uses: ruby/setup-ruby@e65c17d16e57e481586a6a5a0282698790062f92 # v1.300.0
+  with:
+    ruby-version: "${{ matrix.ruby }}"
+    rubygems: "${{ matrix.rubygems }}"
+    bundler: "${{ matrix.bundler }}"
+    bundler-cache: true
