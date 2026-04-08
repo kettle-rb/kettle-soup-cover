@@ -12,13 +12,15 @@ Remember to [![Keep A Changelog][📗keep-changelog-img]][📗keep-changelog] if
 
 Follow these instructions:
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b my-new-feature`)
-3. Make some fixes.
-4. Commit changes (`git commit -am 'Added some feature'`)
-5. Push to the branch (`git push origin my-new-feature`)
-6. Make sure to add tests for it. This is important, so it doesn't break in a future release.
-7. Create new Pull Request.
+1. Join the Discord: [![Live Chat on Discord][✉️discord-invite-img]][✉️discord-invite]
+2. Fork the repository
+3. Create your feature branch (`git checkout -b my-new-feature`)
+4. Make some fixes.
+5. Commit your changes (`git commit -am 'Added some feature'`)
+6. Push to the branch (`git push origin my-new-feature`)
+7. Make sure to add tests for it. This is important, so it doesn't break in a future release.
+8. Create new Pull Request.
+9. Announce it in the channel for this org in the [Discord][✉️discord-invite]!
 
 ## Executables vs Rake tasks
 
@@ -97,6 +99,10 @@ When adding an appraisal to CI, check the [runner tool cache][🏃‍♂️runne
 
 ## The Reek List
 
+## Help out!
+
+Take a look at the `reek` list which is the file called `REEK` and find something to improve.
+
 Take a look at the `reek` list which is the file called `REEK` and find something to improve.
 
 To refresh the `reek` list:
@@ -166,6 +172,8 @@ All releases are signed releases.
 See: [RubyGems Security Guide][🔒️rubygems-security-guide]
 
 NOTE: To build without signing the gem set `SKIP_GEM_SIGNING` to any value in the environment.
+
+### To release a new version:
 
 #### Automated process
 
