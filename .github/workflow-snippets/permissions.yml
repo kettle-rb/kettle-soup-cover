@@ -1,4 +1,0 @@
-# Standard read-only permissions for CI workflows.
-# Applied via PTM at key_path: ["permissions"]
-permissions:
-  contents: read
