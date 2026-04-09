@@ -152,6 +152,38 @@ Use the `K_SOUP_COV_MIN_HARD=false` environment variable to disable hard failure
 mise exec -C /path/to/project -- env K_SOUP_COV_MIN_HARD=false bundle exec rspec spec/path/to/spec.rb
 ```
 
+### Template Management (kettle-jem)
+
+Run the kettle-jem templater to sync project files with the latest template:
+
+```bash
+# Standard run (quiet, non-interactive — the default)
+mise exec -C /path/to/project -- bundle exec rake kettle:jem:install
+
+# Verbose output (see per-file detail)
+mise exec -C /path/to/project -- env KETTLE_JEM_VERBOSE=true bundle exec rake kettle:jem:install
+
+# Interactive mode (prompt before each change)
+mise exec -C /path/to/project -- bundle exec rake kettle:jem:install force=false
+```
+
+**Current defaults** (no flags needed):
+- **quiet=true** — only phase summary lines shown; use `--verbose` or `KETTLE_JEM_VERBOSE=true` to opt out
+- **force=true** — non-interactive; use `--interactive` or `force=false` to opt out
+- **allowed=true** — env file changes auto-accepted; set `allowed=false` to require review
+
+### Building & Installing Locally
+
+To test local code changes across sibling repos, rebuild and reinstall the gem:
+
+```bash
+cd /path/to/gem && rm -rf *.gem && SKIP_GEM_SIGNING=true gem build *.gemspec && gem install --force *.gem
+```
+
+- `SKIP_GEM_SIGNING=true` bypasses the PEM passphrase prompt for signed gemspecs.
+- `--force` overwrites the currently installed version.
+- Always rebuild **and** reinstall before verifying cross-repo behaviour.
+
 ### Coverage Reports
 
 ```bash
