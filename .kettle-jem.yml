@@ -198,6 +198,8 @@ patterns:
 files:
   AGENTS.md:
     strategy: accept_template
+  .simplecov:
+    strategy: keep_destination
   gemfiles:
     modular:
       templating.gemfile:
