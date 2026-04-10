@@ -111,6 +111,8 @@ Fund overlooked open source projects - bottom of stack, dev/test dependencies: f
   spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.9")              # ruby >= 2.2.0
 
   # Code Coverage
+  # JSON formatter will be built-in to simplecov in the next release! Used by GHA, Jenkins X, CircleCI, Travis CI, BitBucket, CodeClimate compatibility (JSON)
+  # HTML formatter will be built-in to simplecov in the next release! Used by GHA, Human compatibility! (HTML)
   # CodeCov + GitHub setup is not via gems: https://github.com/marketplace/actions/codecov
   spec.add_dependency("simplecov", "~> 0.22") # Includes dependency on simplecov-html
   spec.add_dependency("simplecov-cobertura", "~> 3.0") # Ruby >= 2.5, provides GitLab, Jenkins compatibility (XML)
@@ -147,7 +149,7 @@ Fund overlooked open source projects - bottom of stack, dev/test dependencies: f
 
   # Testing
   spec.add_development_dependency("appraisal2", "~> 3.0", ">= 3.0.6")               # ruby >= 1.8.7, for testing against multiple versions of dependencies
-  spec.add_development_dependency("kettle-test", "~> 1.0", ">= 1.0.10")              # ruby >= 2.3
+  spec.add_development_dependency("kettle-test", "~> 2.0", ">= 2.0.0")              # ruby >= 2.3
 
   # Releasing
   spec.add_development_dependency("ruby-progressbar", "~> 1.13")                    # ruby >= 0
