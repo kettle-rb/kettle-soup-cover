@@ -75,7 +75,7 @@ PATH
 PATH
   remote: /home/pboling/src/kettle-rb/kettle-test
   specs:
-    kettle-test (1.0.10)
+    kettle-test (2.0.0)
       appraisal2 (~> 3.0, >= 3.0.2)
       backports (~> 3.0)
       rspec (~> 3.0)
@@ -479,7 +479,7 @@ DEPENDENCIES
   kettle-dev (~> 2.0, >= 0)!
   kettle-jem!
   kettle-soup-cover!
-  kettle-test (~> 1.0, >= 1.0.10, >= 0)!
+  kettle-test (~> 2.0, >= 2.0.0, >= 0)!
   kramdown (~> 2.5, >= 2.5.1)
   kramdown-parser-gfm (~> 1.1)
   markdown-merge!
@@ -554,7 +554,7 @@ CHECKSUMS
   kettle-dev (2.0.0)
   kettle-jem (1.0.0)
   kettle-soup-cover (1.1.1)
-  kettle-test (1.0.10)
+  kettle-test (2.0.0)
   kramdown (2.5.2) sha256=1ba542204c66b6f9111ff00dcc26075b95b220b07f2905d8261740c82f7f02fa
   kramdown-parser-gfm (1.1.0) sha256=fb39745516427d2988543bf01fc4cf0ab1149476382393e0e9c48592f6581729
   language_server-protocol (3.17.0.5) sha256=fd1e39a51a28bf3eec959379985a72e296e9f9acfce46f6a79d31ca8760803cc
