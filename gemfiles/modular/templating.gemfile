@@ -2,10 +2,10 @@
 
 remote = ENV.fetch("KETTLE_RB_DEV", "false").casecmp("false").zero?
 
-gem "parslet"
-gem "prism", "~> 1.6"
 # Cross-platform parsers
 gem "toml"
+gem "parslet"
+gem "prism", "~> 1.6"
 gem "unparser", "~> 0.8", ">= 0.8.1"
 
 platform :mri do
