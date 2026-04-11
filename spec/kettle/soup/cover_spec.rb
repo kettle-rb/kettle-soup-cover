@@ -111,7 +111,11 @@ RSpec.describe Kettle::Soup::Cover do
     after { FileUtils.remove_entry(project_root) }
 
     it "clears the coverage dir and runs the coverage task with json-only output" do
-      expect(described_class).to receive(:system).with(
+      allow(described_class).to receive(:system).and_return(true)
+
+      refresh_coverage_data!
+
+      expect(described_class).to have_received(:system).with(
         {
           "K_SOUP_COV_PREFIX" => "K_SOUP_COV_",
           "K_SOUP_COV_DIR" => resolved_coverage_dir,
@@ -126,9 +130,7 @@ RSpec.describe Kettle::Soup::Cover do
         chdir: project_root,
         out: out,
         err: err,
-      ).and_return(true)
-
-      refresh_coverage_data!
+      )
 
       expect(File.exist?(resolved_coverage_dir)).to be(false)
     end
@@ -140,6 +142,13 @@ RSpec.describe Kettle::Soup::Cover do
         described_class::Error,
         "Coverage refresh failed: #{coverage_task} coverage",
       )
+    end
+  end
+
+  describe "::display_path" do
+    it "normalizes /var/home to /home for emitted report paths" do
+      expect(described_class.display_path("/var/home/pboling/src/kettle-rb/demo/coverage/index.html"))
+        .to eq("/home/pboling/src/kettle-rb/demo/coverage/index.html")
     end
   end
 

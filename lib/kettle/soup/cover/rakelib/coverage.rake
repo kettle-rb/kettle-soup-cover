@@ -11,7 +11,7 @@ task :coverage do
   Rake::Task["test"].invoke
   html_report = "#{Kettle::Soup::Cover::COVERAGE_DIR}/index.html"
   if Kettle::Soup::Cover::OPEN_BIN.empty?
-    puts "Kettle::Soup::Cover::OPEN_BIN not configured. Coverage report is at #{html_report}"
+    puts "Kettle::Soup::Cover::OPEN_BIN not configured. Coverage report is at #{Kettle::Soup::Cover.display_path(html_report)}"
   else
     begin
       %x(#{Kettle::Soup::Cover::OPEN_BIN} #{html_report})
@@ -19,9 +19,9 @@ task :coverage do
       message = error.message || ""
       # `open` command is macOS only.  xdg-open is a decent alternative on many Linux systems.
       if message.include?("No such file or directory - #{Kettle::Soup::Cover::OPEN_BIN}")
-        puts "Configured Kettle::Soup::Cover::OPEN_BIN (#{Kettle::Soup::Cover::OPEN_BIN}) not available. Coverage report is at #{html_report}"
+        puts "Configured Kettle::Soup::Cover::OPEN_BIN (#{Kettle::Soup::Cover::OPEN_BIN}) not available. Coverage report is at #{Kettle::Soup::Cover.display_path(html_report)}"
       elsif message.include?("No such file or directory")
-        puts "No coverage report found at #{html_report}"
+        puts "No coverage report found at #{Kettle::Soup::Cover.display_path(html_report)}"
         puts message
       else
         raise error

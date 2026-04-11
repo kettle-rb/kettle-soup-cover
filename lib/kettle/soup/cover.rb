@@ -39,6 +39,14 @@ module Kettle
 
       module_function
 
+      VAR_HOME_PREFIX = %r{\A/var/home(?=/|\z)}
+
+      def display_path(path)
+        return path if path.nil?
+
+        path.to_s.sub(VAR_HOME_PREFIX, "/home")
+      end
+
       def reset_const(&block)
         Constants.reset_const(&block)
       end
