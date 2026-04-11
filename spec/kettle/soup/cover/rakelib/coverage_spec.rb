@@ -56,6 +56,8 @@ RSpec.describe "rake coverage" do
       end
 
       context "when OPEN_BIN empty" do
+        let(:html_report) { "#{Kettle::Soup::Cover::COVERAGE_DIR}/index.html" }
+
         before do
           stub_const("Kettle::Soup::Cover::OPEN_BIN", "")
         end
@@ -65,11 +67,13 @@ RSpec.describe "rake coverage" do
         end
 
         it "outputs where to find coverage report" do
-          block_is_expected.to output("Kettle::Soup::Cover::OPEN_BIN not configured. Coverage report is at coverage/index.html\n").to_stdout
+          block_is_expected.to output("Kettle::Soup::Cover::OPEN_BIN not configured. Coverage report is at #{html_report}\n").to_stdout
         end
       end
 
       context "when OPEN_BIN set to unavailable executable" do
+        let(:html_report) { "#{Kettle::Soup::Cover::COVERAGE_DIR}/index.html" }
+
         before do
           stub_const("Kettle::Soup::Cover::OPEN_BIN", "blah")
         end
@@ -79,7 +83,7 @@ RSpec.describe "rake coverage" do
         end
 
         it "outputs where to find coverage report" do
-          block_is_expected.to output("Configured Kettle::Soup::Cover::OPEN_BIN (blah) not available. Coverage report is at coverage/index.html\n").to_stdout
+          block_is_expected.to output("Configured Kettle::Soup::Cover::OPEN_BIN (blah) not available. Coverage report is at #{html_report}\n").to_stdout
         end
       end
     end

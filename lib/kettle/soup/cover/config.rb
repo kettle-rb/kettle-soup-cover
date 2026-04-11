@@ -60,4 +60,6 @@ end
 
 # Clean up stale resultset entries from prior runs before SimpleCov.start.
 # See Kettle::Soup::Cover::Constants::CLEAN_RESULTSET for default behavior.
-Kettle::Soup::Cover.clean_resultset! if Kettle::Soup::Cover::Constants::CLEAN_RESULTSET
+if Kettle::Soup::Cover::Constants::CLEAN_RESULTSET && Kettle::Soup::Cover.respond_to?(:clean_resultset!)
+  Kettle::Soup::Cover.clean_resultset!
+end

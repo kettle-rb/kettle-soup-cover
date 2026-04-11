@@ -46,12 +46,13 @@ end
 
 opts.parse!(ARGV)
 # If a positional arg is present (leftover after parsing) treat it as coverage json path
-coverage_dir = Kettle::Soup::Cover::COVERAGE_DIR
+project_root = Dir.pwd
+coverage_dir = File.expand_path(Kettle::Soup::Cover::COVERAGE_DIR, project_root)
 if ARGV.any?
   coverage_path ||= ARGV.shift
   explicit_coverage_path = true
 end
-coverage_path ||= "#{coverage_dir}/coverage.json"
+coverage_path ||= File.join(coverage_dir, "coverage.json")
 
 # Helper to match a file path against the provided file filter
 def path_matches_filter?(path, short_path, filter)
@@ -89,9 +90,11 @@ if Kettle::Soup::Cover::VERBOSE || Kettle::Soup::Cover::DEBUG
   puts "K_SOUP_COV_FORMATTERS=#{Kettle::Soup::Cover::FORMATTERS.map { |f| f[:type].to_s }.join(",")}"
 end
 
+Kettle::Soup::Cover.refresh_coverage_data!(project_root: project_root) unless explicit_coverage_path
+
 unless File.exist?(coverage_path)
   puts "Coverage file not found: #{coverage_path}"
-  puts "Run bin/rake coverage first to generate coverage data."
+  puts "Coverage refresh did not produce #{coverage_path}."
   exit 1
 end
 

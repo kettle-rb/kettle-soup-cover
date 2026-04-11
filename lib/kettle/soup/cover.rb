@@ -15,6 +15,7 @@
 #
 
 # Standard Lib
+require "fileutils"
 require "rbconfig"
 
 # External gems
@@ -52,6 +53,41 @@ module Kettle
       def clean_resultset!
         resultset_path = SimpleCov::ResultMerger.resultset_path
         File.delete(resultset_path) if File.exist?(resultset_path)
+      end
+
+      def clear_coverage_dir!(coverage_dir = Constants::COVERAGE_DIR, project_root: Dir.pwd)
+        FileUtils.rm_rf(File.expand_path(coverage_dir, project_root))
+      end
+
+      def coverage_task_env(coverage_dir = Constants::COVERAGE_DIR, project_root: Dir.pwd)
+        resolved_coverage_dir = File.expand_path(coverage_dir, project_root)
+
+        {
+          "K_SOUP_COV_PREFIX" => Constants::PREFIX,
+          "#{Constants::PREFIX}DIR" => resolved_coverage_dir,
+          "#{Constants::PREFIX}DO" => Constants::TRUE,
+          "#{Constants::PREFIX}FORMATTERS" => "json",
+          "#{Constants::PREFIX}MIN_HARD" => Constants::FALSE,
+          "#{Constants::PREFIX}MULTI_FORMATTERS" => Constants::TRUE,
+          "#{Constants::PREFIX}OPEN_BIN" => "",
+        }
+      end
+
+      def refresh_coverage_data!(coverage_dir = Constants::COVERAGE_DIR, project_root: Dir.pwd, out: $stdout, err: $stderr)
+        clear_coverage_dir!(coverage_dir, project_root: project_root)
+
+        coverage_task = File.expand_path("bin/rake", project_root)
+        success = system(
+          coverage_task_env(coverage_dir, project_root: project_root),
+          coverage_task,
+          "coverage",
+          chdir: project_root,
+          out: out,
+          err: err,
+        )
+        return if success
+
+        raise Error, "Coverage refresh failed: #{coverage_task} coverage"
       end
     end
   end

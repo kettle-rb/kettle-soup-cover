@@ -379,6 +379,21 @@ which is configured by default on CI.  To replicate that locally you could:
 CI=true bundle exec rake test # or whatever command you run for tests.
 ```
 
+To inspect the current local coverage report, use the bundled analyzer:
+
+```console
+bin/kettle-soup-cover -d
+```
+
+By default it clears the configured coverage directory, runs `bin/rake coverage`
+with fresh JSON-only output, and then prints the detailed report.
+If you want to inspect an already-generated artifact without rerunning tests,
+pass it explicitly:
+
+```console
+bin/kettle-soup-cover -p coverage/coverage.json
+```
+
 That's it!
 
 ### Rakefile

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "stringio"
+
 RSpec.describe Kettle::Soup::Cover do
   include_context "with stubbed env"
 
@@ -39,6 +41,105 @@ RSpec.describe Kettle::Soup::Cover do
       it "does not raise an error" do
         block_is_expected.to not_raise_error
       end
+    end
+  end
+
+  describe "::clear_coverage_dir!" do
+    subject(:clear_coverage_dir!) { described_class.clear_coverage_dir!(coverage_dir, project_root: project_root) }
+
+    let(:project_root) { Dir.mktmpdir }
+    let(:coverage_dir) { "coverage" }
+    let(:resolved_coverage_dir) { File.join(project_root, coverage_dir) }
+
+    before do
+      FileUtils.mkdir_p(resolved_coverage_dir)
+      File.write(File.join(resolved_coverage_dir, "coverage.json"), "{}")
+    end
+
+    after { FileUtils.remove_entry(project_root) }
+
+    it "removes the configured coverage dir" do
+      expect { clear_coverage_dir! }.to change { File.exist?(resolved_coverage_dir) }.from(true).to(false)
+    end
+  end
+
+  describe "::coverage_task_env" do
+    subject(:coverage_task_env) { described_class.coverage_task_env(coverage_dir, project_root: project_root) }
+
+    let(:project_root) { Dir.mktmpdir }
+    let(:coverage_dir) { "custom-coverage" }
+
+    after { FileUtils.remove_entry(project_root) }
+
+    it "forces a fresh json-only coverage run in the configured directory" do
+      expect(coverage_task_env).to eq(
+        {
+          "K_SOUP_COV_PREFIX" => "K_SOUP_COV_",
+          "K_SOUP_COV_DIR" => File.join(project_root, coverage_dir),
+          "K_SOUP_COV_DO" => "true",
+          "K_SOUP_COV_FORMATTERS" => "json",
+          "K_SOUP_COV_MIN_HARD" => "false",
+          "K_SOUP_COV_MULTI_FORMATTERS" => "true",
+          "K_SOUP_COV_OPEN_BIN" => "",
+        },
+      )
+    end
+  end
+
+  describe "::refresh_coverage_data!" do
+    subject(:refresh_coverage_data!) do
+      described_class.refresh_coverage_data!(
+        coverage_dir,
+        project_root: project_root,
+        out: out,
+        err: err,
+      )
+    end
+
+    let(:project_root) { Dir.mktmpdir }
+    let(:coverage_dir) { "coverage" }
+    let(:resolved_coverage_dir) { File.join(project_root, coverage_dir) }
+    let(:out) { StringIO.new }
+    let(:err) { StringIO.new }
+    let(:coverage_task) { File.join(project_root, "bin", "rake") }
+
+    before do
+      FileUtils.mkdir_p(resolved_coverage_dir)
+      File.write(File.join(resolved_coverage_dir, "coverage.json"), "{}")
+    end
+
+    after { FileUtils.remove_entry(project_root) }
+
+    it "clears the coverage dir and runs the coverage task with json-only output" do
+      expect(described_class).to receive(:system).with(
+        {
+          "K_SOUP_COV_PREFIX" => "K_SOUP_COV_",
+          "K_SOUP_COV_DIR" => resolved_coverage_dir,
+          "K_SOUP_COV_DO" => "true",
+          "K_SOUP_COV_FORMATTERS" => "json",
+          "K_SOUP_COV_MIN_HARD" => "false",
+          "K_SOUP_COV_MULTI_FORMATTERS" => "true",
+          "K_SOUP_COV_OPEN_BIN" => "",
+        },
+        coverage_task,
+        "coverage",
+        chdir: project_root,
+        out: out,
+        err: err,
+      ).and_return(true)
+
+      refresh_coverage_data!
+
+      expect(File.exist?(resolved_coverage_dir)).to be(false)
+    end
+
+    it "raises when the coverage task fails" do
+      allow(described_class).to receive(:system).and_return(false)
+
+      expect { refresh_coverage_data! }.to raise_error(
+        described_class::Error,
+        "Coverage refresh failed: #{coverage_task} coverage",
+      )
     end
   end
 
