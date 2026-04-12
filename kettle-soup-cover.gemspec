@@ -87,7 +87,6 @@ Fund overlooked open source projects - bottom of stack, dev/test dependencies: f
     "FUNDING.md",
     "LICENSE.txt",
     "README.md",
-    "REEK",
     "RUBOCOP.md",
     "SECURITY.md",
   ]
