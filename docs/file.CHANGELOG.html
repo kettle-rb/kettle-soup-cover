@@ -6,7 +6,7 @@
 <title>
   File: CHANGELOG
   
-    &mdash; Documentation by YARD 0.9.38
+    &mdash; Documentation by YARD 0.9.39
   
 </title>
 
@@ -72,7 +72,28 @@ Please file a bug if you notice a violation of semantic versioning.</p>
 
 <h3 id="added">Added</h3>
 
+<ul>
+  <li>
+<code>CLEAN_RESULTSET</code> / <code>K_SOUP_COV_CLEAN_RESULTSET</code>: deletes <code>coverage/.resultset.json</code><br>
+before SimpleCov starts to prevent stale entries from prior runs (e.g. after a refactor<br>
+that shifts line/branch IDs) from producing phantom uncovered branches. Defaults to<br>
+<code>false</code> on CI (each job already starts clean) and <code>true</code> locally (where developers<br>
+re-run tests frequently). Override via <code>K_SOUP_COV_CLEAN_RESULTSET=true/false</code> or by<br>
+setting the constant directly in Ruby. <code>Kettle::Soup::Cover.clean_resultset!</code> is also<br>
+exposed as a public method for callers who want to trigger cleanup explicitly.<br>
+<strong>Note:</strong> set <code>K_SOUP_COV_CLEAN_RESULTSET=false</code> inside <code>.simplecov_spawn.rb</code> so<br>
+spawned subprocesses do not wipe the resultset being accumulated by the main process.</li>
+</ul>
+
 <h3 id="changed">Changed</h3>
+
+<ul>
+  <li>Updated documentation on hostile takeover of RubyGems
+    <ul>
+      <li>https://dev.to/galtzo/hostile-takeover-of-rubygems-my-thoughts-5hlo</li>
+    </ul>
+  </li>
+</ul>
 
 <h3 id="deprecated">Deprecated</h3>
 
@@ -505,6 +526,7 @@ to normalize handling of this common logical need in other libraries.</li>
 
 <h2 id="010---2023-10-17">
 <a href="https://github.com/kettle-rb/kettle-soup-cover/compare/97ddbbca309b87c7f6eed0137b08cad74ec81235...v0.1.0">0.1.0</a> - 2023-10-17</h2>
+
 <ul>
   <li>Initial release</li>
 </ul>
@@ -512,9 +534,9 @@ to normalize handling of this common logical need in other libraries.</li>
 </div></div>
 
       <div id="footer">
-  Generated on Sun Dec 28 14:52:03 2025 by
+  Generated on Sun Apr 12 11:49:34 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.38 (ruby-4.0.0).
+  0.9.39 (ruby-4.0.2).
 </div>
 
     </div>
