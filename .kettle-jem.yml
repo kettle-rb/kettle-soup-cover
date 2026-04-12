@@ -97,7 +97,7 @@ engines:
 # Supported values: org, project, org_and_project
 # Default (when key is absent): org_and_project
 readme:
-  top_logo_mode: org
+  top_logo_mode: org_and_project
 
 # SPDX license identifiers for this project.
 # List one or more licenses that apply to the gem. Users may use the software
