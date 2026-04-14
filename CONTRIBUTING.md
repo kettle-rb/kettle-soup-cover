@@ -22,6 +22,18 @@ Follow these instructions:
 8. Create new Pull Request.
 9. Announce it in the channel for this org in the [Discord][✉️discord-invite]!
 
+Follow these instructions:
+
+1. Join the Discord: [![Live Chat on Discord][✉️discord-invite-img]][✉️discord-invite]
+2. Fork the repository
+3. Create your feature branch (`git checkout -b my-new-feature`)
+4. Make some fixes.
+5. Commit your changes (`git commit -am 'Added some feature'`)
+6. Push to the branch (`git push origin my-new-feature`)
+7. Make sure to add tests for it. This is important, so it doesn't break in a future release.
+8. Create new Pull Request.
+9. Announce it in the channel for this org in the [Discord][✉️discord-invite]!
+
 ## Executables vs Rake tasks
 
 Executables shipped by dependencies, such as kettle-dev, and stone_checksums, are available
@@ -101,13 +113,13 @@ When adding an appraisal to CI, check the [runner tool cache][🏃‍♂️runne
 
 ## Help out!
 
+Take a look at the open issues and pull requests, or use the gem and find something to improve.
+
 ## Developer Certificate of Origin
 
 In order to protect users of this project, we require all contributors to comply with the
 [Developer Certificate of Origin](https://developercertificate.org/).
 This ensures that all contributions are properly licensed and attributed.
-
-Take a look at the open issues and pull requests, or use the gem and find something to improve.
 
 To refresh the `reek` list:
 
