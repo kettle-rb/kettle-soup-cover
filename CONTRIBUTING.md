@@ -8,19 +8,15 @@ To submit a patch, please fork the project, create a patch with tests, and send 
 
 Remember to [![Keep A Changelog][📗keep-changelog-img]][📗keep-changelog] if you make changes.
 
-## You can help!
+## Developer Certificate of Origin
 
-Follow these instructions:
+In order to protect users of this project, we require all contributors to comply with the
+[Developer Certificate of Origin](https://developercertificate.org/).
+This ensures that all contributions are properly licensed and attributed.
 
-1. Join the Discord: [![Live Chat on Discord][✉️discord-invite-img]][✉️discord-invite]
-2. Fork the repository
-3. Create your feature branch (`git checkout -b my-new-feature`)
-4. Make some fixes.
-5. Commit your changes (`git commit -am 'Added some feature'`)
-6. Push to the branch (`git push origin my-new-feature`)
-7. Make sure to add tests for it. This is important, so it doesn't break in a future release.
-8. Create new Pull Request.
-9. Announce it in the channel for this org in the [Discord][✉️discord-invite]!
+## Help out!
+
+Take a look at the open issues and pull requests, or use the gem and find something to improve.
 
 Follow these instructions:
 
@@ -110,16 +106,6 @@ bin/rake appraisal:reset
 When adding an appraisal to CI, check the [runner tool cache][🏃‍♂️runner-tool-cache] to see which runner to use.
 
 ## The Reek List
-
-## Help out!
-
-Take a look at the open issues and pull requests, or use the gem and find something to improve.
-
-## Developer Certificate of Origin
-
-In order to protect users of this project, we require all contributors to comply with the
-[Developer Certificate of Origin](https://developercertificate.org/).
-This ensures that all contributions are properly licensed and attributed.
 
 To refresh the `reek` list:
 
