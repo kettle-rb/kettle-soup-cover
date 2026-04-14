@@ -101,7 +101,11 @@ When adding an appraisal to CI, check the [runner tool cache][🏃‍♂️runne
 
 ## Help out!
 
-Take a look at the `reek` list which is the file called `REEK` and find something to improve.
+## Developer Certificate of Origin
+
+In order to protect users of this project, we require all contributors to comply with the
+[Developer Certificate of Origin](https://developercertificate.org/).
+This ensures that all contributions are properly licensed and attributed.
 
 Take a look at the open issues and pull requests, or use the gem and find something to improve.
 
