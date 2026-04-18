@@ -35,14 +35,15 @@ Follow these instructions:
 Executables shipped by dependencies, such as kettle-dev, and stone_checksums, are available
 after running `bin/setup`. These include:
 
-1. - gem_checksums
-2. - kettle-changelog
-3. - kettle-commit-msg
-4. - kettle-dev-setup
-5. - kettle-dvcs
-6. - kettle-pre-release
-7. - kettle-readme-backers
-8. - kettle-release
+- gem_checksums
+- kettle-changelog
+- kettle-commit-msg
+- kettle-dev-setup
+- kettle-dvcs
+- kettle-pre-release
+- kettle-readme-backers
+- kettle-release
+
 There are many Rake tasks available as well. You can see them by running:
 
 ```shell
@@ -54,32 +55,37 @@ bin/rake -T
 Below are the primary environment variables recognized by stone_checksums (and its integrated tools). Unless otherwise noted, set boolean values to the string "true" to enable.
 
 General/runtime
-1. - DEBUG: Enable extra internal logging for this library (default: false)
-2. - REQUIRE_BENCH: Enable `require_bench` to profile requires (default: false)
-3. - CI: When set to true, adjusts default rake tasks toward CI behavior
+- DEBUG: Enable extra internal logging for this library (default: false)
+- REQUIRE_BENCH: Enable `require_bench` to profile requires (default: false)
+- CI: When set to true, adjusts default rake tasks toward CI behavior
+
 Coverage (kettle-soup-cover / SimpleCov)
-1. - K_SOUP_COV_DO: Enable coverage collection (default: true in `mise.toml`)
-2. - K_SOUP_COV_FORMATTERS: Comma-separated list of formatters (html, xml, rcov, lcov, json, tty)
-3. - K_SOUP_COV_MIN_LINE: Minimum line coverage threshold (integer, e.g., 100)
-4. - K_SOUP_COV_MIN_BRANCH: Minimum branch coverage threshold (integer, e.g., 100)
-5. - K_SOUP_COV_MIN_HARD: Fail the run if thresholds are not met (true/false)
-6. - K_SOUP_COV_MULTI_FORMATTERS: Enable multiple formatters at once (true/false)
-7. - K_SOUP_COV_OPEN_BIN: Path to browser opener for HTML (empty disables auto-open)
-8. - MAX_ROWS: Limit console output rows for simplecov-console (e.g., 1)
+- K_SOUP_COV_DO: Enable coverage collection (default: true in `mise.toml`)
+- K_SOUP_COV_FORMATTERS: Comma-separated list of formatters (html, xml, rcov, lcov, json, tty)
+- K_SOUP_COV_MIN_LINE: Minimum line coverage threshold (integer, e.g., 100)
+- K_SOUP_COV_MIN_BRANCH: Minimum branch coverage threshold (integer, e.g., 100)
+- K_SOUP_COV_MIN_HARD: Fail the run if thresholds are not met (true/false)
+- K_SOUP_COV_MULTI_FORMATTERS: Enable multiple formatters at once (true/false)
+- K_SOUP_COV_OPEN_BIN: Path to browser opener for HTML (empty disables auto-open)
+- MAX_ROWS: Limit console output rows for simplecov-console (e.g., 1)
   Tip: When running a single spec file locally, you may want `K_SOUP_COV_MIN_HARD=false` to avoid failing thresholds for a partial run.
+
 GitHub API and CI helpers
-1. - GITHUB_TOKEN or GH_TOKEN: Token used by `ci:act` and release workflow checks to query GitHub Actions status at higher rate limits
+- GITHUB_TOKEN or GH_TOKEN: Token used by `ci:act` and release workflow checks to query GitHub Actions status at higher rate limits
+
 Releasing and signing
-1. - SKIP_GEM_SIGNING: If set, skip gem signing during build/release
-2. - GEM_CERT_USER: Username for selecting your public cert in `certs/<USER>.pem` (defaults to $USER)
-3. - SOURCE_DATE_EPOCH: Reproducible build timestamp.
+- SKIP_GEM_SIGNING: If set, skip gem signing during build/release
+- GEM_CERT_USER: Username for selecting your public cert in `certs/<USER>.pem` (defaults to $USER)
+- SOURCE_DATE_EPOCH: Reproducible build timestamp.
   - `kettle-release` will set this automatically for the session.
   - Not needed on bundler >= 2.7.0, as reproducible builds have become the default.
+
 Git hooks and commit message helpers (exe/kettle-commit-msg)
-1. - GIT_HOOK_BRANCH_VALIDATE: Branch name validation mode (e.g., `jira`) or `false` to disable
-2. - GIT_HOOK_FOOTER_APPEND: Append a footer to commit messages when goalie allows (true/false)
-3. - GIT_HOOK_FOOTER_SENTINEL: Required when footer append is enabled — a unique first-line sentinel to prevent duplicates
-4. - GIT_HOOK_FOOTER_APPEND_DEBUG: Extra debug output in the footer template (true/false)
+- GIT_HOOK_BRANCH_VALIDATE: Branch name validation mode (e.g., `jira`) or `false` to disable
+- GIT_HOOK_FOOTER_APPEND: Append a footer to commit messages when goalie allows (true/false)
+- GIT_HOOK_FOOTER_SENTINEL: Required when footer append is enabled — a unique first-line sentinel to prevent duplicates
+- GIT_HOOK_FOOTER_APPEND_DEBUG: Extra debug output in the footer template (true/false)
+
 For a quick starting point, this repository’s `mise.toml` defines the shared defaults, and `.env.local` can override them locally. Copy `.env.local.example` to `.env.local`, use `KEY=value` lines, and either activate `mise` in your shell or run commands through `mise exec -C /path/to/project -- ...`.
 
 ## Appraisals
@@ -99,21 +105,7 @@ bin/rake appraisal:reset
 
 When adding an appraisal to CI, check the [runner tool cache][🏃‍♂️runner-tool-cache] to see which runner to use.
 
-## The Reek List
-
-To refresh the `reek` list:
-
-```console
-bundle exec reek > REEK
-```
-
 ## Run Tests
-
-To run all tests
-
-```console
-bundle exec rake test
-```
 
 Run tests via `kettle-test` (provided by `kettle-test`). It runs RSpec, writes the full log to
 `tmp/kettle-test/rspec-TIMESTAMP.log`, and prints a compact highlight block with timing, seed,
@@ -131,8 +123,8 @@ K_SOUP_COV_MIN_HARD=false bundle exec kettle-test spec/path/to/spec.rb
 
 ### Spec organization (required)
 
-1. - One spec file per class/module. For each class or module under `lib/`, keep all of its unit tests in a single spec file under `spec/` that mirrors the path and file name exactly: `lib/kettle/soup/cover/my_class.rb` -> `spec/kettle/soup/cover/my_class_spec.rb`.
-2. - Exception: Integration specs that intentionally span multiple classes. Place these under `spec/integration/` (or a clearly named integration folder), and do not directly mirror a single class. Name them after the scenario, not a class.
+- One spec file per class/module. For each class or module under `lib/`, keep all of its unit tests in a single spec file under `spec/` that mirrors the path and file name exactly: `lib/kettle/soup/cover/my_class.rb` -> `spec/kettle/soup/cover/my_class_spec.rb`.
+- Exception: Integration specs that intentionally span multiple classes. Place these under `spec/integration/` (or a clearly named integration folder), and do not directly mirror a single class. Name them after the scenario, not a class.
 
 ## Lint It
 
@@ -154,10 +146,11 @@ For more detailed information about using RuboCop in this project, please see th
 
 Never add `# rubocop:disable ...` / `# rubocop:enable ...` comments to code or specs (except when following the few existing `rubocop:disable` patterns for a rule already being disabled elsewhere in the code). Instead:
 
-1. - Prefer configuration-based exclusions when a rule should not apply to certain paths or files (e.g., via `.rubocop.yml`).
-2. - When a violation is temporary, and you plan to fix it later, record it in `.rubocop_gradual.lock` using the gradual workflow:
+- Prefer configuration-based exclusions when a rule should not apply to certain paths or files (e.g., via `.rubocop.yml`).
+- When a violation is temporary, and you plan to fix it later, record it in `.rubocop_gradual.lock` using the gradual workflow:
   - `bundle exec rake rubocop_gradual:autocorrect` (preferred)
   - `bundle exec rake rubocop_gradual:force_update` (only when you cannot fix the violations immediately)
+
 As a general rule, fix style issues rather than ignoring them. For example, our specs should follow RSpec conventions like using `described_class` for the class under test.
 
 ## Contributors
@@ -218,6 +211,7 @@ NOTE: To build without signing the gem set `SKIP_GEM_SIGNING` to any value in th
     - `sha256sum pkg/<gem name>-<version>.gem`
 14. Run `bundle exec rake release` which will create a git tag for the version,
     push git commits and tags, and push the `.gem` file to the gem host configured in the gemspec.
+
 [📜src-gl]: https://gitlab.com/kettle-rb/kettle-soup-cover/
 [📜src-cb]: https://codeberg.org/kettle-rb/kettle-soup-cover
 [📜src-gh]: https://github.com/kettle-rb/kettle-soup-cover
@@ -227,7 +221,6 @@ NOTE: To build without signing the gem set `SKIP_GEM_SIGNING` to any value in th
 [🖐contributors]: https://github.com/kettle-rb/kettle-soup-cover/graphs/contributors
 [🚎contributors-gl]: https://gitlab.com/kettle-rb/kettle-soup-cover/-/graphs/main
 [🖐contributors-img]: https://contrib.rocks/image?repo=kettle-rb/kettle-soup-cover
-[💎rubygems]: https://rubygems.org
 [💎gem-coop]: https://gem.coop
 [🔒️rubygems-security-guide]: https://guides.rubygems.org/security/#building-gems
 [🔒️rubygems-checksums-pr]: https://github.com/rubygems/rubygems/pull/6022
@@ -235,9 +228,8 @@ NOTE: To build without signing the gem set `SKIP_GEM_SIGNING` to any value in th
 [💎stone_checksums]: https://github.com/galtzo-floss/stone_checksums
 [📗keep-changelog]: https://keepachangelog.com/en/1.0.0/
 [📗keep-changelog-img]: https://img.shields.io/badge/keep--a--changelog-1.0.0-FFDD67.svg?style=flat
-[✉️discord-invite]: https://discord.gg/3qme4XHNKN
-[✉️discord-invite-img]: https://img.shields.io/discord/1373797679469170758?style=for-the-badge
 [📌semver-breaking]: https://github.com/semver/semver/issues/716#issuecomment-869336139
 [📌major-versions-not-sacred]: https://tom.preston-werner.com/2022/05/23/major-version-numbers-are-not-sacred.html
 [🚎appraisal2]: https://github.com/appraisal-rb/appraisal2
 [🏃‍♂️runner-tool-cache]: https://github.com/ruby/ruby-builder/releases/tag/toolcache
+[✉️discord-invite]: https://discord.gg/3qme4XHNKN
