@@ -40,6 +40,39 @@ RSpec.describe Kettle::Soup::Cover::Constants do
   end
 
   describe "FORMATTERS" do
+    context "when CI=true and formatter names are defaulted" do
+      before do
+        described_class.reset_const do
+          stub_env("CI" => "true")
+          stub_env("K_SOUP_COV_FORMATTERS" => nil)
+          stub_env("K_SOUP_COV_MULTI_FORMATTERS" => nil)
+          stub_env("MAX_ROWS" => nil)
+          stub_env("TEST_ENV_NUMBER" => "")
+        end
+      end
+
+      it "uses the CI formatter list" do
+        expect(described_class::FORMATTERS.map { |formatter| formatter.fetch(:type) }).to eq(
+          %i[html xml rcov lcov json tty],
+        )
+      end
+    end
+
+    context "when MAX_ROWS is set but not zero" do
+      before do
+        described_class.reset_const do
+          stub_env("CI" => "false")
+          stub_env("K_SOUP_COV_FORMATTERS" => "html,tty")
+          stub_env("MAX_ROWS" => "5")
+          stub_env("TEST_ENV_NUMBER" => "")
+        end
+      end
+
+      it "keeps the tty formatter" do
+        expect(described_class::FORMATTERS.map { |formatter| formatter.fetch(:type) }).to eq(%i[html tty])
+      end
+    end
+
     context "when no configured formatter names are recognized" do
       before do
         described_class.reset_const do
@@ -55,6 +88,38 @@ RSpec.describe Kettle::Soup::Cover::Constants do
       end
 
       it "defaults multi formatter mode to false" do
+        expect(described_class::MULTI_FORMATTERS_DEFAULT).to eq("false")
+      end
+    end
+  end
+
+  describe "MULTI_FORMATTERS_DEFAULT" do
+    context "when CI=true" do
+      before do
+        described_class.reset_const do
+          stub_env("CI" => "true")
+          stub_env("K_SOUP_COV_FORMATTERS" => nil)
+          stub_env("K_SOUP_COV_MULTI_FORMATTERS" => nil)
+          stub_env("TEST_ENV_NUMBER" => "")
+        end
+      end
+
+      it "defaults to true" do
+        expect(described_class::MULTI_FORMATTERS_DEFAULT).to eq("true")
+      end
+    end
+
+    context "when no formatters are configured outside CI" do
+      before do
+        described_class.reset_const do
+          stub_env("CI" => "false")
+          stub_env("K_SOUP_COV_FORMATTERS" => "unknown")
+          stub_env("K_SOUP_COV_MULTI_FORMATTERS" => nil)
+          stub_env("TEST_ENV_NUMBER" => "")
+        end
+      end
+
+      it "defaults to false" do
         expect(described_class::MULTI_FORMATTERS_DEFAULT).to eq("false")
       end
     end
@@ -179,6 +244,21 @@ RSpec.describe Kettle::Soup::Cover::Constants do
 
       it "is false (explicit override)" do
         expect(described_class::CLEAN_RESULTSET).to be(false)
+      end
+    end
+  end
+
+  describe "OPEN_BIN" do
+    context "when host OS is macOS and no override is set" do
+      before do
+        described_class.reset_const do
+          allow(RbConfig::CONFIG).to receive(:[]).with("host_os").and_return("darwin")
+          stub_env("K_SOUP_COV_OPEN_BIN" => nil)
+        end
+      end
+
+      it "defaults to open" do
+        expect(described_class::OPEN_BIN).to eq("open")
       end
     end
   end

@@ -86,6 +86,20 @@ RSpec.describe "rake coverage" do
           block_is_expected.to output("Configured Kettle::Soup::Cover::OPEN_BIN (blah) not available. Coverage report is at #{html_report}\n").to_stdout
         end
       end
+
+      context "when OPEN_BIN contains unavailable executable plus arguments" do
+        let(:html_report) { "#{Kettle::Soup::Cover::COVERAGE_DIR}/index.html" }
+
+        before do
+          stub_const("Kettle::Soup::Cover::OPEN_BIN", "blah --bad")
+        end
+
+        it "outputs the missing coverage report message" do
+          block_is_expected.to output(
+            "No coverage report found at #{html_report}\nNo such file or directory - blah\n",
+          ).to_stdout
+        end
+      end
     end
   end
 end

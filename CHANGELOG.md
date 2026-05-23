@@ -28,6 +28,11 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- Removed duplicate-load warnings in the spec bootstrap while preserving coverage
+  tracking for the library under test.
+- Covered Ruby 4.0.5 / SimpleCov branch paths that were causing `bin/rake` to
+  fail the configured coverage gate.
+
 ### Security
 
 ## [1.1.2] - 2026-05-23

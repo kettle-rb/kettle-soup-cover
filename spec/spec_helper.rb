@@ -39,7 +39,13 @@ load File.join(path, "..", "lib", "kettle", "soup", "cover", "loaders.rb")
 #   because that comes with side effects that must be delayed until coverage tracking should begin.
 require "simplecov"
 
-Kettle::Soup::Cover::Constants.delete_const
+# rubocop:disable RSpec/RemoveConst
+Kettle.send(:remove_const, :Change) if Kettle.const_defined?(:Change, false)
+if Kettle.const_defined?(:Soup, false) && Kettle::Soup.const_defined?(:Cover, false)
+  Kettle::Soup::Cover.send(:remove_const, :Constants) if Kettle::Soup::Cover.const_defined?(:Constants, false)
+  Kettle::Soup::Cover.send(:remove_const, :Loaders) if Kettle::Soup::Cover.const_defined?(:Loaders, false)
+end
+# rubocop:enable RSpec/RemoveConst
 
 # This gem
 require "kettle-soup-cover"
