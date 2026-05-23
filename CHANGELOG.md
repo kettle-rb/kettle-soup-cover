@@ -36,6 +36,9 @@ Please file a bug if you notice a violation of semantic versioning.
   longer changes the final branch coverage result.
 - Removed the duplicate RuboCop Gradual run from the style workflow and fixed
   the generated style appraisal Gemfile for Ruby 4 extracted stdlibs.
+- Removed the duplicate current workflow job caused by stale matrix axes.
+- Marked generated workflow files as template-owned to prevent stale YAML keys
+  from surviving future template runs.
 
 ### Security
 
