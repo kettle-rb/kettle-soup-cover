@@ -6,13 +6,13 @@
 <title>
   File: CHANGELOG
   
-    &mdash; Documentation by YARD 0.9.39
+    &mdash; Documentation by YARD 0.9.42
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css">
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" />
+  <link rel="stylesheet" href="css/common.css" type="text/css">
 
 <script type="text/javascript">
   pathId = "CHANGELOG";
@@ -27,6 +27,8 @@
 
   </head>
   <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
     <div class="nav_wrap">
       <iframe id="nav" src="file_list.html?1"></iframe>
       <div id="resizer"></div>
@@ -83,6 +85,11 @@ setting the constant directly in Ruby. <code>Kettle::Soup::Cover.clean_resultset
 exposed as a public method for callers who want to trigger cleanup explicitly.<br>
 <strong>Note:</strong> set <code>K_SOUP_COV_CLEAN_RESULTSET=false</code> inside <code>.simplecov_spawn.rb</code> so<br>
 spawned subprocesses do not wipe the resultset being accumulated by the main process.</li>
+  <li>Added <code>turbo_tests:setup</code> and <code>turbo_tests:cleanup</code> rake hooks for<br>
+<code>turbo_tests2</code> coverage collection.</li>
+  <li>Added <code>K_SOUP_COV_TURBO_TESTS</code> and <code>K_SOUP_COV_TURBO_TESTS_DIR</code> support so<br>
+parallel workers write coverage under per-worker directories and the cleanup<br>
+hook can collate the resultsets.</li>
 </ul>
 
 <h3 id="changed">Changed</h3>
@@ -100,6 +107,12 @@ spawned subprocesses do not wipe the resultset being accumulated by the main pro
 <h3 id="removed">Removed</h3>
 
 <h3 id="fixed">Fixed</h3>
+
+<ul>
+  <li>Deferred hard coverage minimum enforcement for <code>turbo_tests2</code> workers to the<br>
+final collated coverage report, so individual workers with partial coverage do<br>
+not fail before merged coverage is available.</li>
+</ul>
 
 <h3 id="security">Security</h3>
 
@@ -534,9 +547,9 @@ to normalize handling of this common logical need in other libraries.</li>
 </div></div>
 
       <div id="footer">
-  Generated on Sun Apr 12 11:49:34 2026 by
+  Generated on Sat May 23 05:42:21 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.39 (ruby-4.0.2).
+  0.9.42 (ruby-4.0.2).
 </div>
 
     </div>

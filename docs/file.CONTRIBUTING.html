@@ -6,13 +6,13 @@
 <title>
   File: CONTRIBUTING
   
-    &mdash; Documentation by YARD 0.9.39
+    &mdash; Documentation by YARD 0.9.42
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css">
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" />
+  <link rel="stylesheet" href="css/common.css" type="text/css">
 
 <script type="text/javascript">
   pathId = "CONTRIBUTING";
@@ -27,6 +27,8 @@
 
   </head>
   <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
     <div class="nav_wrap">
       <iframe id="nav" src="file_list.html?1"></iframe>
       <div id="resizer"></div>
@@ -59,20 +61,28 @@
 
       <div id="content"><div id='filecontents'><h1 id="contributing">Contributing</h1>
 
-<p>Bug reports and pull requests are welcome on <a href="https://codeberg.org/kettle-rb/kettle-soup-cover">CodeBerg</a>, <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/">GitLab</a>, or <a href="https://github.com/kettle-rb/kettle-soup-cover">GitHub</a>.<br>
+<p>Bug reports and pull requests are welcome on <a href="https://codeberg.org/kettle-rb/kettle-soup-cover">CodeBerg</a>, <a href="https://gitlab.com/kettle-rb/kettle-soup-cover">GitLab</a>, or <a href="https://github.com/kettle-rb/kettle-soup-cover">GitHub</a>.<br>
 This project should be a safe, welcoming space for collaboration, so contributors agree to adhere to<br>
-the <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/blob/main/CODE_OF_CONDUCT.md">code of conduct</a>.</p>
+the <a href="https://github.com/kettle-rb/kettle-soup-cover/blob/main/CODE_OF_CONDUCT.md">code of conduct</a>.</p>
 
 <p>To submit a patch, please fork the project, create a patch with tests, and send a pull request.</p>
 
 <p>Remember to <a href="https://keepachangelog.com/en/1.0.0/"><img src="https://img.shields.io/badge/keep--a--changelog-1.0.0-FFDD67.svg?style=flat" alt="Keep A Changelog"></a> if you make changes.</p>
 
-<h2 id="you-can-help">You can help!</h2>
+<h2 id="developer-certificate-of-origin">Developer Certificate of Origin</h2>
+
+<p>In order to protect users of this project, we require all contributors to comply with the<br>
+<a href="https://developercertificate.org/">Developer Certificate of Origin</a>.<br>
+This ensures that all contributions are properly licensed and attributed.</p>
+
+<h2 id="help-out">Help out!</h2>
+
+<p>Take a look at the open issues and pull requests, or use the gem and find something to improve.</p>
 
 <p>Follow these instructions:</p>
 
 <ol>
-  <li>Join the Discord: <a href="https://discord.gg/3qme4XHNKN"><img src="https://img.shields.io/discord/1373797679469170758?style=for-the-badge" alt="Live Chat on Discord"></a>
+  <li>Join the Discord: <a href="https://discord.gg/3qme4XHNKN">![Live Chat on Discord][✉️discord-invite-img]</a>
 </li>
   <li>Fork the repository</li>
   <li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
@@ -172,25 +182,7 @@ They are created and updated with the commands:</p>
 
 <p>When adding an appraisal to CI, check the <a href="https://github.com/ruby/ruby-builder/releases/tag/toolcache">runner tool cache</a> to see which runner to use.</p>
 
-<h2 id="the-reek-list">The Reek List</h2>
-
-<h2 id="help-out">Help out!</h2>
-
-<p>Take a look at the <code>reek</code> list which is the file called <code>REEK</code> and find something to improve.</p>
-
-<p>Take a look at the <code>reek</code> list which is the file called <code>REEK</code> and find something to improve.</p>
-
-<p>To refresh the <code>reek</code> list:</p>
-
-<pre class="code language-console"><code class="language-console">bundle exec reek &gt; REEK
-</code></pre>
-
 <h2 id="run-tests">Run Tests</h2>
-
-<p>To run all tests</p>
-
-<pre class="code language-console"><code class="language-console">bundle exec rake test
-</code></pre>
 
 <p>Run tests via <code>kettle-test</code> (provided by <code>kettle-test</code>). It runs RSpec, writes the full log to<br>
 <code>tmp/kettle-test/rspec-TIMESTAMP.log</code>, and prints a compact highlight block with timing, seed,<br>
@@ -223,7 +215,7 @@ pass/fail count, failing example list, and SimpleCov coverage percentages.</p>
 <pre class="code language-console"><code class="language-console">bundle exec rake rubocop_gradual:autocorrect
 </code></pre>
 
-<p>For more detailed information about using RuboCop in this project, please see the <a href="file.RUBOCOP.html" title="RUBOCOP.md">RUBOCOP.md</a> guide. This project uses <code>rubocop_gradual</code> instead of vanilla RuboCop, which requires specific commands for checking violations.</p>
+<p>For more detailed information about using RuboCop in this project, please see the <a href="RUBOCOP.md">RUBOCOP.md</a> guide. This project uses <code>rubocop_gradual</code> instead of vanilla RuboCop, which requires specific commands for checking violations.</p>
 
 <h3 id="important-do-not-add-inline-rubocop-disables">Important: Do not add inline RuboCop disables</h3>
 
@@ -327,9 +319,9 @@ push git commits and tags, and push the <code>.gem</code> file to the gem host c
 </div></div>
 
       <div id="footer">
-  Generated on Sun Apr 12 11:49:34 2026 by
+  Generated on Sat May 23 05:42:21 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.39 (ruby-4.0.2).
+  0.9.42 (ruby-4.0.2).
 </div>
 
     </div>
