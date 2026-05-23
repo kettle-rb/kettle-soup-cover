@@ -9,6 +9,7 @@ RSpec.describe Kettle::Soup::Cover::Constants do
       described_class.reset_const do
         stub_env("CI" => ci)
         stub_env("K_SOUP_COV_MULTI_FORMATTERS" => multi_formatters)
+        stub_env("TEST_ENV_NUMBER" => "")
       end
     end
 
@@ -38,11 +39,33 @@ RSpec.describe Kettle::Soup::Cover::Constants do
     end
   end
 
+  describe "FORMATTERS" do
+    context "when no configured formatter names are recognized" do
+      before do
+        described_class.reset_const do
+          stub_env("CI" => "false")
+          stub_env("K_SOUP_COV_FORMATTERS" => "unknown")
+          stub_env("K_SOUP_COV_MULTI_FORMATTERS" => nil)
+          stub_env("TEST_ENV_NUMBER" => "")
+        end
+      end
+
+      it "has no formatter plugins" do
+        expect(described_class::FORMATTERS).to eq([])
+      end
+
+      it "defaults multi formatter mode to false" do
+        expect(described_class::MULTI_FORMATTERS_DEFAULT).to eq("false")
+      end
+    end
+  end
+
   describe "MIN_COVERAGE_HARD" do
     before do
       described_class.reset_const do
         stub_env("CI" => ci)
         stub_env("K_SOUP_COV_MULTI_FORMATTERS" => "false")
+        stub_env("TEST_ENV_NUMBER" => "")
         if min_hard.nil?
           hide_env("K_SOUP_COV_MIN_HARD")
         else
@@ -114,6 +137,7 @@ RSpec.describe Kettle::Soup::Cover::Constants do
       described_class.reset_const do
         stub_env("CI" => ci)
         stub_env("K_SOUP_COV_MULTI_FORMATTERS" => "false")
+        stub_env("TEST_ENV_NUMBER" => "")
         if clean_resultset.nil?
           hide_env("K_SOUP_COV_CLEAN_RESULTSET")
         else

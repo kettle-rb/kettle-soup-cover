@@ -25,7 +25,7 @@ module Kettle
 
               define_method(:delete_const) do |*_args, &block|
                 constants.each do |var|
-                  remove_const(var) if defined?(var)
+                  remove_const(var) if const_defined?(var, false)
                 end
                 block&.call
                 nil

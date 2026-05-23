@@ -4,6 +4,7 @@ module Kettle
       module Version
         VERSION: string
       end
+      VERSION: String
     end
   end
 end

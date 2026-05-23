@@ -106,6 +106,124 @@ RSpec.describe Kettle::Soup::Cover do
     end
   end
 
+  describe "::turbo_tests_coverage?" do
+    it "is true when coverage and turbo_tests2 support are enabled" do
+      stub_const("Kettle::Soup::Cover::Constants::DO_COV", true)
+      stub_const("Kettle::Soup::Cover::Constants::TURBO_TESTS", true)
+
+      expect(described_class.turbo_tests_coverage?).to be(true)
+    end
+
+    it "is false when coverage is disabled" do
+      stub_const("Kettle::Soup::Cover::Constants::DO_COV", false)
+      stub_const("Kettle::Soup::Cover::Constants::TURBO_TESTS", true)
+
+      expect(described_class.turbo_tests_coverage?).to be(false)
+    end
+
+    it "is false when turbo_tests2 support is disabled" do
+      stub_const("Kettle::Soup::Cover::Constants::DO_COV", true)
+      stub_const("Kettle::Soup::Cover::Constants::TURBO_TESTS", false)
+
+      expect(described_class.turbo_tests_coverage?).to be(false)
+    end
+  end
+
+  describe "::collate_turbo_tests_coverage!" do
+    subject(:collate_turbo_tests_coverage!) do
+      described_class.collate_turbo_tests_coverage!(coverage_dir, project_root: project_root)
+    end
+
+    let(:project_root) { Dir.mktmpdir }
+    let(:coverage_dir) { "coverage" }
+    let(:resultset_path) { File.join(project_root, coverage_dir, "turbo_tests", "1", ".resultset.json") }
+
+    before do
+      allow(described_class).to receive_messages(
+        turbo_tests_coverage?: turbo_tests_coverage,
+        turbo_tests_resultset_paths: resultsets,
+      )
+    end
+
+    after { FileUtils.remove_entry(project_root) }
+
+    context "when turbo_tests2 coverage is disabled" do
+      let(:turbo_tests_coverage) { false }
+      let(:resultsets) { [resultset_path] }
+
+      it { is_expected.to eq(:disabled) }
+    end
+
+    context "when no worker resultsets exist" do
+      let(:turbo_tests_coverage) { true }
+      let(:resultsets) { [] }
+
+      it { is_expected.to eq(:empty) }
+    end
+
+    context "when worker resultsets exist" do
+      let(:turbo_tests_coverage) { true }
+      let(:resultsets) { [resultset_path] }
+
+      before do
+        stub_const("Kettle::Soup::Cover::Constants::COMMAND_NAME", "Specs")
+        stub_const("Kettle::Soup::Cover::Constants::FILTER_DIRS", ["tmp"])
+        stub_const("Kettle::Soup::Cover::Constants::MIN_COVERAGE_BRANCH", 76)
+        stub_const("Kettle::Soup::Cover::Constants::MIN_COVERAGE_LINE", 92)
+        stub_const("Kettle::Soup::Cover::Constants::MIN_COVERAGE_HARD", true)
+        stub_const("Kettle::Soup::Cover::Constants::MULTI_FORMATTERS", true)
+        allow(Kettle::Soup::Cover::Loaders).to receive(:load_formatters)
+        allow(SimpleCov).to receive(:collate) do |_resultsets, &block|
+          SimpleCov.instance_eval(&block)
+        end
+        allow(SimpleCov).to receive(:command_name)
+        allow(SimpleCov).to receive(:enable_coverage)
+        allow(SimpleCov).to receive(:primary_coverage)
+        allow(SimpleCov).to receive(:add_filter)
+        allow(SimpleCov).to receive(:coverage_dir)
+        allow(SimpleCov).to receive(:minimum_coverage)
+      end
+
+      it "collates with hard minimums and configured formatters" do
+        expect(collate_turbo_tests_coverage!).to eq(:collated)
+        expect(SimpleCov).to have_received(:collate).with(resultsets)
+        expect(SimpleCov).to have_received(:command_name).with("Specs (turbo_tests2)")
+        expect(SimpleCov).to have_received(:enable_coverage).with(:branch)
+        expect(SimpleCov).to have_received(:primary_coverage).with(:branch)
+        expect(SimpleCov).to have_received(:add_filter).with(["tmp"])
+        expect(SimpleCov).to have_received(:coverage_dir).with(File.join(project_root, coverage_dir))
+        expect(SimpleCov).to have_received(:minimum_coverage).with(branch: 76, line: 92)
+        expect(Kettle::Soup::Cover::Loaders).to have_received(:load_formatters)
+      end
+
+      context "when multi formatters are disabled" do
+        before do
+          stub_const("Kettle::Soup::Cover::Constants::MULTI_FORMATTERS", false)
+          allow(SimpleCov).to receive(:formatter)
+        end
+
+        it "uses the default HTML formatter" do
+          expect(collate_turbo_tests_coverage!).to eq(:collated)
+
+          expect(SimpleCov).to have_received(:formatter).with(SimpleCov::Formatter::HTMLFormatter)
+          expect(Kettle::Soup::Cover::Loaders).not_to have_received(:load_formatters)
+        end
+      end
+
+      context "when hard minimums are disabled" do
+        before do
+          stub_const("Kettle::Soup::Cover::Constants::MIN_COVERAGE_HARD", false)
+        end
+
+        it "collates without enforcing minimums" do
+          expect(collate_turbo_tests_coverage!).to eq(:collated)
+
+          expect(SimpleCov).not_to have_received(:minimum_coverage)
+        end
+      end
+    end
+  end
+
   describe "::coverage_task_env" do
     subject(:coverage_task_env) { described_class.coverage_task_env(coverage_dir, project_root: project_root) }
 
@@ -189,6 +307,15 @@ RSpec.describe Kettle::Soup::Cover do
   end
 
   describe "::display_path" do
+    it "returns nil unchanged" do
+      expect(described_class.display_path(nil)).to be_nil
+    end
+
+    it "leaves other paths unchanged" do
+      expect(described_class.display_path("/home/pboling/src/kettle-rb/demo/coverage/index.html"))
+        .to eq("/home/pboling/src/kettle-rb/demo/coverage/index.html")
+    end
+
     it "normalizes /var/home to /home for emitted report paths" do
       expect(described_class.display_path("/var/home/pboling/src/kettle-rb/demo/coverage/index.html"))
         .to eq("/home/pboling/src/kettle-rb/demo/coverage/index.html")

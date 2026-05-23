@@ -1,35 +1,51 @@
 # frozen_string_literal: true
 
 # Local path overrides for development.
-# Loaded by the associated non-local gemfile when KETTLE_RB_DEV != "false".
+# Loaded by the associated non-local gemfile when SMORG_RB_DEV != "false".
 
 require "nomono/bundler" unless defined?(Nomono)
 
 local_gems = %w[
   tree_haver
   ast-merge
+  ast-merge-git
+  ast-template
   bash-merge
-  kettle-drift
+  binary-merge
+  commonmarker-merge
+  citrus-toml-merge
   dotenv-merge
+  go-merge
   json-merge
+  kettle-jem
+  kramdown-merge
   markdown-merge
+  markly-merge
+  parslet-toml-merge
+  plain-merge
   prism-merge
   psych-merge
   rbs-merge
+  ruby-merge
+  rust-merge
+  smorg-rb
+  typescript-merge
   toml-merge
-  markly-merge
-  kettle-jem
-  jsonc-merge
+  yaml-merge
+  zip-merge
+  ast-crispr
+  ast-crispr-markdown-markly
+  ast-crispr-ruby-prism
 ]
 
-# export VENDORED_GEMS=tree_haver,ast-merge,bash-merge,kettle-drift,dotenv-merge,json-merge,markdown-merge,prism-merge,psych-merge,rbs-merge,toml-merge,markly-merge,kettle-jem,jsonc-merge
+# export VENDORED_GEMS=
 platform :mri do
   eval_nomono_gems(
     gems: local_gems,
-    prefix: "KETTLE_RB",
-    path_env: "KETTLE_RB_DEV",
+    prefix: "SMORG_RB",
+    path_env: "SMORG_RB_DEV",
     vendored_gems_env: "VENDORED_GEMS",
     vendor_gem_dir_env: "VENDOR_GEM_DIR",
-    debug_env: "KETTLE_DEV_DEBUG",
+    debug_env: "SMORG_RB_DEBUG",
   )
 end

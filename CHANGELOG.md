@@ -46,6 +46,10 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- Deferred hard coverage minimum enforcement for `turbo_tests2` workers to the
+  final collated coverage report, so individual workers with partial coverage do
+  not fail before merged coverage is available.
+
 ### Security
 
 ## [1.1.1] - 2025-12-28

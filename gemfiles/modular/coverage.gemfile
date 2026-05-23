@@ -11,11 +11,3 @@ if ENV.fetch("KETTLE_RB_DEV", "false").casecmp("false").zero?
 else
   eval_gemfile "coverage_local.gemfile"
 end
-# frozen_string_literal: true
-
-# To retain during kettle-dev templating:
-#     kettle-dev:freeze
-#     # ... your code
-#     kettle-dev:unfreeze
-# We run code coverage on the latest version of Ruby only.
-# Coverage
