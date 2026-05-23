@@ -67,6 +67,55 @@ module Kettle
         FileUtils.rm_rf(File.expand_path(coverage_dir, project_root))
       end
 
+      def turbo_tests_coverage_dir(coverage_dir = Constants::COVERAGE_ROOT_DIR, project_root: Dir.pwd)
+        File.expand_path(File.join(coverage_dir, Constants::TURBO_TESTS_DIR), project_root)
+      end
+
+      def turbo_tests_coverage?
+        Constants::DO_COV && Constants::TURBO_TESTS
+      end
+
+      def clear_turbo_tests_coverage_dir!(coverage_dir = Constants::COVERAGE_ROOT_DIR, project_root: Dir.pwd)
+        FileUtils.rm_rf(turbo_tests_coverage_dir(coverage_dir, project_root: project_root))
+      end
+
+      def turbo_tests_resultset_paths(coverage_dir = Constants::COVERAGE_ROOT_DIR, project_root: Dir.pwd)
+        Dir[File.join(turbo_tests_coverage_dir(coverage_dir, project_root: project_root), "*", ".resultset.json")]
+      end
+
+      def collate_turbo_tests_coverage!(coverage_dir = Constants::COVERAGE_ROOT_DIR, project_root: Dir.pwd)
+        return :disabled unless turbo_tests_coverage?
+
+        resultsets = turbo_tests_resultset_paths(coverage_dir, project_root: project_root)
+        return :empty if resultsets.empty?
+
+        require "simplecov"
+
+        SimpleCov.collate(resultsets) do
+          command_name("#{Constants::COMMAND_NAME} (turbo_tests2)")
+          enable_coverage :branch
+          primary_coverage :branch
+          add_filter Constants::FILTER_DIRS
+          coverage_dir(File.expand_path(coverage_dir, project_root))
+
+          if Constants::MULTI_FORMATTERS
+            Kettle::Soup::Cover::Loaders.load_formatters
+          else
+            require "simplecov-html"
+            formatter SimpleCov::Formatter::HTMLFormatter
+          end
+
+          if Constants::MIN_COVERAGE_HARD
+            minimum_coverage(
+              branch: Constants::MIN_COVERAGE_BRANCH,
+              line: Constants::MIN_COVERAGE_LINE,
+            )
+          end
+        end
+
+        :collated
+      end
+
       def coverage_task_env(coverage_dir = Constants::COVERAGE_DIR, project_root: Dir.pwd)
         resolved_coverage_dir = File.expand_path(coverage_dir, project_root)
 

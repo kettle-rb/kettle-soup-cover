@@ -158,4 +158,34 @@ RSpec.describe Kettle::Soup::Cover::Constants do
       end
     end
   end
+
+  describe "turbo_tests2 coverage" do
+    before do
+      described_class.reset_const do
+        stub_env("K_SOUP_COV_DIR" => "coverage")
+        stub_env("K_SOUP_COV_TURBO_TESTS" => turbo_tests)
+        stub_env("K_SOUP_COV_TURBO_TESTS_DIR" => "parallel")
+        stub_env("TEST_ENV_NUMBER" => test_env_number)
+      end
+    end
+
+    let(:turbo_tests) { "true" }
+    let(:test_env_number) { "2" }
+
+    it "uses a worker-specific coverage directory" do
+      expect(described_class::COVERAGE_ROOT_DIR).to eq("coverage")
+      expect(described_class::COVERAGE_DIR).to eq("coverage/parallel/2")
+      expect(described_class::TURBO_TESTS_WORKER).to be(true)
+      expect(described_class::CLEAN_RESULTSET).to be(false)
+    end
+
+    context "when turbo_tests2 coverage is disabled" do
+      let(:turbo_tests) { "false" }
+
+      it "keeps the root coverage directory" do
+        expect(described_class::COVERAGE_DIR).to eq("coverage")
+        expect(described_class::TURBO_TESTS_WORKER).to be(false)
+      end
+    end
+  end
 end

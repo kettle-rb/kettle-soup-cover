@@ -63,6 +63,49 @@ RSpec.describe Kettle::Soup::Cover do
     end
   end
 
+  describe "::clear_turbo_tests_coverage_dir!" do
+    subject(:clear_turbo_tests_coverage_dir!) do
+      described_class.clear_turbo_tests_coverage_dir!(coverage_dir, project_root: project_root)
+    end
+
+    let(:project_root) { Dir.mktmpdir }
+    let(:coverage_dir) { "coverage" }
+    let(:turbo_dir) { File.join(project_root, coverage_dir, "turbo_tests") }
+
+    before do
+      FileUtils.mkdir_p(File.join(turbo_dir, "1"))
+      File.write(File.join(turbo_dir, "1", ".resultset.json"), "{}")
+    end
+
+    after { FileUtils.remove_entry(project_root) }
+
+    it "removes only the turbo_tests coverage directory" do
+      expect { clear_turbo_tests_coverage_dir! }.to change { File.exist?(turbo_dir) }.from(true).to(false)
+      expect(File.exist?(File.join(project_root, coverage_dir))).to be(true)
+    end
+  end
+
+  describe "::turbo_tests_resultset_paths" do
+    subject(:turbo_tests_resultset_paths) do
+      described_class.turbo_tests_resultset_paths(coverage_dir, project_root: project_root)
+    end
+
+    let(:project_root) { Dir.mktmpdir }
+    let(:coverage_dir) { "coverage" }
+    let(:resultset_path) { File.join(project_root, coverage_dir, "turbo_tests", "1", ".resultset.json") }
+
+    before do
+      FileUtils.mkdir_p(File.dirname(resultset_path))
+      File.write(resultset_path, "{}")
+    end
+
+    after { FileUtils.remove_entry(project_root) }
+
+    it "finds worker resultsets" do
+      expect(turbo_tests_resultset_paths).to eq([resultset_path])
+    end
+  end
+
   describe "::coverage_task_env" do
     subject(:coverage_task_env) { described_class.coverage_task_env(coverage_dir, project_root: project_root) }
 

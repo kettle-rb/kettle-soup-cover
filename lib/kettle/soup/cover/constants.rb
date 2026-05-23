@@ -48,7 +48,7 @@ module Kettle
         CI = ENV.fetch("CI", FALSE)
         IS_CI = CI.casecmp?(TRUE)
         COMMAND_NAME = ENV_GET.call("COMMAND_NAME", "RSpec (COVERAGE)")
-        COVERAGE_DIR = ENV_GET.call("DIR", "coverage")
+        COVERAGE_ROOT_DIR = ENV_GET.call("DIR", "coverage")
         DEBUG = ENV_GET.call("DEBUG", FALSE).casecmp?(TRUE)
         DO_COV = ENV_GET.call("DO", CI).casecmp?(TRUE)
         FILTER_DIRS = ENV_GET.call(
@@ -83,6 +83,15 @@ module Kettle
           FORMATTERS.any? ? TRUE : FALSE
         end
         MULTI_FORMATTERS = ENV_GET.call("MULTI_FORMATTERS", MULTI_FORMATTERS_DEFAULT).casecmp?(TRUE)
+        TEST_ENV_NUMBER = ENV.fetch("TEST_ENV_NUMBER", "")
+        TURBO_TESTS = ENV_GET.call("TURBO_TESTS", TRUE).casecmp?(TRUE)
+        TURBO_TESTS_DIR = ENV_GET.call("TURBO_TESTS_DIR", "turbo_tests")
+        TURBO_TESTS_WORKER = TURBO_TESTS && !TEST_ENV_NUMBER.empty?
+        COVERAGE_DIR = if TURBO_TESTS_WORKER
+          File.join(COVERAGE_ROOT_DIR, TURBO_TESTS_DIR, TEST_ENV_NUMBER)
+        else
+          COVERAGE_ROOT_DIR
+        end
         # A wild approximation, but will suffice for nearly all users
         is_mac = RbConfig::CONFIG["host_os"].include?("darwin")
         # Set to "" to prevent opening a browser with the coverage rake task
@@ -101,7 +110,7 @@ module Kettle
         # IMPORTANT: set K_SOUP_COV_CLEAN_RESULTSET=false in .simplecov_spawn.rb (or
         # equivalent) so that spawned subprocesses do not wipe the resultset that the
         # main process and sibling spawns are accumulating.
-        CLEAN_RESULTSET_DEFAULT = IS_CI ? FALSE : TRUE
+        CLEAN_RESULTSET_DEFAULT = IS_CI || TURBO_TESTS_WORKER ? FALSE : TRUE
         CLEAN_RESULTSET = ENV_GET.call("CLEAN_RESULTSET", CLEAN_RESULTSET_DEFAULT).casecmp?(TRUE)
         # Enable merging by default to aggregate coverage across multiple test runs
         # (e.g., separate RSpec tasks for FFI tests, integration tests, unit tests)
@@ -119,6 +128,7 @@ module Kettle
             CLEAN_RESULTSET_DEFAULT
             COMMAND_NAME
             COVERAGE_DIR
+            COVERAGE_ROOT_DIR
             DEBUG
             DO_COV
             ENV_GET
@@ -136,6 +146,10 @@ module Kettle
             OPEN_BIN
             PREFIX
             TRUE
+            TEST_ENV_NUMBER
+            TURBO_TESTS
+            TURBO_TESTS_DIR
+            TURBO_TESTS_WORKER
             USE_MERGING
             VERBOSE
           ],
