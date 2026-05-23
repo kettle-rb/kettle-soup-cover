@@ -74,7 +74,6 @@ module Kettle
 
           list
         end
-        MIN_COVERAGE_HARD = ENV_GET.call("MIN_HARD", CI).casecmp?(TRUE)
         MIN_COVERAGE_BRANCH = ENV_GET.call("MIN_BRANCH", "80").to_i
         MIN_COVERAGE_LINE = ENV_GET.call("MIN_LINE", "80").to_i
         MULTI_FORMATTERS_DEFAULT = if IS_CI
@@ -87,6 +86,8 @@ module Kettle
         TURBO_TESTS = ENV_GET.call("TURBO_TESTS", TRUE).casecmp?(TRUE)
         TURBO_TESTS_DIR = ENV_GET.call("TURBO_TESTS_DIR", "turbo_tests")
         TURBO_TESTS_WORKER = TURBO_TESTS && !TEST_ENV_NUMBER.empty?
+        MIN_COVERAGE_HARD_REQUESTED = ENV_GET.call("MIN_HARD", CI).casecmp?(TRUE)
+        MIN_COVERAGE_HARD = MIN_COVERAGE_HARD_REQUESTED && !TURBO_TESTS_WORKER
         COVERAGE_DIR = if TURBO_TESTS_WORKER
           File.join(COVERAGE_ROOT_DIR, TURBO_TESTS_DIR, TEST_ENV_NUMBER)
         else
@@ -141,6 +142,7 @@ module Kettle
             MIN_COVERAGE_BRANCH
             MIN_COVERAGE_LINE
             MIN_COVERAGE_HARD
+            MIN_COVERAGE_HARD_REQUESTED
             MULTI_FORMATTERS_DEFAULT
             MULTI_FORMATTERS
             OPEN_BIN

@@ -162,7 +162,9 @@ RSpec.describe Kettle::Soup::Cover::Constants do
   describe "turbo_tests2 coverage" do
     before do
       described_class.reset_const do
+        stub_env("CI" => "false")
         stub_env("K_SOUP_COV_DIR" => "coverage")
+        stub_env("K_SOUP_COV_MIN_HARD" => "false")
         stub_env("K_SOUP_COV_TURBO_TESTS" => turbo_tests)
         stub_env("K_SOUP_COV_TURBO_TESTS_DIR" => "parallel")
         stub_env("TEST_ENV_NUMBER" => test_env_number)
@@ -177,6 +179,29 @@ RSpec.describe Kettle::Soup::Cover::Constants do
       expect(described_class::COVERAGE_DIR).to eq("coverage/parallel/2")
       expect(described_class::TURBO_TESTS_WORKER).to be(true)
       expect(described_class::CLEAN_RESULTSET).to be(false)
+    end
+
+    it "disables worker-level hard minimums while preserving the requested setting" do
+      expect(described_class::MIN_COVERAGE_HARD_REQUESTED).to be(false)
+      expect(described_class::MIN_COVERAGE_HARD).to be(false)
+    end
+
+    context "when hard minimums are requested" do
+      before do
+        described_class.reset_const do
+          stub_env("CI" => "true")
+          stub_env("K_SOUP_COV_DIR" => "coverage")
+          stub_env("K_SOUP_COV_MIN_HARD" => "true")
+          stub_env("K_SOUP_COV_TURBO_TESTS" => turbo_tests)
+          stub_env("K_SOUP_COV_TURBO_TESTS_DIR" => "parallel")
+          stub_env("TEST_ENV_NUMBER" => test_env_number)
+        end
+      end
+
+      it "defers hard minimum enforcement to the collated parent process" do
+        expect(described_class::MIN_COVERAGE_HARD_REQUESTED).to be(true)
+        expect(described_class::MIN_COVERAGE_HARD).to be(false)
+      end
     end
 
     context "when turbo_tests2 coverage is disabled" do
