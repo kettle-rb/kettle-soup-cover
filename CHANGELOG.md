@@ -29,6 +29,11 @@ Please file a bug if you notice a violation of semantic versioning.
   exposed as a public method for callers who want to trigger cleanup explicitly.
   **Note:** set `K_SOUP_COV_CLEAN_RESULTSET=false` inside `.simplecov_spawn.rb` so
   spawned subprocesses do not wipe the resultset being accumulated by the main process.
+- Added `turbo_tests:setup` and `turbo_tests:cleanup` rake hooks for
+  `turbo_tests2` coverage collection.
+- Added `K_SOUP_COV_TURBO_TESTS` and `K_SOUP_COV_TURBO_TESTS_DIR` support so
+  parallel workers write coverage under per-worker directories and the cleanup
+  hook can collate the resultsets.
 
 ### Changed
 
