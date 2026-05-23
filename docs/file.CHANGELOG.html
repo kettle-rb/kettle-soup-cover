@@ -6,7 +6,7 @@
 <title>
   File: CHANGELOG
   
-    &mdash; Documentation by YARD 0.9.42
+    &mdash; Documentation by YARD 0.9.43
   
 </title>
 
@@ -70,9 +70,43 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 and <a href="https://tom.preston-werner.com/2022/05/23/major-version-numbers-are-not-sacred.html">yes</a>, platform and engine support are part of the <a href="https://github.com/semver/semver/issues/716#issuecomment-869336139">public API</a>.<br>
 Please file a bug if you notice a violation of semantic versioning.</p>
 
-<h2 id="unreleased"><a href="https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.1...HEAD">Unreleased</a></h2>
+<h2 id="unreleased"><a href="https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.2...HEAD">Unreleased</a></h2>
 
 <h3 id="added">Added</h3>
+
+<h3 id="changed">Changed</h3>
+
+<h3 id="deprecated">Deprecated</h3>
+
+<h3 id="removed">Removed</h3>
+
+<h3 id="fixed">Fixed</h3>
+
+<ul>
+  <li>Removed duplicate-load warnings in the spec bootstrap while preserving coverage<br>
+tracking for the library under test.</li>
+  <li>Covered Ruby 4.0.5 / SimpleCov branch paths that were causing <code>bin/rake</code> to<br>
+fail the configured coverage gate.</li>
+  <li>Stabilized self-test coverage for rake task files so randomized spec order no<br>
+longer changes the final branch coverage result.</li>
+  <li>Removed the duplicate RuboCop Gradual run from the style workflow and fixed<br>
+the generated style appraisal Gemfile for Ruby 4 extracted stdlibs.</li>
+</ul>
+
+<h3 id="security">Security</h3>
+
+<h2 id="112---2026-05-23">
+<a href="https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.1...v1.1.2">1.1.2</a> - 2026-05-23</h2>
+
+<ul>
+  <li>TAG: <a href="https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v1.1.2">v1.1.2</a>
+</li>
+  <li>COVERAGE: 96.06% – 195/203 lines in 11 files</li>
+  <li>BRANCH COVERAGE: 80.00% – 40/50 branches in 11 files</li>
+  <li>18.46% documented</li>
+</ul>
+
+<h3 id="added-1">Added</h3>
 
 <ul>
   <li>
@@ -92,7 +126,7 @@ parallel workers write coverage under per-worker directories and the cleanup<br>
 hook can collate the resultsets.</li>
 </ul>
 
-<h3 id="changed">Changed</h3>
+<h3 id="changed-1">Changed</h3>
 
 <ul>
   <li>Updated documentation on hostile takeover of RubyGems
@@ -102,19 +136,13 @@ hook can collate the resultsets.</li>
   </li>
 </ul>
 
-<h3 id="deprecated">Deprecated</h3>
-
-<h3 id="removed">Removed</h3>
-
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed-1">Fixed</h3>
 
 <ul>
   <li>Deferred hard coverage minimum enforcement for <code>turbo_tests2</code> workers to the<br>
 final collated coverage report, so individual workers with partial coverage do<br>
 not fail before merged coverage is available.</li>
 </ul>
-
-<h3 id="security">Security</h3>
 
 <h2 id="111---2025-12-28">
 <a href="https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.0...v1.1.1">1.1.1</a> - 2025-12-28</h2>
@@ -127,13 +155,13 @@ not fail before merged coverage is available.</li>
   <li>15.56% documented</li>
 </ul>
 
-<h3 id="added-1">Added</h3>
+<h3 id="added-2">Added</h3>
 
 <ul>
   <li>Added regression tests for <code>MIN_COVERAGE_HARD</code> behavior</li>
 </ul>
 
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 
 <ul>
   <li>
@@ -157,7 +185,7 @@ not fail before merged coverage is available.</li>
   <li>15.56% documented</li>
 </ul>
 
-<h3 id="added-2">Added</h3>
+<h3 id="added-3">Added</h3>
 
 <ul>
   <li>When <code>ENV["MAX_ROWS"] == "0"</code>, explicitly, skip simplecov-console TTY output.</li>
@@ -172,7 +200,7 @@ not fail before merged coverage is available.</li>
   </li>
 </ul>
 
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 
 <ul>
   <li>
@@ -216,7 +244,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>11.11% documented</li>
 </ul>
 
-<h3 id="added-3">Added</h3>
+<h3 id="added-4">Added</h3>
 
 <ul>
   <li>Add GitHub Pages site to badge info table</li>
@@ -229,7 +257,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>Auto-assign issues in the GitHub issue tracker</li>
 </ul>
 
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-3">Changed</h3>
 
 <ul>
   <li>Updated <code>spec.homepage_uri</code> in gemspec to GitHub Pages YARD documentation site</li>
@@ -255,7 +283,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>11.11% documented</li>
 </ul>
 
-<h3 id="added-4">Added</h3>
+<h3 id="added-5">Added</h3>
 
 <ul>
   <li>YARD config, GFM compatible with relative file links</li>
@@ -266,7 +294,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   </li>
 </ul>
 
-<h3 id="changed-3">Changed</h3>
+<h3 id="changed-4">Changed</h3>
 
 <ul>
   <li>Updated <code>spec.homepage_uri</code> in gemspec to GitHub Pages YARD documentation site</li>
@@ -281,13 +309,13 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>11.11% documented</li>
 </ul>
 
-<h3 id="added-5">Added</h3>
+<h3 id="added-6">Added</h3>
 
 <ul>
   <li>Link to discussions on GitHub</li>
 </ul>
 
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 
 <ul>
   <li>Fixed <code>spec.homepage</code> and <code>spec.source_code_uri</code> in gemspec</li>
@@ -302,7 +330,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>11.11% documented</li>
 </ul>
 
-<h3 id="added-6">Added</h3>
+<h3 id="added-7">Added</h3>
 
 <ul>
   <li>Document usage with minitest</li>
@@ -312,7 +340,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>Link to Discord</li>
 </ul>
 
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 
 <ul>
   <li>Gem build: Don’t check for cert if SKIP_GEM_SIGNING is set
@@ -333,7 +361,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>11.11% documented</li>
 </ul>
 
-<h3 id="added-7">Added</h3>
+<h3 id="added-8">Added</h3>
 
 <ul>
   <li>Support for linux, and other OSes, in <code>coverage</code> rake task
@@ -352,7 +380,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>Test coverage increased from 25 =&gt; 50 for branches</li>
 </ul>
 
-<h3 id="changed-6">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 
 <ul>
   <li>Refactored internals in ways that should not affect public APIs
@@ -364,7 +392,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>Going forward all releases will be signed by my key that expires 2045-04-29</li>
 </ul>
 
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 
 <ul>
   <li>require hooks such that both work equally well:
@@ -383,7 +411,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
 <h2 id="105---2025-04-03">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.4...v1.0.5">1.0.5</a> - 2025-04-03</h2>
 
-<h3 id="added-8">Added</h3>
+<h3 id="added-9">Added</h3>
 
 <ul>
   <li>Documentation</li>
@@ -392,7 +420,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>Added Ruby 3.3, 3.4 to CI</li>
 </ul>
 
-<h3 id="changed-7">Changed</h3>
+<h3 id="changed-8">Changed</h3>
 
 <ul>
   <li>Update to Contributor Covenant 2.1</li>
@@ -400,7 +428,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>Checksums are now created by <code>stone_checksums</code> gem</li>
 </ul>
 
-<h3 id="fixed-3">Fixed</h3>
+<h3 id="fixed-4">Fixed</h3>
 
 <ul>
   <li>Incorrect documentation of ENV variables that control gem behavior</li>
@@ -414,13 +442,13 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
 <h2 id="104---2024-06-11">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.3...v1.0.4">1.0.4</a> - 2024-06-11</h2>
 
-<h3 id="added-9">Added</h3>
+<h3 id="added-10">Added</h3>
 
 <ul>
   <li>Documentation</li>
 </ul>
 
-<h3 id="changed-8">Changed</h3>
+<h3 id="changed-9">Changed</h3>
 
 <ul>
   <li>
@@ -430,7 +458,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
 <h2 id="103---2024-05-23">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.2...v1.0.3">1.0.3</a> - 2024-05-23</h2>
 
-<h3 id="added-10">Added</h3>
+<h3 id="added-11">Added</h3>
 
 <ul>
   <li>Documentation</li>
@@ -438,7 +466,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
   <li>More tests</li>
 </ul>
 
-<h3 id="fixed-4">Fixed</h3>
+<h3 id="fixed-5">Fixed</h3>
 
 <ul>
   <li>Incorrect URLs for homepage, etc</li>
@@ -447,7 +475,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
 <h2 id="102---2023-10-19">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.1...v1.0.2">1.0.2</a> - 2023-10-19</h2>
 
-<h3 id="fixed-5">Fixed</h3>
+<h3 id="fixed-6">Fixed</h3>
 
 <ul>
   <li>Include new <code>coverage</code> rake task in the built gem
@@ -461,7 +489,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
 <h2 id="101---2023-10-19">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v1.0.0...v1.0.1">1.0.1</a> - 2023-10-19</h2>
 
-<h3 id="fixed-6">Fixed</h3>
+<h3 id="fixed-7">Fixed</h3>
 
 <ul>
   <li>Include new <code>coverage</code> rake task in the built gem</li>
@@ -470,7 +498,7 @@ Rake::Task[:backend_matrix_specs].enhance([:set_matrix_command_name])
 <h2 id="100---2023-10-19">
 <a href="https://gitlab.com/kettle-rb/kettle-soup-cover/-/compare/v0.1.0...v1.0.0">1.0.0</a> - 2023-10-19</h2>
 
-<h3 id="added-11">Added</h3>
+<h3 id="added-12">Added</h3>
 
 <ul>
   <li>✨ <code>Regexp.escape</code> the <code>FILTER_DIRS</code> to allow for paths to be excluded from coverage
@@ -517,7 +545,7 @@ to normalize handling of this common logical need in other libraries.</li>
   <li>More and better documentation</li>
 </ul>
 
-<h3 id="changed-9">Changed</h3>
+<h3 id="changed-10">Changed</h3>
 
 <ul>
   <li>This gem no longer does <code>require "simplecov"</code>
@@ -527,7 +555,7 @@ to normalize handling of this common logical need in other libraries.</li>
   </li>
 </ul>
 
-<h3 id="fixed-7">Fixed</h3>
+<h3 id="fixed-8">Fixed</h3>
 
 <ul>
   <li>All ENV vars now begin with a uniform prefix for this gem:
@@ -547,9 +575,9 @@ to normalize handling of this common logical need in other libraries.</li>
 </div></div>
 
       <div id="footer">
-  Generated on Sat May 23 05:42:21 2026 by
+  Generated on Sat May 23 16:01:38 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.42 (ruby-4.0.2).
+  0.9.43 (ruby-4.0.2).
 </div>
 
     </div>
