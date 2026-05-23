@@ -16,6 +16,7 @@ require "rspec/block_is_expected/matchers/not"
 #   end
 # end
 require "rspec/stubbed_env"
+require "stringio"
 
 # External gems
 require "version_gem/rspec"
@@ -49,3 +50,67 @@ end
 
 # This gem
 require "kettle-soup-cover"
+
+RSpec.configure do |config|
+  config.after(:suite) do
+    # These rake task files are intentionally reloaded by their specs into isolated
+    # Rake applications. Ruby branch coverage keeps the counters from the final
+    # load, so exercise both task branches once after randomized examples finish.
+    original_application = Rake.application
+    original_stdout = $stdout
+    original_stderr = $stderr
+    original_open_bin = ENV.fetch("K_SOUP_COV_OPEN_BIN", nil)
+    original_turbo_tests = ENV.fetch("K_SOUP_COV_TURBO_TESTS", nil)
+    original_coverage_dir = ENV.fetch("K_SOUP_COV_DIR", nil)
+
+    begin
+      $stdout = StringIO.new
+      $stderr = StringIO.new
+      ENV["K_SOUP_COV_DIR"] = "coverage"
+
+      Rake.application = Rake::Application.new
+      load File.expand_path("../lib/kettle/soup/cover/rakelib/turbo_tests.rake", __dir__)
+
+      ENV["K_SOUP_COV_TURBO_TESTS"] = "true"
+      Kettle::Soup::Cover.reset_const
+      Rake.application["turbo_tests:setup"].invoke
+
+      ENV["K_SOUP_COV_TURBO_TESTS"] = "false"
+      Kettle::Soup::Cover.reset_const
+      Rake.application["turbo_tests:setup"].reenable
+      Rake.application["turbo_tests:setup"].invoke
+
+      Rake.application = Rake::Application.new
+      load File.expand_path("config/mocks/test_task.rake", __dir__)
+      load File.expand_path("../lib/kettle/soup/cover/rakelib/coverage.rake", __dir__)
+
+      ["", "blah", "blah --bad"].each do |open_bin|
+        ENV["K_SOUP_COV_OPEN_BIN"] = open_bin
+        Kettle::Soup::Cover.reset_const
+        Rake.application["coverage"].reenable
+        Rake.application["test"].reenable
+        Rake.application["coverage"].invoke
+      end
+    ensure
+      Rake.application = original_application
+      $stdout = original_stdout
+      $stderr = original_stderr
+      if original_open_bin.nil?
+        ENV.delete("K_SOUP_COV_OPEN_BIN")
+      else
+        ENV["K_SOUP_COV_OPEN_BIN"] = original_open_bin
+      end
+      if original_turbo_tests.nil?
+        ENV.delete("K_SOUP_COV_TURBO_TESTS")
+      else
+        ENV["K_SOUP_COV_TURBO_TESTS"] = original_turbo_tests
+      end
+      if original_coverage_dir.nil?
+        ENV.delete("K_SOUP_COV_DIR")
+      else
+        ENV["K_SOUP_COV_DIR"] = original_coverage_dir
+      end
+      Kettle::Soup::Cover.reset_const
+    end
+  end
+end

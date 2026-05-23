@@ -4,10 +4,15 @@ RSpec.describe Kettle::Soup::Cover::Loaders do
   include_context "with stubbed env"
 
   before do
+    @original_formatters = SimpleCov.formatters
     Kettle::Soup::Cover::Constants.reset_const do
       stub_env("CI" => ci)
       stub_env("K_SOUP_COV_FORMATTERS" => formatters)
     end
+  end
+
+  after do
+    SimpleCov.formatters = @original_formatters
   end
 
   let(:ci) { "false" }

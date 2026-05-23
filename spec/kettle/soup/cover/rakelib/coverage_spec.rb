@@ -14,15 +14,11 @@ RSpec.describe "rake coverage" do
   let(:task_args) { [] }
   let(:rake_task) { rake[task_name] }
 
-  def loaded_files_excluding_current_rake_file
-    $".reject { |file| file == "#{task_path}.rake" }
-  end
-
   before do
     Rake.application = rake
     Kettle::Soup::Cover.install_tasks
-    Rake.application.rake_require(task_path, [gem_root], loaded_files_excluding_current_rake_file)
-    Rake.application.rake_require("spec/config/mocks/test_task", [gem_root], loaded_files_excluding_current_rake_file)
+    load File.join(gem_root, "#{task_path}.rake")
+    load File.join(gem_root, "spec/config/mocks/test_task.rake")
     rake_task.reenable # if this task was the one invoked to run the test suite it will have disappeared
     # test task is a dependency of the coverage task, so it must exist
   end

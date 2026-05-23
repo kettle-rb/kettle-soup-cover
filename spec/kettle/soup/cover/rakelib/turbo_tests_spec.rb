@@ -7,12 +7,11 @@ require "kettle/soup/cover/tasks"
 RSpec.describe "rake turbo_tests:cleanup" do
   let(:rake) { Rake::Application.new }
   let(:gem_root) { File.expand_path("../../../../../..", __FILE__) }
-  let(:loaded_files) { $".reject { |file| file.end_with?("turbo_tests.rake") } }
 
   before do
     Rake.application = rake
     Kettle::Soup::Cover.install_tasks
-    Rake.application.rake_require("lib/kettle/soup/cover/rakelib/turbo_tests", [gem_root], loaded_files)
+    load File.join(gem_root, "lib/kettle/soup/cover/rakelib/turbo_tests.rake")
   end
 
   it "collates turbo_tests2 coverage on cleanup" do
@@ -27,12 +26,11 @@ end
 RSpec.describe "rake turbo_tests:setup" do
   let(:rake) { Rake::Application.new }
   let(:gem_root) { File.expand_path("../../../../../..", __FILE__) }
-  let(:loaded_files) { $".reject { |file| file.end_with?("turbo_tests.rake") } }
 
   before do
     Rake.application = rake
     Kettle::Soup::Cover.install_tasks
-    Rake.application.rake_require("lib/kettle/soup/cover/rakelib/turbo_tests", [gem_root], loaded_files)
+    load File.join(gem_root, "lib/kettle/soup/cover/rakelib/turbo_tests.rake")
   end
 
   it "clears turbo_tests2 coverage when coverage is enabled" do

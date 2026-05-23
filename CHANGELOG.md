@@ -32,6 +32,8 @@ Please file a bug if you notice a violation of semantic versioning.
   tracking for the library under test.
 - Covered Ruby 4.0.5 / SimpleCov branch paths that were causing `bin/rake` to
   fail the configured coverage gate.
+- Stabilized self-test coverage for rake task files so randomized spec order no
+  longer changes the final branch coverage result.
 
 ### Security
 
