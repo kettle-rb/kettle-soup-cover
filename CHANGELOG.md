@@ -34,6 +34,8 @@ Please file a bug if you notice a violation of semantic versioning.
   fail the configured coverage gate.
 - Stabilized self-test coverage for rake task files so randomized spec order no
   longer changes the final branch coverage result.
+- Removed the duplicate RuboCop Gradual run from the style workflow and fixed
+  the generated style appraisal Gemfile for Ruby 4 extracted stdlibs.
 
 ### Security
 

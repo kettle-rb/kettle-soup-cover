@@ -1,7 +1,3 @@
-# RuboCop Gradual isn't able to parse something in this repo.
-# Not sure what exactly, and reported here:
-# https://github.com/skryukov/rubocop-gradual/issues/12
-# As a result this workflow must allow failure.
 name: Style
 
 permissions:
@@ -36,24 +32,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Style
           - ruby: "ruby"
             appraisal: "style"
             exec_cmd: "rake rubocop_gradual:check"
             gemfile: "Appraisal.root"
             rubygems: latest
             bundler: latest
-        experimental: [true]
-        rubygems:
-          - latest
-        bundler:
-          - latest
-        gemfile:
-          - style
-        ruby:
-          - "ruby"
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental || endsWith(matrix.ruby, 'head') }}
     env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps
       BUNDLE_GEMFILE: ${{ github.workspace }}/${{ matrix.gemfile }}.gemfile
     steps:
@@ -68,8 +53,6 @@ jobs:
           rubygems: ${{ matrix.rubygems }}
           bundler: ${{ matrix.bundler }}
           bundler-cache: true
-      - name: Run RuboCop
-        run: bundle exec rake rubocop_gradual
       - name: "[Attempt 1] Appraisal for ${{ matrix.ruby }}@${{ matrix.appraisal }}"
         id: bundleAppraisalAttempt1
         run: bundle exec appraisal ${{ matrix.appraisal }} install
