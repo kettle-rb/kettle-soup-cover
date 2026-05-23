@@ -93,16 +93,16 @@ module Kettle
 
         SimpleCov.collate(resultsets) do
           command_name("#{Constants::COMMAND_NAME} (turbo_tests2)")
-          enable_coverage :branch
-          primary_coverage :branch
-          add_filter Constants::FILTER_DIRS
+          enable_coverage(:branch)
+          primary_coverage(:branch)
+          add_filter(Constants::FILTER_DIRS)
           coverage_dir(File.expand_path(coverage_dir, project_root))
 
           if Constants::MULTI_FORMATTERS
             Kettle::Soup::Cover::Loaders.load_formatters
           else
             require "simplecov-html"
-            formatter SimpleCov::Formatter::HTMLFormatter
+            formatter(SimpleCov::Formatter::HTMLFormatter)
           end
 
           if Constants::MIN_COVERAGE_HARD

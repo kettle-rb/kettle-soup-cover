@@ -20,6 +20,25 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [1.1.2] - 2026-05-23
+
+- TAG: [v1.1.2][1.1.2t]
+- COVERAGE: 96.06% -- 195/203 lines in 11 files
+- BRANCH COVERAGE: 80.00% -- 40/50 branches in 11 files
+- 18.46% documented
+
+### Added
+
 - `CLEAN_RESULTSET` / `K_SOUP_COV_CLEAN_RESULTSET`: deletes `coverage/.resultset.json`
   before SimpleCov starts to prevent stale entries from prior runs (e.g. after a refactor
   that shifts line/branch IDs) from producing phantom uncovered branches. Defaults to
@@ -40,17 +59,11 @@ Please file a bug if you notice a violation of semantic versioning.
 - Updated documentation on hostile takeover of RubyGems
   - https://dev.to/galtzo/hostile-takeover-of-rubygems-my-thoughts-5hlo
 
-### Deprecated
-
-### Removed
-
 ### Fixed
 
 - Deferred hard coverage minimum enforcement for `turbo_tests2` workers to the
   final collated coverage report, so individual workers with partial coverage do
   not fail before merged coverage is available.
-
-### Security
 
 ## [1.1.1] - 2025-12-28
 
@@ -312,7 +325,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 - Initial release
 
-[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.2...HEAD
+[1.1.2]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.1...v1.1.2
+[1.1.2t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v1.1.2
 [1.1.1]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.0...v1.1.1
 [1.1.1t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v1.1.1
 [1.1.0]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.0.10...v1.1.0

@@ -111,7 +111,7 @@ module Kettle
         # IMPORTANT: set K_SOUP_COV_CLEAN_RESULTSET=false in .simplecov_spawn.rb (or
         # equivalent) so that spawned subprocesses do not wipe the resultset that the
         # main process and sibling spawns are accumulating.
-        CLEAN_RESULTSET_DEFAULT = IS_CI || TURBO_TESTS_WORKER ? FALSE : TRUE
+        CLEAN_RESULTSET_DEFAULT = (IS_CI || TURBO_TESTS_WORKER) ? FALSE : TRUE
         CLEAN_RESULTSET = ENV_GET.call("CLEAN_RESULTSET", CLEAN_RESULTSET_DEFAULT).casecmp?(TRUE)
         # Enable merging by default to aggregate coverage across multiple test runs
         # (e.g., separate RSpec tasks for FFI tests, integration tests, unit tests)
