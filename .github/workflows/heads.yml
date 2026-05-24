@@ -27,10 +27,12 @@ concurrency:
 
 jobs:
   test:
-    name: Specs ${{ matrix.ruby }}@${{ matrix.appraisal }}${{ matrix.name_extra || '' }}
-    env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps
-      BUNDLE_GEMFILE: ${{ github.workspace }}/${{ matrix.gemfile }}.gemfile
     if: "!contains(github.event.commits[0].message, '[ci skip]') && !contains(github.event.commits[0].message, '[skip ci]')"
+    name: Specs ${{ matrix.ruby }}@${{ matrix.appraisal }}${{ matrix.name_extra || '' }}
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental || endsWith(matrix.ruby, 'head') }}
+    env: # $BUNDLE_GEMFILE must be set at job level, so it is set for all steps
+      BUNDLE_GEMFILE: ${{ github.workspace }}/${{ matrix.gemfile }}.gemfile
     strategy:
       fail-fast: true
       matrix:
@@ -39,7 +41,7 @@ jobs:
           # ruby-head
           - ruby: "ruby-head"
             appraisal: "head"
-            exec_cmd: "rake test"
+            exec_cmd: "kettle-test"
             gemfile: "Appraisal.root"
             rubygems: default
             bundler: default
@@ -47,7 +49,7 @@ jobs:
           # truffleruby-head
           - ruby: "truffleruby-head"
             appraisal: "head"
-            exec_cmd: "rake test"
+            exec_cmd: "kettle-test"
             gemfile: "Appraisal.root"
             rubygems: default
             bundler: default
@@ -55,32 +57,18 @@ jobs:
           # jruby-head
           - ruby: "jruby-head"
             appraisal: "head"
-            exec_cmd: "rake test"
+            exec_cmd: "kettle-test"
             gemfile: "Appraisal.root"
             rubygems: default
             bundler: default
-        experimental: [true]
-        rubygems:
-          - latest
-        bundler:
-          - latest
-        gemfile:
-          - vanilla
-        ruby:
-          - "ruby-head"
-          # NOTE: jruby-head is a couple minor releases behind MRI head
-          - "jruby-head"
-          # NOTE: truffleruby-head is a couple minor releases behind MRI head
-          - "truffleruby-head"
 
-    runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental || endsWith(matrix.ruby, 'head') }}
     steps:
       - name: Checkout
         if: ${{ !env.ACT || (! startsWith(matrix.ruby, 'jruby') && !startsWith(matrix.ruby, 'truffleruby')) }}
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
+
       - name: Setup Ruby & RubyGems
         if: ${{ !env.ACT || (! startsWith(matrix.ruby, 'jruby') && !startsWith(matrix.ruby, 'truffleruby')) }}
         uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f # v1.310.0
@@ -89,20 +77,21 @@ jobs:
           rubygems: ${{ matrix.rubygems }}
           bundler: ${{ matrix.bundler }}
           bundler-cache: true
-      - name: Run tests
-        run: bundle exec rake test
+
       - name: "[Attempt 1] Appraisal for ${{ matrix.ruby }}@${{ matrix.appraisal }}"
         id: bundleAppraisalAttempt1
         if: ${{ !env.ACT || (! startsWith(matrix.ruby, 'jruby') && !startsWith(matrix.ruby, 'truffleruby')) }}
         run: bundle exec appraisal ${{ matrix.appraisal }} install
         # Continue to the next step on failure
         continue-on-error: true
+
       # Effectively an automatic retry of the previous step.
       - name: "[Attempt 2] Appraisal for ${{ matrix.ruby }}@${{ matrix.appraisal }}"
         id: bundleAppraisalAttempt2
         # If bundleAppraisalAttempt1 failed, try again here; Otherwise skip.
         if: ${{ steps.bundleAppraisalAttempt1.outcome == 'failure' && (!env.ACT || (! startsWith(matrix.ruby, 'jruby') && !startsWith(matrix.ruby, 'truffleruby'))) }}
         run: bundle exec appraisal ${{ matrix.appraisal }} install
+
       - name: Tests for ${{ matrix.ruby }} via ${{ matrix.exec_cmd }}
         if: ${{ !env.ACT || (! startsWith(matrix.ruby, 'jruby') && !startsWith(matrix.ruby, 'truffleruby')) }}
         run: bundle exec appraisal ${{ matrix.appraisal }} bundle exec ${{ matrix.exec_cmd }}

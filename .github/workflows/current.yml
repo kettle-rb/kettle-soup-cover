@@ -28,27 +28,28 @@ concurrency:
 
 jobs:
   test:
-    name: Specs ${{ matrix.ruby }}@${{ matrix.appraisal }}
-    env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps
-      BUNDLE_GEMFILE: ${{ github.workspace }}/${{ matrix.gemfile }}.gemfile
     if: "!contains(github.event.commits[0].message, '[ci skip]') && !contains(github.event.commits[0].message, '[skip ci]')"
+    name: Specs ${{ matrix.ruby }}@${{ matrix.appraisal }}
+    runs-on: ubuntu-latest
+    env: # $BUNDLE_GEMFILE must be set at job level, so it is set for all steps
+      BUNDLE_GEMFILE: ${{ github.workspace }}/${{ matrix.gemfile }}.gemfile
     strategy:
-      fail-fast: false
       matrix:
         include:
+          # Ruby 4.0
           - ruby: "ruby"
             appraisal: "current"
-            exec_cmd: "rake test"
+            exec_cmd: "kettle-test"
             gemfile: "Appraisal.root"
             rubygems: latest
             bundler: latest
 
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
+
       - name: Setup Ruby & RubyGems
         uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f # v1.310.0
         with:
@@ -56,16 +57,19 @@ jobs:
           rubygems: ${{ matrix.rubygems }}
           bundler: ${{ matrix.bundler }}
           bundler-cache: true
+
       - name: "[Attempt 1] Appraisal for ${{ matrix.ruby }}@${{ matrix.appraisal }}"
         id: bundleAppraisalAttempt1
         run: bundle exec appraisal ${{ matrix.appraisal }} install
         # Continue to the next step on failure
         continue-on-error: true
+
       # Effectively an automatic retry of the previous step.
       - name: "[Attempt 2] Appraisal for ${{ matrix.ruby }}@${{ matrix.appraisal }}"
         id: bundleAppraisalAttempt2
         # If bundleAppraisalAttempt1 failed, try again here; Otherwise skip.
         if: ${{ steps.bundleAppraisalAttempt1.outcome == 'failure' }}
         run: bundle exec appraisal ${{ matrix.appraisal }} install
+
       - name: Tests for ${{ matrix.ruby }} via ${{ matrix.exec_cmd }}
         run: bundle exec appraisal ${{ matrix.appraisal }} bundle exec ${{ matrix.exec_cmd }}
