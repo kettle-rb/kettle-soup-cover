@@ -28,6 +28,17 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+### Security
+
+## [1.1.3] - 2026-05-24
+
+- TAG: [v1.1.3][1.1.3t]
+- COVERAGE: 97.56% -- 200/205 lines in 11 files
+- BRANCH COVERAGE: 84.00% -- 42/50 branches in 11 files
+- 18.46% documented
+
+### Fixed
+
 - Removed duplicate-load warnings in the spec bootstrap while preserving coverage
   tracking for the library under test.
 - Covered Ruby 4.0.5 / SimpleCov branch paths that were causing `bin/rake` to
@@ -39,8 +50,6 @@ Please file a bug if you notice a violation of semantic versioning.
 - Removed the duplicate current workflow job caused by stale matrix axes.
 - Marked generated workflow files as template-owned to prevent stale YAML keys
   from surviving future template runs.
-
-### Security
 
 ## [1.1.2] - 2026-05-23
 
@@ -337,7 +346,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 - Initial release
 
-[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.2...HEAD
+[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.3...HEAD
+[1.1.3]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.2...v1.1.3
+[1.1.3t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v1.1.3
 [1.1.2]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.1...v1.1.2
 [1.1.2t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v1.1.2
 [1.1.1]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.0...v1.1.1

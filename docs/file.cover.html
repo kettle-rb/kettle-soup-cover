@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  File: LICENSE
+  File: cover
   
     &mdash; Documentation by YARD 0.9.43
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/common.css" type="text/css">
 
 <script type="text/javascript">
-  pathId = "LICENSE";
+  pathId = "cover";
   relpath = '';
 </script>
 
@@ -39,7 +39,7 @@
         <div id="menu">
   
     <a href="_index.html">Index</a> &raquo; 
-    <span class="title">File: LICENSE</span>
+    <span class="title">File: cover</span>
   
 </div>
 
@@ -59,20 +59,45 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'><h1 id="license">License</h1>
+      <div id="content"><div id='filecontents'><h1 id="see-the-writing-guide-of-rbs-httpsgithubcomrubyrbsguides">See the writing guide of rbs: https://github.com/ruby/rbs#guides</h1>
+<p>module Kettle<br>
+  module Soup<br>
+    module Cover<br>
+      CI: String<br>
+      COMMAND_NAME: String<br>
+      COVERAGE_DIR: String<br>
+      DEBUG: bool<br>
+      DO_COV: bool<br>
+      ENV_GET: Proc<br>
+      FALSE: String<br>
+      FILTER_DIRS: Array[Regexp]<br>
+      FORMATTERS: Array[Hash[Symbol, Hash[Symbol, String | Symbol]]]<br>
+      FORMATTER_PLUGINS: Hash[Symbol, Hash[Symbol, String | Symbol]]<br>
+      IS_CI: bool<br>
+      MERGE_TIMEOUT: Integer?<br>
+      MIN_COVERAGE_BRANCH: Integer<br>
+      MIN_COVERAGE_HARD: bool<br>
+      MIN_COVERAGE_LINE: Integer<br>
+      MULTI_FORMATTERS: bool<br>
+      MULTI_FORMATTERS_DEFAULT: String<br>
+      PREFIX: String<br>
+      TRUE: String<br>
+      OPEN_BIN: String<br>
+      USE_MERGING: bool?<br>
+      VERBOSE: bool<br>
+      VERSION: String</p>
 
-<p>This project is made available under the following license.<br>
-Choose the option that best fits your use case:</p>
+<pre class="code ruby"><code class="ruby">  def delete_const: () -&gt; void
 
-<ul>
-  <li><a href="file.AGPL-3.0-only.html" title="AGPL-3.0-only">AGPL-3.0-only</a></li>
-</ul>
+  def install_tasks: () -&gt; void
 
-<p>If none of the above licenses fit your use case, please <a href="mailto:floss@galtzo.com">contact us</a> to discuss a custom commercial license.</p>
+  def load_filters: () -&gt; void
 
-<h2 id="copyright-notice">Copyright Notice</h2>
+  def load_formatters: () -&gt; void
 
-<p>Copyright (c) 2023-2026 Peter H. Boling</p>
+  def reset_const: () -&gt; void
+end   end end
+</code></pre>
 </div></div>
 
       <div id="footer">
