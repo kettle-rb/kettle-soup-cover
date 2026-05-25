@@ -28,6 +28,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- `turbo_tests:cleanup` now publishes merged worker JSON coverage back to the
+  canonical `coverage/coverage.json` path after collating worker resultsets, so
+  CI uploaders and release tooling can continue to read standard coverage paths.
 - Parsed `K_SOUP_COV_OPEN_BIN` with shellwords before opening the HTML report so
   opener commands with arguments report unavailable executables consistently
   across Ruby engines.

@@ -16,6 +16,7 @@
 
 # Standard Lib
 require "fileutils"
+require "json"
 require "rbconfig"
 
 # External gems
@@ -83,6 +84,10 @@ module Kettle
         Dir[File.join(turbo_tests_coverage_dir(coverage_dir, project_root: project_root), "*", ".resultset.json")]
       end
 
+      def turbo_tests_json_paths(coverage_dir = Constants::COVERAGE_ROOT_DIR, project_root: Dir.pwd)
+        Dir[File.join(turbo_tests_coverage_dir(coverage_dir, project_root: project_root), "*", "coverage.json")]
+      end
+
       def collate_turbo_tests_coverage!(coverage_dir = Constants::COVERAGE_ROOT_DIR, project_root: Dir.pwd)
         return :disabled unless turbo_tests_coverage?
 
@@ -113,7 +118,67 @@ module Kettle
           end
         end
 
+        publish_turbo_tests_json_coverage!(coverage_dir, project_root: project_root)
+
         :collated
+      end
+
+      def publish_turbo_tests_json_coverage!(coverage_dir = Constants::COVERAGE_ROOT_DIR, project_root: Dir.pwd)
+        paths = turbo_tests_json_paths(coverage_dir, project_root: project_root)
+        return :empty if paths.empty?
+
+        merged = {
+          "meta" => {},
+          "coverage" => {},
+        }
+        paths.sort_by { |path| File.basename(File.dirname(path)).to_i }.each do |path|
+          data = JSON.parse(File.read(path))
+          merged["meta"].merge!(data["meta"]) if data["meta"].is_a?(Hash)
+          merge_json_coverage!(merged["coverage"], data["coverage"] || {})
+        end
+
+        output_path = File.expand_path(File.join(coverage_dir, "coverage.json"), project_root)
+        FileUtils.mkdir_p(File.dirname(output_path))
+        File.write(output_path, JSON.pretty_generate(merged))
+        :published
+      end
+
+      def merge_json_coverage!(target, source)
+        source.each do |path, coverage|
+          target[path] ||= {"lines" => [], "branches" => []}
+          target[path]["lines"] = merge_line_coverage(target[path]["lines"], coverage["lines"] || [])
+          target[path]["branches"] = merge_branch_coverage(target[path]["branches"] || [], coverage["branches"] || [])
+        end
+        target
+      end
+
+      def merge_line_coverage(left, right)
+        length = [left.length, right.length].max
+        Array.new(length) { |index| merge_coverage_value(left[index], right[index]) }
+      end
+
+      def merge_branch_coverage(left, right)
+        length = [left.length, right.length].max
+        Array.new(length) { |index| merge_branch_entry(left[index], right[index]) }.compact
+      end
+
+      def merge_branch_entry(left, right)
+        return right unless left
+        return left unless right
+        return left unless left.is_a?(Hash) && right.is_a?(Hash)
+
+        left.merge(right) do |key, left_value, right_value|
+          (key == "coverage") ? merge_coverage_value(left_value, right_value) : left_value
+        end
+      end
+
+      def merge_coverage_value(left, right)
+        return left + right if left.is_a?(Integer) && right.is_a?(Integer)
+        return left if left.is_a?(Integer)
+        return right if right.is_a?(Integer)
+        return left if left
+
+        right
       end
 
       def coverage_task_env(coverage_dir = Constants::COVERAGE_DIR, project_root: Dir.pwd)

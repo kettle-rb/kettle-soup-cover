@@ -106,6 +106,27 @@ RSpec.describe Kettle::Soup::Cover do
     end
   end
 
+  describe "::turbo_tests_json_paths" do
+    subject(:turbo_tests_json_paths) do
+      described_class.turbo_tests_json_paths(coverage_dir, project_root: project_root)
+    end
+
+    let(:project_root) { Dir.mktmpdir }
+    let(:coverage_dir) { "coverage" }
+    let(:json_path) { File.join(project_root, coverage_dir, "turbo_tests", "1", "coverage.json") }
+
+    before do
+      FileUtils.mkdir_p(File.dirname(json_path))
+      File.write(json_path, "{}")
+    end
+
+    after { FileUtils.remove_entry(project_root) }
+
+    it "finds worker JSON reports" do
+      expect(turbo_tests_json_paths).to eq([json_path])
+    end
+  end
+
   describe "::turbo_tests_coverage?" do
     it "is true when coverage and turbo_tests2 support are enabled" do
       stub_const("Kettle::Soup::Cover::Constants::DO_COV", true)
@@ -185,6 +206,8 @@ RSpec.describe Kettle::Soup::Cover do
       end
 
       it "collates with hard minimums and configured formatters" do
+        allow(described_class).to receive(:publish_turbo_tests_json_coverage!).and_return(:published)
+
         expect(collate_turbo_tests_coverage!).to eq(:collated)
         expect(SimpleCov).to have_received(:collate).with(resultsets)
         expect(SimpleCov).to have_received(:command_name).with("Specs (turbo_tests2)")
@@ -194,6 +217,7 @@ RSpec.describe Kettle::Soup::Cover do
         expect(SimpleCov).to have_received(:coverage_dir).with(File.join(project_root, coverage_dir))
         expect(SimpleCov).to have_received(:minimum_coverage).with(branch: 76, line: 92)
         expect(Kettle::Soup::Cover::Loaders).to have_received(:load_formatters)
+        expect(described_class).to have_received(:publish_turbo_tests_json_coverage!).with(coverage_dir, project_root: project_root)
       end
 
       context "when multi formatters are disabled" do
@@ -221,6 +245,108 @@ RSpec.describe Kettle::Soup::Cover do
           expect(SimpleCov).not_to have_received(:minimum_coverage)
         end
       end
+    end
+  end
+
+  describe "::publish_turbo_tests_json_coverage!" do
+    subject(:publish_turbo_tests_json_coverage!) do
+      described_class.publish_turbo_tests_json_coverage!(coverage_dir, project_root: project_root)
+    end
+
+    let(:project_root) { Dir.mktmpdir }
+    let(:coverage_dir) { "coverage" }
+    let(:first_worker) { File.join(project_root, coverage_dir, "turbo_tests", "1") }
+    let(:second_worker) { File.join(project_root, coverage_dir, "turbo_tests", "2") }
+    let(:output_path) { File.join(project_root, coverage_dir, "coverage.json") }
+
+    after { FileUtils.remove_entry(project_root) }
+
+    context "when no worker JSON reports exist" do
+      it { is_expected.to eq(:empty) }
+    end
+
+    context "when worker JSON reports exist" do
+      before do
+        FileUtils.mkdir_p(first_worker)
+        FileUtils.mkdir_p(second_worker)
+        File.write(
+          File.join(first_worker, "coverage.json"),
+          JSON.pretty_generate(
+            "meta" => {"simplecov_version" => "0.22.0"},
+            "coverage" => {
+              "lib/a.rb" => {
+                "lines" => [1, 0, nil],
+                "branches" => [
+                  {"type" => "then", "coverage" => 0},
+                  {"type" => "else", "coverage" => "ignored"},
+                ],
+              },
+            },
+          ),
+        )
+        File.write(
+          File.join(second_worker, "coverage.json"),
+          JSON.pretty_generate(
+            "coverage" => {
+              "lib/a.rb" => {
+                "lines" => [0, 2, nil],
+                "branches" => [
+                  {"type" => "then", "coverage" => 3},
+                  {"type" => "else", "coverage" => 1},
+                ],
+              },
+            },
+          ),
+        )
+      end
+
+      it "writes merged worker coverage to the canonical JSON path" do
+        expect(publish_turbo_tests_json_coverage!).to eq(:published)
+
+        merged = JSON.parse(File.read(output_path))
+        expect(merged.fetch("meta")).to include("simplecov_version" => "0.22.0")
+        expect(merged.dig("coverage", "lib/a.rb", "lines")).to eq([1, 2, nil])
+        expect(merged.dig("coverage", "lib/a.rb", "branches")).to contain_exactly(
+          include("type" => "then", "coverage" => 3),
+          include("type" => "else", "coverage" => 1),
+        )
+      end
+    end
+  end
+
+  describe "::merge_branch_entry" do
+    let(:left_entry) { {"type" => "then", "coverage" => 1} }
+    let(:right_entry) { {"type" => "then", "coverage" => 2} }
+
+    it "keeps right-only branch entries" do
+      expect(described_class.merge_branch_entry(nil, right_entry)).to eq(right_entry)
+    end
+
+    it "keeps left-only branch entries" do
+      expect(described_class.merge_branch_entry(left_entry, nil)).to eq(left_entry)
+    end
+
+    it "keeps non-hash left entries unchanged" do
+      expect(described_class.merge_branch_entry("ignored", right_entry)).to eq("ignored")
+    end
+  end
+
+  describe "::merge_coverage_value" do
+    it "sums covered counts from multiple workers" do
+      expect(described_class.merge_coverage_value(1, 2)).to eq(3)
+    end
+
+    it "keeps existing covered counts when the incoming value is not covered" do
+      expect(described_class.merge_coverage_value(1, nil)).to eq(1)
+    end
+
+    it "keeps incoming covered counts when the existing value is not covered" do
+      expect(described_class.merge_coverage_value(nil, 2)).to eq(2)
+    end
+
+    it "keeps non-count existing values before falling back to the incoming value" do
+      expect(described_class.merge_coverage_value("ignored", nil)).to eq("ignored")
+      expect(described_class.merge_coverage_value(nil, "ignored")).to eq("ignored")
     end
   end
 
