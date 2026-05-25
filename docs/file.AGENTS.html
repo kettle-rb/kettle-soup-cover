@@ -269,21 +269,25 @@ Use the <code>K_SOUP_COV_MIN_HARD=false</code> environment variable to disable h
 <p>Run the kettle-jem templater to sync project files with the latest template:</p>
 
 <pre class="code language-bash"><code class="language-bash"># Standard run (quiet, non-interactive — the default)
-mise exec -C /path/to/project -- bundle exec rake kettle:jem:install
+mise exec -C /path/to/project -- env K_JEM_TEMPLATING=true bundle exec kettle-jem template
 
 # Verbose output (see per-file detail)
-mise exec -C /path/to/project -- env KETTLE_JEM_VERBOSE=true bundle exec rake kettle:jem:install
+mise exec -C /path/to/project -- env K_JEM_TEMPLATING=true KETTLE_JEM_VERBOSE=true bundle exec kettle-jem template
 
 # Interactive mode (prompt before each change)
-mise exec -C /path/to/project -- bundle exec rake kettle:jem:install force=false
+mise exec -C /path/to/project -- env K_JEM_TEMPLATING=true bundle exec kettle-jem template --interactive
 </code></pre>
+
+<p>Use the <code>kettle-jem</code> executable as the public entrypoint. The<br>
+<code>kettle:jem:*</code> rake tasks are internal orchestration targets that the<br>
+executable may call after it has prepared the templating environment.</p>
 
 <p><strong>Current defaults</strong> (no flags needed):</p>
 <ul>
   <li>
 <strong>quiet=true</strong> — only phase summary lines shown; use <code>--verbose</code> or <code>KETTLE_JEM_VERBOSE=true</code> to opt out</li>
   <li>
-<strong>force=true</strong> — non-interactive; use <code>--interactive</code> or <code>force=false</code> to opt out</li>
+<strong>force=true</strong> — non-interactive; use <code>--interactive</code> to opt out</li>
   <li>
 <strong>allowed=true</strong> — env file changes auto-accepted; set <code>allowed=false</code> to require review</li>
 </ul>
@@ -402,7 +406,7 @@ end
 </div></div>
 
       <div id="footer">
-  Generated on Sun May 24 18:50:04 2026 by
+  Generated on Sun May 24 20:57:25 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.43 (ruby-4.0.5).
 </div>
