@@ -72,6 +72,8 @@ RSpec.describe "rake coverage" do
 
         before do
           stub_const("Kettle::Soup::Cover::OPEN_BIN", "blah")
+          allow(File).to receive(:exist?).and_call_original
+          allow(File).to receive(:exist?).with(html_report).and_return(true)
         end
 
         it "does not raise error" do
@@ -88,11 +90,43 @@ RSpec.describe "rake coverage" do
 
         before do
           stub_const("Kettle::Soup::Cover::OPEN_BIN", "blah --bad")
+          allow(File).to receive(:exist?).and_call_original
+          allow(File).to receive(:exist?).with(html_report).and_return(true)
+        end
+
+        it "outputs where to find coverage report" do
+          block_is_expected.to output(
+            "Configured Kettle::Soup::Cover::OPEN_BIN (blah --bad) not available. Coverage report is at #{html_report}\n",
+          ).to_stdout
+        end
+      end
+
+      context "when OPEN_BIN succeeds" do
+        let(:html_report) { "#{Kettle::Soup::Cover::COVERAGE_DIR}/index.html" }
+
+        before do
+          stub_const("Kettle::Soup::Cover::OPEN_BIN", "true --ignored")
+          allow(File).to receive(:exist?).and_call_original
+          allow(File).to receive(:exist?).with(html_report).and_return(true)
+        end
+
+        it "does not output a warning" do
+          block_is_expected.not_to output.to_stdout
+        end
+      end
+
+      context "when OPEN_BIN fails and the report is missing" do
+        let(:html_report) { "#{Kettle::Soup::Cover::COVERAGE_DIR}/index.html" }
+
+        before do
+          stub_const("Kettle::Soup::Cover::OPEN_BIN", "false --ignored")
+          allow(File).to receive(:exist?).and_call_original
+          allow(File).to receive(:exist?).with(html_report).and_return(false)
         end
 
         it "outputs the missing coverage report message" do
           block_is_expected.to output(
-            "No coverage report found at #{html_report}\nNo such file or directory - blah\n",
+            "No coverage report found at #{html_report}\n",
           ).to_stdout
         end
       end

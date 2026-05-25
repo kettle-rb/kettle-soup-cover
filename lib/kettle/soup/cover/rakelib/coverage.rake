@@ -1,4 +1,6 @@
 # NOTE: This is not for CI, only for local development.
+require "shellwords"
+
 desc "Run specs w/ coverage and open results in browser"
 task :coverage do
   Kettle::Soup::Cover.reset_const do
@@ -12,20 +14,13 @@ task :coverage do
   html_report = "#{Kettle::Soup::Cover::COVERAGE_DIR}/index.html"
   if Kettle::Soup::Cover::OPEN_BIN.empty?
     puts "Kettle::Soup::Cover::OPEN_BIN not configured. Coverage report is at #{Kettle::Soup::Cover.display_path(html_report)}"
+  elsif !File.exist?(html_report)
+    puts "No coverage report found at #{Kettle::Soup::Cover.display_path(html_report)}"
   else
-    begin
-      %x(#{Kettle::Soup::Cover::OPEN_BIN} #{html_report})
-    rescue Errno::ENOENT => error
-      message = error.message || ""
-      # `open` command is macOS only.  xdg-open is a decent alternative on many Linux systems.
-      if message.include?("No such file or directory - #{Kettle::Soup::Cover::OPEN_BIN}")
-        puts "Configured Kettle::Soup::Cover::OPEN_BIN (#{Kettle::Soup::Cover::OPEN_BIN}) not available. Coverage report is at #{Kettle::Soup::Cover.display_path(html_report)}"
-      elsif message.include?("No such file or directory")
-        puts "No coverage report found at #{Kettle::Soup::Cover.display_path(html_report)}"
-        puts message
-      else
-        raise error
-      end
+    open_command = Shellwords.split(Kettle::Soup::Cover::OPEN_BIN)
+    opened = system(*open_command, html_report)
+    unless opened
+      puts "Configured Kettle::Soup::Cover::OPEN_BIN (#{Kettle::Soup::Cover::OPEN_BIN}) not available. Coverage report is at #{Kettle::Soup::Cover.display_path(html_report)}"
     end
   end
 end

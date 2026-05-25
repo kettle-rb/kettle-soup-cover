@@ -28,6 +28,10 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- Parsed `K_SOUP_COV_OPEN_BIN` with shellwords before opening the HTML report so
+  opener commands with arguments report unavailable executables consistently
+  across Ruby engines.
+
 ### Security
 
 ## [1.1.3] - 2026-05-24
