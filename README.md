@@ -903,12 +903,9 @@ Thanks for RTFM. ☺️
 | Field | Value |
 |---|---|
 | Package | kettle-soup-cover |
-| Description | 🥘 A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
-Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
-for every CI platform, batteries included.
-Fund overlooked open source projects - bottom of stack, dev/test dependencies: floss-funding.dev |
+| Description | 🥘 A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)<br>Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies<br>for every CI platform, batteries included.<br>Fund overlooked open source projects - bottom of stack, dev/test dependencies: floss-funding.dev |
 | Homepage | https://github.com/kettle-rb/kettle-soup-cover |
-| Source | https://github.com/kettle-rb/kettle-soup-cover/tree/v1.1.2 |
+| Source | https://github.com/kettle-rb/kettle-soup-cover/tree/v1.1.3 |
 | License | `AGPL-3.0-only` |
 | Funding | https://github.com/sponsors/pboling, https://issuehunt.io/u/pboling, https://ko-fi.com/pboling, https://liberapay.com/pboling/donate, https://opencollective.com/kettle-rb, https://patreon.com/galtzo, https://polar.sh/pboling, https://thanks.dev/u/gh/pboling, https://tidelift.com/funding/github/rubygems/kettle-soup-cover, https://www.buymeacoffee.com/pboling |
 <!-- kettle-jem:metadata:end -->
