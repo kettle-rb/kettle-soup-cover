@@ -860,7 +860,7 @@ Thanks for RTFM. ☺️
 [🤝cb-pulls]: https://codeberg.org/kettle-rb/kettle-soup-cover/pulls
 [🤝cb-donate]: https://donate.codeberg.org/
 [🤝contributing]: https://github.com/kettle-rb/kettle-soup-cover/blob/main/CONTRIBUTING.md
-[🏀codecov-g]: https://codecov.io/gh/kettle-rb/kettle-soup-cover/graphs/tree.svg
+[🏀codecov-g]: https://codecov.io/gh/kettle-rb/kettle-soup-cover/graph/badge.svg
 [🖐contrib-rocks]: https://contrib.rocks
 [🖐contributors]: https://github.com/kettle-rb/kettle-soup-cover/graphs/contributors
 [🖐contributors-img]: https://contrib.rocks/image?repo=kettle-rb/kettle-soup-cover

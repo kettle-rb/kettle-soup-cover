@@ -1,0 +1,40 @@
+{
+  "appraisal: \"dep-heads\"\nexec_cmd: \"kettle-test\"": [
+    {
+      "file": ".github/workflows/dep-heads.yml",
+      "lines": [
+        44,
+        52,
+        60
+      ]
+    }
+  ],
+  "appraisal: \"head\"\nexec_cmd: \"kettle-test\"": [
+    {
+      "file": ".github/workflows/heads.yml",
+      "lines": [
+        43,
+        51,
+        59
+      ]
+    }
+  ],
+  "exec_cmd: \"kettle-test\"\ngemfile: \"Appraisal.root\"": [
+    {
+      "file": ".github/workflows/dep-heads.yml",
+      "lines": [
+        45,
+        53,
+        61
+      ]
+    },
+    {
+      "file": ".github/workflows/heads.yml",
+      "lines": [
+        44,
+        52,
+        60
+      ]
+    }
+  ]
+}

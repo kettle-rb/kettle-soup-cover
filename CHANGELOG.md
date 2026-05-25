@@ -28,21 +28,14 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
-- `turbo_tests:cleanup` now publishes merged worker JSON coverage back to the
-  canonical `coverage/coverage.json` path after collating worker resultsets, so
-  CI uploaders and release tooling can continue to read standard coverage paths.
-- Parsed `K_SOUP_COV_OPEN_BIN` with shellwords before opening the HTML report so
-  opener commands with arguments report unavailable executables consistently
-  across Ruby engines.
-
 ### Security
 
 ## [1.1.3] - 2026-05-24
 
 - TAG: [v1.1.3][1.1.3t]
-- COVERAGE: 97.56% -- 200/205 lines in 11 files
-- BRANCH COVERAGE: 84.00% -- 42/50 branches in 11 files
-- 18.46% documented
+- COVERAGE: 96.72% -- 236/244 lines in 11 files
+- BRANCH COVERAGE: 85.71% -- 60/70 branches in 11 files
+- 16.67% documented
 
 ### Fixed
 
@@ -57,6 +50,16 @@ Please file a bug if you notice a violation of semantic versioning.
 - Removed the duplicate current workflow job caused by stale matrix axes.
 - Marked generated workflow files as template-owned to prevent stale YAML keys
   from surviving future template runs.
+
+- Isolated the spec-helper rake-task coverage exerciser under `tmp/` so
+  turbo_tests2 workers cannot delete each other's real coverage artifacts before
+  parent-process collation.
+- `turbo_tests:cleanup` now publishes merged worker JSON coverage back to the
+  canonical `coverage/coverage.json` path after collating worker resultsets, so
+  CI uploaders and release tooling can continue to read standard coverage paths.
+- Parsed `K_SOUP_COV_OPEN_BIN` with shellwords before opening the HTML report so
+  opener commands with arguments report unavailable executables consistently
+  across Ruby engines.
 
 ## [1.1.2] - 2026-05-23
 

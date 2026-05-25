@@ -66,7 +66,7 @@ RSpec.configure do |config|
     begin
       $stdout = StringIO.new
       $stderr = StringIO.new
-      ENV["K_SOUP_COV_DIR"] = "coverage"
+      ENV["K_SOUP_COV_DIR"] = File.join("tmp", "spec-helper-coverage")
 
       Rake.application = Rake::Application.new
       load File.expand_path("../lib/kettle/soup/cover/rakelib/turbo_tests.rake", __dir__)
