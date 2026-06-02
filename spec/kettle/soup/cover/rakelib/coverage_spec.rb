@@ -96,7 +96,7 @@ RSpec.describe "rake coverage" do
 
         it "outputs where to find coverage report" do
           block_is_expected.to output(
-            "Configured Kettle::Soup::Cover::OPEN_BIN (blah --bad) not available. Coverage report is at #{html_report}\n",
+            "Configured Kettle::Soup::Cover::OPEN_BIN (blah --bad) not available. Coverage report is at #{html_report}\n"
           ).to_stdout
         end
       end
@@ -126,7 +126,7 @@ RSpec.describe "rake coverage" do
 
         it "outputs the missing coverage report message" do
           block_is_expected.to output(
-            "No coverage report found at #{html_report}\n",
+            "No coverage report found at #{html_report}\n"
           ).to_stdout
         end
       end

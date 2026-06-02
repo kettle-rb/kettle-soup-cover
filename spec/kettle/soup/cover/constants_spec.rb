@@ -53,7 +53,7 @@ RSpec.describe Kettle::Soup::Cover::Constants do
 
       it "uses the CI formatter list" do
         expect(described_class::FORMATTERS.map { |formatter| formatter.fetch(:type) }).to eq(
-          %i[html xml rcov lcov json tty],
+          %i[html xml rcov lcov json tty]
         )
       end
     end
@@ -84,7 +84,7 @@ RSpec.describe Kettle::Soup::Cover::Constants do
       end
 
       it "has no formatter plugins" do
-        expect(described_class::FORMATTERS).to eq([])
+        expect(described_class::FORMATTERS).to be_empty
       end
 
       it "defaults multi formatter mode to false" do

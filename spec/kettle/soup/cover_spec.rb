@@ -162,7 +162,7 @@ RSpec.describe Kettle::Soup::Cover do
     before do
       allow(described_class).to receive_messages(
         turbo_tests_coverage?: turbo_tests_coverage,
-        turbo_tests_resultset_paths: resultsets,
+        turbo_tests_resultset_paths: resultsets
       )
     end
 
@@ -278,11 +278,11 @@ RSpec.describe Kettle::Soup::Cover do
                 "lines" => [1, 0, nil],
                 "branches" => [
                   {"type" => "then", "coverage" => 0},
-                  {"type" => "else", "coverage" => "ignored"},
-                ],
-              },
-            },
-          ),
+                  {"type" => "else", "coverage" => "ignored"}
+                ]
+              }
+            }
+          )
         )
         File.write(
           File.join(second_worker, "coverage.json"),
@@ -292,11 +292,11 @@ RSpec.describe Kettle::Soup::Cover do
                 "lines" => [0, 2, nil],
                 "branches" => [
                   {"type" => "then", "coverage" => 3},
-                  {"type" => "else", "coverage" => 1},
-                ],
-              },
-            },
-          ),
+                  {"type" => "else", "coverage" => 1}
+                ]
+              }
+            }
+          )
         )
       end
 
@@ -308,7 +308,7 @@ RSpec.describe Kettle::Soup::Cover do
         expect(merged.dig("coverage", "lib/a.rb", "lines")).to eq([1, 2, nil])
         expect(merged.dig("coverage", "lib/a.rb", "branches")).to contain_exactly(
           include("type" => "then", "coverage" => 3),
-          include("type" => "else", "coverage" => 1),
+          include("type" => "else", "coverage" => 1)
         )
       end
     end
@@ -367,8 +367,8 @@ RSpec.describe Kettle::Soup::Cover do
           "K_SOUP_COV_FORMATTERS" => "json",
           "K_SOUP_COV_MIN_HARD" => "false",
           "K_SOUP_COV_MULTI_FORMATTERS" => "true",
-          "K_SOUP_COV_OPEN_BIN" => "",
-        },
+          "K_SOUP_COV_OPEN_BIN" => ""
+        }
       )
     end
   end
@@ -379,7 +379,7 @@ RSpec.describe Kettle::Soup::Cover do
         coverage_dir,
         project_root: project_root,
         out: out,
-        err: err,
+        err: err
       )
     end
 
@@ -410,13 +410,13 @@ RSpec.describe Kettle::Soup::Cover do
           "K_SOUP_COV_FORMATTERS" => "json",
           "K_SOUP_COV_MIN_HARD" => "false",
           "K_SOUP_COV_MULTI_FORMATTERS" => "true",
-          "K_SOUP_COV_OPEN_BIN" => "",
+          "K_SOUP_COV_OPEN_BIN" => ""
         },
         coverage_task,
         "coverage",
         chdir: project_root,
         out: out,
-        err: err,
+        err: err
       )
 
       expect(File.exist?(resolved_coverage_dir)).to be(false)
@@ -427,7 +427,7 @@ RSpec.describe Kettle::Soup::Cover do
 
       expect { refresh_coverage_data! }.to raise_error(
         described_class::Error,
-        "Coverage refresh failed: #{coverage_task} coverage",
+        "Coverage refresh failed: #{coverage_task} coverage"
       )
     end
   end
@@ -486,7 +486,7 @@ RSpec.describe Kettle::Soup::Cover do
       expect(formatters).to eq(%i[html xml rcov lcov json tty])
     end
 
-    it "sets MULTI_FORMATTERS_DEFAULT" do ||
+    it "sets MULTI_FORMATTERS_DEFAULT" do
       expect(described_class::MULTI_FORMATTERS_DEFAULT).to eq("true")
     end
   end
@@ -519,7 +519,7 @@ RSpec.describe Kettle::Soup::Cover do
           stub_env(
             "CI" => "false",
             "K_SOUP_COV_FORMATTERS" => nil,
-            "MAX_ROWS" => "0",
+            "MAX_ROWS" => "0"
           )
         end
       end
@@ -531,7 +531,7 @@ RSpec.describe Kettle::Soup::Cover do
     end
 
     context "when K_SOUP_COV_MULTI_FORMATTERS not empty" do
-      it "sets MULTI_FORMATTERS_DEFAULT" do ||
+      it "sets MULTI_FORMATTERS_DEFAULT" do
         expect(described_class::MULTI_FORMATTERS_DEFAULT).to eq("true")
       end
     end
@@ -541,12 +541,12 @@ RSpec.describe Kettle::Soup::Cover do
         described_class.reset_const do
           stub_env(
             "CI" => "false",
-            "K_SOUP_COV_MULTI_FORMATTERS" => "",
+            "K_SOUP_COV_MULTI_FORMATTERS" => ""
           )
         end
       end
 
-      it "sets MULTI_FORMATTERS_DEFAULT" do ||
+      it "sets MULTI_FORMATTERS_DEFAULT" do
         expect(described_class::MULTI_FORMATTERS_DEFAULT).to eq("true")
       end
     end
@@ -558,37 +558,37 @@ RSpec.describe Kettle::Soup::Cover do
             "CI" => "false",
             "K_SOUP_COV_MULTI_FORMATTERS" => "true",
             "K_SOUP_COV_FORMATTERS" => "html, xml, rcov, lcov, json, tty",
-            "MAX_ROWS" => nil,
+            "MAX_ROWS" => nil
           )
         end
       end
 
-      it "sets MULTI_FORMATTERS_DEFAULT" do ||
+      it "sets MULTI_FORMATTERS_DEFAULT" do
         expect(described_class::MULTI_FORMATTERS_DEFAULT).to eq("true")
       end
 
-      it "sets MULTI_FORMATTERS" do ||
+      it "sets MULTI_FORMATTERS" do
         expect(described_class::MULTI_FORMATTERS).to be(true)
       end
 
-      it "sets FORMATTERS" do ||
+      it "sets FORMATTERS" do
         expect(described_class::FORMATTERS).to eq(
           [
             {klass: "HTMLFormatter", lib: "simplecov-html", type: :html},
             {
               klass: "CoberturaFormatter",
               lib: "simplecov-cobertura",
-              type: :xml,
+              type: :xml
             },
             {klass: "RcovFormatter", lib: "simplecov-rcov", type: :rcov},
             {klass: "LcovFormatter", lib: "simplecov-lcov", type: :lcov},
             {
               klass: "JSONFormatter",
               lib: "simplecov_json_formatter",
-              type: :json,
+              type: :json
             },
-            {klass: "Console", lib: "simplecov-console", type: :tty},
-          ],
+            {klass: "Console", lib: "simplecov-console", type: :tty}
+          ]
         )
       end
     end

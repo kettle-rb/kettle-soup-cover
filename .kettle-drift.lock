@@ -4,8 +4,8 @@
       "file": ".github/workflows/dep-heads.yml",
       "lines": [
         44,
-        52,
-        60
+        51,
+        58
       ]
     }
   ],
@@ -14,26 +14,25 @@
       "file": ".github/workflows/heads.yml",
       "lines": [
         43,
-        51,
-        59
+        50,
+        57
       ]
     }
   ],
-  "exec_cmd: \"kettle-test\"\ngemfile: \"Appraisal.root\"": [
+  "exec_cmd: \"kettle-test\"\nrubygems: default": [
     {
       "file": ".github/workflows/dep-heads.yml",
       "lines": [
-        45,
-        53,
-        61
+        52,
+        59
       ]
     },
     {
       "file": ".github/workflows/heads.yml",
       "lines": [
         44,
-        52,
-        60
+        51,
+        58
       ]
     }
   ]

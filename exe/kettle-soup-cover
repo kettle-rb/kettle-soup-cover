@@ -149,7 +149,7 @@ def collect_line_info(files, file_filter: nil)
       pct: pct,
       path: short_path,
       full_path: path,
-      uncovered_lines: uncovered_lines,
+      uncovered_lines: uncovered_lines
     }
   end
 
@@ -183,7 +183,7 @@ def collect_branch_info(files, file_filter: nil)
             condition: branch["type"],
             cond_line: branch["start_line"],
             branch: branch["type"],
-            branch_line: branch["start_line"],
+            branch_line: branch["start_line"]
           }
         end
       end
@@ -204,7 +204,7 @@ def collect_branch_info(files, file_filter: nil)
       full_path: path,
       details: uncovered_details.sort_by do |d|
         d[:branch_line] || 0
-      end,
+      end
     }
   end
 
@@ -332,7 +332,7 @@ if @show_branches
           "      Line %3d: %s -> %s branch not taken",
           d[:branch_line] || d[:cond_line] || 0,
           d[:condition],
-          d[:branch],
+          d[:branch]
         )
       end
       puts "      ... and #{r[:details].length - max_details} more" if r[:details].length > max_details

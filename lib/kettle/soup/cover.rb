@@ -113,7 +113,7 @@ module Kettle
           if Constants::MIN_COVERAGE_HARD
             minimum_coverage(
               branch: Constants::MIN_COVERAGE_BRANCH,
-              line: Constants::MIN_COVERAGE_LINE,
+              line: Constants::MIN_COVERAGE_LINE
             )
           end
         end
@@ -129,7 +129,7 @@ module Kettle
 
         merged = {
           "meta" => {},
-          "coverage" => {},
+          "coverage" => {}
         }
         paths.sort_by { |path| File.basename(File.dirname(path)).to_i }.each do |path|
           data = JSON.parse(File.read(path))
@@ -191,7 +191,7 @@ module Kettle
           "#{Constants::PREFIX}FORMATTERS" => "json",
           "#{Constants::PREFIX}MIN_HARD" => Constants::FALSE,
           "#{Constants::PREFIX}MULTI_FORMATTERS" => Constants::TRUE,
-          "#{Constants::PREFIX}OPEN_BIN" => "",
+          "#{Constants::PREFIX}OPEN_BIN" => ""
         }
       end
 
@@ -205,7 +205,7 @@ module Kettle
           "coverage",
           chdir: project_root,
           out: out,
-          err: err,
+          err: err
         )
         return if success
 

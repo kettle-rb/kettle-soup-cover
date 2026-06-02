@@ -11,56 +11,56 @@ module Kettle
           html: {
             type: :html,
             klass: "HTMLFormatter",
-            lib: "simplecov-html",
+            lib: "simplecov-html"
           },
           # XML for Jenkins
           xml: {
             type: :xml,
             klass: "CoberturaFormatter",
-            lib: "simplecov-cobertura",
+            lib: "simplecov-cobertura"
           },
           # RCOV for Hudson
           rcov: {
             type: :rcov,
             klass: "RcovFormatter",
-            lib: "simplecov-rcov",
+            lib: "simplecov-rcov"
           },
           # LCOV for GCOV
           lcov: {
             type: :lcov,
             klass: "LcovFormatter",
-            lib: "simplecov-lcov",
+            lib: "simplecov-lcov"
           },
           # JSON for CodeClimate
           json: {
             type: :json,
             klass: "JSONFormatter",
-            lib: "simplecov_json_formatter",
+            lib: "simplecov_json_formatter"
           },
           # TTY / Console output
           tty: {
             type: :tty,
             klass: "Console",
-            lib: "simplecov-console",
-          },
+            lib: "simplecov-console"
+          }
         }
 
-        CI = ENV.fetch("CI", FALSE)
-        IS_CI = CI.casecmp?(TRUE)
+        CI = ENV.fetch("CI", Constants::FALSE)
+        IS_CI = CI.casecmp?(Constants::TRUE)
         COMMAND_NAME = ENV_GET.call("COMMAND_NAME", "RSpec (COVERAGE)")
         COVERAGE_ROOT_DIR = ENV_GET.call("DIR", "coverage")
-        DEBUG = ENV_GET.call("DEBUG", FALSE).casecmp?(TRUE)
-        DO_COV = ENV_GET.call("DO", CI).casecmp?(TRUE)
+        DEBUG = ENV_GET.call("DEBUG", Constants::FALSE).casecmp?(Constants::TRUE)
+        DO_COV = ENV_GET.call("DO", CI).casecmp?(Constants::TRUE)
         FILTER_DIRS = ENV_GET.call(
           "FILTER_DIRS",
-          "bin,certs,checksums,config,coverage,docs,features,gemfiles,pkg,results,sig,spec,src,test,test-results,vendor",
+          "bin,certs,checksums,config,coverage,docs,features,gemfiles,pkg,results,sig,spec,src,test,test-results,vendor"
         )
           .split(",")
           .map { |dir_name| %r{^/#{Regexp.escape(dir_name)}/} }
         FORMATTERS = begin
           list = ENV_GET.call(
             "FORMATTERS",
-            IS_CI ? "html,xml,rcov,lcov,json,tty" : "html,tty",
+            IS_CI ? "html,xml,rcov,lcov,json,tty" : "html,tty"
           )
             .split(",")
             .map { |fmt_name| FORMATTER_PLUGINS[fmt_name.strip.to_sym] }
@@ -77,16 +77,16 @@ module Kettle
         MIN_COVERAGE_BRANCH = ENV_GET.call("MIN_BRANCH", "80").to_i
         MIN_COVERAGE_LINE = ENV_GET.call("MIN_LINE", "80").to_i
         MULTI_FORMATTERS_DEFAULT = if IS_CI
-          TRUE
+          Constants::TRUE
         else
-          FORMATTERS.any? ? TRUE : FALSE
+          FORMATTERS.any? ? Constants::TRUE : Constants::FALSE
         end
-        MULTI_FORMATTERS = ENV_GET.call("MULTI_FORMATTERS", MULTI_FORMATTERS_DEFAULT).casecmp?(TRUE)
+        MULTI_FORMATTERS = ENV_GET.call("MULTI_FORMATTERS", MULTI_FORMATTERS_DEFAULT).casecmp?(Constants::TRUE)
         TEST_ENV_NUMBER = ENV.fetch("TEST_ENV_NUMBER", "")
-        TURBO_TESTS = ENV_GET.call("TURBO_TESTS", TRUE).casecmp?(TRUE)
+        TURBO_TESTS = ENV_GET.call("TURBO_TESTS", Constants::TRUE).casecmp?(Constants::TRUE)
         TURBO_TESTS_DIR = ENV_GET.call("TURBO_TESTS_DIR", "turbo_tests")
         TURBO_TESTS_WORKER = TURBO_TESTS && !TEST_ENV_NUMBER.empty?
-        MIN_COVERAGE_HARD_REQUESTED = ENV_GET.call("MIN_HARD", CI).casecmp?(TRUE)
+        MIN_COVERAGE_HARD_REQUESTED = ENV_GET.call("MIN_HARD", CI).casecmp?(Constants::TRUE)
         MIN_COVERAGE_HARD = MIN_COVERAGE_HARD_REQUESTED && !TURBO_TESTS_WORKER
         COVERAGE_DIR = if TURBO_TESTS_WORKER
           File.join(COVERAGE_ROOT_DIR, TURBO_TESTS_DIR, TEST_ENV_NUMBER)
@@ -111,16 +111,16 @@ module Kettle
         # IMPORTANT: set K_SOUP_COV_CLEAN_RESULTSET=false in .simplecov_spawn.rb (or
         # equivalent) so that spawned subprocesses do not wipe the resultset that the
         # main process and sibling spawns are accumulating.
-        CLEAN_RESULTSET_DEFAULT = (IS_CI || TURBO_TESTS_WORKER) ? FALSE : TRUE
-        CLEAN_RESULTSET = ENV_GET.call("CLEAN_RESULTSET", CLEAN_RESULTSET_DEFAULT).casecmp?(TRUE)
+        CLEAN_RESULTSET_DEFAULT = (IS_CI || TURBO_TESTS_WORKER) ? Constants::FALSE : Constants::TRUE
+        CLEAN_RESULTSET = ENV_GET.call("CLEAN_RESULTSET", CLEAN_RESULTSET_DEFAULT).casecmp?(Constants::TRUE)
         # Enable merging by default to aggregate coverage across multiple test runs
         # (e.g., separate RSpec tasks for FFI tests, integration tests, unit tests)
         # Set K_SOUP_COV_USE_MERGING=false to disable
-        USE_MERGING = ENV_GET.call("USE_MERGING", TRUE).casecmp?(TRUE)
+        USE_MERGING = ENV_GET.call("USE_MERGING", Constants::TRUE).casecmp?(Constants::TRUE)
         # Default merge timeout of 1 hour (3600 seconds) - enough for most test suites
         # Set K_SOUP_COV_MERGE_TIMEOUT to override
         MERGE_TIMEOUT = ENV_GET.call("MERGE_TIMEOUT", "3600").to_i
-        VERBOSE = ENV_GET.call("VERBOSE", FALSE).casecmp?(TRUE)
+        VERBOSE = ENV_GET.call("VERBOSE", Constants::FALSE).casecmp?(Constants::TRUE)
 
         include Kettle::Change.new(
           constants: %w[
@@ -155,7 +155,7 @@ module Kettle
             USE_MERGING
             VERBOSE
           ],
-          path: "kettle/soup/cover/constants.rb",
+          path: "kettle/soup/cover/constants.rb"
         )
       end
     end

@@ -50,8 +50,6 @@ appraise "unlocked_deps" do
 end
 
 appraise "head" do
-  # Why is gem "cgi" here? See: https://github.com/vcr/vcr/issues/1057
-  #  gem "cgi", ">= 0.5"
   eval_gemfile "modular/x_std_libs.gemfile"
 end
 

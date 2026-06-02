@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# External RSpec & related config
+require "kettle/test/rspec"
+
 # Usage:
 #   see https://github.com/pboling/rspec-block_is_expected#example
 require "rspec/block_is_expected"
@@ -52,6 +55,15 @@ end
 require "kettle-soup-cover"
 
 RSpec.configure do |config|
+  # Enable flags like --only-failures and --next-failure
+  config.example_status_persistence_file_path = ".rspec_status"
+
+  # Disable RSpec exposing methods globally on `Module` and `main`
+  config.disable_monkey_patching!
+
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
   config.after(:suite) do
     # These rake task files are intentionally reloaded by their specs into isolated
     # Rake applications. Ruby branch coverage keeps the counters from the final

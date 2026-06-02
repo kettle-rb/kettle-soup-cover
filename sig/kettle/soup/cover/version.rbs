@@ -2,7 +2,7 @@ module Kettle
   module Soup
     module Cover
       module Version
-        VERSION: string
+        VERSION: String
       end
       VERSION: String
     end

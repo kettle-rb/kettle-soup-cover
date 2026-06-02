@@ -53,7 +53,7 @@ SimpleCov.configure do
   if Kettle::Soup::Cover::Constants::MIN_COVERAGE_HARD
     minimum_coverage(
       branch: Kettle::Soup::Cover::Constants::MIN_COVERAGE_BRANCH,
-      line: Kettle::Soup::Cover::Constants::MIN_COVERAGE_LINE,
+      line: Kettle::Soup::Cover::Constants::MIN_COVERAGE_LINE
     )
   end
 end
