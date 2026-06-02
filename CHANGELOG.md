@@ -22,20 +22,31 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
-- Raised direct runtime, development, style, and documentation dependency floors
-  to their latest released compatible versions.
-- Raised the minimum supported Ruby version from 2.7 to 3.2.
-
 ### Deprecated
 
 ### Removed
 
 ### Fixed
 
+### Security
+
+## [2.0.0] - 2026-06-02
+
+- TAG: [v2.0.0][2.0.0t]
+- COVERAGE: 100.00% -- 244/244 lines in 11 files
+- BRANCH COVERAGE: 100.00% -- 70/70 branches in 11 files
+- 16.67% documented
+
+### Changed
+
+- Raised direct runtime, development, style, and documentation dependency floors
+  to their latest released compatible versions.
+- Raised the minimum supported Ruby version from 2.7 to 3.2.
+
+### Fixed
+
 - Restored full CI coverage for the self-tested `coverage` rake task opener
   branches after re-templating.
-
-### Security
 
 ## [1.1.3] - 2026-05-24
 
@@ -363,7 +374,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 - Initial release
 
-[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.3...HEAD
+[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.3...v2.0.0
+[2.0.0t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v2.0.0
 [1.1.3]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.2...v1.1.3
 [1.1.3t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v1.1.3
 [1.1.2]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.1...v1.1.2

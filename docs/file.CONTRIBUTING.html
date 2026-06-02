@@ -6,7 +6,7 @@
 <title>
   File: CONTRIBUTING
   
-    &mdash; Documentation by YARD 0.9.43
+    &mdash; Documentation by YARD 0.9.44
   
 </title>
 
@@ -115,6 +115,20 @@ after running <code>bin/setup</code>. These include:</p>
 <pre class="code language-shell"><code class="language-shell">bin/rake -T
 </code></pre>
 
+<h2 id="code-quality-checks">Code quality checks</h2>
+
+<p>Run the Reek task when you want a smell check that fails on current findings:</p>
+
+<pre class="code language-shell"><code class="language-shell">bin/rake reek
+</code></pre>
+
+<p>Refresh the checked-in <code>REEK</code> backlog through the rake task, not by redirecting<br>
+the raw <code>reek</code> executable output. The rake task uses the project bundle and<br>
+avoids stale generated binstubs shadowing the Reek gem executable:</p>
+
+<pre class="code language-shell"><code class="language-shell">bin/rake reek:update
+</code></pre>
+
 <h2 id="environment-variables-for-local-development">Environment Variables for Local Development</h2>
 
 <p>Below are the primary environment variables recognized by stone_checksums (and its integrated tools). Unless otherwise noted, set boolean values to the string “true” to enable.</p>
@@ -165,12 +179,36 @@ Tip: When running a single spec file locally, you may want <code>K_SOUP_COV_MIN_
   <li>GIT_HOOK_FOOTER_APPEND_DEBUG: Extra debug output in the footer template (true/false)</li>
 </ul>
 
+<p>Git diff driver setup</p>
+<ul>
+  <li>Local setup writes repository <code>.gitattributes</code> entries and local Git <code>diff.smorg-*</code> command config so this checkout uses StructuredMerge semantic diffs.</li>
+  <li>Global setup registers <code>diff.smorg-*</code> commands once in the user Git config; use it when you work across several StructuredMerge-enabled repositories.</li>
+  <li>Include-file setup writes <code>.git/smorg/config</code> and includes it from local Git config, keeping command registrations out of the repository files.</li>
+  <li>Git hosting forges generally ignore external diff drivers, so pull request views may still show raw textual diffs even when local <code>git diff</code> uses semantic drivers.</li>
+</ul>
+
+<pre class="code language-console"><code class="language-console">K_JEM_TEMPLATING=true bundle exec kettle-jem install
+</code></pre>
+
+<p>Troubleshooting Git diffs</p>
+<ul>
+  <li>Use <code>git diff --no-ext-diff</code> to compare against Git’s built-in diff output.</li>
+  <li>Use <code>git diff --no-textconv</code> when a textconv projection obscures the raw file bytes you need to inspect.</li>
+  <li>If Git reports a missing <code>smorg-*</code> executable, rerun <code>bundle install</code> and the setup command above, then check <code>git config --local --get-regexp '^diff\.smorg-'</code>.</li>
+  <li>To remove managed local entries, run <code>K_JEM_TEMPLATING=true bundle exec kettle-jem install --undo</code>; remove global command registrations with <code>git config --global --unset-all diff.smorg-ruby.command</code>.</li>
+</ul>
+
 <p>For a quick starting point, this repository’s <code>mise.toml</code> defines the shared defaults, and <code>.env.local</code> can override them locally. Copy <code>.env.local.example</code> to <code>.env.local</code>, use <code>KEY=value</code> lines, and either activate <code>mise</code> in your shell or run commands through <code>mise exec -C /path/to/project -- ...</code>.</p>
 
 <h2 id="appraisals">Appraisals</h2>
 
 <p>From time to time the <a href="https://github.com/appraisal-rb/appraisal2">appraisal2</a> gemfiles in <code>gemfiles/</code> will need to be updated.<br>
-They are created and updated with the commands:</p>
+Generated appraisal and CI workflow floors are controlled by <code>ruby.test_minimum</code><br>
+in <code>.structuredmerge/kettle-jem.yml</code>; this project was templated with <code>ruby.test_minimum: 3.2.0</code>.<br>
+That value describes the lowest Ruby version expected to run the test/development<br>
+toolchain, and it may be higher than the gemspec runtime floor.</p>
+
+<p>They are created and updated with the commands:</p>
 
 <pre class="code language-console"><code class="language-console">bin/rake appraisal:update
 </code></pre>
@@ -215,7 +253,7 @@ pass/fail count, failing example list, and SimpleCov coverage percentages.</p>
 <pre class="code language-console"><code class="language-console">bundle exec rake rubocop_gradual:autocorrect
 </code></pre>
 
-<p>For more detailed information about using RuboCop in this project, please see the <a href="file.RUBOCOP.html" title="RUBOCOP.md">RUBOCOP.md</a> guide. This project uses <code>rubocop_gradual</code> instead of vanilla RuboCop, which requires specific commands for checking violations.</p>
+<p>For more detailed information about using RuboCop in this project, please see the <a href="RUBOCOP.md">RUBOCOP.md</a> guide. This project uses <code>rubocop_gradual</code> instead of vanilla RuboCop, which requires specific commands for checking violations.</p>
 
 <h3 id="important-do-not-add-inline-rubocop-disables">Important: Do not add inline RuboCop disables</h3>
 
@@ -319,9 +357,9 @@ push git commits and tags, and push the <code>.gem</code> file to the gem host c
 </div></div>
 
       <div id="footer">
-  Generated on Sun May 24 20:57:25 2026 by
+  Generated on Tue Jun  2 10:26:37 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.43 (ruby-4.0.5).
+  0.9.44 (ruby-4.0.5).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   File: AGENTS
   
-    &mdash; Documentation by YARD 0.9.43
+    &mdash; Documentation by YARD 0.9.44
   
 </title>
 
@@ -266,16 +266,20 @@ Use the <code>K_SOUP_COV_MIN_HARD=false</code> environment variable to disable h
 
 <h3 id="template-management-kettle-jem">Template Management (kettle-jem)</h3>
 
-<p>Run the kettle-jem templater to sync project files with the latest template:</p>
+<p>Run the full kettle-jem installer to sync project files with the latest template<br>
+and regenerate local finishing artifacts such as binstubs:</p>
 
 <pre class="code language-bash"><code class="language-bash"># Standard run (quiet, non-interactive — the default)
-mise exec -C /path/to/project -- env K_JEM_TEMPLATING=true bundle exec kettle-jem template
+mise exec -C /path/to/project -- env K_JEM_TEMPLATING=true bundle exec kettle-jem install
 
 # Verbose output (see per-file detail)
-mise exec -C /path/to/project -- env K_JEM_TEMPLATING=true KETTLE_JEM_VERBOSE=true bundle exec kettle-jem template
+mise exec -C /path/to/project -- env K_JEM_TEMPLATING=true KETTLE_JEM_VERBOSE=true bundle exec kettle-jem install
 
 # Interactive mode (prompt before each change)
-mise exec -C /path/to/project -- env K_JEM_TEMPLATING=true bundle exec kettle-jem template --interactive
+mise exec -C /path/to/project -- env K_JEM_TEMPLATING=true bundle exec kettle-jem install --interactive
+
+# Scoped file update only; skips install finishing steps
+mise exec -C /path/to/project -- env K_JEM_TEMPLATING=true bundle exec kettle-jem template --only README.md
 </code></pre>
 
 <p>Use the <code>kettle-jem</code> executable as the public entrypoint. The<br>
@@ -406,9 +410,9 @@ end
 </div></div>
 
       <div id="footer">
-  Generated on Sun May 24 20:57:25 2026 by
+  Generated on Tue Jun  2 10:26:37 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.43 (ruby-4.0.5).
+  0.9.44 (ruby-4.0.5).
 </div>
 
     </div>

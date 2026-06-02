@@ -4,7 +4,7 @@ module Kettle
   module Soup
     module Cover
       module Version
-        VERSION = "1.1.3"
+        VERSION = "2.0.0"
       end
       VERSION = Version::VERSION # Traditional Constant Location
     end
