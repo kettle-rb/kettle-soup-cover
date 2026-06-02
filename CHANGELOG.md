@@ -24,6 +24,7 @@ Please file a bug if you notice a violation of semantic versioning.
 
 - Raised direct runtime, development, style, and documentation dependency floors
   to their latest released compatible versions.
+- Raised the minimum supported Ruby version from 2.7 to 3.2.
 
 ### Deprecated
 

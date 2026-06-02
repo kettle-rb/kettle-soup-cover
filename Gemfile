@@ -20,6 +20,7 @@ gemspec
 
 # Local workspace dependency wiring for *_local.gemfile overrides
 gem "nomono", "~> 1.0", ">= 1.0.2", require: false # ruby >= 2.2
+
 # Debugging
 eval_gemfile "gemfiles/modular/debug.gemfile"
 

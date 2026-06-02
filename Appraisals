@@ -40,7 +40,7 @@ appraise "unlocked_deps" do
   #   irb was resolved to 1.16.0, which depends on
   #     rdoc was resolved to 7.0.3, which depends on
   #       psych
-  gem "irb", "~> 1.17" # ruby >= 2.7
+  gem "irb", "~> 1.18", ">= 1.18.0" # ruby >= 2.7
 
   eval_gemfile "modular/coverage.gemfile"
   eval_gemfile "modular/documentation.gemfile"
@@ -59,18 +59,6 @@ end
 
 appraise "dep-heads" do
   eval_gemfile "modular/runtime_heads.gemfile"
-end
-
-appraise "ruby-2-7" do
-  eval_gemfile "modular/x_std_libs/r2/libs.gemfile"
-end
-
-appraise "ruby-3-0" do
-  eval_gemfile "modular/x_std_libs/r3.1/libs.gemfile"
-end
-
-appraise "ruby-3-1" do
-  eval_gemfile "modular/x_std_libs/r3.1/libs.gemfile"
 end
 
 appraise "ruby-3-2" do

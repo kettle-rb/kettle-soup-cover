@@ -124,7 +124,7 @@ For a quick starting point, this repository’s `mise.toml` defines the shared d
 
 From time to time the [appraisal2][🚎appraisal2] gemfiles in `gemfiles/` will need to be updated.
 Generated appraisal and CI workflow floors are controlled by `ruby.test_minimum`
-in `.structuredmerge/kettle-jem.yml`; this project was templated with `ruby.test_minimum: 2.7.0`.
+in `.structuredmerge/kettle-jem.yml`; this project was templated with `ruby.test_minimum: 3.2.0`.
 That value describes the lowest Ruby version expected to run the test/development
 toolchain, and it may be higher than the gemspec runtime floor.
 

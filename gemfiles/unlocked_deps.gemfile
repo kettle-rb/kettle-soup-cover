@@ -2,7 +2,7 @@
 
 source "https://gem.coop"
 
-gem "irb", "~> 1.17"
+gem "irb", "~> 1.18", ">= 1.18.0"
 
 gemspec :path => "../"
 

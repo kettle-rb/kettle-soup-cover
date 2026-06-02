@@ -6,25 +6,9 @@
 # kettle-soup-cover will then preserve content between those markers across template runs.
 # kettle-jem:unfreeze
 
-gem_version =
-  if Gem.ruby_version >= Gem::Version.new("3.1")
-    # Loading Version into an anonymous module allows version.rb to get code coverage from SimpleCov!
-    # See: https://github.com/simplecov-ruby/simplecov/issues/557#issuecomment-2630782358
-    # See: https://github.com/panorama-ed/memo_wise/pull/397
-    Module.new.tap { |mod| Kernel.load("#{__dir__}/lib/kettle/soup/cover/version.rb", mod) }::Kettle::Soup::Cover::Version::VERSION
-  else
-    # NOTE: Use __FILE__ or __dir__ until removal of Ruby 1.x support
-    # __dir__ introduced in Ruby 1.9.1
-    # lib = File.expand_path("../lib", __FILE__)
-    lib = File.expand_path("lib", __dir__)
-    $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-    require "kettle/soup/cover/version"
-    Kettle::Soup::Cover::Version::VERSION
-  end
-
 Gem::Specification.new do |spec|
   spec.name = "kettle-soup-cover"
-  spec.version = gem_version
+  spec.version = Module.new.tap { |mod| Kernel.load("#{__dir__}/lib/kettle/soup/cover/version.rb", mod) }::Kettle::Soup::Cover::Version::VERSION
   spec.authors = ["Peter H. Boling"]
   spec.email = ["floss@galtzo.com"]
 
@@ -36,7 +20,7 @@ Fund overlooked open source projects - bottom of stack, dev/test dependencies: f
 "
   spec.homepage = "https://github.com/kettle-rb/kettle-soup-cover"
   spec.licenses = ["AGPL-3.0-only"]
-  spec.required_ruby_version = ">= 2.7.0"
+  spec.required_ruby_version = ">= 3.2.0"
 
   # Linux distros often package gems and securely certify them independent
   #   of the official RubyGem certification process. Allowed via ENV["SKIP_GEM_SIGNING"]
@@ -128,17 +112,17 @@ Fund overlooked open source projects - bottom of stack, dev/test dependencies: f
   #       visibility and discoverability.
   #       However, development dependencies in gemspec will install on
   #       all versions of Ruby that will run in CI.
-  #       This gem, and its gemspec runtime dependencies, will install on Ruby down to 2.7.0.
-  #       This gem, and its gemspec development dependencies, will install on Ruby down to 2.7.0.
+  #       This gem, and its gemspec runtime dependencies, will install on Ruby down to 3.2.0.
+  #       This gem, and its gemspec development dependencies, will install on Ruby down to 3.2.0.
   #       Thus, dev dependencies in gemspec must have
   #
-  #       required_ruby_version ">= 2.7.0" (or lower)
+  #       required_ruby_version ">= 3.2.0" (or lower)
   #
   #       Development dependencies that require strictly newer Ruby versions should be in a "gemfile",
   #       and preferably a modular one (see gemfiles/modular/*.gemfile).
 
   # Dev, Test, & Release Tasks
-  spec.add_development_dependency("kettle-dev", "~> 2.0", ">= 2.0.7")      # ruby >= 2.7.0
+  spec.add_development_dependency("kettle-dev", "~> 2.0", ">= 2.0.7")      # ruby >= 3.2.0
 
   # Security
   spec.add_development_dependency("bundler-audit", "~> 0.9", ">= 0.9.3")            # ruby >= 2.0.0
@@ -151,7 +135,7 @@ Fund overlooked open source projects - bottom of stack, dev/test dependencies: f
 
   # Testing
   spec.add_development_dependency("appraisal2", "~> 3.0", ">= 3.0.6")               # ruby >= 1.8.7, for testing against multiple versions of dependencies
-  spec.add_development_dependency("kettle-test", "~> 2.0", ">= 2.0.2")             # ruby >= 2.7.0
+  spec.add_development_dependency("kettle-test", "~> 2.0", ">= 2.0.2")             # ruby >= 3.2.0
 
   # Releasing
   spec.add_development_dependency("ruby-progressbar", "~> 1.13", ">= 1.13.0")       # ruby >= 0
