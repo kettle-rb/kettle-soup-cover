@@ -28,13 +28,22 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+### Security
+
+## [2.0.1] - 2026-06-02
+
+- TAG: [v2.0.1][2.0.1t]
+- COVERAGE: 100.00% -- 247/247 lines in 11 files
+- BRANCH COVERAGE: 100.00% -- 68/68 branches in 11 files
+- 16.44% documented
+
+### Fixed
+
 - Added `turbo_tests2:setup` and `turbo_tests2:cleanup` rake hook aliases so
   coverage setup and collation work when runners use either the legacy
   `turbo_tests` namespace or the current `turbo_tests2` namespace.
 - Suppressed SimpleCov report formatter output inside `turbo_tests2` worker
   processes so only the parent collation process publishes coverage reports.
-
-### Security
 
 ## [2.0.0] - 2026-06-02
 
@@ -380,7 +389,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 - Initial release
 
-[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/kettle-rb/kettle-soup-cover/compare/v2.0.0...v2.0.1
+[2.0.1t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v2.0.1
 [2.0.0]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.3...v2.0.0
 [2.0.0t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v2.0.0
 [1.1.3]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.2...v1.1.3
