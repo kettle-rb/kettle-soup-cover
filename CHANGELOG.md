@@ -22,6 +22,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
+- Raised direct runtime, development, style, and documentation dependency floors
+  to their latest released compatible versions.
+
 ### Deprecated
 
 ### Removed

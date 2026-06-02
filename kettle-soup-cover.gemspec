@@ -115,12 +115,12 @@ Fund overlooked open source projects - bottom of stack, dev/test dependencies: f
   spec.require_paths = ["lib"]
 
   # Utilities
-  spec.add_dependency("simplecov", "~> 0.22") # Includes dependency on simplecov-html
-  spec.add_dependency("simplecov-cobertura", "~> 3.0") # Ruby >= 2.5, provides GitLab, Jenkins compatibility (XML)
-  spec.add_dependency("simplecov-console", "~> 0.9", ">= 0.9.3") # TTY / Console output
-  spec.add_dependency("simplecov-html", "~> 0.13", ">= 0.13.1") # GHA, Human compatibility! (HTML)
+  spec.add_dependency("simplecov", "~> 0.22", ">= 0.22.0") # Includes dependency on simplecov-html
+  spec.add_dependency("simplecov-cobertura", "~> 3.1", ">= 3.1.0") # Ruby >= 2.5, provides GitLab, Jenkins compatibility (XML)
+  spec.add_dependency("simplecov-console", "~> 0.9", ">= 0.9.5") # TTY / Console output
+  spec.add_dependency("simplecov-html", "~> 0.13", ">= 0.13.2") # GHA, Human compatibility! (HTML)
   spec.add_dependency("simplecov_json_formatter", "~> 0.1", ">= 0.1.4") # GHA, Jenkins X, CircleCI, Travis CI, BitBucket, CodeClimate compatibility (JSON)
-  spec.add_dependency("simplecov-lcov", "~> 0.8") # GHA, Jenkins X, CircleCI, Travis CI, TeamCity, GCOV compatibility
+  spec.add_dependency("simplecov-lcov", "~> 0.9", ">= 0.9.0") # GHA, Jenkins X, CircleCI, Travis CI, TeamCity, GCOV compatibility
   spec.add_dependency("simplecov-rcov", "~> 0.3", ">= 0.3.7") # Hudson compatibility
   spec.add_dependency("version_gem", "~> 1.1", ">= 1.1.9")              # ruby >= 2.2.0
 
@@ -141,10 +141,10 @@ Fund overlooked open source projects - bottom of stack, dev/test dependencies: f
   spec.add_development_dependency("kettle-dev", "~> 2.0", ">= 2.0.7")      # ruby >= 2.7.0
 
   # Security
-  spec.add_development_dependency("bundler-audit", "~> 0.9.3")                      # ruby >= 2.0.0
+  spec.add_development_dependency("bundler-audit", "~> 0.9", ">= 0.9.3")            # ruby >= 2.0.0
 
   # Tasks
-  spec.add_development_dependency("rake", "~> 13.0")                                # ruby >= 2.2.0
+  spec.add_development_dependency("rake", "~> 13.4", ">= 13.4.2")                   # ruby >= 2.2.0
 
   # Debugging
   spec.add_development_dependency("require_bench", "~> 1.0", ">= 1.0.4")            # ruby >= 2.2.0
@@ -154,7 +154,7 @@ Fund overlooked open source projects - bottom of stack, dev/test dependencies: f
   spec.add_development_dependency("kettle-test", "~> 2.0", ">= 2.0.2")             # ruby >= 2.7.0
 
   # Releasing
-  spec.add_development_dependency("ruby-progressbar", "~> 1.13")                    # ruby >= 0
+  spec.add_development_dependency("ruby-progressbar", "~> 1.13", ">= 1.13.0")       # ruby >= 0
   spec.add_development_dependency("stone_checksums", "~> 1.0", ">= 1.0.3")          # ruby >= 2.2.0
 
   # Git integration (optional)
