@@ -150,6 +150,59 @@ RSpec.describe Kettle::Soup::Cover do
     end
   end
 
+  describe "::configure_formatters!" do
+    before do
+      allow(Kettle::Soup::Cover::Loaders).to receive(:load_formatters)
+      allow(SimpleCov).to receive(:at_exit)
+      allow(SimpleCov).to receive(:formatter)
+    end
+
+    context "when running in a turbo_tests2 worker" do
+      before do
+        stub_const("Kettle::Soup::Cover::Constants::TURBO_TESTS_WORKER", true)
+        stub_const("Kettle::Soup::Cover::Constants::MULTI_FORMATTERS", true)
+      end
+
+      it "stores the worker resultset and skips report formatters" do
+        described_class.configure_formatters!
+
+        expect(SimpleCov).to have_received(:at_exit)
+        expect(SimpleCov).not_to have_received(:formatter)
+        expect(Kettle::Soup::Cover::Loaders).not_to have_received(:load_formatters)
+      end
+    end
+
+    context "when the parent process uses multiple formatters" do
+      before do
+        stub_const("Kettle::Soup::Cover::Constants::TURBO_TESTS_WORKER", false)
+        stub_const("Kettle::Soup::Cover::Constants::MULTI_FORMATTERS", true)
+      end
+
+      it "loads the configured formatter stack" do
+        described_class.configure_formatters!
+
+        expect(Kettle::Soup::Cover::Loaders).to have_received(:load_formatters)
+        expect(SimpleCov).not_to have_received(:at_exit)
+        expect(SimpleCov).not_to have_received(:formatter)
+      end
+    end
+
+    context "when the parent process uses the default single formatter" do
+      before do
+        stub_const("Kettle::Soup::Cover::Constants::TURBO_TESTS_WORKER", false)
+        stub_const("Kettle::Soup::Cover::Constants::MULTI_FORMATTERS", false)
+      end
+
+      it "uses the HTML formatter" do
+        described_class.configure_formatters!
+
+        expect(SimpleCov).to have_received(:formatter).with(SimpleCov::Formatter::HTMLFormatter)
+        expect(SimpleCov).not_to have_received(:at_exit)
+        expect(Kettle::Soup::Cover::Loaders).not_to have_received(:load_formatters)
+      end
+    end
+  end
+
   describe "::collate_turbo_tests_coverage!" do
     subject(:collate_turbo_tests_coverage!) do
       described_class.collate_turbo_tests_coverage!(coverage_dir, project_root: project_root)
@@ -193,6 +246,7 @@ RSpec.describe Kettle::Soup::Cover do
         stub_const("Kettle::Soup::Cover::Constants::MIN_COVERAGE_LINE", 92)
         stub_const("Kettle::Soup::Cover::Constants::MIN_COVERAGE_HARD", true)
         stub_const("Kettle::Soup::Cover::Constants::MULTI_FORMATTERS", true)
+        stub_const("Kettle::Soup::Cover::Constants::TURBO_TESTS_WORKER", false)
         allow(Kettle::Soup::Cover::Loaders).to receive(:load_formatters)
         allow(SimpleCov).to receive(:collate) do |_resultsets, &block|
           SimpleCov.instance_eval(&block)

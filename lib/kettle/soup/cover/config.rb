@@ -12,6 +12,10 @@
 #   SimpleCov.start
 #
 
+require_relative "constants" unless defined?(Kettle::Soup::Cover::Constants)
+require_relative "loaders" unless defined?(Kettle::Soup::Cover::Loaders)
+require_relative "formatters" unless defined?(Kettle::Soup::Cover) && Kettle::Soup::Cover.respond_to?(:configure_formatters!)
+
 SimpleCov.configure do
   track_files("lib/**/*.rb")
 
@@ -27,12 +31,7 @@ SimpleCov.configure do
   coverage_dir(Kettle::Soup::Cover::Constants::COVERAGE_DIR)
 
   # Formatters
-  if Kettle::Soup::Cover::Constants::MULTI_FORMATTERS
-    Kettle::Soup::Cover::Loaders.load_formatters
-  else
-    require "simplecov-html"
-    formatter SimpleCov::Formatter::HTMLFormatter
-  end
+  Kettle::Soup::Cover.configure_formatters!
 
   # Use Merging (merges coverage from multiple test runs, e.g., RSpec + Cucumber Test Results)
   # This is essential for projects that split tests into multiple rake tasks

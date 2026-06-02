@@ -28,6 +28,7 @@ require_relative "cover/version"
 
 require_relative "cover/constants"
 require_relative "cover/loaders"
+require_relative "cover/formatters"
 
 module Kettle
   module Soup
@@ -103,12 +104,7 @@ module Kettle
           add_filter(Constants::FILTER_DIRS)
           coverage_dir(File.expand_path(coverage_dir, project_root))
 
-          if Constants::MULTI_FORMATTERS
-            Kettle::Soup::Cover::Loaders.load_formatters
-          else
-            require "simplecov-html"
-            formatter(SimpleCov::Formatter::HTMLFormatter)
-          end
+          Kettle::Soup::Cover.configure_formatters!
 
           if Constants::MIN_COVERAGE_HARD
             minimum_coverage(

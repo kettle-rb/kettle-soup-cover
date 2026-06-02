@@ -31,6 +31,8 @@ Please file a bug if you notice a violation of semantic versioning.
 - Added `turbo_tests2:setup` and `turbo_tests2:cleanup` rake hook aliases so
   coverage setup and collation work when runners use either the legacy
   `turbo_tests` namespace or the current `turbo_tests2` namespace.
+- Suppressed SimpleCov report formatter output inside `turbo_tests2` worker
+  processes so only the parent collation process publishes coverage reports.
 
 ### Security
 
