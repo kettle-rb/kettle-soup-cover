@@ -40,13 +40,14 @@ appraise "unlocked_deps" do
   #   irb was resolved to 1.16.0, which depends on
   #     rdoc was resolved to 7.0.3, which depends on
   #       psych
-  gem "irb", "~> 1.18", ">= 1.18.0" # ruby >= 2.7
+  gem "irb", "~> 1.17" # ruby >= 2.7
 
   eval_gemfile "modular/coverage.gemfile"
   eval_gemfile "modular/documentation.gemfile"
   eval_gemfile "modular/optional.gemfile"
   eval_gemfile "modular/style.gemfile"
   eval_gemfile "modular/x_std_libs.gemfile"
+  gem "irb", "~> 1.18", ">= 1.18.0" # ruby >= 2.7
 end
 
 appraise "head" do

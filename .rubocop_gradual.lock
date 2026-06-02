@@ -1,0 +1,22 @@
+{
+  "gemfiles/modular/coverage_local.gemfile:3433486247": [
+    [20, 34, 1, "Style/TrailingCommaInArguments: Avoid comma after the last parameter of a method call.", 177545],
+    [30, 38, 1, "Style/TrailingCommaInArguments: Avoid comma after the last parameter of a method call.", 177545]
+  ],
+  "gemfiles/modular/documentation_local.gemfile:3439283577": [
+    [17, 34, 1, "Style/TrailingCommaInArguments: Avoid comma after the last parameter of a method call.", 177545]
+  ],
+  "gemfiles/modular/style_local.gemfile:5313258": [
+    [22, 33, 1, "Style/TrailingCommaInArguments: Avoid comma after the last parameter of a method call.", 177545]
+  ],
+  "gemfiles/modular/templating_local.gemfile:769918864": [
+    [68, 34, 1, "Style/TrailingCommaInArguments: Avoid comma after the last parameter of a method call.", 177545],
+    [79, 36, 1, "Style/TrailingCommaInArguments: Avoid comma after the last parameter of a method call.", 177545]
+  ],
+  "kettle-soup-cover.gemspec:259012348": [
+    [1, 1, 15, "Style/Encoding: Unnecessary utf-8 encoding comment.", 3274088582],
+    [70, 41, 1, "Style/TrailingCommaInArrayLiteral: Avoid comma after the last item of an array.", 177545],
+    [84, 18, 1, "Style/TrailingCommaInArguments: Avoid comma after the last parameter of a method call.", 177545],
+    [95, 14, 1, "Style/TrailingCommaInArrayLiteral: Avoid comma after the last item of an array.", 177545]
+  ]
+}
