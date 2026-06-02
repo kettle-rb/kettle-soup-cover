@@ -32,6 +32,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- Restored full CI coverage for the self-tested `coverage` rake task opener
+  branches after re-templating.
+
 ### Security
 
 ## [1.1.3] - 2026-05-24
