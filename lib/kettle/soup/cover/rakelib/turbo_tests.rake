@@ -13,3 +13,11 @@ namespace :turbo_tests do
     Kettle::Soup::Cover.collate_turbo_tests_coverage!
   end
 end
+
+namespace :turbo_tests2 do
+  desc "Prepare isolated coverage output for turbo_tests2 workers"
+  task setup: "turbo_tests:setup"
+
+  desc "Collate turbo_tests2 worker coverage reports"
+  task cleanup: "turbo_tests:cleanup"
+end

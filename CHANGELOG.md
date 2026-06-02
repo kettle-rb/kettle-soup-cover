@@ -28,6 +28,10 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- Added `turbo_tests2:setup` and `turbo_tests2:cleanup` rake hook aliases so
+  coverage setup and collation work when runners use either the legacy
+  `turbo_tests` namespace or the current `turbo_tests2` namespace.
+
 ### Security
 
 ## [2.0.0] - 2026-06-02
