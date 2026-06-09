@@ -1,4 +1,68 @@
 {
+  "ENV.delete(\"MAX_ROWS\")\nENV[\"K_SOUP_COV_TURBO_TESTS\"] = \"false\"": [
+    {
+      "file": "spec/spec_helper.rb",
+      "lines": [
+        112,
+        139,
+        146
+      ]
+    }
+  ],
+  "ENV[\"K_SOUP_COV_TURBO_TESTS\"] = \"false\"\nENV[\"TEST_ENV_NUMBER\"] = \"\"": [
+    {
+      "file": "spec/spec_helper.rb",
+      "lines": [
+        140,
+        147
+      ]
+    }
+  ],
+  "ENV[\"K_SOUP_COV_TURBO_TESTS\"] = \"false\"\nKettle::Soup::Cover.reset_const": [
+    {
+      "file": "spec/spec_helper.rb",
+      "lines": [
+        99,
+        113
+      ]
+    }
+  ],
+  "ENV[\"K_SOUP_COV_TURBO_TESTS\"] = \"true\"\nKettle::Soup::Cover.reset_const": [
+    {
+      "file": "spec/spec_helper.rb",
+      "lines": [
+        95,
+        103
+      ]
+    }
+  ],
+  "Kettle::Soup::Cover.reset_const\nRake.application[\"coverage\"].reenable": [
+    {
+      "file": "spec/spec_helper.rb",
+      "lines": [
+        123,
+        130
+      ]
+    }
+  ],
+  "Rake.application[\"coverage\"].reenable\nRake.application[\"test\"].reenable": [
+    {
+      "file": "spec/spec_helper.rb",
+      "lines": [
+        124,
+        131
+      ]
+    }
+  ],
+  "Rake.application[\"test\"].reenable\nRake.application[\"coverage\"].invoke": [
+    {
+      "file": "spec/spec_helper.rb",
+      "lines": [
+        125,
+        132
+      ]
+    }
+  ],
   "appraisal: \"dep-heads\"\nexec_cmd: \"kettle-test\"": [
     {
       "file": ".github/workflows/dep-heads.yml",

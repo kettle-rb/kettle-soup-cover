@@ -28,7 +28,10 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Fixed
 
+- Updated generated project metadata links to use the migrated `kettle-dev`
+  GitHub organization.
 - Restored `docs/CNAME` so the generated documentation site keeps its custom domain.
+
 ### Security
 
 ## [2.0.1] - 2026-06-02
