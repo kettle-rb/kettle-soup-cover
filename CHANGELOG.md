@@ -22,19 +22,30 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
-- Retemplated development tooling for `kettle-dev` 2.2.3.
-
 ### Deprecated
 
 ### Removed
 
 ### Fixed
 
+### Security
+
+## [2.0.2] - 2026-06-09
+
+- TAG: [v2.0.2][2.0.2t]
+- COVERAGE: 100.00% -- 247/247 lines in 11 files
+- BRANCH COVERAGE: 100.00% -- 68/68 branches in 11 files
+- 16.44% documented
+
+### Changed
+
+- Retemplated development tooling for `kettle-dev` 2.2.3.
+
+### Fixed
+
 - Updated generated project metadata links to use the migrated `kettle-dev`
   GitHub organization.
 - Restored `docs/CNAME` so the generated documentation site keeps its custom domain.
-
-### Security
 
 ## [2.0.1] - 2026-06-02
 
@@ -395,7 +406,9 @@ Please file a bug if you notice a violation of semantic versioning.
 
 - Initial release
 
-[Unreleased]: https://github.com/kettle-rb/kettle-soup-cover/compare/v2.0.1...HEAD
+[Unreleased]: https://github.com/kettle-dev/kettle-soup-cover/compare/v2.0.2...HEAD
+[2.0.2]: https://github.com/kettle-dev/kettle-soup-cover/compare/v2.0.1...v2.0.2
+[2.0.2t]: https://github.com/kettle-dev/kettle-soup-cover/releases/tag/v2.0.2
 [2.0.1]: https://github.com/kettle-rb/kettle-soup-cover/compare/v2.0.0...v2.0.1
 [2.0.1t]: https://github.com/kettle-rb/kettle-soup-cover/releases/tag/v2.0.1
 [2.0.0]: https://github.com/kettle-rb/kettle-soup-cover/compare/v1.1.3...v2.0.0
