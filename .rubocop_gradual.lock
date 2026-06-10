@@ -2,8 +2,5 @@
   "Appraisals:2530172110": [
     [12, 30, 11, "Style/HashSyntax: Use the new Ruby 1.9 hash syntax.", 476532049],
     [12, 64, 12, "Style/HashSyntax: Use the new Ruby 1.9 hash syntax.", 3823002898]
-  ],
-  "kettle-soup-cover.gemspec:4276840150": [
-    [104, 1, 21, "Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).", 272041892]
   ]
 }
