@@ -22,6 +22,8 @@ Please file a bug if you notice a violation of semantic versioning.
 
 ### Changed
 
+- Retemplated development tooling for `kettle-dev` 2.2.2.
+
 ### Deprecated
 
 ### Removed
